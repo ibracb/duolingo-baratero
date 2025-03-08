@@ -2,7 +2,7 @@ package umu.pds.duolingoBaratero.program;
 
 import javax.swing.UIManager;
 import com.jtattoo.plaf.fast.FastLookAndFeel;
-import umu.pds.duolingoBaratero.windows.LogInWindow;
+import umu.pds.duolingoBaratero.windows.VentanaInicio;
 
 public class Program {
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class Program {
             e.printStackTrace();
         }
 
-        LogInWindow loginWindow = new LogInWindow();
+        VentanaInicio loginWindow = new VentanaInicio();
         loginWindow.setVisible(true);
     }
 }

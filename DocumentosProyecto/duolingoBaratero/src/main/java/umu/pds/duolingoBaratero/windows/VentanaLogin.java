@@ -13,6 +13,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,9 +28,9 @@ public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPasswordField passwordField;
-	private final LogInWindow v;
+	private final VentanaInicio v;
 	
-	public VentanaLogin(LogInWindow v) {
+	public VentanaLogin(VentanaInicio v) {
 		this.v = v;
 		this.setTitle("⚡ ¡Regístrate! 🚀¡Sé la diferencia! 🌟");
 		this.setBounds(300, 300, 450, 261);
@@ -37,11 +38,12 @@ public class VentanaLogin extends JFrame {
 		JPanel panelSur = new JPanel();
 		this.getContentPane().add(panelSur, BorderLayout.SOUTH);
 
-		JButton btnRegistrar = new JButton("Cancelar");
-		btnRegistrar.setForeground(Color.RED);
-		btnRegistrar.setIcon(new ImageIcon(getClass().getResource("/nuevo.png")));
-		btnRegistrar.setPreferredSize(new Dimension(115, 23));
-		panelSur.add(btnRegistrar);
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(Color.RED);
+		btnCancelar.setIcon(new ImageIcon(getClass().getResource("/cancelar.png")));
+		btnCancelar.setPreferredSize(new Dimension(115, 23));
+		btnCancelar.addActionListener(e -> closeWindow());
+		panelSur.add(btnCancelar);
 
 		// Controlar evento boton registrar
 
@@ -50,6 +52,7 @@ public class VentanaLogin extends JFrame {
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnLogin.setIcon(new ImageIcon(getClass().getResource("/contrasena.png")));
 		btnLogin.setPreferredSize(new Dimension(115, 23));
+		btnLogin.addActionListener(e -> logIn());
 		panelSur.add(btnLogin);
 
 		// Controlad Evento boton login
@@ -142,6 +145,16 @@ public class VentanaLogin extends JFrame {
 		logo.setHorizontalAlignment(SwingConstants.CENTER);
 		this.getContentPane().add(logo, BorderLayout.NORTH);
 
+	}
+	
+	private void closeWindow() {
+		v.setVisible(true);
+		this.dispose();		
+	}
+	
+	private void logIn() {
+		JOptionPane.showMessageDialog(this, "Bro bro bro chill, los desarrolladores aun no han llegado tan lejos",
+				"Error", JOptionPane.ERROR_MESSAGE);
 	}
 
 

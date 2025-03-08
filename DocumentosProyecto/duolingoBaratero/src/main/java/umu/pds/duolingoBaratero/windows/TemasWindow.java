@@ -10,8 +10,8 @@ import javax.swing.border.LineBorder;
 public class TemasWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private final LogInWindow v;
-	public TemasWindow(LogInWindow v) {
+	private final VentanaInicio v;
+	public TemasWindow(VentanaInicio v) {
 		this.v = v;
         setTitle("Temas Disponibles");
         setSize(500, 400);
@@ -90,16 +90,9 @@ public class TemasWindow extends JFrame {
         // Panel inferior con los botones "Volver" y "Regístrate"
         JPanel panelInferior = new JPanel();
         JButton btnVolver = new JButton("Volver");
+        btnVolver.addActionListener(e -> closeWindow());
         JButton btnRegistro = new JButton("Regístrate");
-        btnRegistro.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                VentanaRegistro ventanaNueva = new VentanaRegistro();
-                ventanaNueva.setLocation(getLocation());
-                ventanaNueva.setVisible(true);
-            }
-        });
+        btnRegistro.addActionListener(e -> abrirVentanaRegistro());
         btnRegistro.setBackground(Color.CYAN);
         panelInferior.add(btnVolver);
         panelInferior.add(btnRegistro);
@@ -107,8 +100,15 @@ public class TemasWindow extends JFrame {
         getContentPane().add(panelInferior, BorderLayout.SOUTH);
     }
 
+	private void abrirVentanaRegistro() {
+        VentanaRegistro ventanaNueva = new VentanaRegistro(this);
+        ventanaNueva.setVisible(true);
+        setVisible(false);
+	}
+	
     private void closeWindow() {
     	v.setVisible(true);
     	this.dispose();
     }
+    
 }

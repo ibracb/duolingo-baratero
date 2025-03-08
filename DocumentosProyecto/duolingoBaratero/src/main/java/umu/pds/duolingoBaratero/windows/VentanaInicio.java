@@ -20,11 +20,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Color;
 
-public class LogInWindow extends JFrame {
+public class VentanaInicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public LogInWindow() {
+	public VentanaInicio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(650, 400);
 		setLocationRelativeTo(null);
