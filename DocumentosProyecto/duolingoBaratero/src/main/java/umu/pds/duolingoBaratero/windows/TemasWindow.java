@@ -2,6 +2,9 @@ package umu.pds.duolingoBaratero.windows;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.border.LineBorder;
 
 public class TemasWindow extends JFrame {
@@ -87,8 +90,16 @@ public class TemasWindow extends JFrame {
         // Panel inferior con los botones "Volver" y "Regístrate"
         JPanel panelInferior = new JPanel();
         JButton btnVolver = new JButton("Volver");
-        btnVolver.addActionListener(e -> closeWindow());
         JButton btnRegistro = new JButton("Regístrate");
+        btnRegistro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                VentanaRegistro ventanaNueva = new VentanaRegistro();
+                ventanaNueva.setLocation(getLocation());
+                ventanaNueva.setVisible(true);
+            }
+        });
         btnRegistro.setBackground(Color.CYAN);
         panelInferior.add(btnVolver);
         panelInferior.add(btnRegistro);

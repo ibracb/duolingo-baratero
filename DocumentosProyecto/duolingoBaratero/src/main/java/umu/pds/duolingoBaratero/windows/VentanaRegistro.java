@@ -76,6 +76,15 @@ public class VentanaRegistro extends JFrame {
         contentPane.add(panelAbajo, BorderLayout.SOUTH);
 
         JButton btnCancelar = new JButton("Cancelar");
+        btnCancelar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                TemasWindow ventanaNueva = new TemasWindow(new LogInWindow());
+                ventanaNueva.setLocation(getLocation());
+                ventanaNueva.setVisible(true);
+            }
+        });
         panelAbajo.add(btnCancelar);
 
         JButton btnRegistrar = new JButton("Registrar");
