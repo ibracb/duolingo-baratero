@@ -1,4 +1,4 @@
-# 📘 Modelo de Dominio - Plataforma de Aprendizaje
+# 📘 Modelo de Dominio
 
 Aquí nos encontramos con el modelo de dominio de la aplicación Duolingo Baratero. A continuación, se explica cómo están organizados los elementos principales.
 
