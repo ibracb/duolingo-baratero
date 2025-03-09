@@ -24,10 +24,10 @@ Los cursos pueden seguir diferentes estrategias de aprendizaje:
 ## 🔍 Contenido del Curso
 Cada curso está dividido en **bloques de contenido**, que contienen **ejercicios** diseñados para reforzar el aprendizaje.
 
-Los ejercicios pueden incluir:
-✔ **Preguntas de Test** (opción múltiple).
-✔ **Preguntas de Huecos** (completar frases).
-✔ **Preguntas de Escucha** (preguntas basadas en audio).
+Los ejercicios pueden incluir:  
+✔ **Preguntas de Test** (opción múltiple).  
+✔ **Preguntas de Huecos** (completar frases).  
+✔ **Preguntas de Escucha** (preguntas basadas en audio).  
 ✔ **Flashcards** (tarjetas de memorización).
 
 ---
