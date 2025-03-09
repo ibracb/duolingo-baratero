@@ -1,6 +1,6 @@
 # 📘 Modelo de Dominio - Plataforma de Aprendizaje
 
-Este repositorio contiene el modelo de dominio de una plataforma de aprendizaje. A continuación, se explica cómo están organizados los elementos principales.
+Aquí nos encontramos con el modelo de dominio de la aplicación Duolingo Baratero. A continuación, se explica cómo están organizados los elementos principales.
 
 ## 📌 Descripción General
 El sistema permite a los **usuarios** estudiar y crear cursos, los cuales contienen diferentes tipos de contenido y métodos de aprendizaje.
