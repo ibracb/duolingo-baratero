@@ -1,0 +1,22 @@
+Me parece un poco ambigo 10 e los bloques de preguntas o tarjetas de aprendizaje
+EI caso de uso "Agregar nuevos tipos de preguntas" 10 veo un poco definido
+
+Tengo dudas
+¿Qué es la biblioteca interna? (Lo pone en el documento del enunciado lo que es la biblioteca interna, es que no se debe mencionar?)
+EI caso de uso del curso 10 haría pregunta por pregunta, como si fuera una secuencia. ¿Además, puedes saltar preguntas y volver' (No entiendo)
+
+Corregidas
+EI caso de uso de guardar progreso 10 veo un poco raro. ¿No es a mano a partir de un botón? hablar en clase
+
+EI caso de uso de crear usuarios debería de incluir el suijeto: "EI sistema agrega..."
+
+No hace falta poner 10 de JSON o YALM en los cursos
+
+No entiendo bien elegir la configuración del curso. ¿Lo hace el usuario cuando participa o cuando 10 crea'
+
+La parte de estadísticas la veo un poco ambigua. ¿No hay filtros? Además, por qué puede cambiar su perfil. ¿No sería otro caso de uso? (No hay filtros son 4 etiquetas con la información de sus rachas, en las ventanas sale y se ha borrado el ultimo paso porque daba lugar a confusión)
+
+No se tienen en cuenta flujos alternativos.
+
+Podéis usar post-condiciones para decir cosas como "EI curso está disponible para su uso inmediato"
+
