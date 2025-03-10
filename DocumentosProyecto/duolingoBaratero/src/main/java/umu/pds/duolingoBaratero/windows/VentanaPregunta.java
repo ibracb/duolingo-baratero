@@ -62,12 +62,13 @@ public class VentanaPregunta extends JFrame {
 	    // Crear los cuatro paneles
 	    JPanel panel1 = new VentanaPreguntaListen();
 	    JPanel panel2 = new VentanaPreguntaImagenes();  // Reemplaza con tu JPanel real
-//	    JPanel panel3 = new OtroPanel2(); // Reemplaza con tu JPanel real
+	    JPanel panel3 = new VentanaPreguntaCompletar(); // Reemplaza con tu JPanel real
 //	    JPanel panel4 = new OtroPanel3(); // Reemplaza con tu JPanel real
 	    
 	    
 	    panelCentral.add(panel1, "panel1");
 	    panelCentral.add(panel2, "panel2");
+	    panelCentral.add(panel3, "panel3");
 	   
 	    
 	    
