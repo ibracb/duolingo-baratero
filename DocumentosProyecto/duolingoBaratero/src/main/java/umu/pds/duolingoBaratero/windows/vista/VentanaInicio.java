@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows;
+package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
@@ -14,6 +14,7 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
@@ -143,7 +144,7 @@ public class VentanaInicio extends JFrame {
 	}
 
 	private void abrirTemasWindow() {
-		TemasWindow themeWindow = new TemasWindow(this);
+		VentanaCursos themeWindow = new VentanaCursos(this);
 		themeWindow.setVisible(true);
 		this.setVisible(false);
 	}

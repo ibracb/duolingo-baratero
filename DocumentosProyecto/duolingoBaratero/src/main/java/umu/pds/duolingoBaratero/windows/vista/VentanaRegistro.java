@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows;
+package umu.pds.duolingoBaratero.windows.vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileFilter;
 
 import umu.pds.duolingoBaratero.controllers.ControladorDuolingoBaratero;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -48,14 +49,15 @@ public class VentanaRegistro extends JFrame {
     private JTextField textFieldNickName;
     private JTextField textFieldCorreo;
     private JTextField textFieldNombre;
-    private TemasWindow v;
+    
+    private VentanaCursos v;
     private JLabel lblCorreo;
 	private URL url;
 	
 	private File destinationFile = IMAGEN_POR_DEFECTO;
 
 
-    public VentanaRegistro(TemasWindow v) {
+    public VentanaRegistro(VentanaCursos v) {
     	this.v = v;
         setTitle("Registro");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,6 +85,7 @@ public class VentanaRegistro extends JFrame {
         panelAbajo.add(btnCancelar);
 
         JButton btnRegistrar = new JButton("Registrar");
+        btnRegistrar.addActionListener(e -> manejarRegistro());
         panelAbajo.add(btnRegistrar);
 
         JPanel panelMedio = new JPanel();
@@ -224,6 +227,64 @@ public class VentanaRegistro extends JFrame {
         mnSelectCursos.add(mntmEstudios);
     }
     
+    private void manejarRegistro() {
+		String nombre, nickname, correo, passwd1, passwd2;
+		nombre = textFieldNombre.getText();
+		nickname = textFieldNickName.getText();
+		correo = textFieldCorreo.getText();
+		passwd1 = new String(passwordFieldContraseña.getPassword());
+		passwd2 = new String(passwordFieldContraseñaOk.getPassword());
+
+	
+		if (hasRequiredFields(nombre, nickname, correo, passwd1, passwd2)) {
+			JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		if (!nombre.matches("[a-zA-Z0-9]+")) {
+			JOptionPane.showMessageDialog(null, "El nombre contiene caracteres no permitidos.", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		// No me funciona jope
+//		if (!nombre.matches("[a-zA-Z0-9]+@[a-zA-Z0-9.-]+.com")) {
+//			JOptionPane.showMessageDialog(null, "El dominio de correo no esta permitido.", "Error",
+//					JOptionPane.ERROR_MESSAGE);
+//			return;
+//		}
+
+		if (!passwd1.equals(passwd2)) {
+			JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		boolean result = ControladorUsuario.getInstancia().registrarUsuario(nombre, nickname, correo, passwd1);
+		if (!result) {
+			JOptionPane.showMessageDialog(null, "Ya estas registrado o ha ocurrido un error", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} else {
+			if (destinationFile != null) {
+				ControladorUsuario.getInstancia().setImagen(destinationFile.getAbsolutePath());
+			} else if (url != null) {
+				ControladorUsuario.getInstancia().setImagen(url.toString());
+
+			}
+
+
+			JOptionPane.showMessageDialog(null, "Sus datos han sido guardados correctamente", "Conseguido",
+					JOptionPane.PLAIN_MESSAGE);
+			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+			ventanaPrincipal.setVisible(true);
+			this.dispose();
+		}
+
+	}
+    
+	private boolean hasRequiredFields(String nombre, String nickname, String correo, String passwd1, String passwd2) {
+		return nombre.isEmpty() || nickname.isEmpty() || correo.isEmpty() || passwd1.isEmpty() || passwd2.isEmpty();
+	}
+
+    
     private void closeWindow() {
         v.setVisible(true);
         this.dispose();
@@ -245,7 +306,7 @@ public class VentanaRegistro extends JFrame {
 	public void setIcon() {
 		String path = destinationFile.getAbsolutePath();
         lblPerfil.setIcon(
-				ControladorDuolingoBaratero.getInstancia().getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
+        		ControladorUsuario.getInstancia().getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public void setIcon(ImageIcon imageIcon, URL url) {
@@ -256,7 +317,7 @@ public class VentanaRegistro extends JFrame {
 			String path = destinationFile.getAbsolutePath();
 			imageIcon = new ImageIcon(path);
 		}
-        lblPerfil.setIcon(ControladorDuolingoBaratero.getInstancia().getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
+        lblPerfil.setIcon(ControladorUsuario.getInstancia().getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public String getCorreo() {

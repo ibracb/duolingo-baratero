@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows;
+package umu.pds.duolingoBaratero.windows.vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -29,6 +29,7 @@ public class VentanaLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPasswordField passwordField;
 	private final VentanaInicio v;
+	private JTextField textField;
 	
 	public VentanaLogin(VentanaInicio v) {
 		this.v = v;
@@ -66,7 +67,7 @@ public class VentanaLogin extends JFrame {
 		gbl_panelCentro.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panelCentro.setLayout(gbl_panelCentro);
 
-		JLabel lblTelefono = new JLabel("tel\u00E9fono:");
+		JLabel lblTelefono = new JLabel("Correo:");
 		GridBagConstraints gbc_lblTelefono = new GridBagConstraints();
 		gbc_lblTelefono.anchor = GridBagConstraints.EAST;
 		gbc_lblTelefono.insets = new Insets(0, 0, 5, 5);
@@ -75,7 +76,7 @@ public class VentanaLogin extends JFrame {
 		panelCentro.add(lblTelefono, gbc_lblTelefono);
 
 
-		JTextField textField = new JTextField();
+		textField = new JTextField();
 		textField.setColumns(20);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -147,14 +148,36 @@ public class VentanaLogin extends JFrame {
 
 	}
 	
+	public void comprobarUsuario() {
+		String correo = textField.getText();
+		char[] passwd = passwordField.getPassword();
+		textField.setText("");
+		passwordField.setText("");
+        String passwordString = new String(passwd);
+		if (correo.isEmpty() || passwordString.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Los campos estan vacíos, por favor escribe tu nombre y telefono", "Error", JOptionPane.ERROR_MESSAGE);
+		} else {
+//			if (ControladorUsuario.getInstancia().comprobarUsuario(correo,passwordString)) {
+//				this.dispose();
+////				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this);
+////				ventanaPrincipal.setVisible(true);
+//			}
+//			else {
+//				JOptionPane.showMessageDialog(null, "Fallo en el inicio de sesion", "Error", JOptionPane.ERROR_MESSAGE);
+//			}
+		}
+	}
+
+	
 	private void closeWindow() {
 		v.setVisible(true);
 		this.dispose();		
 	}
 	
 	private void logIn() {
-		JOptionPane.showMessageDialog(this, "Bro bro bro chill, los desarrolladores aun no han llegado tan lejos",
-				"Error", JOptionPane.ERROR_MESSAGE);
+		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+		ventanaPrincipal.setVisible(true);
+		this.dispose();
 	}
 
 

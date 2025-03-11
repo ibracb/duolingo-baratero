@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows;
+package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +8,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.border.EmptyBorder;
+
+import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
+import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 
 public class VentanaPregunta extends JFrame {
 

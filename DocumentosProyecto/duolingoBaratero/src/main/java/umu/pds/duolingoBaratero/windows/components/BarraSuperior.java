@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows;
+package umu.pds.duolingoBaratero.windows.components;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,12 +23,8 @@ public class BarraSuperior extends JPanel {
         barra.add(panelBotones); // Agregar el panel centrado a la toolbar
         add(barra, BorderLayout.NORTH);
         
-        btnOpciones.addActionListener(e -> abrirOpciones());
     }
     
     
-    public void abrirOpciones() {
-    	VentanaOpciones ventana = new VentanaOpciones(); // Asumiendo que VentanaOpciones es tu ventana de opciones
-        ventana.setVisible(true); // Mostrar la ventana
-    }
+
 }

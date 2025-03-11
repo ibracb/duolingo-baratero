@@ -1,20 +1,46 @@
 package umu.pds.duolingoBaratero.models;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Usuario {
-	
+
+	private static final Rol ROL_POR_DEFECTO = Rol.ESTUDIANTE;
+
 	private long id;
 	private String nombre;
-	private String email;
-	private String password;
+	private String nickname;
+	private String correo;
+	private String passwd;
+	private String imagen;
 	private Set<Rol> roles;
-	
-	public Usuario(String nombre, String email, String password) {
-		super();
+	private List<CursoPlantilla> cursos;
+
+	public Usuario(String nombre, String nickname, String correo, String passwd) {
 		this.nombre = nombre;
-		this.email = email;
-		this.password = password;
+		this.nickname = nickname;
+		this.correo = correo;
+		this.passwd = passwd;
+		roles = new HashSet<>();
+		roles.add(ROL_POR_DEFECTO);
+	}
+
+	public Usuario(String nombre, String nickname, String correo, String passwd, String imagen) {
+		this(nombre, nickname, correo, passwd);
+		this.nombre = nombre;
+		this.nickname = nickname;
+		this.correo = correo;
+		this.passwd = passwd;
+		this.imagen = imagen;
+	}
+
+	public List<CursoPlantilla> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<CursoPlantilla> cursos) {
+		this.cursos = cursos;
 	}
 
 	public long getId() {
@@ -33,22 +59,38 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getCorreo() {
+		return correo;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	
 	public Set<Rol> getRoles() {
 		return roles;
 	}
@@ -56,6 +98,9 @@ public class Usuario {
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
 	}
-		
 	
+	public boolean hasImage() {
+		return imagen != null;
+	}
+
 }

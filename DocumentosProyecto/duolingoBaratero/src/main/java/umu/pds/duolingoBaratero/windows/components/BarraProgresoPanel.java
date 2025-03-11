@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows;
+package umu.pds.duolingoBaratero.windows.components;
 
 import javax.swing.*;
 import java.awt.*;
