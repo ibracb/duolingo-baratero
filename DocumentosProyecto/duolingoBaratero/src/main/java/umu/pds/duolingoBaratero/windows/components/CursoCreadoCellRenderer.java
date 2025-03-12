@@ -12,16 +12,16 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
-import umu.pds.duolingoBaratero.models.CursoEnProgreso;
+import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
-public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoEnProgreso> {
+public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<CursoPlantilla> {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblIcono = new JLabel();
     private JLabel lblNombre = new JLabel();
     private JLabel lblNivel = new JLabel();
 
-    public CursoCellRenderer() {
+    public CursoCreadoCellRenderer() {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         setBackground(Color.LIGHT_GRAY);
@@ -35,7 +35,7 @@ public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoE
     }
 
     @Override
-	public Component getListCellRendererComponent(JList<? extends CursoEnProgreso> list, CursoEnProgreso curso, int index,
+	public Component getListCellRendererComponent(JList<? extends CursoPlantilla> list, CursoPlantilla curso, int index,
 			boolean isSelected, boolean cellHasFocus) {
     	ImageIcon image = new ImageIcon(getClass().getResource("/idiomas.png"));
     	image = ControladorCurso.INSTANCE.getScaledImage(image, 100);

@@ -18,30 +18,17 @@ import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
 
-public class ControladorDuolingoBaratero {
-	private static ControladorDuolingoBaratero unicaInstancia;
+public enum ControladorDuolingoBaratero {
+	INSTANCE;
 	private Usuario user;
+
 	private ControladorDuolingoBaratero() {
+		this.user = null;
 
 	}
 
-	// Singleton: obtener instancia única
-	public static ControladorDuolingoBaratero getInstancia() {
-		if (unicaInstancia == null) {
-			unicaInstancia = new ControladorDuolingoBaratero();
-		}
-		return unicaInstancia;
-	}
 
-	public CursoPlantilla getCurso(String nombre) {
-		LinkedList<TipoPregunta> lista = new LinkedList<>();
-		lista.add(TipoPregunta.COMPLETE);
-		CursoPlantilla cursoDemo = new CursoPlantilla("Idiomas", "🗣️ Curso de aprendizaje de idiomas", lista,
-				"📈 Mejorar tus habilidades lingüísticas", Nivel.AVANZADO, null);
-		return cursoDemo;
-	}
 }
-	// ----------------------------------------------
-	// Gestión de cursos
-	// ----------------------------------------------
-	
+// ----------------------------------------------
+// Gestión de cursos
+// ----------------------------------------------

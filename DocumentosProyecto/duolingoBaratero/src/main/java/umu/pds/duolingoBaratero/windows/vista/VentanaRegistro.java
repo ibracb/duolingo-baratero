@@ -258,15 +258,15 @@ public class VentanaRegistro extends JFrame {
 			return;
 		}
 
-		boolean result = ControladorUsuario.getInstancia().registrarUsuario(nombre, nickname, correo, passwd1);
+		boolean result = ControladorUsuario.INSTANCE.registrarUsuario(nombre, nickname, correo, passwd1);
 		if (!result) {
 			JOptionPane.showMessageDialog(null, "Ya estas registrado o ha ocurrido un error", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else {
 			if (destinationFile != null) {
-				ControladorUsuario.getInstancia().setImagen(destinationFile.getAbsolutePath());
+				ControladorUsuario.INSTANCE.setImagen(destinationFile.getAbsolutePath());
 			} else if (url != null) {
-				ControladorUsuario.getInstancia().setImagen(url.toString());
+				ControladorUsuario.INSTANCE.setImagen(url.toString());
 
 			}
 
@@ -306,7 +306,7 @@ public class VentanaRegistro extends JFrame {
 	public void setIcon() {
 		String path = destinationFile.getAbsolutePath();
         lblPerfil.setIcon(
-        		ControladorUsuario.getInstancia().getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
+        		ControladorUsuario.INSTANCE.getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public void setIcon(ImageIcon imageIcon, URL url) {
@@ -317,7 +317,7 @@ public class VentanaRegistro extends JFrame {
 			String path = destinationFile.getAbsolutePath();
 			imageIcon = new ImageIcon(path);
 		}
-        lblPerfil.setIcon(ControladorUsuario.getInstancia().getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
+        lblPerfil.setIcon(ControladorUsuario.INSTANCE.getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public String getCorreo() {

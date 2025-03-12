@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class BloqueContenido {
 	
@@ -38,5 +39,11 @@ public class BloqueContenido {
 	public void removePregunta(Pregunta pregunta) {
 		preguntas.remove(pregunta);
 	}
+	
+    public Set<TipoPregunta> getTiposPreguntas() {
+        return preguntas.stream()
+                .map(Pregunta::getTipo)
+                .collect(Collectors.toSet());
+    }
 	
 }

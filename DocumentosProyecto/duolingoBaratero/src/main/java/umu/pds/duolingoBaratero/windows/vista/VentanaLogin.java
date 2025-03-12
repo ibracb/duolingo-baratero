@@ -24,6 +24,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+
 public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -53,7 +55,7 @@ public class VentanaLogin extends JFrame {
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnLogin.setIcon(new ImageIcon(getClass().getResource("/contrasena.png")));
 		btnLogin.setPreferredSize(new Dimension(115, 23));
-		btnLogin.addActionListener(e -> logIn());
+		btnLogin.addActionListener(e -> comprobarUsuario());
 		panelSur.add(btnLogin);
 
 		// Controlad Evento boton login
@@ -157,28 +159,20 @@ public class VentanaLogin extends JFrame {
 		if (correo.isEmpty() || passwordString.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Los campos estan vacíos, por favor escribe tu nombre y telefono", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
-//			if (ControladorUsuario.getInstancia().comprobarUsuario(correo,passwordString)) {
-//				this.dispose();
-////				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(this);
-////				ventanaPrincipal.setVisible(true);
-//			}
-//			else {
-//				JOptionPane.showMessageDialog(null, "Fallo en el inicio de sesion", "Error", JOptionPane.ERROR_MESSAGE);
-//			}
+			if (ControladorUsuario.INSTANCE.comprobarUsuario(correo,passwordString)) {
+				this.dispose();
+				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+				ventanaPrincipal.setVisible(true);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Fallo en el inicio de sesion", "Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
-
 	
 	private void closeWindow() {
 		v.setVisible(true);
 		this.dispose();		
 	}
-	
-	private void logIn() {
-		VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-		ventanaPrincipal.setVisible(true);
-		this.dispose();
-	}
-
 
 }

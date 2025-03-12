@@ -8,27 +8,23 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import umu.pds.duolingoBaratero.models.CursoEnProgreso;
+import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Usuario;
+import umu.pds.duolingoBaratero.services.ImageService;
 
-public class ControladorUsuario {
-
-	private static ControladorUsuario unicaInstancia;
+public enum ControladorUsuario {
+	INSTANCE;
 	private Usuario user;
+	private ImageService sevicioImagenes;
 
 	private ControladorUsuario() {
-
-	}
-
-	// Singleton: obtener instancia única
-	public static ControladorUsuario getInstancia() {
-		if (unicaInstancia == null) {
-			unicaInstancia = new ControladorUsuario();
-		}
-		return unicaInstancia;
+		this.sevicioImagenes = new ImageService();
 	}
 
 	public boolean registrarUsuario(String nombre, String apellidos, String telefono, String contrasena) {
@@ -43,12 +39,12 @@ public class ControladorUsuario {
 	}
 
 	public boolean comprobarUsuario(String correo, String passwd) {
-		Usuario usuario = null;
+		Usuario usuario = new Usuario("a", "a", "a", "A");
 		boolean result = usuario != null;
+		System.out.println(result);
 		if (result) {
 			this.user = usuario;
 		}
-		result = true;
 		return result;
 	}
 
@@ -73,17 +69,33 @@ public class ControladorUsuario {
 			user.setImagen(image);
 		}
 	}
+	
+	public List<CursoEnProgreso> getCursosUsuarioActual() {
+		return user.getCursos();
+	}
+	
+	public List<CursoPlantilla> getCursosCreadosUsuarioActual(){
+		return user.getCursosCreados();
+	}
+	
+	public boolean isUserCreator() {
+		return this.user.isCreador();
+	}
+	
 
-	private ImageIcon whichImage(Object obj, int dimensiones) throws IOException {
+	// ----------------------------------------------
+	// Funciones imagenes
+	// ----------------------------------------------
+
+	private ImageIcon whichImage(Usuario usuario, int dimensiones) throws IOException {
 		BufferedImage image = null;
 		String imagen = null;
 
-		Usuario usuario = (Usuario) obj;
 		if (usuario.hasImage())
 			imagen = usuario.getImagen();
 
 		if (imagen != null) {
-			if (isURL(imagen)) {
+			if (sevicioImagenes.isURL(imagen)) {
 				image = ImageIO.read(new URL(imagen));
 			} else if (Files.exists(Paths.get(imagen))) {
 				image = ImageIO.read(Paths.get(imagen).toFile());
@@ -96,63 +108,17 @@ public class ControladorUsuario {
 			return getScaledDefaultImage(dimensiones);
 		}
 	}
-
-	public ImageIcon getScaledDefaultImage(int dimensiones) {
-		return getScaledImage(new ImageIcon(getClass().getResource("/persona.png")), dimensiones);
-	}
-
+	
 	public ImageIcon getScaledImage(BufferedImage bufferedImage, int dimensiones) {
-		BufferedImage scaledImage = scaleAndMakeCircular(bufferedImage, dimensiones);
-		return new ImageIcon(scaledImage);
+		return sevicioImagenes.getScaledImage(bufferedImage, dimensiones);
 	}
-
+	
 	public ImageIcon getScaledImage(ImageIcon image, int dimensiones) {
-		BufferedImage bufferedImage = iconToBufferedImage(image);
-		BufferedImage scaledImage = scaleAndMakeCircular(bufferedImage, dimensiones);
-		return new ImageIcon(scaledImage);
+		return sevicioImagenes.getScaledImage(image, dimensiones);
 	}
-
-	private BufferedImage scaleAndMakeCircular(BufferedImage originalImage, int targetSize) {
-		BufferedImage scaledImage = scaleImage(originalImage, targetSize, targetSize);
-		BufferedImage circularImage = new BufferedImage(targetSize, targetSize, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2d = circularImage.createGraphics();
-		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-		g2d.setClip(new java.awt.geom.Ellipse2D.Double(0, 0, targetSize, targetSize));
-		g2d.drawImage(scaledImage, 0, 0, targetSize, targetSize, null);
-		g2d.dispose();
-		return circularImage;
+	
+	public ImageIcon getScaledDefaultImage(int dimensiones) {
+		ImageIcon image = new ImageIcon(getClass().getResource("/persona.png"));
+		return sevicioImagenes.getScaledImage(image, dimensiones);
 	}
-
-	private BufferedImage scaleImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
-		BufferedImage scaledImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2d = scaledImage.createGraphics();
-		g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-		g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g2d.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
-		g2d.dispose();
-		return scaledImage;
-	}
-
-	private BufferedImage iconToBufferedImage(ImageIcon icon) {
-		Image image = icon.getImage();
-		BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null),
-				BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2d = bufferedImage.createGraphics();
-		g2d.drawImage(image, 0, 0, null);
-		g2d.dispose();
-		return bufferedImage;
-	}
-
-	@SuppressWarnings("deprecation")
-	private boolean isURL(String input) {
-		try {
-			new URL(input).toURI();
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
-
 }

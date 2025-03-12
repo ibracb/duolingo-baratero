@@ -30,7 +30,7 @@ public class VentanaInformacion extends JFrame {
 
 		// Cargar la imagen del curso
 		ImageIcon iconoCurso = new ImageIcon(getClass().getResource("/" + curso.getNombre() + ".png"));
-		iconoCurso = ControladorUsuario.getInstancia().getScaledImage(iconoCurso, 100);
+		iconoCurso = ControladorUsuario.INSTANCE.getScaledImage(iconoCurso, 100);
 		JLabel lblImagen = new JLabel(iconoCurso);
 		panelSuperior.add(lblImagen, BorderLayout.CENTER);
 
@@ -43,7 +43,7 @@ public class VentanaInformacion extends JFrame {
 		// Descripción del curso
 		JTextArea txtDescripcion = new JTextArea(
 				"📖 Descripción breve:\n" + (curso.getDescripcion() != null ? curso.getDescripcion() : "❌ No disponible")
-						+ "\n\n🎯 Objetivos del curso:\n" + "\n\n❓ Tipos de preguntas:\n"
+						+ "\n\n🎯 Objetivos del curso:\n" + (curso.getObjetivos() != null ? curso.getDescripcion() : "❌ No disponible") + "\n\n❓ Tipos de preguntas:\n"
 						+ (curso.getTipoPreguntas().stream().map(tp -> "🔹 " + tp.name())
 						.collect(Collectors.joining("\n"))));
 		txtDescripcion.setEditable(false);
@@ -59,7 +59,7 @@ public class VentanaInformacion extends JFrame {
 		panelDerecho.add(lblNivel);
 
 		JTextArea txtContenido = new JTextArea(
-				"📜 Contenido:\n" + (curso.getContenidos() != null ? curso.getContenidos() : "❌ No disponible"));
+				"📜 Contenido:\n" + (curso.getContenidos() != null || !curso.getContenidos().isEmpty() ? curso.getContenidos() : "❌ No disponible"));
 		txtContenido.setEditable(false);
 		panelDerecho.add(txtContenido);
 

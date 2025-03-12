@@ -1,6 +1,7 @@
 package umu.pds.duolingoBaratero.models;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -15,15 +16,21 @@ public class Usuario {
 	private String passwd;
 	private String imagen;
 	private Set<Rol> roles;
-	private List<CursoPlantilla> cursos;
+	private List<CursoEnProgreso> cursos;
+	private List<CursoPlantilla> cursosCreados;
+
 
 	public Usuario(String nombre, String nickname, String correo, String passwd) {
 		this.nombre = nombre;
 		this.nickname = nickname;
 		this.correo = correo;
 		this.passwd = passwd;
+		this.cursos = new LinkedList<>();
+		this.cursosCreados = new LinkedList<>();
 		roles = new HashSet<>();
 		roles.add(ROL_POR_DEFECTO);
+		roles.add(Rol.CREADOR);
+
 	}
 
 	public Usuario(String nombre, String nickname, String correo, String passwd, String imagen) {
@@ -35,12 +42,20 @@ public class Usuario {
 		this.imagen = imagen;
 	}
 
-	public List<CursoPlantilla> getCursos() {
+	public List<CursoEnProgreso> getCursos() {
 		return cursos;
 	}
 
-	public void setCursos(List<CursoPlantilla> cursos) {
+	public void setCursos(List<CursoEnProgreso> cursos) {
 		this.cursos = cursos;
+	}
+	
+	public List<CursoPlantilla> getCursosCreados() {
+		return cursosCreados;
+	}
+
+	public void setCursosCrados(List<CursoPlantilla> cursos) {
+		this.cursosCreados = cursos;
 	}
 
 	public long getId() {

@@ -1,7 +1,11 @@
 package umu.pds.duolingoBaratero.models;
 
 import java.util.Collections;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class CursoPlantilla {
 	
@@ -16,7 +20,8 @@ public class CursoPlantilla {
 		this.descripcion = descripcion;
 		this.objetivos = objetivos;
 		this.nivel = nivel;
-		Collections.addAll(this.contenidos, contenidos);
+		this.contenidos = new LinkedList<>();
+		//Collections.addAll(this.contenidos, contenidos);
 	}
 	
 	public String getNombre() {
@@ -57,5 +62,23 @@ public class CursoPlantilla {
 	public void removeBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.remove(bloqueContenido);
 	}
+
+	public Set<TipoPregunta> getTipoPreguntas(){
+		HashSet<TipoPregunta> tipos = new HashSet<>();
+//		for (BloqueContenido bloque : contenidos) {
+//			if (tipos.containsAll(EnumSet.allOf(TipoPregunta.class))){
+//				break;
+//			}
+//			tipos.addAll(bloque.getTiposPreguntas());
+//		}
+		tipos.add(TipoPregunta.COMPLETE);
+		tipos.add(TipoPregunta.FLASHCARD);
+		tipos.add(TipoPregunta.IMAGENES);
+		tipos.add(TipoPregunta.LISTEN);
+
+		return tipos;
+
+	}
+	
 	
 }
