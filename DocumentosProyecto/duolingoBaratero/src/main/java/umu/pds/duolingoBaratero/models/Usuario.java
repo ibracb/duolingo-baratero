@@ -18,6 +18,7 @@ public class Usuario {
 	private Set<Rol> roles;
 	private List<CursoEnProgreso> cursos;
 	private List<CursoPlantilla> cursosCreados;
+	private Estadistica estadistica;
 
 
 	public Usuario(String nombre, String nickname, String correo, String passwd) {
@@ -30,7 +31,7 @@ public class Usuario {
 		roles = new HashSet<>();
 		roles.add(ROL_POR_DEFECTO);
 		roles.add(Rol.CREADOR);
-
+		this.estadistica = new Estadistica(this);
 	}
 
 	public Usuario(String nombre, String nickname, String correo, String passwd, String imagen) {
@@ -114,6 +115,14 @@ public class Usuario {
 		this.roles = roles;
 	}
 	
+	public Estadistica getEstadistica() {
+		return estadistica;
+	}
+
+	public void setEstadistica(Estadistica estadistica) {
+		this.estadistica = estadistica;
+	}
+
 	public boolean hasImage() {
 		return imagen != null;
 	}
