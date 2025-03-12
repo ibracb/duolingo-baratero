@@ -2,7 +2,7 @@
 
 ### Registrar usuario
 
-**Actor principal:** Usuario  
+**Actor principal:** Usuario no registrado
 **Objetivo:** Permitir que un nuevo usuario se registre en la plataforma.  
 **Precondiciones**
 1. El usuario no debe estar registrado previamente.
@@ -11,16 +11,16 @@
 2. Ingresa su nombre, correo electrónico, contraseña y hasta 3 grupos que le hayan parecido interesantes.
 3. El sistema agrega al usuario en la base de datos.
 **Flujos alternativos:**
-2. Si el correo ya está registrado, se muestra un mensaje de error.
-3. Se borran todos los campos de la ventana de registro.
-**Postcondiciones
+1. Si el correo ya está registrado, se muestra un mensaje de error.
+2. Se borran todos los campos de la ventana de registro.
+**Postcondiciones**
 1. El usuario puede hacer uso de la aplicación instantaneamente.
 
 ---
 
 ### Elegir un curso
 
-**Actor principal:** Usuario  
+**Actor principal:** Usuario estudiante
 **Objetivo:** Permitir que el usuario seleccione un curso de la biblioteca.  
 **Precondiciones**
 1. El usuario debe estar registrado e iniciado sesión.
@@ -29,13 +29,13 @@
 2. Filtra los cursos por categoría o nivel.
 3. Selecciona un curso de interés.
 4. El sistema guarda la selección del usuario y le permite comenzar el curso.
-**Postcondiciones
+**Postcondiciones**
 1. El usuario tiene el curso disponible en su perfil.
 ---
 
 ### Realizar un curso
 
-**Actor principal:** Usuario  
+**Actor principal:** Usuario estudiante
 **Objetivo:** Presentar preguntas o tarjetas de aprendizaje para completar el curso.  
 **Precondiciones**
 1. El usuario debe haber seleccionado un curso.
@@ -47,13 +47,13 @@
 5. El sistema verifica las respuestas y guarda el progreso.
 **Flujo alternativo**
 2. Si el usuario no responde en un tiempo determinado a una pregunta, el sistema puede sugerirle una pista.
-**Postcondiciones
+**Postcondiciones**
 1. El sistema guarda el progreso del usuario.
 ---
 
 ### Guardar progreso
 
-**Actor principal:** Usuario  
+**Actor principal:** Usuario estudiante
 **Objetivo:** Permitir que el usuario guarde y reanude el curso en cualquier momento.  
 **Precondiciones**
 
@@ -68,13 +68,13 @@
 3. Al volver a ingresar, el usuario puede continuar desde el mismo punto.
 
 1. Si el sistema falla al guardar, el usuario recibe una notificación para reintentar.
-**Postcondiciones
+**Postcondiciones**
 1. El usuario puede continuar el curso desde el punto guardado.
 ---
 
 ### Consultar estadísticas
 
-**Actor principal:** Usuario  
+**Actor principal:** Usuario estudiante
 **Objetivo:** Mostrar el tiempo de uso, la mejor racha y otros indicadores de progreso.  
 **Precondiciones**
 
@@ -118,7 +118,7 @@
 
 ### Instalar un curso desde un archivo
 
-**Actor principal:** Usuario  
+**Actor principal:** Usuario creador
 **Objetivo:** Permitir la carga de nuevos cursos desde archivos.  
 **Pasos:**
 1. El usuario selecciona la opción de cargar un curso desde archivo.
@@ -132,7 +132,7 @@
 
 ### Agregar nuevos tipos de preguntas
 
-**Actor principal:** Usuario
+**Actor principal:** Usuario creador
 **Objetivo:** Permitir que se agreguen nuevos tipos de preguntas a la aplicación.  
 **Precondiciones**
 1. El usuario debe tener acceso a la creación de nuevos tipos de preguntas
@@ -141,4 +141,3 @@
 2. Agrega un nuevo tipo de pregunta con sus reglas de validación e interacción.
 3. El sistema incorpora la nueva funcionalidad en los cursos existentes.
 4. Los usuarios pueden empezar a utilizar el nuevo tipo de pregunta en sus cursos.
-**Postcondiciones
