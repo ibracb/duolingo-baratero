@@ -102,5 +102,16 @@ public class Usuario {
 	public boolean hasImage() {
 		return imagen != null;
 	}
-
+	
+	public boolean isAdministrador() {
+		return roles.contains(Rol.ADMINISTRADOR);
+	}
+	
+	public boolean isCreador() {
+		return roles.contains(Rol.CREADOR);
+	}
+	
+	public boolean isEstudiante() {
+		return roles.contains(Rol.ESTUDIANTE);
+	}
 }

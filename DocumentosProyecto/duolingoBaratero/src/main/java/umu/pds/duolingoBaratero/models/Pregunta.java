@@ -2,7 +2,7 @@ package umu.pds.duolingoBaratero.models;
 
 import java.util.List;
 
-public class Pregunta {
+public class Pregunta implements Comparable<Pregunta> {
 	
 	private Nivel nivel;
 	private int numero;
@@ -67,9 +67,10 @@ public class Pregunta {
 	public void setTipo(TipoPregunta tipo) {
 		this.tipo = tipo;
 	}
-	
-	
-	
-	
+
+	@Override
+	public int compareTo(Pregunta o) {
+		return Integer.compare(this.numero, o.numero);
+	}
 
 }

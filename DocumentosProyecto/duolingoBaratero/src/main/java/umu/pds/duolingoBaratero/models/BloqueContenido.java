@@ -1,13 +1,16 @@
 package umu.pds.duolingoBaratero.models;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class BloqueContenido {
 	
 	private List<Pregunta> preguntas;
 
-	public BloqueContenido(List<Pregunta> preguntas) {
-		this.preguntas = preguntas;
+	public BloqueContenido(Pregunta...preguntas) {
+		Collections.addAll(this.preguntas, preguntas);
 	}
 
 	public List<Pregunta> getPreguntas() {
@@ -18,6 +21,22 @@ public class BloqueContenido {
 		this.preguntas = preguntas;
 	}
 	
-	 
-
+	public Set<Pregunta> getPreguntasSecuencialmente() {
+		return Collections.unmodifiableSet(new TreeSet<>(this.preguntas));
+	}
+	
+	public List<Pregunta> getPreguntasAleatoriamente() {
+		List<Pregunta> preguntasAleatorias = this.preguntas;
+		Collections.shuffle(preguntasAleatorias);
+		return preguntasAleatorias;
+	}
+	
+	public void addPregunta(Pregunta pregunta) {
+		preguntas.add(pregunta);
+	}
+	
+	public void removePregunta(Pregunta pregunta) {
+		preguntas.remove(pregunta);
+	}
+	
 }
