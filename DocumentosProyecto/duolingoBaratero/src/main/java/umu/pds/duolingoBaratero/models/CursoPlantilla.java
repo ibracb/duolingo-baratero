@@ -71,10 +71,10 @@ public class CursoPlantilla {
 //			}
 //			tipos.addAll(bloque.getTiposPreguntas());
 //		}
-		tipos.add(TipoPregunta.COMPLETE);
+		tipos.add(TipoPregunta.OPCIONES);
 		tipos.add(TipoPregunta.FLASHCARD);
-		tipos.add(TipoPregunta.IMAGENES);
-		tipos.add(TipoPregunta.LISTEN);
+		tipos.add(TipoPregunta.IMAGEN);
+		tipos.add(TipoPregunta.AUDIO);
 
 		return tipos;
 

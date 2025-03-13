@@ -1,6 +1,8 @@
 package umu.pds.duolingoBaratero.models;
 
-public class Pregunta implements Comparable<Pregunta> {
+import javax.swing.JPanel;
+
+public abstract class Pregunta implements Comparable<Pregunta> {
 
 	private Nivel nivel;
 	private int numero;
@@ -15,6 +17,8 @@ public class Pregunta implements Comparable<Pregunta> {
 		this.respuestaCorrecta = respuestaCorrecta;
 		this.tipo = tipo;
 	}
+	
+	public abstract JPanel crearPanel();  // Método abstracto para crear el panel
 
 	public Nivel getNivel() {
 		return nivel;
