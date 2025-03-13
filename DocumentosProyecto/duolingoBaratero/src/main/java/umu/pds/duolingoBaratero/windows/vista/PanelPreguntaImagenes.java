@@ -3,14 +3,14 @@ package umu.pds.duolingoBaratero.windows.vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaPreguntaImagenes extends JPanel {
+public class PanelPreguntaImagenes extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private JToggleButton[] imagenes; // Botones de imagen
     private JLabel lblPregunta;
     private String pregunta = "¿Cuál le gusta más a Alex?";
 
-    public VentanaPreguntaImagenes() {
+    public PanelPreguntaImagenes() {
         setLayout(new BorderLayout()); // Usamos BorderLayout para mejor distribución
 
         // Panel contenedor para las preguntas e imágenes
@@ -46,7 +46,7 @@ public class VentanaPreguntaImagenes extends JPanel {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(800, 600);
             frame.setLocationRelativeTo(null);
-            frame.add(new VentanaPreguntaImagenes());
+            frame.add(new PanelPreguntaImagenes());
             frame.setVisible(true);
         });
     }

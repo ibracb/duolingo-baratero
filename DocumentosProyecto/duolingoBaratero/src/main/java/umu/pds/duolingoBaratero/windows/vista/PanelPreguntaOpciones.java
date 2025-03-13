@@ -1,17 +1,26 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.*;
+
+import umu.pds.duolingoBaratero.models.Pregunta;
+import umu.pds.duolingoBaratero.models.PreguntaOpciones;
+
 import java.awt.*;
 
-public class VentanaPreguntaCompletar extends JPanel {
+public class PanelPreguntaOpciones extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private JLabel lblPregunta;
     private JLabel lblAudio;
+    private PreguntaOpciones pregunta;
 
+    public PanelPreguntaOpciones(Pregunta pregunta) {
+        this.pregunta = pregunta;
+        inicializar();
+    }
+    
 
-
-    public VentanaPreguntaCompletar() {
+    public void inicializar() {
         setLayout(new GridBagLayout());
         GridBagLayout gbl_panelCentral = new GridBagLayout();
         gbl_panelCentral.columnWidths = new int[]{1, 205, 281, 200, 0};
@@ -33,7 +42,7 @@ public class VentanaPreguntaCompletar extends JPanel {
         add(panelAudio, gbc_panelAudio);
 
      // Pregunta
-        lblPregunta = new JLabel("I love my ___ ?", SwingConstants.CENTER);
+        lblPregunta = new JLabel(pregunta.getPregunta(), SwingConstants.CENTER);
         lblPregunta.setFont(new Font("Arial", Font.BOLD, 16));
         lblPregunta.setAlignmentX(Component.CENTER_ALIGNMENT);
         GridBagConstraints gbc_lblPregunta = new GridBagConstraints();
@@ -42,8 +51,9 @@ public class VentanaPreguntaCompletar extends JPanel {
         gbc_lblPregunta.gridy = 4;
         add(lblPregunta, gbc_lblPregunta);
 
-        // Opciones como etiquetas
-        JLabel opcion1 = new JLabel("Cat");
+        
+        // Opciones como etiquetas esto deberia hacerse como un bucle pero el window builder no lo pilla
+        JLabel opcion1 = new JLabel();
         JLabel opcion2 = new JLabel("Dog");  // Opción correcta
         JLabel opcion3 = new JLabel("Car");
 
