@@ -2,6 +2,8 @@ package umu.pds.duolingoBaratero.models;
 
 import javax.swing.JPanel;
 
+import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaAudio;
+
 public class PreguntaAudio extends Pregunta {
 
 	private String[] opciones;
@@ -17,7 +19,7 @@ public class PreguntaAudio extends Pregunta {
 	
 	@Override
 	public JPanel crearPanel() {
-		return 
+		return new PanelPreguntaAudio(this);
 	}
 
 

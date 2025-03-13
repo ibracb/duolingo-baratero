@@ -1,6 +1,9 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.*;
+
+import umu.pds.duolingoBaratero.models.PreguntaAudio;
+
 import java.awt.*;
 
 public class PanelPreguntaAudio extends JPanel {
@@ -12,9 +15,14 @@ public class PanelPreguntaAudio extends JPanel {
     private JRadioButton rdbtnNewRadioButton;
     private JRadioButton rdbtnNewRadioButton_1;
     private JRadioButton rdbtnNewRadioButton_2;
+    private PreguntaAudio pregunta;
 
+    public PanelPreguntaAudio(PreguntaAudio pregunta) {
+    	this.pregunta=pregunta;
+    	inicializar();
+    }
 
-    public PanelPreguntaAudio() {
+    private void inicializar() {
         setLayout(new GridBagLayout());
         GridBagLayout gbl_panelCentral = new GridBagLayout();
         gbl_panelCentral.columnWidths = new int[]{1, 205, 281, 200, 0};

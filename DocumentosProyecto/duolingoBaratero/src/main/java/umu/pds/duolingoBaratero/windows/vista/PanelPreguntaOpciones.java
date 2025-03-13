@@ -14,7 +14,7 @@ public class PanelPreguntaOpciones extends JPanel {
     private JLabel lblAudio;
     private PreguntaOpciones pregunta;
 
-    public PanelPreguntaOpciones(Pregunta pregunta) {
+    public PanelPreguntaOpciones(PreguntaOpciones pregunta) {
         this.pregunta = pregunta;
         inicializar();
     }

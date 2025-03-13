@@ -1,6 +1,9 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.*;
+
+import umu.pds.duolingoBaratero.models.PreguntaOpciones;
+
 import java.awt.*;
 
 public class PanelPreguntaImagenes extends JPanel {
@@ -8,9 +11,15 @@ public class PanelPreguntaImagenes extends JPanel {
     private static final long serialVersionUID = 1L;
     private JToggleButton[] imagenes; // Botones de imagen
     private JLabel lblPregunta;
-    private String pregunta = "¿Cuál le gusta más a Alex?";
+	private PreguntaOpciones pregunta;
+    
+    public PanelPreguntaImagenes(PreguntaOpciones pregunta) {
+    	this.pregunta = pregunta;
+    	inicializar();
+    }
+    
 
-    public PanelPreguntaImagenes() {
+    private void inicializar() {
         setLayout(new BorderLayout()); // Usamos BorderLayout para mejor distribución
 
         // Panel contenedor para las preguntas e imágenes
@@ -18,7 +27,7 @@ public class PanelPreguntaImagenes extends JPanel {
         panelCentral.setLayout(new BoxLayout(panelCentral, BoxLayout.Y_AXIS));
 
         // Pregunta
-        lblPregunta = new JLabel(pregunta, SwingConstants.CENTER);
+        lblPregunta = new JLabel("Mamaguevo", SwingConstants.CENTER);
         lblPregunta.setFont(new Font("Arial", Font.BOLD, 16));
         lblPregunta.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelCentral.add(lblPregunta);
@@ -40,14 +49,4 @@ public class PanelPreguntaImagenes extends JPanel {
         add(panelCentral, BorderLayout.CENTER);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Pregunta de Imágenes");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 600);
-            frame.setLocationRelativeTo(null);
-            frame.add(new PanelPreguntaImagenes());
-            frame.setVisible(true);
-        });
-    }
 }

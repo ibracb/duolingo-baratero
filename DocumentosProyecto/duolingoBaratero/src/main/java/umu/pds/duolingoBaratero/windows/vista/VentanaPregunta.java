@@ -10,6 +10,7 @@ import java.awt.EventQueue;
 import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.models.Flashcard;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 
@@ -31,7 +32,7 @@ public class VentanaPregunta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPregunta frame = new VentanaPregunta();
+					VentanaPregunta frame = new VentanaPregunta(69);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -73,18 +74,11 @@ public class VentanaPregunta extends JFrame {
 		JPanel panelCentral = new JPanel(new CardLayout());
 		CardLayout cardLayout = (CardLayout) panelCentral.getLayout();
 
-		// Llamada al controlador para crear todos los paneles
-		JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
+		// -------Futura funcionalidad real------- NO BORRAR
+//		JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
+//		panelCentral.add(paneles[0], "panel1");
+//		panelCentral.add(paneles[1], "panel2");
 
-		// Crear los cuatro paneles
-//	    JPanel panel1 = new PanelPreguntaAudio();
-//	    JPanel panel2 = new PanelPreguntaImagenes();  // Reemplaza con tu JPanel real
-//	    JPanel panel3 = new PanelPreguntaOpciones(); // Reemplaza con tu JPanel real
-////	    JPanel panel4 = new OtroPanel3(); // Reemplaza con tu JPanel real
-
-		panelCentral.add(panel1, "panel1");
-		panelCentral.add(panel2, "panel2");
-		panelCentral.add(panel3, "panel3");
 
 		// Panel para los botones de acción
 		JPanel panelBotones = new JPanel(new FlowLayout());

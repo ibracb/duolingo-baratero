@@ -41,7 +41,8 @@ public enum ControladorCurso {
 	}
 	
 	
-	// Parte relacionada con la renderizacion de una leccion
+	//------RENDERIZACION PREGUNTAS--------
+	
 	
 	/**
 	 * Este metodo recibe el id de un bloque de contenido 
@@ -49,12 +50,14 @@ public enum ControladorCurso {
 	 * @param bloqueContenido
 	 * @return
 	 */
+	//TODO: 		
+	// Recuperar el bloque de contenido de alguna forma
+	// obtener las preguntas relacionadas con ese bloque
+	// Para cada pregutna crear su propio jpanel
+	// añadirlo al array y devolverlo
 	
 	public JPanel[] generarLeccion(long bloqueContenido) {
-		// Recuperar el bloque de contenido de alguna forma
-		// obtener las preguntas relacionadas con ese blque
-		// Para cada pregutna crear su propio jpanel
-		// devolverlo
+		return new JPanel[0];
 	}
 
 }

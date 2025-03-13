@@ -1,5 +1,9 @@
 package umu.pds.duolingoBaratero.models;
 
+import javax.swing.JPanel;
+
+import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
+
 public class Flashcard extends Pregunta {
 
 	private int tiempoLimite; // Ahora mismo es adaptable a cada pregutna pero si nos complica mucho la vida
@@ -9,6 +13,11 @@ public class Flashcard extends Pregunta {
 			int tiempoLimite) {
 		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
 		this.tiempoLimite = tiempoLimite;
+	}
+
+	@Override
+	public JPanel crearPanel() {
+		return new PanelFlashcard(this);
 	}
 
 	public int getTiempoLimite() {
