@@ -9,13 +9,19 @@ public class CursoEnProgreso {
 	private Usuario estudiante;
 	private CursoPlantilla cursoPlantilla;
 	private Aprendizaje aprendizaje;
-	private EstadoCursoEnProgreso estado;
+	private List<BloqueContenidoProgreso> contenidosProgreso;
+	private EstadoCursoEnProgreso estadoNuevo;
+	private EstadoCursoEnProgreso estadoEnMarcha;
+	private EstadoCursoEnProgreso estadoFinalizado;
 	
-	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje) {
+	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, BloqueContenidoProgreso...contenidosProgreso) {
 		this.estudiante = usuario;
 		this.cursoPlantilla = cursoPlantilla;
 		this.aprendizaje = aprendizaje;
-		this.estado = EstadoCursoEnProgreso.NUEVO;
+		setEstadoNuevo(new EstadoNuevo(this));
+		setEstadoEnMarcha(new EstadoEnMarcha(this));
+		setEstadoFinalizado(new EstadoFinalizado(this));
+		Collections.addAll(this.contenidosProgreso, contenidosProgreso);
 	}
 
 	public String getNombre() {
@@ -32,10 +38,6 @@ public class CursoEnProgreso {
 
 	public Nivel getNivel() {
 		return cursoPlantilla.getNivel();
-	}
-
-	public List<BloqueContenido> getContenidos() {
-		return cursoPlantilla.getContenidos();
 	}
 
 	public Usuario getEstudiante() {
@@ -61,23 +63,50 @@ public class CursoEnProgreso {
 	public void setAprendizaje(Aprendizaje aprendizaje) {
 		this.aprendizaje = aprendizaje;
 	}
-
-	public EstadoCursoEnProgreso getEstado() {
-		return estado;
-	}
-
-	public void setEstado(EstadoCursoEnProgreso estado) {
-		this.estado = estado;
-	}
 	
-	public List<Pregunta> getPregunta() {
-		List<BloqueContenido> listaContenidos = getContenidos();
-		LinkedList<Pregunta> listaPreguntas = new LinkedList<>();
+	public List<PreguntaProgreso> getPreguntas() {
+		List<BloqueContenidoProgreso> listaContenidos = getContenidosProgreso();
+		List<PreguntaProgreso> listaPreguntas = new LinkedList<>();
 		switch(this.aprendizaje) {
-			case ALEATORIO: listaPreguntas = (LinkedList<Pregunta>) (listaContenidos.get(0)).getPreguntasAleatoriamente();
+			case ALEATORIO:
+				listaPreguntas.add((PreguntaProgreso) listaContenidos.get(0).getBloqueContenido().getPreguntasAleatoriamente());
+				break;
+			case SECUENCIAL:
+				listaPreguntas.add((PreguntaProgreso) listaContenidos.get(0).getBloqueContenido().getPreguntasSecuencialmente());
+				break;
+			default:
+				break;
 		}
 		return listaPreguntas;
 		
+	}
+	
+	public List<BloqueContenidoProgreso> getContenidosProgreso() {
+		return Collections.unmodifiableList(contenidosProgreso);
+	}
+
+	public EstadoCursoEnProgreso getEstadoNuevo() {
+		return estadoNuevo;
+	}
+
+	public void setEstadoNuevo(EstadoCursoEnProgreso estadoNuevo) {
+		this.estadoNuevo = estadoNuevo;
+	}
+
+	public EstadoCursoEnProgreso getEstadoEnMarcha() {
+		return estadoEnMarcha;
+	}
+
+	public void setEstadoEnMarcha(EstadoCursoEnProgreso estadoEnMarcha) {
+		this.estadoEnMarcha = estadoEnMarcha;
+	}
+
+	public EstadoCursoEnProgreso getEstadoFinalizado() {
+		return estadoFinalizado;
+	}
+
+	public void setEstadoFinalizado(EstadoCursoEnProgreso estadoFinalizado) {
+		this.estadoFinalizado = estadoFinalizado;
 	}
 	
 }

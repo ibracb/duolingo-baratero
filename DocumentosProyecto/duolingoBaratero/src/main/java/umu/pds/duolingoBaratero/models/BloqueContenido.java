@@ -1,6 +1,7 @@
 package umu.pds.duolingoBaratero.models;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -27,7 +28,7 @@ public class BloqueContenido {
 	}
 	
 	public List<Pregunta> getPreguntasAleatoriamente() {
-		List<Pregunta> preguntasAleatorias = this.preguntas;
+		List<Pregunta> preguntasAleatorias = new LinkedList<>(preguntas);
 		Collections.shuffle(preguntasAleatorias);
 		return preguntasAleatorias;
 	}

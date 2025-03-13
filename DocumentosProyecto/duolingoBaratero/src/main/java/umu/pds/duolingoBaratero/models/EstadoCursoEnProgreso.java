@@ -1,7 +1,6 @@
 package umu.pds.duolingoBaratero.models;
 
-public enum EstadoCursoEnProgreso {
-	NUEVO,
-	EN_MARCHA,
-	FINALIZADO;
+public interface EstadoCursoEnProgreso {
+	void iniciar(CursoEnProgreso curso);
+	void finalizar(CursoEnProgreso curso);
 }
