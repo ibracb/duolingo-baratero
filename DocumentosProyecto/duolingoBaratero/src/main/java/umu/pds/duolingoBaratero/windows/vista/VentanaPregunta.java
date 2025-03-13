@@ -63,9 +63,9 @@ public class VentanaPregunta extends JFrame {
 	    CardLayout cardLayout = (CardLayout) panelCentral.getLayout();
 
 	    // Crear los cuatro paneles
-	    JPanel panel1 = new VentanaPreguntaListen();
+	    JPanel panel1 = new VentanaPreguntaAudio();
 	    JPanel panel2 = new VentanaPreguntaImagenes();  // Reemplaza con tu JPanel real
-	    JPanel panel3 = new VentanaPreguntaCompletar(); // Reemplaza con tu JPanel real
+	    JPanel panel3 = new VentanaPreguntaOpciones(); // Reemplaza con tu JPanel real
 //	    JPanel panel4 = new OtroPanel3(); // Reemplaza con tu JPanel real
 	    
 	    

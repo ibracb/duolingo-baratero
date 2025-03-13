@@ -3,7 +3,7 @@ package umu.pds.duolingoBaratero.windows.vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class VentanaPreguntaCompletar extends JPanel {
+public class VentanaPreguntaOpciones extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private JLabel lblPregunta;
@@ -11,7 +11,7 @@ public class VentanaPreguntaCompletar extends JPanel {
 
 
 
-    public VentanaPreguntaCompletar() {
+    public VentanaPreguntaOpciones() {
         setLayout(new GridBagLayout());
         GridBagLayout gbl_panelCentral = new GridBagLayout();
         gbl_panelCentral.columnWidths = new int[]{1, 205, 281, 200, 0};

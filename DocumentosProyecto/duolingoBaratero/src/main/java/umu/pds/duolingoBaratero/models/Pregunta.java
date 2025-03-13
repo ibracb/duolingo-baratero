@@ -1,21 +1,17 @@
 package umu.pds.duolingoBaratero.models;
 
-import java.util.List;
-
 public class Pregunta implements Comparable<Pregunta> {
-	
+
 	private Nivel nivel;
 	private int numero;
 	private String pregunta;
-	private List<String> respuestas;
 	private String respuestaCorrecta;
 	private TipoPregunta tipo;
-	
-	public Pregunta(Nivel nivel, int numero, String pregunta, List<String> respuestas, String respuestaCorrecta, TipoPregunta tipo) {
+
+	public Pregunta(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
 		this.nivel = nivel;
 		this.numero = numero;
 		this.pregunta = pregunta;
-		this.respuestas = respuestas;
 		this.respuestaCorrecta = respuestaCorrecta;
 		this.tipo = tipo;
 	}
@@ -42,14 +38,6 @@ public class Pregunta implements Comparable<Pregunta> {
 
 	public void setPregunta(String pregunta) {
 		this.pregunta = pregunta;
-	}
-
-	public List<String> getRespuestas() {
-		return respuestas;
-	}
-
-	public void setRespuestas(List<String> respuestas) {
-		this.respuestas = respuestas;
 	}
 
 	public String getRespuestaCorrecta() {
