@@ -49,7 +49,7 @@ public class PanelPreguntaAudio extends JPanel {
         add(panelAudio, gbc_panelAudio);
 
 
-        lblPregunta = new JLabel("¿Cuál es la respuesta correcta?", SwingConstants.CENTER);
+        lblPregunta = new JLabel(pregunta.getPregunta(), SwingConstants.CENTER);
         lblPregunta.setFont(new Font("Arial", Font.BOLD, 16));
         lblPregunta.setAlignmentX(Component.CENTER_ALIGNMENT);
         GridBagConstraints gbc_lblPregunta = new GridBagConstraints();
@@ -59,7 +59,7 @@ public class PanelPreguntaAudio extends JPanel {
         add(lblPregunta, gbc_lblPregunta);
 
         ButtonGroup grupoOpciones = new ButtonGroup();
-        rdbtnNewRadioButton = new JRadioButton("Opcion 1");
+        rdbtnNewRadioButton = new JRadioButton(pregunta.getOpciones()[0]);
         GridBagConstraints gbc_rdbtnNewRadioButton = new GridBagConstraints();
         gbc_rdbtnNewRadioButton.insets = new Insets(0, 0, 5, 5);
         gbc_rdbtnNewRadioButton.gridx = 2;

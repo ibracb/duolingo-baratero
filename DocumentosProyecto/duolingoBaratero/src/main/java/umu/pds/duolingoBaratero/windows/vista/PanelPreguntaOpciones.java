@@ -53,9 +53,9 @@ public class PanelPreguntaOpciones extends JPanel {
 
         
         // Opciones como etiquetas esto deberia hacerse como un bucle pero el window builder no lo pilla
-        JLabel opcion1 = new JLabel();
-        JLabel opcion2 = new JLabel("Dog");  // Opción correcta
-        JLabel opcion3 = new JLabel("Car");
+        JLabel opcion1 = new JLabel(pregunta.getOpciones()[0]);
+        JLabel opcion2 = new JLabel(pregunta.getOpciones()[1]);  // Opción correcta
+        JLabel opcion3 = new JLabel(pregunta.getOpciones()[2]);
 
         JLabel[] opciones = {opcion1, opcion2, opcion3};
 

@@ -95,7 +95,8 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	private void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
-        new VentanaPregunta().setVisible(true);
+		//FIXME EL 69 ese hay que quitarlo jeje
+        new VentanaPregunta(69).setVisible(true);
 	}
 
 	private void refreshCursos() {

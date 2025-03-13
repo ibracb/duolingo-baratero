@@ -11,6 +11,11 @@ import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.models.Flashcard;
+import umu.pds.duolingoBaratero.models.Nivel;
+import umu.pds.duolingoBaratero.models.Pregunta;
+import umu.pds.duolingoBaratero.models.PreguntaAudio;
+import umu.pds.duolingoBaratero.models.PreguntaOpciones;
+import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 
@@ -75,9 +80,12 @@ public class VentanaPregunta extends JFrame {
 		CardLayout cardLayout = (CardLayout) panelCentral.getLayout();
 
 		// -------Futura funcionalidad real------- NO BORRAR
-//		JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
-//		panelCentral.add(paneles[0], "panel1");
-//		panelCentral.add(paneles[1], "panel2");
+		//JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
+		JPanel[] paneles = this.getPaneles();
+		panelCentral.add(paneles[0], "panel1");
+		panelCentral.add(paneles[1], "panel2");
+		panelCentral.add(paneles[2], "panel3");
+		panelCentral.add(paneles[3], "panel4");
 
 
 		// Panel para los botones de acción
@@ -107,6 +115,32 @@ public class VentanaPregunta extends JFrame {
 
 		setLocationRelativeTo(null);
 
+	}
+
+	// --------METODO DE PRUEBA --------------
+	private  JPanel[] getPaneles() {
+
+		JPanel[] paneles = new JPanel[4];
+
+		String[] opciones = { "Opción 1", "Opción 2", "Opción 3" };
+		Pregunta[] preguntas = new Pregunta[4]; // Array de tamaño 5, pero vacío
+
+		preguntas[0] = new PreguntaAudio(Nivel.INTERMEDIO, 1, "¿Qué sonido se escucha?", "Opción 2", TipoPregunta.AUDIO,
+				opciones, "ruta/al/archivo/audio.mp3");
+		preguntas[1] = new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿cual es la respuesta?", "Opción 2",
+				TipoPregunta.OPCIONES, opciones);
+		preguntas[2] = new Flashcard(Nivel.AVANZADO, 3, "¿Elemento químico Na?", "Sodio", TipoPregunta.FLASHCARD,
+				69696969);
+		preguntas[3] = new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿cual es la respuesta?", "Opción 2",
+				TipoPregunta.IMAGEN, opciones);
+
+		int i = 0;
+		for (Pregunta pregunta : preguntas) {
+			paneles[i] = pregunta.crearPanel();
+			i++;
+		}
+
+		return paneles;
 	}
 
 }

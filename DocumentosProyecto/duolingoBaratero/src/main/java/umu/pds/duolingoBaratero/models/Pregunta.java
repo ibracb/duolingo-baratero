@@ -19,6 +19,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	}
 	
 	public abstract JPanel crearPanel();  // Método abstracto para crear el panel
+	
 
 	public Nivel getNivel() {
 		return nivel;
@@ -55,7 +56,11 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	public TipoPregunta getTipo() {
 		return tipo;
 	}
-
+	
+	public boolean isImagen() {
+		return tipo.equals(TipoPregunta.IMAGEN);
+	}
+	
 	public void setTipo(TipoPregunta tipo) {
 		this.tipo = tipo;
 	}
