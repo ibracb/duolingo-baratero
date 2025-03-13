@@ -39,3 +39,4 @@
 ## Caso de uso 10
 **Actor Principal:** Usuario no registrado  
 **Nombre Cdu:** [Retomar curso](CasosDeUso/CasoDeUso10.md)  
+---
