@@ -2,41 +2,41 @@
 
 ## Caso de uso 1
 **Actor Principal:** Usuario no registrado  
-**Nombre Cdu:**       [Registrar usuario](CasosDeUso/CasoDeUso1.md)  
+**Nombre Cdu:**       [Registrar usuario](CasosDeUso/01-CDU-registrar-usuario.md)  
 ---
 ## Caso de uso 2
 **Actor Principal:** Usuario estudiante  
-**Nombre Cdu:** [Elegir un curso](CasosDeUso/CasoDeUso2.md)  
+**Nombre Cdu:** [Elegir un curso](CasosDeUso/02-CDU-elegir-un-curso.md)  
 ---
 ## Caso de uso 3
 **Actor Principal:** Usuario estudiante 
-**Nombre Cdu:** [Realizar un curso](CasosDeUso/CasoDeUso3.md)  
+**Nombre Cdu:** [Realizar un curso](CasosDeUso/03-CDU-iniciar-curso.md)  
 ---
 ## Caso de uso 4
 **Actor Principal:** Usuario estudiante 
-**Nombre Cdu:** [Guardar progreso](CasosDeUso/CasoDeUso4.md)    
+**Nombre Cdu:** [Guardar progreso](CasosDeUso/04-CDU-guardar-progreso.md)    
 ---
 ## Caso de uso 5
 **Actor Principal:** Usuario estudiante 
-**Nombre Cdu:** [Consultar estadísticas](CasosDeUso/CasoDeUso5.md)  
+**Nombre Cdu:** [Consultar estadísticas](CasosDeUso/05-CDU-consultar-estadisticas.md)  
 ---
 ## Caso de uso 6
 **Actor Principal:** Usuario creador  
-**Nombre Cdu:** [Crear un curso](CasosDeUso/CasoDeUso6.md)  
+**Nombre Cdu:** [Crear un curso](CasosDeUso/06-CDU-crear-curso.md)  
 ---
 ## Caso de uso 7
 **Actor Principal:** Usuario creador 
-**Nombre Cdu:** [Compartir un curso](CasosDeUso/CasoDeUso7.md)  
+**Nombre Cdu:** [Compartir un curso](CasosDeUso/07-CDU-compartir-curso.md)  
 ---
 ## Caso de uso 8
 **Actor Principal:** Usuario creador  
-**Nombre Cdu:** [Instalar un curso desde un archivo](CasosDeUso/CasoDeUso8.md)  
+**Nombre Cdu:** [Instalar un curso desde un archivo](CasosDeUso/08-CDU-instalar-curso-desde-archivo.md)  
 ---
 ## Caso de uso 9
 **Actor Principal:** Usuario creador   
-**Nombre Cdu:**  [Agregar nuevos tipos de preguntas](CasosDeUso/CasoDeUso9.md)  
+**Nombre Cdu:**  [Agregar nuevos tipos de preguntas](CasosDeUso/09-CDU-agregar-preguntas.md)  
 ---
 ## Caso de uso 10
 **Actor Principal:** Usuario estudiante de un curso que ya ha empezado   
-**Nombre Cdu:** [Retomar curso](CasosDeUso/CasoDeUso10.md)  
+**Nombre Cdu:** [Retomar curso](CasosDeUso/10-CDU-retomar-curso.md)  
 ---
