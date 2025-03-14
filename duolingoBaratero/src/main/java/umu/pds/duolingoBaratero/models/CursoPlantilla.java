@@ -1,7 +1,6 @@
 package umu.pds.duolingoBaratero.models;
 
 import java.util.Collections;
-import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;

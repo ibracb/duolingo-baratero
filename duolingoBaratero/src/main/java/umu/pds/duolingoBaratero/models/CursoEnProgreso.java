@@ -10,17 +10,13 @@ public class CursoEnProgreso {
 	private CursoPlantilla cursoPlantilla;
 	private Aprendizaje aprendizaje;
 	private List<BloqueContenidoProgreso> contenidosProgreso;
-	private EstadoCursoEnProgreso estadoNuevo;
-	private EstadoCursoEnProgreso estadoEnMarcha;
-	private EstadoCursoEnProgreso estadoFinalizado;
+	private EstadoCursoEnProgreso estado;
 	
 	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, BloqueContenidoProgreso...contenidosProgreso) {
 		this.estudiante = usuario;
 		this.cursoPlantilla = cursoPlantilla;
 		this.aprendizaje = aprendizaje;
-		setEstadoNuevo(new EstadoNuevo(this));
-		setEstadoEnMarcha(new EstadoEnMarcha(this));
-		setEstadoFinalizado(new EstadoFinalizado(this));
+		setEstado(new EstadoNuevo(this));
 		Collections.addAll(this.contenidosProgreso, contenidosProgreso);
 	}
 
@@ -85,28 +81,19 @@ public class CursoEnProgreso {
 		return Collections.unmodifiableList(contenidosProgreso);
 	}
 
-	public EstadoCursoEnProgreso getEstadoNuevo() {
-		return estadoNuevo;
+	public EstadoCursoEnProgreso getEstado() {
+		return estado;
 	}
 
-	public void setEstadoNuevo(EstadoCursoEnProgreso estadoNuevo) {
-		this.estadoNuevo = estadoNuevo;
-	}
-
-	public EstadoCursoEnProgreso getEstadoEnMarcha() {
-		return estadoEnMarcha;
-	}
-
-	public void setEstadoEnMarcha(EstadoCursoEnProgreso estadoEnMarcha) {
-		this.estadoEnMarcha = estadoEnMarcha;
-	}
-
-	public EstadoCursoEnProgreso getEstadoFinalizado() {
-		return estadoFinalizado;
-	}
-
-	public void setEstadoFinalizado(EstadoCursoEnProgreso estadoFinalizado) {
-		this.estadoFinalizado = estadoFinalizado;
+	public void setEstado(EstadoCursoEnProgreso estado) {
+		this.estado = estado;
 	}
 	
+	public void iniciar() {
+		estado.iniciar(this);
+	}
+	
+	public void finalizar() {
+		estado.finalizar(this);
+	}
 }
