@@ -1,6 +1,6 @@
 ### Iniciar un curso
 
-**Actor principal:** Usuario estudiante
+**Actor principal:** Usuario estudiante  
 **Objetivo:** Presentar preguntas o tarjetas de aprendizaje para completar el curso.  
 **Precondiciones:**
 01. El usuario debe haberse registrado.  
@@ -17,11 +17,11 @@
 09. El sistema verifica las respuestas y guarda el progreso.
 
 **Flujo alternativo:**
-08a. El usuario cierra la aplicación para hacer el curso en otro momento.
+08a. El usuario cierra la aplicación para hacer el curso en otro momento.  
 
-02b. El usuario pulsa el botón de empezar un nuevo curso.
-03b. El usuario [selecciona el curso que quiere](02-CDU-elegir-un-curso.md)
+02b. El usuario pulsa el botón de empezar un nuevo curso.  
+03b. El usuario [selecciona el curso que quiere](02-CDU-elegir-un-curso.md)  
 04b. (Vuelve al paso 04)
-**Postcondiciones:**
-01.  El sistema guarda el curso en los cursos empezados del usuario.
-02.  El sistema guarda el progreso del usuario.
+**Postcondiciones:**  
+01.  El sistema guarda el curso en los cursos empezados del usuario.  
+02.  El sistema guarda el progreso del usuario.  
