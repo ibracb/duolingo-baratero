@@ -9,14 +9,16 @@ import java.util.Set;
 public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
 	private String nombre;
+	private String propietario;
 	private String descripcion;
 	private String objetivos;
 	private Nivel nivel;
 	private List<BloqueContenido> contenidos;
 	private Set<CursoEnProgreso> cursosEnProgreso;
 	
-	public CursoPlantilla(String nombre, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
+	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this.nombre = nombre;
+		this.propietario = propietario;
 		this.descripcion = descripcion;
 		this.objetivos = objetivos;
 		this.nivel = nivel;
@@ -31,6 +33,14 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public String getPropietario() {
+		return propietario;
+	}
+
+	public void setPropietario(String propietario) {
+		this.propietario = propietario;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -62,6 +72,10 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
 	public void setCursosEnProgreso(Set<CursoEnProgreso> cursosEnProgreso) {
 		this.cursosEnProgreso = cursosEnProgreso;
+	}
+	
+	public int getNumCursosEnProgreso() {
+		return cursosEnProgreso.size();
 	}
 	
 	public double getValoracionMedia() {
@@ -98,7 +112,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 
 	@Override
 	public int compareTo(CursoPlantilla o) {
-		return Double.compare(this.getValoracionMedia(), o.getValoracionMedia());
+		return Integer.compare(this.getNumCursosEnProgreso(), o.getNumCursosEnProgreso());
 	}
 	
 	
