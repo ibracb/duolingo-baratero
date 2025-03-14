@@ -17,14 +17,14 @@ import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
-import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
+import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
 
 public class VentanaPregunta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private BarraProgresoPanel barraProgreso;
-	private BarraSuperior barraSuperior;
+	private BarraSuperiorPreguntas barraSuperior;
 	private JButton btnSiguiente, btnSaltar;
 	private Component horizontalGlue;
 	private int currentPanel = 1;
@@ -66,7 +66,7 @@ public class VentanaPregunta extends JFrame {
 		setContentPane(contentPane);
 
 		// ------- barra superior-------
-		barraSuperior = new BarraSuperior();
+		barraSuperior = new BarraSuperiorPreguntas();
 		barraProgreso = new BarraProgresoPanel();
 
 		// Panel que une la barra superior con la barra de progreso

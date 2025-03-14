@@ -19,7 +19,7 @@ public class CursoEnProgreso {
 		this.aprendizaje = aprendizaje;
 		setEstado(new EstadoNuevo(this));
 		setValoracion(valoracion);
-		Collections.addAll(this.contenidosProgreso, contenidosProgreso);
+		//Collections.addAll(this.contenidosProgreso, contenidosProgreso);
 	}
 
 	public String getNombre() {

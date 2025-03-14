@@ -8,6 +8,7 @@ import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
+import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.components.CursoCellRenderer;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
 
@@ -17,6 +18,8 @@ public class VentanaPrincipal extends JFrame {
 	private DefaultListModel<CursoEnProgreso> modeloCursos;
 	private JList<CursoPlantilla> listaCursosCreados;
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
+    private boolean modoOscuroActivo = false; // Variable para controlar el modo oscuro
+
 
 	public VentanaPrincipal() {
 		setTitle("Continúa tus cursos");
@@ -25,26 +28,12 @@ public class VentanaPrincipal extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 
-		// Panel superior con la barra de navegación
-		JPanel panelSuperior = new JPanel();
-		panelSuperior.setBackground(new Color(200, 220, 255));
-		JButton btnHome = new JButton("Home 🏠");
-		JButton btnDesafio = new JButton("Desafío⚡");
-		JButton btnEstadisticas = new JButton("Estadísticas 📊");
-		JButton btnModoNocturno = new JButton("Modo Nocturno🌙");
-		JButton btnPerfil = new JButton("Mi Perfil 👤");
-
-		panelSuperior.add(btnHome);
-		panelSuperior.add(btnDesafio);
-		panelSuperior.add(btnEstadisticas);
-		panelSuperior.add(btnModoNocturno);
-		panelSuperior.add(btnPerfil);
+		BarraSuperior panelSuperior = new BarraSuperior(this);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
 		// Panel central con etiquetas y listas de cursos
 		JPanel panelCentral = new JPanel();
 		panelCentral.setLayout(new GridLayout(1, 2));
-
 		// Panel izquierdo con etiqueta y lista de cursos en progreso
 		JPanel panelCursosEnProgreso = new JPanel(new BorderLayout());
 		JLabel labelCursosEnProgreso = new JLabel("Cursos empezados", SwingConstants.CENTER);
@@ -75,6 +64,7 @@ public class VentanaPrincipal extends JFrame {
 		JPanel panelBotones = new JPanel();
 		JButton btnCrearCurso = new JButton("Crea tu propio curso");
 		JButton btnNuevoCurso = new JButton("Empieza un nuevo curso");
+		btnNuevoCurso.addActionListener(e -> abrirVentanaElegirCurso());
 
 		if (ControladorUsuario.INSTANCE.isUserCreator()) {
 			panelBotones.add(btnCrearCurso);
@@ -105,7 +95,7 @@ public class VentanaPrincipal extends JFrame {
             modeloCursos.addElement(curso);
         }
         CursoPlantilla cursoP = new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, Nivel.AVANZADO, null);
-        CursoEnProgreso cursoEP = new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoP, null);
+        CursoEnProgreso cursoEP = new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoP, null, null, null);
         modeloCursos.addElement(cursoEP);
         listaCursos.setModel(modeloCursos);
 
@@ -116,5 +106,38 @@ public class VentanaPrincipal extends JFrame {
             }
             listaCursosCreados.setModel(modeloCursosCreados);
         }
+    }
+	
+	private void abrirVentanaElegirCurso() {
+		VentanaElegirCurso ventana = new VentanaElegirCurso(this);
+		ventana.setVisible(true);
+		this.setVisible(false);
+	}
+
+
+    // Aplicar el modo oscuro o claro a la ventana
+    public void aplicarModoOscuro() {
+        if (!modoOscuroActivo) {
+            // Modo oscuro
+            getContentPane().setBackground(Color.DARK_GRAY);
+            listaCursos.setBackground(Color.DARK_GRAY);
+            listaCursos.setForeground(Color.WHITE);
+            if (ControladorUsuario.INSTANCE.isUserCreator()) {	
+	            listaCursosCreados.setBackground(Color.BLACK);
+	            listaCursosCreados.setForeground(Color.WHITE);
+            }
+        } else {
+            // Modo claro
+            getContentPane().setBackground(Color.WHITE);
+            listaCursos.setBackground(Color.LIGHT_GRAY);
+            listaCursos.setForeground(Color.BLACK);
+            if (ControladorUsuario.INSTANCE.isUserCreator()) {	
+                listaCursosCreados.setBackground(Color.LIGHT_GRAY);
+                listaCursosCreados.setForeground(Color.BLACK);
+            }
+
+        }
+        modoOscuroActivo = !modoOscuroActivo; // Cambiar el estado del modo oscuro
+
     }
 }

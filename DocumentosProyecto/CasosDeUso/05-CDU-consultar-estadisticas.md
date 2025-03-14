@@ -7,4 +7,3 @@
 2. El sistema muestra los días consecutivos de uso, tiempo total y otras métricas.
 **Postcondiciones:**
 1. El usuario visualiza sus estadísticas y puede tomar decisiones en función de ellas
-
