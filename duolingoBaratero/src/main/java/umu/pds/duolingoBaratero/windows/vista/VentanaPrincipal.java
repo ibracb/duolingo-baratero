@@ -18,8 +18,6 @@ public class VentanaPrincipal extends JFrame {
 	private DefaultListModel<CursoEnProgreso> modeloCursos;
 	private JList<CursoPlantilla> listaCursosCreados;
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
-    private boolean modoOscuroActivo = false; // Variable para controlar el modo oscuro
-
 
 	public VentanaPrincipal() {
 		setTitle("Continúa tus cursos");
@@ -94,8 +92,9 @@ public class VentanaPrincipal extends JFrame {
         for (CursoEnProgreso curso : getCursosEnProgreso()) {
             modeloCursos.addElement(curso);
         }
-        CursoPlantilla cursoP = new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, Nivel.AVANZADO, null);
-        CursoEnProgreso cursoEP = new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoP, null, null, null);
+        CursoPlantilla cursoP = new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, "title", Nivel.AVANZADO, null);
+        CursoEnProgreso cursoEnProgreso = new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoP, null, null, null);
+		CursoEnProgreso cursoEP = cursoEnProgreso;
         modeloCursos.addElement(cursoEP);
         listaCursos.setModel(modeloCursos);
 
@@ -115,29 +114,5 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 
-    // Aplicar el modo oscuro o claro a la ventana
-    public void aplicarModoOscuro() {
-        if (!modoOscuroActivo) {
-            // Modo oscuro
-            getContentPane().setBackground(Color.DARK_GRAY);
-            listaCursos.setBackground(Color.DARK_GRAY);
-            listaCursos.setForeground(Color.WHITE);
-            if (ControladorUsuario.INSTANCE.isUserCreator()) {	
-	            listaCursosCreados.setBackground(Color.BLACK);
-	            listaCursosCreados.setForeground(Color.WHITE);
-            }
-        } else {
-            // Modo claro
-            getContentPane().setBackground(Color.WHITE);
-            listaCursos.setBackground(Color.LIGHT_GRAY);
-            listaCursos.setForeground(Color.BLACK);
-            if (ControladorUsuario.INSTANCE.isUserCreator()) {	
-                listaCursosCreados.setBackground(Color.LIGHT_GRAY);
-                listaCursosCreados.setForeground(Color.BLACK);
-            }
-
-        }
-        modoOscuroActivo = !modoOscuroActivo; // Cambiar el estado del modo oscuro
-
-    }
+  
 }

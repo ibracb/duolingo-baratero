@@ -36,7 +36,7 @@ import javax.swing.SwingConstants;
 import javax.swing.Box;
 import java.awt.Dimension;
 
-public class VentanaRegistro extends JFrame {
+public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 
     private static final long serialVersionUID = 1L;
 	private static final File IMAGEN_POR_DEFECTO = null;
@@ -320,7 +320,7 @@ public class VentanaRegistro extends JFrame {
         lblPerfil.setIcon(ControladorUsuario.INSTANCE.getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
-	public String getCorreo() {
+	public String getName() {
 		return lblCorreo.getText();
 	}
 	

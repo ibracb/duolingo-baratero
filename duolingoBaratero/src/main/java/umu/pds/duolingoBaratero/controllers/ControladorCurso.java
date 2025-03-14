@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -69,6 +70,14 @@ public enum ControladorCurso {
 	
 	public JPanel[] generarLeccion(long bloqueContenido) {
 		return new JPanel[0];
+	}
+
+	public CursoPlantilla crearCurso(String nombre, String descripcion, String objetivos, Nivel lvl) {
+		return null;
+	}
+
+	public void setImagenACurso(Icon imagen) {
+		
 	}
 
 }

@@ -8,13 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import umu.pds.duolingoBaratero.windows.vista.VentanaCreaTuCurso;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 
 public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btnHome, btnDesafio, btnEstadisticas, btnModoNocturno, btnPerfil;
+	private JButton btnHome, btnDesafio, btnEstadisticas, btnModoNocturno, btnCreaTuCurso;
     private JFrame ventanaActual;
     private boolean modoOscuroActivo = false;
 
@@ -37,14 +38,15 @@ public class BarraSuperior extends JPanel {
         btnEstadisticas.addActionListener(e -> openVentanaEstadisticas());
         btnModoNocturno = new JButton("Modo Nocturno 🌙");
         btnModoNocturno.addActionListener(e -> toggleModoOscuro()); // Activar/desactivar modo nocturno
-        btnPerfil = new JButton("Mi Perfil 👤");
+        btnCreaTuCurso = new JButton("Crea tu curso");
+        btnCreaTuCurso.addActionListener(e -> openVentanaCreaTuCurso());
 
         // Agregar botones al panel central
         panelCentral.add(btnHome);
         panelCentral.add(btnDesafio);
         panelCentral.add(btnEstadisticas);
         panelCentral.add(btnModoNocturno);
-        panelCentral.add(btnPerfil);
+        panelCentral.add(btnCreaTuCurso);
 
         // Agregar el panel central dentro de la barra de herramientas
         barra.add(panelCentral);
@@ -61,6 +63,12 @@ public class BarraSuperior extends JPanel {
 
     private void openVentanaEstadisticas() {
         VentanaEstadisticas ventana = new VentanaEstadisticas();
+        ventana.setVisible(true);
+        ventanaActual.dispose();
+    }
+    
+    private void openVentanaCreaTuCurso() {
+    	VentanaCreaTuCurso ventana = new VentanaCreaTuCurso();
         ventana.setVisible(true);
         ventanaActual.dispose();
     }
@@ -93,9 +101,8 @@ public class BarraSuperior extends JPanel {
         btnModoNocturno.setBackground(Color.DARK_GRAY);
         btnModoNocturno.setForeground(Color.WHITE);
 
-        btnPerfil.setBackground(Color.DARK_GRAY);
-        btnPerfil.setForeground(Color.WHITE);
-        ((VentanaPrincipal) ventanaActual).aplicarModoOscuro();
+        btnCreaTuCurso.setBackground(Color.DARK_GRAY);
+        btnCreaTuCurso.setForeground(Color.WHITE);
     }
 
     private void setModoClaro() {
@@ -115,9 +122,8 @@ public class BarraSuperior extends JPanel {
         btnModoNocturno.setBackground(Color.LIGHT_GRAY);
         btnModoNocturno.setForeground(Color.BLACK);
 
-        btnPerfil.setBackground(Color.LIGHT_GRAY);
-        btnPerfil.setForeground(Color.BLACK);
-        ((VentanaPrincipal) ventanaActual).aplicarModoOscuro();
+        btnCreaTuCurso.setBackground(Color.LIGHT_GRAY);
+        btnCreaTuCurso.setForeground(Color.BLACK);
 
     }
 }

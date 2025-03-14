@@ -19,10 +19,10 @@ import javax.swing.JTextField;
 public class VentanaCambioImagen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private VentanaRegistro v;
+	private VentanaCambiaImagenes v;
 	private JTextField textField;
 
-	public VentanaCambioImagen(VentanaRegistro v) {
+	public VentanaCambioImagen(VentanaCambiaImagenes v) {
 
 		this.setBounds(100, 100, 700, 300);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);// cierra la ventana cuando cancelas
@@ -104,7 +104,7 @@ public class VentanaCambioImagen extends JFrame {
 			}
 			try {
 				BufferedImage originalImage = ImageIO.read(selectedFile);
-				String telefono = v.getCorreo();
+				String telefono = v.getName();
 				File destinationFile = new File("src/main/resources/imagenPerfil" + telefono + ".png");
 				v.setDestinationFile(destinationFile);
 				ImageIO.write(originalImage, "png", destinationFile);

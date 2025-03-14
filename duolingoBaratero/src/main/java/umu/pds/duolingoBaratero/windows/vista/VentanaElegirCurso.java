@@ -116,7 +116,7 @@ public class VentanaElegirCurso extends JFrame {
 		panelCursosCreados.add(labelCursosCreados, BorderLayout.NORTH);
 
 		modeloCursosCreados = new DefaultListModel<>();
-		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, Nivel.AVANZADO, null));
+		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, "title", Nivel.AVANZADO, null));
 
 		listaCursosCreados = new JList<>(modeloCursosCreados);
 		listaCursosCreados.setCellRenderer(new CursoCreadoCellRenderer());
