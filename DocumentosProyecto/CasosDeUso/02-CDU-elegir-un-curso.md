@@ -12,4 +12,3 @@
 **Postcondiciones:**
 1. El usuario tiene el curso disponible en su perfil.
 
-[Vuelta al documento principal](/CDU's.md)

@@ -10,4 +10,3 @@
 3. El sistema incorpora la nueva funcionalidad en los cursos existentes.
 4. Los usuarios pueden empezar a utilizar el nuevo tipo de pregunta en sus cursos.
 
-[Vuelta al documento principal](/CDU's.md)

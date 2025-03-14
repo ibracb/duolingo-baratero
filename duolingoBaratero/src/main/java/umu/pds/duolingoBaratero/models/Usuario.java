@@ -30,7 +30,6 @@ public class Usuario {
 		this.cursosCreados = new LinkedList<>();
 		roles = new HashSet<>();
 		roles.add(ROL_POR_DEFECTO);
-		roles.add(Rol.CREADOR);
 		this.estadistica = new Estadistica(this);
 	}
 

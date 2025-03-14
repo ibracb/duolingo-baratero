@@ -15,4 +15,3 @@
 **Postcondiciones:**
 1. El sistema guarda el progreso del usuario.
 
-[Vuelta al documento principal](/CDU's.md)

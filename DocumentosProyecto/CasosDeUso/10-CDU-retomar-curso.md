@@ -12,6 +12,3 @@
 **Flujo alternativo:**
 4a. El usuario pulsa el botón de cerrar curso y se guarda la pregunta por la que lo ha dejado.
 4b. El usuario cierra la aplicación de golpe y se guarda la pregunta por que lo ha dejado.
-
-
-[Vuelta al documento principal](/CDU's.md)

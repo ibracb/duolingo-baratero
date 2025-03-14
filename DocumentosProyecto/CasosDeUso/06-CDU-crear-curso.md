@@ -13,4 +13,3 @@
 **Postcondiciones:**
 1. El curso queda disponible en la plataforma.
 
-[Vuelta al documento principal](/CDU's.md)

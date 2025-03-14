@@ -8,4 +8,3 @@
 **Postcondiciones:**
 1. El usuario visualiza sus estadísticas y puede tomar decisiones en función de ellas
 
-[Vuelta al documento principal](/CDU's.md)

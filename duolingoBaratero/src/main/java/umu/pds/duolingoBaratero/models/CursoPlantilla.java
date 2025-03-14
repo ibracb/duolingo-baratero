@@ -21,7 +21,7 @@ public class CursoPlantilla {
 		this.objetivos = objetivos;
 		this.nivel = nivel;
 		this.contenidos = new LinkedList<>();
-		Collections.addAll(this.contenidos, contenidos);
+		//Collections.addAll(this.contenidos, contenidos);
 	}
 	
 	public String getNombre() {

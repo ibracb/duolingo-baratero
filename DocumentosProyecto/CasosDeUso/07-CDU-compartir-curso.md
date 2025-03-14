@@ -10,4 +10,3 @@
 3. Elige si compartir mediante enlace o a través de la plataforma.
 4. Otros usuarios pueden instalar el curso en su biblioteca.
 
-[Vuelta al documento principal](/CDU's.md)

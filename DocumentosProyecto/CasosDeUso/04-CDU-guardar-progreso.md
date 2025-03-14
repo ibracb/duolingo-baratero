@@ -14,4 +14,3 @@
 **Postcondiciones:**
 1. El usuario puede continuar el curso desde el punto guardado.
 
-[Vuelta al documento principal](/CDU's.md)
