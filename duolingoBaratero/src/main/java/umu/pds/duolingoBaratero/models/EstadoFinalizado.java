@@ -18,12 +18,12 @@ public class EstadoFinalizado implements EstadoCursoEnProgreso {
 
 	@Override
 	public void iniciar(CursoEnProgreso curso) {
-		curso.setEstadoFinalizado(new EstadoNuevo(curso));
+		curso.setEstado(new EstadoNuevo(curso));
 	}
 
 	@Override
 	public void finalizar(CursoEnProgreso curso) {
-		curso.setEstadoFinalizado(curso.getEstadoFinalizado());
+		curso.setEstado(curso.getEstado());
 	}
 
 }

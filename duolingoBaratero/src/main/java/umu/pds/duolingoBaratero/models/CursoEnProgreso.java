@@ -11,12 +11,14 @@ public class CursoEnProgreso {
 	private Aprendizaje aprendizaje;
 	private List<BloqueContenidoProgreso> contenidosProgreso;
 	private EstadoCursoEnProgreso estado;
+	private Valoracion valoracion;
 	
-	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, BloqueContenidoProgreso...contenidosProgreso) {
+	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion, BloqueContenidoProgreso...contenidosProgreso) {
 		this.estudiante = usuario;
 		this.cursoPlantilla = cursoPlantilla;
 		this.aprendizaje = aprendizaje;
 		setEstado(new EstadoNuevo(this));
+		setValoracion(valoracion);
 		Collections.addAll(this.contenidosProgreso, contenidosProgreso);
 	}
 
@@ -58,6 +60,18 @@ public class CursoEnProgreso {
 
 	public void setAprendizaje(Aprendizaje aprendizaje) {
 		this.aprendizaje = aprendizaje;
+	}
+	
+	public Valoracion getValoracion() {
+		return valoracion;
+	}
+	
+	public void setValoracion(Valoracion valoracion) {
+		this.valoracion = valoracion;
+	}
+	
+	public int getValoracionNumerica() {
+		return getValoracion().getValor();
 	}
 	
 	public List<PreguntaProgreso> getPreguntas() {

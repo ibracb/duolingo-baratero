@@ -6,13 +6,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class CursoPlantilla {
+public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
 	private String nombre;
 	private String descripcion;
 	private String objetivos;
 	private Nivel nivel;
 	private List<BloqueContenido> contenidos;
+	private Set<CursoEnProgreso> cursosEnProgreso;
 	
 	public CursoPlantilla(String nombre, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this.nombre = nombre;
@@ -20,6 +21,7 @@ public class CursoPlantilla {
 		this.objetivos = objetivos;
 		this.nivel = nivel;
 		this.contenidos = new LinkedList<>();
+		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
 		//Collections.addAll(this.contenidos, contenidos);
 	}
 	
@@ -54,6 +56,21 @@ public class CursoPlantilla {
 		this.contenidos = contenidos;
 	}
 	
+	public Set<CursoEnProgreso> getCursosEnProgreso() {
+		return cursosEnProgreso;
+	}
+	
+	public void setCursosEnProgreso(Set<CursoEnProgreso> cursosEnProgreso) {
+		this.cursosEnProgreso = cursosEnProgreso;
+	}
+	
+	public double getValoracionMedia() {
+		return getCursosEnProgreso().stream()
+				.mapToDouble(c -> c.getValoracion().getValor())
+				.average()
+				.orElse(0.0);
+	}
+	
 	public void addBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.add(bloqueContenido);
 	}
@@ -77,6 +94,11 @@ public class CursoPlantilla {
 
 		return tipos;
 
+	}
+
+	@Override
+	public int compareTo(CursoPlantilla o) {
+		return Double.compare(this.getValoracionMedia(), o.getValoracionMedia());
 	}
 	
 	
