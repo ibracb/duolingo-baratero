@@ -7,7 +7,8 @@
 **Pasos:**  
 1. El usuario pulsa el botón de guardar progreso de la ventana de preguntas.  
 2. El sistema guarda la posicion actual dentro del curso  
-3. El usuario al volver a ingresar, puede continuar desde el mismo punto.  
+3. El usuario al volver a ingresar, puede continuar desde el mismo punto.
+
 **Flujo Alternativo:**  
 1. El usuario cierra la sesión o sale de la aplicación inesperadamente.  
 2. El sistema detecta el cierre de sesión y automaticamente guarda la posición actual dentro del curso.  
