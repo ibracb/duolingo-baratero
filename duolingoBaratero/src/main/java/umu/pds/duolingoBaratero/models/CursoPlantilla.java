@@ -15,6 +15,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	private Nivel nivel;
 	private List<BloqueContenido> contenidos;
 	private Set<CursoEnProgreso> cursosEnProgreso;
+	private String imagen;
 	
 	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this.nombre = nombre;
@@ -91,6 +92,15 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
 	public void removeBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.remove(bloqueContenido);
+	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	public boolean hasImage() {
+		return getImagen() != null;
 	}
 
 	public Set<TipoPregunta> getTipoPreguntas(){

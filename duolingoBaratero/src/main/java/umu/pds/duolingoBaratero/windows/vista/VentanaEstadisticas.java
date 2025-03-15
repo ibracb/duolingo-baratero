@@ -2,11 +2,13 @@ package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.*;
 import java.awt.*;
+
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 
 public class VentanaEstadisticas extends JFrame {
 
-	private static final long serialVersionUID = 7727856112250456706L;
+	private static final long serialVersionUID = 1L;
 
 	public VentanaEstadisticas() {
         // Configuración de la ventana
@@ -40,7 +42,7 @@ public class VentanaEstadisticas extends JFrame {
         panelTiempoUso.setBackground(panelColor);
         JLabel lblTiempoUso = new JLabel("⏳ Tiempo de uso:", SwingConstants.CENTER);
         lblTiempoUso.setFont(font);
-        JLabel lblValorTiempoUso = new JLabel("4 horas", SwingConstants.CENTER);
+        JLabel lblValorTiempoUso = new JLabel(getTiempoUso(), SwingConstants.CENTER);
         lblValorTiempoUso.setFont(new Font("Arial", Font.BOLD, 14));
         panelTiempoUso.add(lblTiempoUso);
         panelTiempoUso.add(lblValorTiempoUso);
@@ -51,7 +53,7 @@ public class VentanaEstadisticas extends JFrame {
         panelRachaVictorias.setBackground(panelColor);
         JLabel lblRachaVictorias = new JLabel("🏆 Mejor racha de victorias:", SwingConstants.CENTER);
         lblRachaVictorias.setFont(font);
-        JLabel lblValorRachaVictorias = new JLabel("8", SwingConstants.CENTER);
+        JLabel lblValorRachaVictorias = new JLabel(getMaxVictorias(), SwingConstants.CENTER);
         lblValorRachaVictorias.setFont(new Font("Arial", Font.BOLD, 14));
         panelRachaVictorias.add(lblRachaVictorias);
         panelRachaVictorias.add(lblValorRachaVictorias);
@@ -62,7 +64,7 @@ public class VentanaEstadisticas extends JFrame {
         panelRachaAccesos.setBackground(panelColor);
         JLabel lblRachaAccesos = new JLabel("🔑 Racha de accesos:", SwingConstants.CENTER);
         lblRachaAccesos.setFont(font);
-        JLabel lblValorRachaAccesos = new JLabel("12", SwingConstants.CENTER);
+        JLabel lblValorRachaAccesos = new JLabel(getMaxNumAccesos(), SwingConstants.CENTER);
         lblValorRachaAccesos.setFont(new Font("Arial", Font.BOLD, 14));
         panelRachaAccesos.add(lblRachaAccesos);
         panelRachaAccesos.add(lblValorRachaAccesos);
@@ -73,7 +75,7 @@ public class VentanaEstadisticas extends JFrame {
         panelRespuestasCorrectas.setBackground(panelColor);
         JLabel lblRespuestasCorrectas = new JLabel("📊 % de respuestas correctas:", SwingConstants.CENTER);
         lblRespuestasCorrectas.setFont(font);
-        JLabel lblValorRespuestasCorrectas = new JLabel("80%", SwingConstants.CENTER);
+        JLabel lblValorRespuestasCorrectas = new JLabel(getPorcentajeAciertos(), SwingConstants.CENTER);
         lblValorRespuestasCorrectas.setFont(new Font("Arial", Font.BOLD, 14));
         panelRespuestasCorrectas.add(lblRespuestasCorrectas);
         panelRespuestasCorrectas.add(lblValorRespuestasCorrectas);
@@ -88,5 +90,20 @@ public class VentanaEstadisticas extends JFrame {
         add(panelCentral, BorderLayout.CENTER);
 
     }
-
+	
+	private String getPorcentajeAciertos() {
+		return ControladorUsuario.INSTANCE.getPorcentajeRespuestasCorrectas() + "%";
+	}
+	
+	private String getMaxNumAccesos() {
+		return String.valueOf(ControladorUsuario.INSTANCE.getNumMaxAccesos());
+	}
+	
+	private String getMaxVictorias() {
+		return String.valueOf(ControladorUsuario.INSTANCE.getRachaVictorias());
+	}
+	
+	private String getTiempoUso() {
+		return String.valueOf(ControladorUsuario.INSTANCE.getTiempoUso()) + "horas";
+	}
 }

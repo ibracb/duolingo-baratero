@@ -1,16 +1,19 @@
 package umu.pds.duolingoBaratero.services.filters;
 
+import java.util.List;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
-public abstract class FiltroDecorador implements FiltroCursos<CursoPlantilla> {
-	protected FiltroCursos<CursoPlantilla> filtro;
+public class FiltroDecorador implements Filtro {
+	protected Filtro filtro;
 
-	public FiltroDecorador(FiltroCursos<CursoPlantilla> filtro) {
+	public FiltroDecorador(Filtro filtro) {
+		super();
 		this.filtro = filtro;
 	}
 
 	@Override
-	public boolean test(CursoPlantilla curso) {
-		return filtro == null || filtro.test(curso);
+	public List<CursoPlantilla> filtrar(List<CursoPlantilla> lista){
+		return filtro.filtrar(lista);
 	}
+
 }

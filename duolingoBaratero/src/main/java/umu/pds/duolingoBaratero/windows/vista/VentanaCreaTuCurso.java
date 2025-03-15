@@ -136,7 +136,6 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     	nombre = textFieldNombre.getText();
     	descripcion = textAreaDescripcion.getText();
     	objetivos = textAreaObjetivos.getText();
-    	Icon imagen = labelImagen.getIcon();
     	Nivel lvl = (Nivel) comboBox.getSelectedItem();
     	CursoPlantilla curso = ControladorCurso.INSTANCE.crearCurso(nombre, descripcion, objetivos, lvl);
     	if (curso == null)
@@ -145,7 +144,11 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     	else 
     		JOptionPane.showMessageDialog(this, "Curso creado con exito", "Conseguido",
 					JOptionPane.ERROR_MESSAGE);
-    		ControladorCurso.INSTANCE.setImagenACurso(imagen);
+    	if (destinationFile != null) {
+			ControladorCurso.INSTANCE.setImagenACurso(curso, destinationFile.getAbsolutePath());
+		} else if (url != null) {
+			ControladorCurso.INSTANCE.setImagenACurso(curso, url.toString());
+		}		
     	
     	
     }

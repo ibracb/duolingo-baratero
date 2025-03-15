@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -83,8 +84,17 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	private void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
-		//FIXME EL 69 ese hay que quitarlo jeje
-        new VentanaPregunta(69).setVisible(true);
+		if (ControladorCurso.INSTANCE.isCursoNuevo(curso))
+			//abrirVentanaConfiguracionCurso();			
+			new VentanaPregunta(0).setVisible(true);
+		else if (ControladorCurso.INSTANCE.isCursoEnMarcha(curso)) {
+			VentanaPregunta ventana = new VentanaPregunta(ControladorCurso.INSTANCE.getNumLastBloqueContenido(curso));
+			ventana.setVisible(true);
+		}
+		else {
+			JOptionPane.showMessageDialog(this, "Has finalizado este curso. ¿Quieres empezarlo de nuevo?",
+					"Information", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 	private void refreshCursos() {

@@ -41,7 +41,7 @@ public class VentanaCursos extends JFrame {
 		botonIdiomas.setPreferredSize(new Dimension(140, 60));
 		botonIdiomas.setIcon(iconoLiteratura);
 		botonIdiomas.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCurso("pedor")));
+				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("pedor")));
 		panelCentral.add(botonIdiomas);
 
 		ImageIcon iconoOrdenador = new ImageIcon(getClass().getResource("/ordenador.png"));
@@ -52,7 +52,7 @@ public class VentanaCursos extends JFrame {
 		botonProgramacion.setPreferredSize(new Dimension(140, 60));
 		botonProgramacion.setIcon(iconoOrdenador);
 		botonProgramacion.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCurso("pedor")));
+				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("pedor")));
 		panelCentral.add(botonProgramacion);
 
 		ImageIcon iconoRadio = new ImageIcon(getClass().getResource("/radio.png"));
@@ -63,7 +63,7 @@ public class VentanaCursos extends JFrame {
 		botonMusica.setPreferredSize(new Dimension(140, 60));
 		botonMusica.setIcon(iconoRadio);
 		botonProgramacion.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCurso("pedor")));
+				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("pedor")));
 		panelCentral.add(botonMusica);
 
 		ImageIcon iconoCiencia = new ImageIcon(getClass().getResource("/ciencia.png"));
@@ -74,7 +74,7 @@ public class VentanaCursos extends JFrame {
 		botonCiencia.setPreferredSize(new Dimension(140, 60));
 		botonCiencia.setIcon(iconoCiencia);
 		botonCiencia.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCurso("pedor")));
+				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("pedor")));
 		panelCentral.add(botonCiencia);
 
 		ImageIcon iconoEstudioso = new ImageIcon(getClass().getResource("/pinguinoEstudioso.png"));
@@ -85,7 +85,7 @@ public class VentanaCursos extends JFrame {
 		botonEstudios.setPreferredSize(new Dimension(140, 60));
 		botonEstudios.setIcon(iconoEstudioso);
 		botonEstudios.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCurso("pedor")));
+				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("pedor")));
 		panelCentral.add(botonEstudios);
 
 		ImageIcon iconoDiseñar = new ImageIcon(getClass().getResource("/disenar.png"));
@@ -96,7 +96,7 @@ public class VentanaCursos extends JFrame {
 		botonDiseña.setPreferredSize(new Dimension(140, 60));
 		botonDiseña.setIcon(iconoDiseñar);
 		botonProgramacion.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCurso("pedor")));
+				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("pedor")));
 		panelCentral.add(botonDiseña);
 
 		getContentPane().add(panelCentral, BorderLayout.CENTER);

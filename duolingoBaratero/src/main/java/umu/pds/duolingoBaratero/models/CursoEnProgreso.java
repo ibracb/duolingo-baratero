@@ -110,4 +110,20 @@ public class CursoEnProgreso {
 	public void finalizar() {
 		estado.finalizar(this);
 	}
+	
+	public boolean isNuevo() {
+		return estado instanceof EstadoNuevo;
+	}
+	
+	public boolean isFinalizado() {
+		return estado instanceof EstadoFinalizado;
+	}
+	
+	public boolean isEnMarcha() {
+		return estado instanceof EstadoEnMarcha;
+	}
+	
+	public long getNumLastBloqueContenido() {
+		return (long) 69;
+	}
 }

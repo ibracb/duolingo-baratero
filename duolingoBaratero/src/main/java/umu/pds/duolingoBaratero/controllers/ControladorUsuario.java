@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -70,6 +71,17 @@ public enum ControladorUsuario {
 		}
 	}
 	
+	public void setCursos(String[] nombresCursos) {
+		LinkedList<CursoEnProgreso> cursos = new LinkedList<>();
+		if (cursos != null) {
+			for (String nombreCurso : nombresCursos) {
+				cursos.add(ControladorCurso.INSTANCE.getCursoEnProgreso(nombreCurso));
+			}
+			user.setCursos(cursos);
+		}
+		
+	}
+	
 	public List<CursoEnProgreso> getCursosUsuarioActual() {
 		return user.getCursos();
 	}
@@ -82,6 +94,22 @@ public enum ControladorUsuario {
 		return this.user.isCreador();
 	}
 	
+	public double getPorcentajeRespuestasCorrectas() {
+		return user.getPorcentajeAcierto();
+	}
+
+	public double getTiempoUso() {
+		return user.getTiempoUso();
+	}
+
+	public int getRachaVictorias() {
+		return user.getRachaVictorias();
+	}
+
+	public int getNumMaxAccesos() {
+		return user.getNumMaxAccesos();
+	}
+		
 
 	// ----------------------------------------------
 	// Funciones imagenes
@@ -121,4 +149,6 @@ public enum ControladorUsuario {
 		ImageIcon image = new ImageIcon(getClass().getResource("/persona.png"));
 		return sevicioImagenes.getScaledImage(image, dimensiones);
 	}
+
+
 }

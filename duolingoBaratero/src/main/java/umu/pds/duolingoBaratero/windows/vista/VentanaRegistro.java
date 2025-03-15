@@ -49,11 +49,11 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
     private JTextField textFieldNickName;
     private JTextField textFieldCorreo;
     private JTextField textFieldNombre;
-    
+    private JCheckBoxMenuItem[] cursos;
     private VentanaCursos v;
     private JLabel lblCorreo;
 	private URL url;
-	
+	private int seleccionados;
 	private File destinationFile = IMAGEN_POR_DEFECTO;
 
 
@@ -208,23 +208,35 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
         JMenuBar menuBar = new JMenuBar();
         panelCosas.add(menuBar);
 
-        JMenu mnSelectCursos = new JMenu("Cursos de Interes");
+        JMenu mnSelectCursos = new JMenu("Cursos de Interés");
         menuBar.add(mnSelectCursos);
 
-        JCheckBoxMenuItem mntmIdiomas = new JCheckBoxMenuItem("🗣️ Idiomas");
-        mnSelectCursos.add(mntmIdiomas);
+        // Array de cursos
+        JCheckBoxMenuItem[] cursos = {
+            new JCheckBoxMenuItem("🗣️ Idiomas"),
+            new JCheckBoxMenuItem("💻 Programación"),
+            new JCheckBoxMenuItem("🎶 Música"),
+            new JCheckBoxMenuItem("🔬 Ciencia"),
+            new JCheckBoxMenuItem("🎓 Estudios académicos")
+        };
+        this.cursos = cursos;
 
-        JCheckBoxMenuItem mntmProgramacion = new JCheckBoxMenuItem("💻 Programación");
-        mnSelectCursos.add(mntmProgramacion);
+        seleccionados = 0;
 
-        JCheckBoxMenuItem mntmMusica = new JCheckBoxMenuItem("🎶 Música");
-        mnSelectCursos.add(mntmMusica);
-
-        JCheckBoxMenuItem mntmCiencia = new JCheckBoxMenuItem("🔬 Ciencia");
-        mnSelectCursos.add(mntmCiencia);
-
-        JCheckBoxMenuItem mntmEstudios = new JCheckBoxMenuItem("🎓 Estudios académicos");
-        mnSelectCursos.add(mntmEstudios);
+        for (JCheckBoxMenuItem curso : cursos) {
+            mnSelectCursos.add(curso);
+            curso.addItemListener(e -> {
+                if (curso.isSelected()) {
+                    if (seleccionados >= 3) {
+                        curso.setSelected(false);
+                    } else {
+                        seleccionados++;
+                    }
+                } else {
+                    seleccionados--;
+                }
+            });
+        };
     }
     
     private void manejarRegistro() {
@@ -246,12 +258,11 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		// No me funciona jope
-//		if (!nombre.matches("[a-zA-Z0-9]+@[a-zA-Z0-9.-]+.com")) {
-//			JOptionPane.showMessageDialog(null, "El dominio de correo no esta permitido.", "Error",
-//					JOptionPane.ERROR_MESSAGE);
-//			return;
-//		}
+		if (!correo.matches("[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|yahoo|protonmail|icloud)\\.(com|net|org|edu|gov)")) {
+			JOptionPane.showMessageDialog(null, "El dominio de correo no esta permitido.", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
 
 		if (!passwd1.equals(passwd2)) {
 			JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -267,9 +278,8 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 				ControladorUsuario.INSTANCE.setImagen(destinationFile.getAbsolutePath());
 			} else if (url != null) {
 				ControladorUsuario.INSTANCE.setImagen(url.toString());
-
-			}
-
+			}		
+			 ControladorUsuario.INSTANCE.setCursos(obtenerCursosSeleccionados());
 
 			JOptionPane.showMessageDialog(null, "Sus datos han sido guardados correctamente", "Conseguido",
 					JOptionPane.PLAIN_MESSAGE);
@@ -279,6 +289,16 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 		}
 
 	}
+    
+    private String[] obtenerCursosSeleccionados() {
+        StringBuilder seleccionadosText = new StringBuilder("Cursos seleccionados:\n");
+        for (JCheckBoxMenuItem curso : cursos) {
+            if (curso.isSelected()) {
+                seleccionadosText.append(curso.getText()).append("\n");
+            }
+        }
+        return seleccionadosText.toString().split("\n");
+    }
     
 	private boolean hasRequiredFields(String nombre, String nickname, String correo, String passwd1, String passwd2) {
 		return nombre.isEmpty() || nickname.isEmpty() || correo.isEmpty() || passwd1.isEmpty() || passwd2.isEmpty();

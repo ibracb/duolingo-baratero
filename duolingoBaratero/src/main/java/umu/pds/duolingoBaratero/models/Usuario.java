@@ -20,7 +20,6 @@ public class Usuario {
 	private List<CursoPlantilla> cursosCreados;
 	private Estadistica estadistica;
 
-
 	public Usuario(String nombre, String nickname, String correo, String passwd) {
 		this.nombre = nombre;
 		this.nickname = nickname;
@@ -49,7 +48,7 @@ public class Usuario {
 	public void setCursos(List<CursoEnProgreso> cursos) {
 		this.cursos = cursos;
 	}
-	
+
 	public List<CursoPlantilla> getCursosCreados() {
 		return cursosCreados;
 	}
@@ -105,7 +104,7 @@ public class Usuario {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	
+
 	public Set<Rol> getRoles() {
 		return roles;
 	}
@@ -113,7 +112,7 @@ public class Usuario {
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
 	}
-	
+
 	public Estadistica getEstadistica() {
 		return estadistica;
 	}
@@ -125,16 +124,36 @@ public class Usuario {
 	public boolean hasImage() {
 		return imagen != null;
 	}
-	
+
 	public boolean isAdministrador() {
 		return roles.contains(Rol.ADMINISTRADOR);
 	}
-	
+
 	public boolean isCreador() {
 		return roles.contains(Rol.CREADOR);
 	}
-	
+
 	public boolean isEstudiante() {
 		return roles.contains(Rol.ESTUDIANTE);
+	}
+
+	public double getPorcentajeAcierto() {
+		//return estadistica.getPorcentajeAciertos();
+		return 80.0;
+	}
+
+	public double getTiempoUso() {
+		//return estadistica.getTiempoUso();
+		return 6;
+	}
+
+	public int getRachaVictorias() {
+		//return estadistica.getRachaVictorias();
+		return 8;
+	}
+
+	public int getNumMaxAccesos() {
+		//return estadistica.getNumAccesos();
+		return 4;
 	}
 }

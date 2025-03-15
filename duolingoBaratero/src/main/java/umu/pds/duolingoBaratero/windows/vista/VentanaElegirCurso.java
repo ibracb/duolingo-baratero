@@ -32,6 +32,7 @@ public class VentanaElegirCurso extends JFrame {
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
 	private JList<CursoPlantilla> listaCursosCreados;
 	private VentanaPrincipal v;
+	private JComboBox<String> comboBoxMasUsados;
 
 	public VentanaElegirCurso(VentanaPrincipal v) {
 		this.v = v;
@@ -54,9 +55,9 @@ public class VentanaElegirCurso extends JFrame {
 		getContentPane().add(panelCentral, BorderLayout.CENTER);
 		GridBagLayout gbl_panelCentral = new GridBagLayout();
 		gbl_panelCentral.columnWidths = new int[] { 20, 0, 0, 20, 0 };
-		gbl_panelCentral.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_panelCentral.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 		gbl_panelCentral.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
-		gbl_panelCentral.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
+		gbl_panelCentral.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		panelCentral.setLayout(gbl_panelCentral);
 
 		textFieldNombre = new JTextField();
@@ -92,7 +93,7 @@ public class VentanaElegirCurso extends JFrame {
 		textFieldValoracion.setColumns(10);
 
 		String[] comboBoxOptiones = {"Más cursados", "Menos cursados"};
-		JComboBox<String> comboBoxMasUsados = new JComboBox<>(new DefaultComboBoxModel<>(comboBoxOptiones));
+		comboBoxMasUsados = new JComboBox<>(new DefaultComboBoxModel<>(comboBoxOptiones));
 
 		GridBagConstraints gbc_comboBoxMasUsados = new GridBagConstraints();
 		gbc_comboBoxMasUsados.insets = new Insets(0, 0, 5, 5);
@@ -100,6 +101,15 @@ public class VentanaElegirCurso extends JFrame {
 		gbc_comboBoxMasUsados.gridx = 2;
 		gbc_comboBoxMasUsados.gridy = 3;
 		panelCentral.add(comboBoxMasUsados, gbc_comboBoxMasUsados);
+		
+		JButton btnNewButton_1 = new JButton("Buscar");
+		btnNewButton_1.addActionListener(e -> buscarCursos());
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.anchor = GridBagConstraints.EAST;
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_1.gridx = 2;
+		gbc_btnNewButton_1.gridy = 4;
+		panelCentral.add(btnNewButton_1, gbc_btnNewButton_1);
 
 		JPanel panelCursosCreados = new JPanel(new BorderLayout()); // Establece BorderLayout
 		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -107,7 +117,7 @@ public class VentanaElegirCurso extends JFrame {
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH; // Permite que el panel crezca
 		gbc_panel.gridx = 1;
-		gbc_panel.gridy = 4;
+		gbc_panel.gridy = 5;
 		gbc_panel.weightx = 1.0; // Expande horizontalmente
 		gbc_panel.weighty = 1.0; // Expande verticalmente
 		panelCentral.add(panelCursosCreados, gbc_panel);
@@ -116,6 +126,9 @@ public class VentanaElegirCurso extends JFrame {
 		panelCursosCreados.add(labelCursosCreados, BorderLayout.NORTH);
 
 		modeloCursosCreados = new DefaultListModel<>();
+		for (CursoPlantilla curso : ControladorUsuario.INSTANCE.getCursosCreadosUsuarioActual()) {
+			modeloCursosCreados.addElement(curso);
+		}
 		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, "title", Nivel.AVANZADO, null));
 
 		listaCursosCreados = new JList<>(modeloCursosCreados);
@@ -129,6 +142,15 @@ public class VentanaElegirCurso extends JFrame {
 		panelCursosCreados.add(scrollPane, BorderLayout.CENTER);
 
 
+	}
+	
+	private void buscarCursos() {
+		String nombre, propietario, valoracion;
+		nombre = textFieldNombre.getText();
+		propietario = textFieldCreador.getText();
+		valoracion = textFieldValoracion.getText();
+		String orden = (String)comboBoxMasUsados.getSelectedItem();
+		
 	}
 
 	private void closeWindow() {
