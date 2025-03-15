@@ -15,7 +15,7 @@ public class FiltroCursosPorRangoValoraciones extends FiltroDecorador {
 	
 	@Override
 	public boolean test(CursoPlantilla curso) {
-		return curso.getValoracionMedia() <= cursoValoracionMinima && curso.getValoracionMedia() >= cursoValoracionMaxima
+		return curso.getValoracionMedia() >= cursoValoracionMinima && curso.getValoracionMedia() <= cursoValoracionMaxima
 				&& super.test(curso);
 	}
 }

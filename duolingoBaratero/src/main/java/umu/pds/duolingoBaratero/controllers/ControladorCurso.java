@@ -13,6 +13,7 @@ import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.services.ImageService;
 import umu.pds.duolingoBaratero.services.filters.FiltradorCursos;
+import umu.pds.duolingoBaratero.services.filters.FiltroCursos;
 
 public enum ControladorCurso {
 	INSTANCE;
@@ -48,10 +49,13 @@ public enum ControladorCurso {
 	
 	//------FILTROS--------
 	
+	public void setFiltroDecorador(FiltroCursos<CursoPlantilla> filtroDecorador) {
+		this.filtradorCursos = new FiltradorCursos<>(filtroDecorador);
+	}
+	
 	public List<CursoPlantilla> filtrar(List<CursoPlantilla> cursos) {
 		return filtradorCursos.filtrar(cursos);
 	}
-	
 	
 	//------RENDERIZACION PREGUNTAS--------
 	
