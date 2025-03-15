@@ -133,6 +133,7 @@ public class VentanaPregunta extends JFrame {
 				69696969);
 		preguntas[3] = new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿cual es la respuesta?", "Opción 2",
 				TipoPregunta.IMAGEN, opciones);
+		
 
 		int i = 0;
 		for (Pregunta pregunta : preguntas) {

@@ -4,10 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BarraProgresoPanel extends JPanel {
+	private static final int VALOR_INICIAL_PROGRESO = 0;
+	private static final int LIMITE_PROGRESO = 100;
+	private static final int INCREMENTO = 10;
     private JProgressBar progressBar;
-    private int progreso = 0;
+    private int progreso;
 
     public BarraProgresoPanel() {
+    	this.progreso = VALOR_INICIAL_PROGRESO;
         setLayout(new BorderLayout());
         progressBar = new JProgressBar(0, 100);
         progressBar.setValue(progreso);
@@ -18,7 +22,7 @@ public class BarraProgresoPanel extends JPanel {
     }
 
     public void avanzar() {
-        progreso += 10;
+        progreso += INCREMENTO;
         progressBar.setValue(progreso);
     }
 }

@@ -9,7 +9,9 @@ import java.util.stream.Collectors;
 
 public class BloqueContenido {
 	
+	public static final int NUMERO_DE_PREGUNTAS = 10;
 	private List<Pregunta> preguntas;
+	
 
 	public BloqueContenido(Pregunta...preguntas) {
 		Collections.addAll(this.preguntas, preguntas);

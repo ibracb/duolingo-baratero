@@ -5,87 +5,100 @@ import javax.swing.*;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class PanelPreguntaAudio extends JPanel {
 
-    private static final long serialVersionUID = 1L;
-    private JLabel lblPregunta;
-    private JLabel lblAudio;
-    private JButton btnReproducir;
-    private JRadioButton rdbtnNewRadioButton;
-    private JRadioButton rdbtnNewRadioButton_1;
-    private JRadioButton rdbtnNewRadioButton_2;
-    private PreguntaAudio pregunta;
+	private static final long serialVersionUID = 1L;
+	private JLabel lblPregunta;
+	private JToggleButton[] opciones; // Botones de imagen
+	private JLabel lblAudio;
+	private JButton btnReproducir;
+	private PreguntaAudio pregunta;
 
-    public PanelPreguntaAudio(PreguntaAudio pregunta) {
-    	this.pregunta=pregunta;
-    	inicializar();
-    }
+	public PanelPreguntaAudio(PreguntaAudio pregunta) {
+		this.pregunta = pregunta;
+		inicializar();
+	}
 
-    private void inicializar() {
-        setLayout(new GridBagLayout());
-        GridBagLayout gbl_panelCentral = new GridBagLayout();
-        gbl_panelCentral.columnWidths = new int[]{1, 205, 281, 200, 0};
-        gbl_panelCentral.rowHeights = new int[]{1, 0, 43, 0, 40, 39, 19, 0, 0};
-        gbl_panelCentral.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        gbl_panelCentral.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        setLayout(gbl_panelCentral);
+	private void inicializar() {
+		setLayout(new BorderLayout()); // Usamos BorderLayout para mejor distribución
 
-        JPanel panelAudio = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
-        lblAudio = new JLabel("Escucha el siguiente audio:");
-        lblAudio.setFont(new Font("Arial", Font.BOLD, 16));
+		// Panel contenedor para las preguntas e imágenes
+		JPanel panelCentral = new JPanel();
+		panelCentral.setLayout(new BoxLayout(panelCentral, BoxLayout.Y_AXIS));
+		
+		JPanel panelEscucha = new JPanel();
+		panelEscucha.setLayout(new FlowLayout());
 
-        btnReproducir = new JButton(new ImageIcon("src/main/resources/boton-de-play.png"));
-        btnReproducir.setPreferredSize(new Dimension(40, 30));
-        btnReproducir.addActionListener(e -> reproducirAudio());
+		// Etiqueta de la pregunta
+		lblPregunta = new JLabel("Escucha atentamente el audio y selecciona la opción correcta: ",
+				SwingConstants.CENTER);
+		lblPregunta.setFont(new Font("Arial", Font.BOLD, 18));
+		lblPregunta.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        panelAudio.add(lblAudio);
-        panelAudio.add(btnReproducir);
-        panelAudio.setAlignmentX(Component.CENTER_ALIGNMENT);
-        GridBagConstraints gbc_panelAudio = new GridBagConstraints();
-        gbc_panelAudio.insets = new Insets(0, 0, 5, 5);
-        gbc_panelAudio.gridx = 2;
-        gbc_panelAudio.gridy = 2;
-        add(panelAudio, gbc_panelAudio);
+		// Botón para reproducir el audio
+		JButton botonReproducir = new JButton("Reproducir"); // Añade el texto al botón
+		
+		// Añadir la etiqueta y el botón al panel
+		panelEscucha.add(lblPregunta);
+		panelEscucha.add(botonReproducir);
 
+		// Añadir el panelEscucha a tu panel principal
+		panelCentral.add(panelEscucha);
 
-        lblPregunta = new JLabel(pregunta.getPregunta(), SwingConstants.CENTER);
-        lblPregunta.setFont(new Font("Arial", Font.BOLD, 16));
-        lblPregunta.setAlignmentX(Component.CENTER_ALIGNMENT);
-        GridBagConstraints gbc_lblPregunta = new GridBagConstraints();
-        gbc_lblPregunta.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPregunta.gridx = 2;
-        gbc_lblPregunta.gridy = 4;
-        add(lblPregunta, gbc_lblPregunta);
+		// Panel para las opciones
+		JPanel panelOpciones = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = GridBagConstraints.RELATIVE;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.weightx = 1.0;
+		gbc.weighty = 1.0;
+		gbc.insets = new Insets(5, 20, 5, 20);
 
-        ButtonGroup grupoOpciones = new ButtonGroup();
-        rdbtnNewRadioButton = new JRadioButton(pregunta.getOpciones()[0]);
-        GridBagConstraints gbc_rdbtnNewRadioButton = new GridBagConstraints();
-        gbc_rdbtnNewRadioButton.insets = new Insets(0, 0, 5, 5);
-        gbc_rdbtnNewRadioButton.gridx = 2;
-        gbc_rdbtnNewRadioButton.gridy = 5;
-        add(rdbtnNewRadioButton, gbc_rdbtnNewRadioButton);
+		opciones = new JToggleButton[3];
+		ButtonGroup grupoOpciones = new ButtonGroup();
 
-        rdbtnNewRadioButton_1 = new JRadioButton("Opcion 2");
-        GridBagConstraints gbc_rdbtnNewRadioButton_1 = new GridBagConstraints();
-        gbc_rdbtnNewRadioButton_1.insets = new Insets(0, 0, 5, 5);
-        gbc_rdbtnNewRadioButton_1.gridx = 2;
-        gbc_rdbtnNewRadioButton_1.gridy = 6;
-        add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);
+		for (int i = 0; i < 3; i++) {
+			opciones[i] = new JToggleButton(pregunta.getOpciones()[i]);
+			opciones[i].setFont(new Font("Arial", Font.PLAIN, 16));
+			grupoOpciones.add(opciones[i]);
 
-        rdbtnNewRadioButton_2 = new JRadioButton("Opcion 3");
-        GridBagConstraints gbc_rdbtnNewRadioButton_2 = new GridBagConstraints();
-        gbc_rdbtnNewRadioButton_2.insets = new Insets(0, 0, 0, 5);
-        gbc_rdbtnNewRadioButton_2.gridx = 2;
-        gbc_rdbtnNewRadioButton_2.gridy = 7;
-        add(rdbtnNewRadioButton_2, gbc_rdbtnNewRadioButton_2);
+			// Escuchar cambios de tamaño en los botones
+			opciones[i].addComponentListener(new ComponentAdapter() {
+				@Override
+				public void componentResized(ComponentEvent e) {
+					ajustarTamañoFuentePregunta();
+					ajustarTamañoFuenteBotones((JToggleButton) e.getComponent());
+				}
+			});
 
-        grupoOpciones.add(rdbtnNewRadioButton);
-        grupoOpciones.add(rdbtnNewRadioButton_1);
-        grupoOpciones.add(rdbtnNewRadioButton_2);
-    }
+			panelOpciones.add(opciones[i], gbc);
+		}
 
-    private void reproducirAudio() {
-        System.out.println("Reproduciendo audio...");
-    }
+		// Agregar elementos al panel principal
+		panelCentral.add(panelOpciones);
+		add(panelCentral, BorderLayout.CENTER);
+	}
+
+	// Método para ajustar el tamaño de la fuente de la pregunta dinámicamente
+	private void ajustarTamañoFuentePregunta() {
+		int altura = lblPregunta.getHeight();
+		int tamañoFuente = Math.max(18, altura / 10); // Ajuste dinámico
+		lblPregunta.setFont(new Font("Arial", Font.BOLD, tamañoFuente));
+	}
+
+	// Método para ajustar el tamaño de la fuente de los botones dinámicamente
+	private void ajustarTamañoFuenteBotones(JToggleButton boton) {
+		int altura = boton.getHeight();
+		// Establecer un tamaño máximo para la fuente de las opciones
+		int tamañoFuente = Math.max(14, Math.min(altura / 4, 20)); // No excede el tamaño máximo de 20px
+		boton.setFont(new Font("Arial", Font.PLAIN, tamañoFuente));
+	}
+
+	private void reproducirAudio() {
+		System.out.println("Reproduciendo audio...");
+	}
 }
