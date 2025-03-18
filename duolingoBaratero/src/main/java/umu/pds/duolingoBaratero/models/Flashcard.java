@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
 
 public class Flashcard extends Pregunta {
-
+	private static final String ACIERTO = "acierto";
 	private int tiempoLimite; // Ahora mismo es adaptable a cada pregutna pero si nos complica mucho la vida
 								// podriamos hacer fijo para todas
 
@@ -19,6 +19,12 @@ public class Flashcard extends Pregunta {
 	public JPanel crearPanel() {
 		return new PanelFlashcard(this);
 	}
+	
+	@Override
+	public boolean esRespuestaCorrecta(String respuestaUsuario) {
+		// TODO Auto-generated method stub
+		return respuestaUsuario.equals(ACIERTO);
+	}
 
 	public int getTiempoLimite() {
 		return tiempoLimite;
@@ -27,5 +33,7 @@ public class Flashcard extends Pregunta {
 	public void setTiempoLimite(int tiempoLimite) {
 		this.tiempoLimite = tiempoLimite;
 	}
+	
+	
 
 }

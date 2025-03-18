@@ -20,7 +20,9 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	
 	public abstract JPanel crearPanel();  // Método abstracto para crear el panel
 	
-
+	public boolean esRespuestaCorrecta(String respuestaUsuario) {
+		return respuestaCorrecta.equals(respuestaUsuario);
+	}
 	public Nivel getNivel() {
 		return nivel;
 	}

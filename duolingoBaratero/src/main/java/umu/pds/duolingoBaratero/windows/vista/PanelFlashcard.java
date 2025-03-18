@@ -8,13 +8,16 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import umu.pds.duolingoBaratero.models.Flashcard;
+import umu.pds.duolingoBaratero.models.PreguntaOpciones;
+import umu.pds.duolingoBaratero.services.RespuestaPanel;
 
-public class PanelFlashcard extends JPanel {
+public class PanelFlashcard extends JPanel implements RespuestaPanel {
 
 	private JLabel label;
 	private JButton button;
 	private boolean mostrandoRespuesta = false;
 	private Flashcard pregunta;
+	private String respuestaUsuario;
 
 	
 	public PanelFlashcard(Flashcard pregunta) {
@@ -46,5 +49,20 @@ public class PanelFlashcard extends JPanel {
 	        add(label, BorderLayout.CENTER);
 	        add(button, BorderLayout.SOUTH);
 	    }
+	
+	@Override
+	public String getRespuestaUsuario() {
+		return respuestaUsuario;
+	}
+	@Override
+	public boolean isOpcionElegida() {
+		return respuestaUsuario != null;
+	}
+	
+	@Override
+	public Flashcard getPregunta() {
+		return pregunta;
+	}
+
 
 }

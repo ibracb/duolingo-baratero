@@ -16,21 +16,21 @@ import javax.swing.JPanel;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
+import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.services.ImageService;
-import umu.pds.duolingoBaratero.services.filters.FiltradorCursos;
 import umu.pds.duolingoBaratero.services.filters.Filtro;
 
 public enum ControladorCurso {
 	INSTANCE;
 	
 	private ImageService sevicioImagenes;
-	private FiltradorCursos<CursoPlantilla> filtradorCursos;
+//	private FiltradorCursos<CursoPlantilla> filtradorCursos;
 
 	private ControladorCurso() {
 		this.sevicioImagenes = new ImageService();
-		this.filtradorCursos = new FiltradorCursos<>();
+//		this.filtradorCursos = new FiltradorCursos<>();
 	}
 	
 	public boolean isCursoNuevo(CursoEnProgreso curso) {
@@ -64,10 +64,10 @@ public enum ControladorCurso {
 		return cursoEnProgreso;
 	}
 	
-	public List<CursoPlantilla> getAllCourses(String nombre, String propietario, String valoracion, String orden){
-		Filtro filtro = new FiltroCursos();
-	}
-	
+//	public List<CursoPlantilla> getAllCourses(String nombre, String propietario, String valoracion, String orden){
+//		Filtro filtro = new FiltroCursos();
+//	}
+//	
 	// ----------------------------------------------
 	// Funciones imagenes
 	// ----------------------------------------------
@@ -109,14 +109,14 @@ public enum ControladorCurso {
 	
 	
 	//------FILTROS--------
-	
-	public void setFiltroDecorador(Filtro<CursoPlantilla> filtroDecorador) {
-		this.filtradorCursos = new FiltradorCursos<>(filtroDecorador);
-	}
-	
-	public List<CursoPlantilla> filtrar(List<CursoPlantilla> cursos) {
-		return filtradorCursos.filtrar(cursos);
-	}
+//	
+//	public void setFiltroDecorador(Filtro<CursoPlantilla> filtroDecorador) {
+//		this.filtradorCursos = new FiltradorCursos<>(filtroDecorador);
+//	}
+//	
+//	public List<CursoPlantilla> filtrar(List<CursoPlantilla> cursos) {
+//		return filtradorCursos.filtrar(cursos);
+//	}
 	
 	//------RENDERIZACION PREGUNTAS--------
 	
@@ -146,6 +146,18 @@ public enum ControladorCurso {
 			curso.setImagen(imagen);
 		}
 		
+	}
+	
+	//------Procesamiento preguntas y respuestas----------
+	
+	public void procesarRespuesta(Pregunta pregunta, String respuestaUsuario) {
+		// TODO Si la respuesta es correcta 
+		// Hacer algo si es falsa hacer algo
+		
+		if (pregunta.esRespuestaCorrecta(respuestaUsuario)) {
+			
+		}
+		return;
 	}
 
 }

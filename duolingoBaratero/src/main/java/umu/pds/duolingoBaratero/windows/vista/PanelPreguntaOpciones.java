@@ -4,15 +4,17 @@ import javax.swing.*;
 
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
+import umu.pds.duolingoBaratero.services.RespuestaPanel;
 
 import java.awt.*;
 
-public class PanelPreguntaOpciones extends JPanel {
+public class PanelPreguntaOpciones extends JPanel implements RespuestaPanel {
 
     private static final long serialVersionUID = 1L;
     private JLabel lblPregunta;
     private JLabel lblAudio;
     private PreguntaOpciones pregunta;
+	private String respuestaUsuario;
 
     public PanelPreguntaOpciones(PreguntaOpciones pregunta) {
         this.pregunta = pregunta;
@@ -94,5 +96,20 @@ public class PanelPreguntaOpciones extends JPanel {
             });
         }
     }
+    
+	@Override
+	public String getRespuestaUsuario() {
+		return respuestaUsuario;
+	}
+	@Override
+	public boolean isOpcionElegida() {
+		return respuestaUsuario != null;
+	}
+	
+	@Override
+	public PreguntaOpciones getPregunta() {
+		return pregunta;
+	}
+
 
 }

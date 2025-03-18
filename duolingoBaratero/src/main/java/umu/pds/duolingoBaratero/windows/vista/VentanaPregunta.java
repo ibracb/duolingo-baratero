@@ -16,18 +16,21 @@ import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
+import umu.pds.duolingoBaratero.services.RespuestaPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
 
 public class VentanaPregunta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private ControladorCurso controlador;
 	private JPanel contentPane;
+	private JPanel[] paneles;
 	private BarraProgresoPanel barraProgreso;
 	private BarraSuperiorPreguntas barraSuperior;
 	private JButton btnSiguiente, btnSaltar;
 	private Component horizontalGlue;
-	private int currentPanel = 1;
+	private int currentPanel = 0;
 	private long bloqueContenido;
 
 	/**
@@ -38,6 +41,9 @@ public class VentanaPregunta extends JFrame {
 			public void run() {
 				try {
 					VentanaPregunta frame = new VentanaPregunta(69);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximiza la ventana
+					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Asegúrate de que la ventana cierre
+																			// correctamente
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +62,7 @@ public class VentanaPregunta extends JFrame {
 	 */
 	public void inicializar() {
 
-		ControladorCurso controlador = ControladorCurso.INSTANCE; // Controlador
+		controlador = ControladorCurso.INSTANCE; // Controlador
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 772, 482);
@@ -80,31 +86,41 @@ public class VentanaPregunta extends JFrame {
 		CardLayout cardLayout = (CardLayout) panelCentral.getLayout();
 
 		// -------Futura funcionalidad real------- NO BORRAR
-		//JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
-		JPanel[] paneles = this.getPaneles();
+		// JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
+		paneles = this.getPaneles();
 		panelCentral.add(paneles[0], "panel1");
 		panelCentral.add(paneles[1], "panel2");
 		panelCentral.add(paneles[2], "panel3");
 		panelCentral.add(paneles[3], "panel4");
 
-
 		// Panel para los botones de acción
 		JPanel panelBotones = new JPanel(new FlowLayout());
-		btnSiguiente = new JButton("siguiente");
+		btnSiguiente = new JButton("Siguiente");
 		btnSiguiente.setBackground(new Color(0, 255, 0));
+		btnSiguiente.setPreferredSize(new Dimension(100, 30)); // Ajusta el tamaño del botón
 
+		// TODO: Cambiar esto por un metodo
 		btnSiguiente.addActionListener(e -> {
+			RespuestaPanel panel = (RespuestaPanel) paneles[currentPanel];
+			if (panel.isOpcionElegida()) {
+				controlador.procesarRespuesta(panel.getPregunta(), panel.getRespuestaUsuario());
+				barraProgreso.avanzar();
+				currentPanel = (currentPanel % 4) + 1; // Ciclo entre 1 y 4
+				cardLayout.show(panelCentral, "panel" + currentPanel);
 
-			barraProgreso.avanzar();
-			currentPanel = (currentPanel % 4) + 1; // Ciclo entre 1 y 4
-			cardLayout.show(panelCentral, "panel" + currentPanel);
+			} else {
+				JOptionPane.showMessageDialog(this, "Debe elegir una opción o saltar para ir a la siguiente pregunta.",
+						"Error", JOptionPane.ERROR_MESSAGE);
+
+			}
 
 		});
 
 		contentPane.add(panelCentral, BorderLayout.CENTER); // **Agregarlo al centro**
 
 		btnSaltar = new JButton("Saltar");
-		btnSaltar.setBackground(new Color(255, 165, 0));
+		btnSaltar.setBackground(new Color(255, 140, 0));
+		btnSaltar.setPreferredSize(new Dimension(100, 30)); // Ajusta el tamaño del botón
 		panelBotones.add(btnSaltar);
 
 		horizontalGlue = Box.createHorizontalGlue();
@@ -118,7 +134,7 @@ public class VentanaPregunta extends JFrame {
 	}
 
 	// --------METODO DE PRUEBA --------------
-	private  JPanel[] getPaneles() {
+	private JPanel[] getPaneles() {
 
 		JPanel[] paneles = new JPanel[4];
 
@@ -133,7 +149,6 @@ public class VentanaPregunta extends JFrame {
 				69696969);
 		preguntas[3] = new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿cual es la respuesta?", "Opción 2",
 				TipoPregunta.IMAGEN, opciones);
-		
 
 		int i = 0;
 		for (Pregunta pregunta : preguntas) {
