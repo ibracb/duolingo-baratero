@@ -103,7 +103,12 @@ public class VentanaPregunta extends JFrame {
 		btnSiguiente.addActionListener(e -> {
 			RespuestaPanel panel = (RespuestaPanel) paneles[currentPanel];
 			if (panel.isOpcionElegida()) {
-				controlador.procesarRespuesta(panel.getPregunta(), panel.getRespuestaUsuario());
+				if (controlador.procesarRespuesta(panel.getPregunta(), panel.getRespuestaUsuario())) {
+					 mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
+					 mostrarMensaje("Incorrecto, intenta de nuevo.", JOptionPane.ERROR_MESSAGE);
+				}
 				barraProgreso.avanzar();
 				currentPanel = (currentPanel % 4) + 1; // Ciclo entre 1 y 4
 				cardLayout.show(panelCentral, "panel" + currentPanel);
@@ -132,6 +137,25 @@ public class VentanaPregunta extends JFrame {
 		setLocationRelativeTo(null);
 
 	}
+	
+    public static void mostrarMensaje(String mensaje, int tipoMensaje) {
+        // Mostrar el JOptionPane
+        JOptionPane optionPane = new JOptionPane(mensaje, tipoMensaje);
+        JDialog dialog = optionPane.createDialog("Respuesta");
+        dialog.setModal(false); // Para que no bloquee la interfaz
+
+        // Crear el Timer para cerrar el JOptionPane después de 2 segundos
+        Timer timer = new Timer(1500, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.dispose(); // Cerrar el JOptionPane
+            }
+        });
+        
+        timer.setRepeats(false);  // Solo ejecuta una vez
+        timer.start();            // Iniciar el Timer
+
+        dialog.setVisible(true);  // Mostrar el diálogo
+    }
 
 	// --------METODO DE PRUEBA --------------
 	private JPanel[] getPaneles() {

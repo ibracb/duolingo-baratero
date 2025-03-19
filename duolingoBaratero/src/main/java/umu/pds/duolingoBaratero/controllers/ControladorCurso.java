@@ -150,14 +150,14 @@ public enum ControladorCurso {
 	
 	//------Procesamiento preguntas y respuestas----------
 	
-	public void procesarRespuesta(Pregunta pregunta, String respuestaUsuario) {
+	public boolean procesarRespuesta(Pregunta pregunta, String respuestaUsuario) {
 		// TODO Si la respuesta es correcta 
 		// Hacer algo si es falsa hacer algo
 		
 		if (pregunta.esRespuestaCorrecta(respuestaUsuario)) {
 			
 		}
-		return;
+		return true;
 	}
 
 }
