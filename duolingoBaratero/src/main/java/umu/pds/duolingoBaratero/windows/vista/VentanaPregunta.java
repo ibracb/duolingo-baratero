@@ -114,7 +114,7 @@ public class VentanaPregunta extends JFrame {
 				if (respuestaCorrecta) {
 					Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					Constantes.mostrarMensaje("Incorrecto, intenta de nuevo.", JOptionPane.ERROR_MESSAGE);
+					Constantes.mostrarMensaje("Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(), JOptionPane.ERROR_MESSAGE);
 				}
 				barraProgreso.avanzar(respuestaCorrecta);
 				avanzarPregunta();
@@ -134,6 +134,7 @@ public class VentanaPregunta extends JFrame {
 		btnSaltar.setPreferredSize(new Dimension(100, 30)); // Ajusta el tamaño del botón
 
 		btnSaltar.addActionListener(e -> {
+			barraProgreso.avanzar(null);
 			avanzarPregunta();
 		});
 

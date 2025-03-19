@@ -12,6 +12,7 @@ public class PanelPreguntaOpciones extends JPanel implements RespuestaPanel {
 
     private static final long serialVersionUID = 1L;
     private JLabel lblPregunta;
+    private JToggleButton[] opciones; // Botones de imagen
     private JLabel lblAudio;
     private PreguntaOpciones pregunta;
 	private String respuestaUsuario;
@@ -22,80 +23,58 @@ public class PanelPreguntaOpciones extends JPanel implements RespuestaPanel {
     }
     
 
-    public void inicializar() {
-        setLayout(new GridBagLayout());
-        GridBagLayout gbl_panelCentral = new GridBagLayout();
-        gbl_panelCentral.columnWidths = new int[]{1, 205, 281, 200, 0};
-        gbl_panelCentral.rowHeights = new int[]{1, 0, 43, 0, 40, 39, 19, 0, 0};
-        gbl_panelCentral.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        gbl_panelCentral.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        setLayout(gbl_panelCentral);
+	private void inicializar() {
+		setLayout(new BorderLayout()); // Usamos BorderLayout para mejor distribución
 
-        JPanel panelAudio = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
-        lblAudio = new JLabel("Completa el espacio en blanco con una de las siguientes palabras");
-        lblAudio.setFont(new Font("Arial", Font.BOLD, 16));
+		// Panel contenedor para las preguntas e imágenes
+		JPanel panelCentral = new JPanel();
+		panelCentral.setLayout(new BoxLayout(panelCentral, BoxLayout.Y_AXIS));
 
-        panelAudio.add(lblAudio);
-        panelAudio.setAlignmentX(Component.CENTER_ALIGNMENT);
-        GridBagConstraints gbc_panelAudio = new GridBagConstraints();
-        gbc_panelAudio.insets = new Insets(0, 0, 5, 5);
-        gbc_panelAudio.gridx = 2;
-        gbc_panelAudio.gridy = 2;
-        add(panelAudio, gbc_panelAudio);
+		JPanel panelPregunta = new JPanel();
+		panelPregunta.setBorder(BorderFactory.createEmptyBorder(40, 0, 0, 0));  // 20 píxeles de margen arriba
+		panelPregunta.setLayout(new FlowLayout());
 
-     // Pregunta
-        lblPregunta = new JLabel(pregunta.getPregunta(), SwingConstants.CENTER);
-        lblPregunta.setFont(new Font("Arial", Font.BOLD, 16));
-        lblPregunta.setAlignmentX(Component.CENTER_ALIGNMENT);
-        GridBagConstraints gbc_lblPregunta = new GridBagConstraints();
-        gbc_lblPregunta.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPregunta.gridx = 2;
-        gbc_lblPregunta.gridy = 4;
-        add(lblPregunta, gbc_lblPregunta);
+		// Etiqueta de la pregunta
+		lblPregunta = new JLabel(pregunta.getPregunta(),
+				SwingConstants.CENTER);
+		lblPregunta.setFont(new Font("Arial", Font.BOLD, 24));
+		lblPregunta.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        
-        // Opciones como etiquetas esto deberia hacerse como un bucle pero el window builder no lo pilla
-        JLabel opcion1 = new JLabel(pregunta.getOpciones()[0]);
-        JLabel opcion2 = new JLabel(pregunta.getOpciones()[1]);  // Opción correcta
-        JLabel opcion3 = new JLabel(pregunta.getOpciones()[2]);
+		// Añadir la etiqueta y el botón al panel
+		panelPregunta.add(lblPregunta);
 
-        JLabel[] opciones = {opcion1, opcion2, opcion3};
+		// Añadir el panelEscucha a tu panel principal
+		panelCentral.add(panelPregunta);
 
-        GridBagConstraints gbc_opcion1 = new GridBagConstraints();
-        gbc_opcion1.insets = new Insets(0, 0, 5, 5);
-        gbc_opcion1.gridx = 2;
-        gbc_opcion1.gridy = 5;
-        add(opcion1, gbc_opcion1);
+		// Panel para las opciones
+		JPanel panelOpciones = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = GridBagConstraints.RELATIVE;
+		gbc.fill = GridBagConstraints.NONE; // Evita que los botones se expandan demasiado en altura
+		gbc.insets = new Insets(10, 20, 15, 20);
 
-        GridBagConstraints gbc_opcion2 = new GridBagConstraints();
-        gbc_opcion2.insets = new Insets(0, 0, 5, 5);
-        gbc_opcion2.gridx = 2;
-        gbc_opcion2.gridy = 6;
-        add(opcion2, gbc_opcion2);
+		opciones = new JToggleButton[3];
+		ButtonGroup grupoOpciones = new ButtonGroup();
 
-        GridBagConstraints gbc_opcion3 = new GridBagConstraints();
-        gbc_opcion3.insets = new Insets(0, 0, 0, 5);
-        gbc_opcion3.gridx = 2;
-        gbc_opcion3.gridy = 7;
-        add(opcion3, gbc_opcion3);
+		for (int i = 0; i < 3; i++) {
+			opciones[i] = new JToggleButton(pregunta.getOpciones()[i]);
+			opciones[i].setFont(new Font("Arial", Font.PLAIN, 16));
 
-        // Listener para seleccionar solo una opción
-        for (JLabel opcion : opciones) {
-            opcion.setFont(new Font("Arial", Font.PLAIN, 14));
-            opcion.setOpaque(true);
-            opcion.setBackground(Color.LIGHT_GRAY);
-            opcion.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			opciones[i].setMinimumSize(new Dimension(100, 50)); // Tamaño mínimo
+			opciones[i].setPreferredSize(new Dimension(450, 170)); // Tamaño fijo
+			opciones[i].setMaximumSize(new Dimension(500, 170)); // Tamaño máximo
+			grupoOpciones.add(opciones[i]);
+			panelOpciones.add(opciones[i], gbc);
+			
+			int index = i;
+			opciones[i].addActionListener(e -> {respuestaUsuario = opciones[index].getText();} );
+		}
 
-            opcion.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    for (JLabel opt : opciones) {
-                        opt.setBackground(Color.LIGHT_GRAY); // Des-seleccionar todas
-                    }
-                    opcion.setBackground(Color.YELLOW); // Marcar la opción seleccionada
-                }
-            });
-        }
-    }
+		// Agregar elementos al panel principal
+		panelCentral.add(panelOpciones);
+		add(panelCentral, BorderLayout.CENTER);
+	}
     
 	@Override
 	public String getRespuestaUsuario() {
