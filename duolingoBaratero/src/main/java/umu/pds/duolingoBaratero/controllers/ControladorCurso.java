@@ -153,11 +153,11 @@ public enum ControladorCurso {
 	public boolean procesarRespuesta(Pregunta pregunta, String respuestaUsuario) {
 		// TODO Si la respuesta es correcta 
 		// Hacer algo si es falsa hacer algo
-		
-		if (pregunta.esRespuestaCorrecta(respuestaUsuario)) {
+		boolean respuestaCorrecta = pregunta.esRespuestaCorrecta(respuestaUsuario);
+		if (respuestaCorrecta) {
 			
 		}
-		return true;
+		return respuestaCorrecta;
 	}
 
 }

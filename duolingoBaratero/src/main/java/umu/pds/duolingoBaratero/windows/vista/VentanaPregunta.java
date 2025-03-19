@@ -19,18 +19,22 @@ import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.services.RespuestaPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
+import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 public class VentanaPregunta extends JFrame {
-
+	private static final int PANEL_Y_PUNTUCAION_INICIAL = 0;
 	private static final long serialVersionUID = 1L;
 	private ControladorCurso controlador;
 	private JPanel contentPane;
+	private JPanel panelCentral;
 	private JPanel[] paneles;
+	private CardLayout cardLayout;
 	private BarraProgresoPanel barraProgreso;
 	private BarraSuperiorPreguntas barraSuperior;
 	private JButton btnSiguiente, btnSaltar;
 	private Component horizontalGlue;
-	private int currentPanel = 0;
+	private int currentPanel;
+	private int puntuacion;
 	private long bloqueContenido;
 
 	/**
@@ -54,6 +58,8 @@ public class VentanaPregunta extends JFrame {
 
 	public VentanaPregunta(long bloqueContenido) {
 		this.bloqueContenido = bloqueContenido;
+		currentPanel = PANEL_Y_PUNTUCAION_INICIAL;
+		puntuacion = PANEL_Y_PUNTUCAION_INICIAL;
 		inicializar();
 	}
 
@@ -82,36 +88,36 @@ public class VentanaPregunta extends JFrame {
 
 		contentPane.add(panelSuperior, BorderLayout.NORTH);
 
-		JPanel panelCentral = new JPanel(new CardLayout());
-		CardLayout cardLayout = (CardLayout) panelCentral.getLayout();
+		panelCentral = new JPanel(new CardLayout());
+		cardLayout = (CardLayout) panelCentral.getLayout();
 
 		// -------Futura funcionalidad real------- NO BORRAR
 		// JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
 		paneles = this.getPaneles();
-		panelCentral.add(paneles[0], "panel1");
-		panelCentral.add(paneles[1], "panel2");
-		panelCentral.add(paneles[2], "panel3");
-		panelCentral.add(paneles[3], "panel4");
+		panelCentral.add(paneles[0], "panel0");
+		panelCentral.add(paneles[1], "panel1");
+		panelCentral.add(paneles[2], "panel2");
+		panelCentral.add(paneles[3], "panel3");
 
 		// Panel para los botones de acción
 		JPanel panelBotones = new JPanel(new FlowLayout());
 		btnSiguiente = new JButton("Siguiente");
 		btnSiguiente.setBackground(new Color(0, 255, 0));
-		btnSiguiente.setPreferredSize(new Dimension(100, 30)); // Ajusta el tamaño del botón
+		btnSiguiente.setPreferredSize(new Dimension(100, 30));
 
 		// TODO: Cambiar esto por un metodo
 		btnSiguiente.addActionListener(e -> {
 			RespuestaPanel panel = (RespuestaPanel) paneles[currentPanel];
 			if (panel.isOpcionElegida()) {
-				if (controlador.procesarRespuesta(panel.getPregunta(), panel.getRespuestaUsuario())) {
-					 mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
+				boolean respuestaCorrecta = controlador.procesarRespuesta(panel.getPregunta(),
+						panel.getRespuestaUsuario());
+				if (respuestaCorrecta) {
+					Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					Constantes.mostrarMensaje("Incorrecto, intenta de nuevo.", JOptionPane.ERROR_MESSAGE);
 				}
-				else {
-					 mostrarMensaje("Incorrecto, intenta de nuevo.", JOptionPane.ERROR_MESSAGE);
-				}
-				barraProgreso.avanzar();
-				currentPanel = (currentPanel % 4) + 1; // Ciclo entre 1 y 4
-				cardLayout.show(panelCentral, "panel" + currentPanel);
+				barraProgreso.avanzar(respuestaCorrecta);
+				avanzarPregunta();
 
 			} else {
 				JOptionPane.showMessageDialog(this, "Debe elegir una opción o saltar para ir a la siguiente pregunta.",
@@ -126,6 +132,11 @@ public class VentanaPregunta extends JFrame {
 		btnSaltar = new JButton("Saltar");
 		btnSaltar.setBackground(new Color(255, 140, 0));
 		btnSaltar.setPreferredSize(new Dimension(100, 30)); // Ajusta el tamaño del botón
+
+		btnSaltar.addActionListener(e -> {
+			avanzarPregunta();
+		});
+
 		panelBotones.add(btnSaltar);
 
 		horizontalGlue = Box.createHorizontalGlue();
@@ -137,25 +148,16 @@ public class VentanaPregunta extends JFrame {
 		setLocationRelativeTo(null);
 
 	}
-	
-    public static void mostrarMensaje(String mensaje, int tipoMensaje) {
-        // Mostrar el JOptionPane
-        JOptionPane optionPane = new JOptionPane(mensaje, tipoMensaje);
-        JDialog dialog = optionPane.createDialog("Respuesta");
-        dialog.setModal(false); // Para que no bloquee la interfaz
 
-        // Crear el Timer para cerrar el JOptionPane después de 2 segundos
-        Timer timer = new Timer(1500, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dialog.dispose(); // Cerrar el JOptionPane
-            }
-        });
-        
-        timer.setRepeats(false);  // Solo ejecuta una vez
-        timer.start();            // Iniciar el Timer
+	private void avanzarPregunta() {
+		if (currentPanel < Constantes.PREGUNTAS_POR_BLOQUE - 1) {
+			currentPanel++;
+			cardLayout.show(panelCentral, "panel" + currentPanel);
+		} else {
+			new DialogoFinal(this, puntuacion).setVisible(true);
+		}
 
-        dialog.setVisible(true);  // Mostrar el diálogo
-    }
+	}
 
 	// --------METODO DE PRUEBA --------------
 	private JPanel[] getPaneles() {
@@ -183,4 +185,37 @@ public class VentanaPregunta extends JFrame {
 		return paneles;
 	}
 
+	public class DialogoFinal extends JDialog {
+		public DialogoFinal(JFrame ventanaPregunta, int puntuacion) {
+			super(ventanaPregunta, "Juego Completado", true); // Modal
+			setSize(300, 150);
+			setLocationRelativeTo(ventanaPregunta); // Centrar sobre la ventana principal
+			setLayout(new BorderLayout());
+
+			// Mensaje de resultado
+			JLabel mensaje = new JLabel("¡Juego terminado! Puntuación: " + puntuacion, JLabel.CENTER);
+			add(mensaje, BorderLayout.CENTER);
+
+			// Botones
+			JPanel panelBotones = new JPanel();
+			JButton btnRepetir = new JButton("Repetir");
+			JButton btnSalir = new JButton("Salir");
+
+			// Acción para repetir
+			btnRepetir.addActionListener(e -> {
+				setVisible(false); // Cierra el diálogo
+				// Aquí puedes reiniciar el juego, llamando a un método de la ventana principal
+			});
+
+			// Acción para salir
+			btnSalir.addActionListener(e -> {
+				dispose();
+				ventanaPregunta.dispose();
+			});
+
+			panelBotones.add(btnRepetir);
+			panelBotones.add(btnSalir);
+			add(panelBotones, BorderLayout.SOUTH);
+		}
+	}
 }
