@@ -1,13 +1,26 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
+
+import umu.pds.duolingoBaratero.controllers.ControladorAudio;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.services.RespuestaPanel;
-
-import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class PanelPreguntaAudio extends JPanel implements RespuestaPanel{
 
@@ -43,7 +56,8 @@ public class PanelPreguntaAudio extends JPanel implements RespuestaPanel{
 	
 		// Botón para reproducir el audio
 		btnReproducir = new JButton("Reproducir"); // Añade el texto al botón
-
+		btnReproducir.addActionListener(e -> reproducirAudio());
+		
 		// Añadir la etiqueta y el botón al panel
 		panelEscucha.add(lblPregunta);
 		panelEscucha.add(btnReproducir);
@@ -106,6 +120,6 @@ public class PanelPreguntaAudio extends JPanel implements RespuestaPanel{
 	}
 
 	private void reproducirAudio() {
-		System.out.println("Reproduciendo audio...");
+		ControladorAudio.INSTANCE.playAudio(pregunta.getRutaAudio());
 	}
 }

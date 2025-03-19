@@ -36,7 +36,7 @@ public class TestPreguntasVistas {
 		String[] opciones = { "Opción 1", "Opción 2", "Opción 3" };
 		Pregunta[] preguntas = new Pregunta[4]; // Array de tamaño 5, pero vacío
 
-		preguntas[0] = new PreguntaAudio(Nivel.INTERMEDIO, 1, "¿Qué sonido se escucha?", "Opción 2", TipoPregunta.AUDIO,
+		preguntas[0] = new PreguntaAudio(Nivel.INTERMEDIO, 1, "¿Qué sonido se escucha?", "Opción 2",
 				opciones, "ruta/al/archivo/audio.mp3");
 		preguntas[1] = new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿cual es la respuesta?", "Opción 2",
 				TipoPregunta.OPCIONES, opciones);

@@ -9,9 +9,8 @@ public class PreguntaAudio extends Pregunta {
 	private String[] opciones;
 	private String rutaAudio;
 
-	public PreguntaAudio(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo,
-			String[] opciones, String rutaAudio) {
-		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
+	public PreguntaAudio(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, String[] opciones, String rutaAudio) {
+		super(nivel, numero, pregunta, respuestaCorrecta, TipoPregunta.AUDIO);
 		this.opciones = opciones;
 		this.rutaAudio = rutaAudio;
 	}
