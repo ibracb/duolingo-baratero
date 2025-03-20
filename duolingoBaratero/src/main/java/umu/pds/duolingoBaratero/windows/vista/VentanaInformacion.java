@@ -28,7 +28,7 @@ public class VentanaInformacion extends JFrame {
 		panelSuperior.add(lblTitulo, BorderLayout.NORTH);
 
 		// Cargar la imagen del curso
-		ImageIcon iconoCurso = new ImageIcon(getClass().getResource("/" + curso.getNombre() + ".png"));
+		ImageIcon iconoCurso = new ImageIcon(getClass().getResource("/"+ curso.getNombre() + ".png"));
 		iconoCurso = ControladorUsuario.INSTANCE.getScaledImage(iconoCurso, 100);
 		JLabel lblImagen = new JLabel(iconoCurso);
 		panelSuperior.add(lblImagen, BorderLayout.CENTER);

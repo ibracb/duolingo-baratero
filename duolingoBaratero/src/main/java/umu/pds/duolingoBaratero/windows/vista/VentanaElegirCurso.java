@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+
+import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -16,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.LinkedList;
+
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -26,6 +30,11 @@ import javax.swing.JButton;
 public class VentanaElegirCurso extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static final int VALORACION_DEFAULT = -1;
+	private static final String VALOR_DEFAULT = null;
+	private static final String ORDEN_DEFAULT = "Mas cursados";
+
+	
 	private JTextField textFieldNombre;
 	private JTextField textFieldCreador;
 	private JTextField textFieldValoracion;
@@ -33,6 +42,7 @@ public class VentanaElegirCurso extends JFrame {
 	private JList<CursoPlantilla> listaCursosCreados;
 	private VentanaPrincipal v;
 	private JComboBox<String> comboBoxMasUsados;
+	
 
 	public VentanaElegirCurso(VentanaPrincipal v) {
 		this.v = v;
@@ -126,13 +136,13 @@ public class VentanaElegirCurso extends JFrame {
 		panelCursosCreados.add(labelCursosCreados, BorderLayout.NORTH);
 
 		modeloCursosCreados = new DefaultListModel<>();
-		for (CursoPlantilla curso : ControladorUsuario.INSTANCE.getCursosCreadosUsuarioActual()) {
+		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos(VALOR_DEFAULT,VALORACION_DEFAULT,VALOR_DEFAULT,ORDEN_DEFAULT)) {
 			modeloCursosCreados.addElement(curso);
 		}
-		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, "title", Nivel.AVANZADO, null));
-
 		listaCursosCreados = new JList<>(modeloCursosCreados);
 		listaCursosCreados.setCellRenderer(new CursoCreadoCellRenderer());
+		listaCursosCreados.addListSelectionListener(e -> manejarSeleccionCurso(listaCursosCreados.getSelectedValue()));
+
 
 		JScrollPane scrollPane = new JScrollPane(listaCursosCreados);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -145,13 +155,27 @@ public class VentanaElegirCurso extends JFrame {
 	}
 	
 	private void buscarCursos() {
-		String nombre, propietario, valoracion;
+		String nombre, propietario;
 		nombre = textFieldNombre.getText();
 		propietario = textFieldCreador.getText();
-		valoracion = textFieldValoracion.getText();
+		int valoracion = textFieldValoracion.getText() != null && textFieldValoracion.getText().matches("\\d+") ?  Integer.parseInt(textFieldValoracion.getText()) : VALORACION_DEFAULT;
 		String orden = (String)comboBoxMasUsados.getSelectedItem();
 		
+		modeloCursosCreados.clear();
+		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos(nombre, valoracion, propietario, orden)) {
+			modeloCursosCreados.addElement(curso);
+		}
+		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, "title", Nivel.AVANZADO, null));
+
+		listaCursosCreados.setModel(modeloCursosCreados);
 	}
+	
+	private void manejarSeleccionCurso(CursoPlantilla curso) {
+		ControladorUsuario.INSTANCE.addCursosEnProgreso(curso);
+		v.refreshCursos();
+		this.closeWindow();
+	}
+	
 
 	private void closeWindow() {
 		v.setVisible(true);

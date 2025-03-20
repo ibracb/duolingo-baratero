@@ -85,7 +85,7 @@ public class VentanaPrincipal extends JFrame {
 	
 	private void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
 		if (ControladorCurso.INSTANCE.isCursoNuevo(curso))
-			//abrirVentanaConfiguracionCurso();			
+			//abrirVentanaConfiguracionCurso();
 			new VentanaPregunta(0).setVisible(true);
 		else if (ControladorCurso.INSTANCE.isCursoEnMarcha(curso)) {
 			VentanaPregunta ventana = new VentanaPregunta(ControladorCurso.INSTANCE.getNumLastBloqueContenido(curso));
@@ -97,15 +97,11 @@ public class VentanaPrincipal extends JFrame {
 		}
 	}
 
-	private void refreshCursos() {
+	public void refreshCursos() {
         modeloCursos.clear();
         for (CursoEnProgreso curso : getCursosEnProgreso()) {
             modeloCursos.addElement(curso);
         }
-        CursoPlantilla cursoP = new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, "title", Nivel.AVANZADO, null);
-        CursoEnProgreso cursoEnProgreso = new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoP, null, null, null);
-		CursoEnProgreso cursoEP = cursoEnProgreso;
-        modeloCursos.addElement(cursoEP);
         listaCursos.setModel(modeloCursos);
 
         if (ControladorUsuario.INSTANCE.isUserCreator()) {

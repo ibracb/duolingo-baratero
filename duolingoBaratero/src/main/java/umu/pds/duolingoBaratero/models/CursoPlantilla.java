@@ -16,6 +16,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	private List<BloqueContenido> contenidos;
 	private Set<CursoEnProgreso> cursosEnProgreso;
 	private String imagen;
+	private int numAlumnos;
 	
 	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this.nombre = nombre;
@@ -25,6 +26,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.nivel = nivel;
 		this.contenidos = new LinkedList<>();
 		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
+		numAlumnos = 0;
 		//Collections.addAll(this.contenidos, contenidos);
 	}
 	
@@ -101,6 +103,12 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	}
 	public boolean hasImage() {
 		return getImagen() != null;
+	}
+	public int getNumAlumnos() {
+		return numAlumnos;
+	}
+	public void addAlumno() {
+		numAlumnos += 1;
 	}
 
 	public Set<TipoPregunta> getTipoPreguntas(){

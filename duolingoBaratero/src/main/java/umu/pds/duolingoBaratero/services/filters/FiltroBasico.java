@@ -11,7 +11,4 @@ public class FiltroBasico implements Filtro{
 		return lista;
 	}
 	
-	
-	
-
 }

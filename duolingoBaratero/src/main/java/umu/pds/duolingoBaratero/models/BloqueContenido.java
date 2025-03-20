@@ -14,6 +14,7 @@ public class BloqueContenido {
 	
 
 	public BloqueContenido(Pregunta...preguntas) {
+		this.preguntas = new LinkedList<>();
 		Collections.addAll(this.preguntas, preguntas);
 	}
 

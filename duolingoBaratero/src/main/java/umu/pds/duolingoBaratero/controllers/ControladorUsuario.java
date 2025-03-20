@@ -42,7 +42,6 @@ public enum ControladorUsuario {
 	public boolean comprobarUsuario(String correo, String passwd) {
 		Usuario usuario = new Usuario("a", "a", "a", "A");
 		boolean result = usuario != null;
-		System.out.println(result);
 		if (result) {
 			this.user = usuario;
 		}
@@ -80,6 +79,10 @@ public enum ControladorUsuario {
 			user.setCursos(cursos);
 		}
 		
+	}
+	
+	public void addCursosEnProgreso(CursoPlantilla curso) {
+		user.addCursoEnProgreso(ControladorCurso.INSTANCE.getCursoEnProgreso(curso, this.user));
 	}
 	
 	public List<CursoEnProgreso> getCursosUsuarioActual() {

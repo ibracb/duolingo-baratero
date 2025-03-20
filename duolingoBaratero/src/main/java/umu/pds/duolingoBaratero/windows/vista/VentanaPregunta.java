@@ -37,25 +37,6 @@ public class VentanaPregunta extends JFrame {
 	private int puntuacion;
 	private long bloqueContenido;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPregunta frame = new VentanaPregunta(69);
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximiza la ventana
-					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Asegúrate de que la ventana cierre
-																			// correctamente
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public VentanaPregunta(long bloqueContenido) {
 		this.bloqueContenido = bloqueContenido;
 		currentPanel = PANEL_Y_PUNTUCAION_INICIAL;

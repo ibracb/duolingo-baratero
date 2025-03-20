@@ -37,7 +37,7 @@ public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<
     @Override
 	public Component getListCellRendererComponent(JList<? extends CursoPlantilla> list, CursoPlantilla curso, int index,
 			boolean isSelected, boolean cellHasFocus) {
-    	ImageIcon image = new ImageIcon(getClass().getResource("/idiomas.png"));
+    	ImageIcon image = new ImageIcon(getClass().getResource("/"+curso.getNombre()+".png"));
     	image = ControladorCurso.INSTANCE.getScaledImage(image, 100);
     	lblIcono.setIcon(image); // Imagen de ejemplo
         lblNombre.setText(curso.getNombre());

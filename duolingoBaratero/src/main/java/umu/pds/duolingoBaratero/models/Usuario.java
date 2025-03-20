@@ -48,6 +48,10 @@ public class Usuario {
 	public void setCursos(List<CursoEnProgreso> cursos) {
 		this.cursos = cursos;
 	}
+	
+	public void addCursoEnProgreso(CursoEnProgreso curso) {
+		cursos.add(curso);
+	}
 
 	public List<CursoPlantilla> getCursosCreados() {
 		return cursosCreados;
