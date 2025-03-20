@@ -271,41 +271,108 @@ public enum ControladorCurso {
 		
 		// Curso de Informática
 		BloqueContenido bloque1Informatica = new BloqueContenido(0,
-		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué significa CPU?", "Unidad Central de Procesamiento",
-		                TipoPregunta.OPCIONES, new String[]{"Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica"}),
-		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es un sistema operativo?", "Windows",
-		                TipoPregunta.OPCIONES, new String[]{"Windows", "Google", "Intel", "HTML"}));
+			    new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué significa CPU?", "Unidad Central de Procesamiento",
+			            TipoPregunta.OPCIONES, new String[]{"Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica"}),
+			    new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es un sistema operativo?", "Windows",
+			            TipoPregunta.OPCIONES, new String[]{"Windows", "Google", "Intel", "HTML"}),
+			    new PreguntaOpciones(Nivel.BASICO, 3, "¿Qué significa RAM?", "Memoria de acceso aleatorio",
+			            TipoPregunta.OPCIONES, new String[]{"Memoria de acceso aleatorio", "Unidad de almacenamiento", "Procesador", "Tarjeta madre"}),
+			    new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es un lenguaje de programación?", "Python",
+			            TipoPregunta.OPCIONES, new String[]{"Python", "Windows", "Google Chrome", "Facebook"}),
+			    new PreguntaOpciones(Nivel.BASICO, 5, "¿Qué es un bit?", "La unidad más pequeña de información en un ordenador",
+			            TipoPregunta.OPCIONES, new String[]{"La unidad más pequeña de información en un ordenador", "Un procesador", "Un programa", "Un sistema operativo"}),
+			    new PreguntaOpciones(Nivel.BASICO, 6, "¿Cuál es la función del sistema operativo?", "Gestionar los recursos del hardware y software",
+			            TipoPregunta.OPCIONES, new String[]{"Gestionar los recursos del hardware y software", "Crear archivos de texto", "Navegar por internet", "Acelerar la memoria RAM"}),
+			    new PreguntaOpciones(Nivel.BASICO, 7, "¿Cuál es un navegador web?", "Google Chrome",
+			            TipoPregunta.OPCIONES, new String[]{"Google Chrome", "Microsoft Word", "Windows", "Linux"}),
+			    new PreguntaOpciones(Nivel.BASICO, 8, "¿Para qué sirve un antivirus?", "Proteger el sistema contra malware y virus",
+			            TipoPregunta.OPCIONES, new String[]{"Proteger el sistema contra malware y virus", "Mejorar la velocidad del internet", "Eliminar archivos duplicados", "Aumentar la memoria RAM"}),
+			    new PreguntaOpciones(Nivel.BASICO, 9, "¿Qué es HTML?", "Un lenguaje de marcado para crear páginas web",
+			            TipoPregunta.OPCIONES, new String[]{"Un lenguaje de marcado para crear páginas web", "Un sistema operativo", "Un programa de edición de fotos", "Un lenguaje de programación"}),
+			    new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué es la nube en informática?", "Un servicio de almacenamiento y computación en internet",
+			            TipoPregunta.OPCIONES, new String[]{"Un servicio de almacenamiento y computación en internet", "Un programa de edición de texto", "Un procesador", "Un navegador web"})
+			);
 
 		CursoPlantilla cursoInformatica = new CursoPlantilla("Informatica", "Profesor C", "Conceptos básicos de computación",
 		        "Aprender sobre hardware y software", Nivel.BASICO, bloque1Informatica);
 
 		// Curso de Música
 		BloqueContenido bloque1Musica = new BloqueContenido(0,
-		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuántas notas musicales existen?", "Siete",
-		                TipoPregunta.OPCIONES, new String[]{"Siete", "Cinco", "Doce", "Cuatro"}),
-		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la clave musical más usada en partituras?", "Clave de sol",
-		                TipoPregunta.OPCIONES, new String[]{"Clave de sol", "Clave de fa", "Clave de do", "Clave de la"}));
+			    new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuántas notas musicales existen?", "Siete",
+			            TipoPregunta.OPCIONES, new String[]{"Siete", "Cinco", "Doce", "Cuatro"}),
+			    new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la clave musical más usada en partituras?", "Clave de sol",
+			            TipoPregunta.OPCIONES, new String[]{"Clave de sol", "Clave de fa", "Clave de do", "Clave de la"}),
+			    new PreguntaOpciones(Nivel.BASICO, 3, "¿Qué instrumento tiene teclas blancas y negras?", "Piano",
+			            TipoPregunta.OPCIONES, new String[]{"Piano", "Guitarra", "Batería", "Violín"}),
+			    new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuántas cuerdas tiene una guitarra clásica?", "Seis",
+			            TipoPregunta.OPCIONES, new String[]{"Seis", "Cuatro", "Ocho", "Cinco"}),
+			    new PreguntaOpciones(Nivel.BASICO, 5, "¿Cómo se llama el signo que representa la duración del sonido en una partitura?", "Figura musical",
+			            TipoPregunta.OPCIONES, new String[]{"Figura musical", "Clave", "Tempo", "Pentagrama"}),
+			    new PreguntaOpciones(Nivel.BASICO, 6, "¿Cuál es el tempo musical más rápido?", "Presto",
+			            TipoPregunta.OPCIONES, new String[]{"Presto", "Andante", "Adagio", "Largo"}),
+			    new PreguntaOpciones(Nivel.BASICO, 7, "¿Qué familia de instrumentos incluye la trompeta y el trombón?", "Viento-metal",
+			            TipoPregunta.OPCIONES, new String[]{"Viento-metal", "Cuerda", "Percusión", "Viento-madera"}),
+			    new PreguntaOpciones(Nivel.BASICO, 8, "¿Qué elemento define la intensidad del sonido en la música?", "Dinámica",
+			            TipoPregunta.OPCIONES, new String[]{"Dinámica", "Tempo", "Melodía", "Armonía"}),
+			    new PreguntaOpciones(Nivel.BASICO, 9, "¿Cómo se llama la parte de la canción que se repite?", "Estribillo",
+			            TipoPregunta.OPCIONES, new String[]{"Estribillo", "Verso", "Puente", "Coda"}),
+			    new PreguntaOpciones(Nivel.BASICO, 10, "¿Cuál es el nombre de la escala musical más común en la música occidental?", "Escala mayor",
+			            TipoPregunta.OPCIONES, new String[]{"Escala mayor", "Escala menor", "Escala cromática", "Escala pentatónica"})
+			);
 
 		CursoPlantilla cursoMusica = new CursoPlantilla("Música", "Profesor D", "Introducción a la teoría musical",
 		        "Aprender sobre notas y claves musicales", Nivel.BASICO, bloque1Musica);
 
 		// Curso de Ciencia
 		BloqueContenido bloque1Ciencia = new BloqueContenido(0,
-		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué estudia la biología?", "Los seres vivos",
-		                TipoPregunta.OPCIONES, new String[]{"Los seres vivos", "Los planetas", "Los elementos químicos", "Las rocas"}),
-		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la fórmula del agua?", "H2O",
-		                TipoPregunta.OPCIONES, new String[]{"H2O", "CO2", "O2", "H2SO4"}));
+			    new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué estudia la biología?", "Los seres vivos",
+			            TipoPregunta.OPCIONES, new String[]{"Los seres vivos", "Los planetas", "Los elementos químicos", "Las rocas"}),
+			    new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la fórmula del agua?", "H2O",
+			            TipoPregunta.OPCIONES, new String[]{"H2O", "CO2", "O2", "H2SO4"}),
+			    new PreguntaOpciones(Nivel.BASICO, 3, "¿Cuál es el planeta más grande del sistema solar?", "Júpiter",
+			            TipoPregunta.OPCIONES, new String[]{"Júpiter", "Saturno", "Neptuno", "Tierra"}),
+			    new PreguntaOpciones(Nivel.BASICO, 4, "¿Qué tipo de energía es producida por el sol?", "Energía solar",
+			            TipoPregunta.OPCIONES, new String[]{"Energía solar", "Energía eólica", "Energía térmica", "Energía química"}),
+			    new PreguntaOpciones(Nivel.BASICO, 5, "¿Qué gas es esencial para la respiración humana?", "Oxígeno",
+			            TipoPregunta.OPCIONES, new String[]{"Oxígeno", "Nitrógeno", "Dióxido de carbono", "Helio"}),
+			    new PreguntaOpciones(Nivel.BASICO, 6, "¿Cómo se llama el proceso mediante el cual las plantas producen su alimento?", "Fotosíntesis",
+			            TipoPregunta.OPCIONES, new String[]{"Fotosíntesis", "Respiración", "Fermentación", "Digestión"}),
+			    new PreguntaOpciones(Nivel.BASICO, 7, "¿Cuál es el metal más abundante en la corteza terrestre?", "Aluminio",
+			            TipoPregunta.OPCIONES, new String[]{"Aluminio", "Hierro", "Cobre", "Oro"}),
+			    new PreguntaOpciones(Nivel.BASICO, 8, "¿Qué científico formuló la teoría de la relatividad?", "Albert Einstein",
+			            TipoPregunta.OPCIONES, new String[]{"Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"}),
+			    new PreguntaOpciones(Nivel.BASICO, 9, "¿Qué partícula subatómica tiene carga negativa?", "Electrón",
+			            TipoPregunta.OPCIONES, new String[]{"Electrón", "Protón", "Neutrón", "Quark"}),
+			    new PreguntaOpciones(Nivel.BASICO, 10, "¿Cuál es el proceso por el cual el agua se convierte en vapor?", "Evaporación",
+			            TipoPregunta.OPCIONES, new String[]{"Evaporación", "Condensación", "Sublimación", "Fusión"})
+			);
 
 		CursoPlantilla cursoCiencia = new CursoPlantilla("Ciencia", "Profesor E", "Principios básicos de la ciencia",
 		        "Introducción a conceptos científicos", Nivel.BASICO, bloque1Ciencia);
 
 		// Curso de Estudios
 		BloqueContenido bloque1Estudios = new BloqueContenido(0,
-		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es una técnica efectiva de estudio?", "Mapas mentales",
-		                TipoPregunta.OPCIONES, new String[]{"Mapas mentales", "Mirar videos", "Dormir más", "No tomar apuntes"}),
-		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué es la mnemotecnia?", "Un método de memorización",
-		                TipoPregunta.OPCIONES, new String[]{"Un método de memorización", "Un idioma antiguo", "Una asignatura", "Un deporte"}));
-
+			    new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es una técnica efectiva de estudio?", "Mapas mentales",
+			            TipoPregunta.OPCIONES, new String[]{"Mapas mentales", "Mirar videos", "Dormir más", "No tomar apuntes"}),
+			    new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué es la mnemotecnia?", "Un método de memorización",
+			            TipoPregunta.OPCIONES, new String[]{"Un método de memorización", "Un idioma antiguo", "Una asignatura", "Un deporte"}),
+			    new PreguntaOpciones(Nivel.BASICO, 3, "¿Qué técnica ayuda a resumir información visualmente?", "Diagramas de flujo",
+			            TipoPregunta.OPCIONES, new String[]{"Diagramas de flujo", "Lectura en voz alta", "Copiar textos", "Escuchar música"}),
+			    new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es el beneficio de tomar apuntes?", "Facilita la retención de información",
+			            TipoPregunta.OPCIONES, new String[]{"Facilita la retención de información", "Consume tiempo", "Es obligatorio", "Evita estudiar después"}),
+			    new PreguntaOpciones(Nivel.BASICO, 5, "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?", "La técnica Pomodoro",
+			            TipoPregunta.OPCIONES, new String[]{"La técnica Pomodoro", "Leer sin pausas", "Estudiar sin planificación", "Solo estudiar antes del examen"}),
+			    new PreguntaOpciones(Nivel.BASICO, 6, "¿Qué ayuda a mejorar la comprensión lectora?", "Hacer resúmenes",
+			            TipoPregunta.OPCIONES, new String[]{"Hacer resúmenes", "Leer rápido", "No releer", "Memorizar palabra por palabra"}),
+			    new PreguntaOpciones(Nivel.BASICO, 7, "¿Por qué es importante el descanso en el estudio?", "Mejora la concentración y la memoria",
+			            TipoPregunta.OPCIONES, new String[]{"Mejora la concentración y la memoria", "Es una pérdida de tiempo", "Es solo para relajarse", "Evita aprender"}),
+			    new PreguntaOpciones(Nivel.BASICO, 8, "¿Cómo se puede mejorar la retención de información?", "Repasando periódicamente",
+			            TipoPregunta.OPCIONES, new String[]{"Repasando periódicamente", "Solo leyendo una vez", "Dejando todo para el final", "No revisando apuntes"}),
+			    new PreguntaOpciones(Nivel.BASICO, 9, "¿Qué técnica facilita recordar listas de palabras?", "Asociaciones y acrónimos",
+			            TipoPregunta.OPCIONES, new String[]{"Asociaciones y acrónimos", "Leer en silencio", "Estudiar en grupo", "Tomar más café"}),
+			    new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué puede ayudar a mantener la motivación al estudiar?", "Establecer metas claras",
+			            TipoPregunta.OPCIONES, new String[]{"Establecer metas claras", "Estudiar sin plan", "Evitar descansos", "Solo estudiar antes del examen"})
+			);
 		CursoPlantilla cursoEstudios = new CursoPlantilla("Estudios", "Profesor F", "Estrategias para mejorar el aprendizaje",
 		        "Técnicas y hábitos de estudio", Nivel.BASICO, bloque1Estudios);
 

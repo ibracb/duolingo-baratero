@@ -29,7 +29,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
 		numAlumnos = 0;
 		lastBloqueContenido = 0;
-		//Collections.addAll(this.contenidos, contenidos);
+		Collections.addAll(this.contenidos, contenidos);
 	}
 	
 	public String getNombre() {

@@ -79,8 +79,10 @@ public class VentanaPregunta extends JFrame {
 		// -------Futura funcionalidad real------- NO BORRAR
 		// JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
 		paneles = this.getPaneles();
+		int i = 0;
 		for (JPanel panel : paneles) {
-			panelCentral.add(panel, "panel" + currentPanel);
+			panelCentral.add(panel, "panel" + i);
+			i++;
 		}
 
 
@@ -148,8 +150,14 @@ public class VentanaPregunta extends JFrame {
 	// --------METODO DE PRUEBA --------------
 	private JPanel[] getPaneles() {
 
-		LinkedList<Pregunta> preguntas = (LinkedList) controlador.getPreguntasDeBloqueContenido(curso, bloqueContenido);
-
+		LinkedList<Pregunta> preguntas = (LinkedList<Pregunta>) controlador.getPreguntasDeBloqueContenido(curso, bloqueContenido);
+		for (Pregunta pregunta : preguntas) {
+			if (pregunta instanceof PreguntaOpciones) {
+				System.out.println("Si soy");
+			}
+			System.out.println(pregunta.toString());
+		}
+		System.out.println(preguntas);
 		JPanel[] paneles = new JPanel[preguntas.size()];
 
 		int i = 0;

@@ -59,9 +59,9 @@ public class PanelPreguntaOpciones extends JPanel implements RespuestaPanel {
 
 		for (int i = 0; i < 3; i++) {
 			opciones[i] = new JToggleButton(pregunta.getOpciones()[i]);
-			opciones[i].setFont(new Font("Arial", Font.PLAIN, 16));
+			opciones[i].setFont(new Font("Arial", Font.PLAIN, 15));
 
-			opciones[i].setMinimumSize(new Dimension(100, 50)); // Tamaño mínimo
+			opciones[i].setMinimumSize(new Dimension(300, 75)); // Tamaño mínimo
 			opciones[i].setPreferredSize(new Dimension(450, 170)); // Tamaño fijo
 			opciones[i].setMaximumSize(new Dimension(500, 170)); // Tamaño máximo
 			grupoOpciones.add(opciones[i]);
