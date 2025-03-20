@@ -10,12 +10,21 @@ import java.util.stream.Collectors;
 public class BloqueContenido {
 	
 	public static final int NUMERO_DE_PREGUNTAS = 10;
+	private long id;
 	private List<Pregunta> preguntas;
 	
 
-	public BloqueContenido(Pregunta...preguntas) {
+	public BloqueContenido(long id, Pregunta...preguntas) {
 		this.preguntas = new LinkedList<>();
 		Collections.addAll(this.preguntas, preguntas);
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public List<Pregunta> getPreguntas() {

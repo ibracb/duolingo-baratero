@@ -5,11 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.border.EmptyBorder;
-
+import java.util.LinkedList;
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.Flashcard;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Pregunta;
@@ -36,8 +38,10 @@ public class VentanaPregunta extends JFrame {
 	private int currentPanel;
 	private int puntuacion;
 	private long bloqueContenido;
+	private CursoEnProgreso curso;
 
-	public VentanaPregunta(long bloqueContenido) {
+	public VentanaPregunta(CursoEnProgreso curso, long bloqueContenido) {
+		this.curso = curso;
 		this.bloqueContenido = bloqueContenido;
 		currentPanel = PANEL_Y_PUNTUCAION_INICIAL;
 		puntuacion = PANEL_Y_PUNTUCAION_INICIAL;
@@ -75,10 +79,10 @@ public class VentanaPregunta extends JFrame {
 		// -------Futura funcionalidad real------- NO BORRAR
 		// JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
 		paneles = this.getPaneles();
-		panelCentral.add(paneles[0], "panel0");
-		panelCentral.add(paneles[1], "panel1");
-		panelCentral.add(paneles[2], "panel2");
-		panelCentral.add(paneles[3], "panel3");
+		for (JPanel panel : paneles) {
+			panelCentral.add(panel, "panel" + currentPanel);
+		}
+
 
 		// Panel para los botones de acción
 		JPanel panelBotones = new JPanel(new FlowLayout());
@@ -144,19 +148,9 @@ public class VentanaPregunta extends JFrame {
 	// --------METODO DE PRUEBA --------------
 	private JPanel[] getPaneles() {
 
-		JPanel[] paneles = new JPanel[4];
+		LinkedList<Pregunta> preguntas = (LinkedList) controlador.getPreguntasDeBloqueContenido(curso, bloqueContenido);
 
-		String[] opciones = { "Opción 1", "Opción 2", "Opción 3" };
-		Pregunta[] preguntas = new Pregunta[4]; // Array de tamaño 5, pero vacío
-
-		preguntas[0] = new PreguntaAudio(Nivel.INTERMEDIO, 1, "¿Qué sonido se escucha?", "Opción 2", opciones,
-				"ruta/al/archivo/audio.mp3");
-		preguntas[1] = new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿cual es la respuesta?", "Opción 2",
-				TipoPregunta.OPCIONES, opciones);
-		preguntas[2] = new Flashcard(Nivel.AVANZADO, 3, "¿Elemento químico Na?", "Sodio", TipoPregunta.FLASHCARD,
-				69696969);
-		preguntas[3] = new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿cual es la respuesta?", "Opción 2",
-				TipoPregunta.IMAGEN, opciones);
+		JPanel[] paneles = new JPanel[preguntas.size()];
 
 		int i = 0;
 		for (Pregunta pregunta : preguntas) {

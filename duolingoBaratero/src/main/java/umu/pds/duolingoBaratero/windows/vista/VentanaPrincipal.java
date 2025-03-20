@@ -86,9 +86,9 @@ public class VentanaPrincipal extends JFrame {
 	private void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
 		if (ControladorCurso.INSTANCE.isCursoNuevo(curso))
 			//abrirVentanaConfiguracionCurso();
-			new VentanaPregunta(0).setVisible(true);
+			new VentanaPregunta(curso,0).setVisible(true);
 		else if (ControladorCurso.INSTANCE.isCursoEnMarcha(curso)) {
-			VentanaPregunta ventana = new VentanaPregunta(ControladorCurso.INSTANCE.getNumLastBloqueContenido(curso));
+			VentanaPregunta ventana = new VentanaPregunta(curso, ControladorCurso.INSTANCE.getNumLastBloqueContenido(curso));
 			ventana.setVisible(true);
 		}
 		else {

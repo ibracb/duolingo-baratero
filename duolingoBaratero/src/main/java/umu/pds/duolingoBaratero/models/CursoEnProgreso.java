@@ -74,7 +74,11 @@ public class CursoEnProgreso {
 		return getValoracion().getValor();
 	}
 	
-	public List<PreguntaProgreso> getPreguntas() {
+    public List<Pregunta> getPreguntasBloqueContenido(long bloqueContenidoProgreso) {
+		return cursoPlantilla.getPreguntasDeBloque(bloqueContenidoProgreso);
+	}
+
+	public List<PreguntaProgreso> getTodasLasPreguntas() {
 		List<BloqueContenidoProgreso> listaContenidos = getContenidosProgreso();
 		List<PreguntaProgreso> listaPreguntas = new LinkedList<>();
 		switch(this.aprendizaje) {

@@ -17,6 +17,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	private Set<CursoEnProgreso> cursosEnProgreso;
 	private String imagen;
 	private int numAlumnos;
+	private int lastBloqueContenido;
 	
 	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this.nombre = nombre;
@@ -27,6 +28,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.contenidos = new LinkedList<>();
 		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
 		numAlumnos = 0;
+		lastBloqueContenido = 0;
 		//Collections.addAll(this.contenidos, contenidos);
 	}
 	
@@ -90,6 +92,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
 	public void addBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.add(bloqueContenido);
+		lastBloqueContenido += 1;
 	}
 	
 	public void removeBloqueContenido(BloqueContenido bloqueContenido) {
@@ -125,7 +128,14 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		tipos.add(TipoPregunta.AUDIO);
 
 		return tipos;
+	}
 
+	public List<Pregunta> getPreguntasDeBloque(long bloque){
+		return contenidos.stream()
+				.filter(b -> b.getId() == bloque)
+				.findFirst()
+				.map(BloqueContenido::getPreguntas)
+				.orElse(new LinkedList<>());
 	}
 
 	@Override

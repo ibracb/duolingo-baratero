@@ -22,6 +22,7 @@ import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
+import umu.pds.duolingoBaratero.models.PreguntaProgreso;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.services.ImageService;
@@ -165,8 +166,12 @@ public enum ControladorCurso {
 		return new JPanel[0];
 	}
 
+	public List<Pregunta> getPreguntasDeBloqueContenido(CursoEnProgreso curso, long numBloque) {
+		return curso.getPreguntasBloqueContenido(numBloque);
+	}
+
 	public CursoPlantilla crearCurso(String nombre, String descripcion, String objetivos, Nivel lvl) {
-		return null;
+		return new CursoPlantilla(nombre, ControladorUsuario.INSTANCE.getUsuarioActual().getNombre(), descripcion, objetivos, lvl);
 	}
 
 	public void setImagenACurso(CursoPlantilla curso, String imagen) {
@@ -196,7 +201,7 @@ public enum ControladorCurso {
 	// ***************************************************
 	private void pruebas() {
 		cursosPrueba = new LinkedList<>();
-		BloqueContenido bloque1Curso1 = new BloqueContenido(
+		BloqueContenido bloque1Curso1 = new BloqueContenido(0,
 				new PreguntaOpciones(Nivel.BASICO, 1, "¿Cómo se dice 'Hola' en inglés?", "Hello", TipoPregunta.OPCIONES,
 						new String[] { "Hello", "Hi", "Bye", "Goodbye" }),
 				new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué significa 'Dog' en español?", "Perro",
@@ -206,7 +211,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es el plural de 'child'?", "children",
 						TipoPregunta.OPCIONES, new String[] { "childs", "childes", "children", "child" }));
 
-		BloqueContenido bloque2Curso1 = new BloqueContenido(
+		BloqueContenido bloque2Curso1 = new BloqueContenido(1,
 				new PreguntaOpciones(Nivel.BASICO, 5, "¿Cómo se dice 'Gracias' en inglés?", "Thank you",
 						TipoPregunta.OPCIONES, new String[] { "Thank you", "Thanks", "You're welcome", "Hello" }),
 				new PreguntaOpciones(Nivel.BASICO, 6, "¿Qué significa 'Car' en español?", "Coche",
@@ -216,7 +221,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.BASICO, 8, "¿Cómo se dice 'Libro' en inglés?", "Book", TipoPregunta.OPCIONES,
 						new String[] { "Book", "Notebook", "Table", "Paper" }));
 
-		BloqueContenido bloque3Curso1 = new BloqueContenido(
+		BloqueContenido bloque3Curso1 = new BloqueContenido(2,
 				new PreguntaOpciones(Nivel.BASICO, 9, "¿Cómo se dice 'Buenos días' en inglés?", "Good morning",
 						TipoPregunta.OPCIONES, new String[] { "Good morning", "Good night", "Hello", "Bye" }),
 				new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué significa 'Water' en español?", "Agua",
@@ -229,8 +234,9 @@ public enum ControladorCurso {
 		CursoPlantilla curso1 = new CursoPlantilla("Ingles", "Profesor A", "Curso para principiantes",
 				"Aprender vocabulario básico", Nivel.BASICO, bloque1Curso1, bloque2Curso1, bloque3Curso1);
 
+		curso1.addBloqueContenido(bloque3Curso1);
 		// Crear preguntas para el segundo curso
-		BloqueContenido bloque1Curso2 = new BloqueContenido(
+		BloqueContenido bloque1Curso2 = new BloqueContenido(0,
 				new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿Cómo se dice 'Amigo' en inglés?", "Friend",
 						TipoPregunta.OPCIONES, new String[] { "Friend", "Brother", "Sister", "Mother" }),
 				new PreguntaOpciones(Nivel.INTERMEDIO, 2, "¿Qué significa 'Table' en español?", "Mesa",
@@ -240,7 +246,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.INTERMEDIO, 4, "¿Cuál es el pasado de 'go'?", "went", TipoPregunta.OPCIONES,
 						new String[] { "gone", "went", "goed", "going" }));
 
-		BloqueContenido bloque2Curso2 = new BloqueContenido(
+		BloqueContenido bloque2Curso2 = new BloqueContenido(1,
 				new PreguntaOpciones(Nivel.INTERMEDIO, 5, "¿Cómo se dice 'Ventana' en inglés?", "Window",
 						TipoPregunta.OPCIONES, new String[] { "Window", "Door", "Wall", "Floor" }),
 				new PreguntaOpciones(Nivel.INTERMEDIO, 6, "¿Qué significa 'Chair' en español?", "Silla",
@@ -250,7 +256,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.INTERMEDIO, 8, "¿Cuál es el opuesto de 'cold'?", "hot",
 						TipoPregunta.OPCIONES, new String[] { "hot", "warm", "cool", "freezing" }));
 
-		BloqueContenido bloque3Curso2 = new BloqueContenido(
+		BloqueContenido bloque3Curso2 = new BloqueContenido(2,
 				new PreguntaOpciones(Nivel.INTERMEDIO, 9, "¿Cómo se dice 'Sol' en inglés?", "Sun",
 						TipoPregunta.OPCIONES, new String[] { "Sun", "Star", "Moon", "Sky" }),
 				new PreguntaOpciones(Nivel.INTERMEDIO, 10, "¿Qué significa 'Fast' en español?", "Rápido",
@@ -264,7 +270,7 @@ public enum ControladorCurso {
 				"Mejorar gramática y vocabulario", Nivel.INTERMEDIO, bloque1Curso2, bloque2Curso2, bloque3Curso2);
 		
 		// Curso de Informática
-		BloqueContenido bloque1Informatica = new BloqueContenido(
+		BloqueContenido bloque1Informatica = new BloqueContenido(0,
 		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué significa CPU?", "Unidad Central de Procesamiento",
 		                TipoPregunta.OPCIONES, new String[]{"Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica"}),
 		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es un sistema operativo?", "Windows",
@@ -274,7 +280,7 @@ public enum ControladorCurso {
 		        "Aprender sobre hardware y software", Nivel.BASICO, bloque1Informatica);
 
 		// Curso de Música
-		BloqueContenido bloque1Musica = new BloqueContenido(
+		BloqueContenido bloque1Musica = new BloqueContenido(0,
 		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuántas notas musicales existen?", "Siete",
 		                TipoPregunta.OPCIONES, new String[]{"Siete", "Cinco", "Doce", "Cuatro"}),
 		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la clave musical más usada en partituras?", "Clave de sol",
@@ -284,7 +290,7 @@ public enum ControladorCurso {
 		        "Aprender sobre notas y claves musicales", Nivel.BASICO, bloque1Musica);
 
 		// Curso de Ciencia
-		BloqueContenido bloque1Ciencia = new BloqueContenido(
+		BloqueContenido bloque1Ciencia = new BloqueContenido(0,
 		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué estudia la biología?", "Los seres vivos",
 		                TipoPregunta.OPCIONES, new String[]{"Los seres vivos", "Los planetas", "Los elementos químicos", "Las rocas"}),
 		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la fórmula del agua?", "H2O",
@@ -294,7 +300,7 @@ public enum ControladorCurso {
 		        "Introducción a conceptos científicos", Nivel.BASICO, bloque1Ciencia);
 
 		// Curso de Estudios
-		BloqueContenido bloque1Estudios = new BloqueContenido(
+		BloqueContenido bloque1Estudios = new BloqueContenido(0,
 		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es una técnica efectiva de estudio?", "Mapas mentales",
 		                TipoPregunta.OPCIONES, new String[]{"Mapas mentales", "Mirar videos", "Dormir más", "No tomar apuntes"}),
 		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué es la mnemotecnia?", "Un método de memorización",
@@ -304,7 +310,7 @@ public enum ControladorCurso {
 		        "Técnicas y hábitos de estudio", Nivel.BASICO, bloque1Estudios);
 
 		// Curso de Diseño
-		BloqueContenido bloque1Diseno = new BloqueContenido(
+		BloqueContenido bloque1Diseno = new BloqueContenido(0,
 		        new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es un software de diseño gráfico?", "Photoshop",
 		                TipoPregunta.OPCIONES, new String[]{"Photoshop", "Excel", "Word", "Windows"}),
 		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué es la teoría del color?", "El estudio de cómo los colores interactúan",
