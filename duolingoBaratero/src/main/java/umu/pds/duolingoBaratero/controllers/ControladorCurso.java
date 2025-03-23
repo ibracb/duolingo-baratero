@@ -25,25 +25,36 @@ import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.PreguntaProgreso;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
+import umu.pds.duolingoBaratero.services.AudioService;
 import umu.pds.duolingoBaratero.services.ImageService;
 import umu.pds.duolingoBaratero.services.filters.Filtro;
 import umu.pds.duolingoBaratero.services.filters.FiltroBasico;
 import umu.pds.duolingoBaratero.services.filters.FiltroCursosPorNombre;
 import umu.pds.duolingoBaratero.services.filters.FiltroCursosPorPropietario;
 import umu.pds.duolingoBaratero.services.filters.FiltroCursosValoracion;
+import umu.pds.duolingoBaratero.services.serializers.Serializer;
+import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 
 public enum ControladorCurso {
 	INSTANCE;
 	
 	private static final String ORDEN_DEFAULT = "Mas cursados";
 	private List<CursoPlantilla> cursosPrueba = null;
-	
+	private CursoPlantilla cursoActual;
 	
 	private ImageService sevicioImagenes;
+	private AudioService reproductor;
+	private Serializer serializer;
 
 	private ControladorCurso() {
-		this.sevicioImagenes = new ImageService();
+		initialize();
 		pruebas();
+	}
+	
+	private void initialize() {
+		this.sevicioImagenes = new ImageService();
+		this.reproductor = AudioService.INSTANCE;
+		this.serializer = SerializerFactory.INSTANCE.getSerializer(cursoActual);
 	}
 	
 	public boolean isCursoNuevo(CursoEnProgreso curso) {
@@ -81,6 +92,10 @@ public enum ControladorCurso {
         return new CursoEnProgreso(user, curso, null, null, null);
 	}
 	
+	public void playAudio(String ruta) {
+		reproductor.playAudio(ruta);
+	}
+	
 //	public List<CursoPlantilla> getAllCourses(String nombre, String propietario, String valoracion, String orden){
 //		Filtro filtro = new FiltroCursos();
 //	}
@@ -94,10 +109,10 @@ public enum ControladorCurso {
 		String imagen = null;
 
 		if (curso.hasImage())
-			imagen = curso.getImagen();
+			imagen = curso.getImagen().toString();
 
 		if (imagen != null) {
-			if (sevicioImagenes.isURL(imagen)) {
+			if (sevicioImagenes.isURL(imagen.toString())) {
 				image = ImageIO.read(new URL(imagen));
 			} else if (Files.exists(Paths.get(imagen))) {
 				image = ImageIO.read(Paths.get(imagen).toFile());

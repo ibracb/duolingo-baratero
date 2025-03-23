@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-import umu.pds.duolingoBaratero.controllers.ControladorAudio;
+import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.services.RespuestaPanel;
 
@@ -120,6 +120,6 @@ public class PanelPreguntaAudio extends JPanel implements RespuestaPanel{
 	}
 
 	private void reproducirAudio() {
-		ControladorAudio.INSTANCE.playAudio(pregunta.getRutaAudio());
+		ControladorCurso.INSTANCE.playAudio(pregunta.getRutaAudio());
 	}
 }

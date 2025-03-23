@@ -53,10 +53,9 @@ public class ImageService {
 		return bufferedImage;
 	}
 
-	@SuppressWarnings("deprecation")
-	public boolean isURL(String input) {
+	public boolean isURL(String string) {
 		try {
-			new URL(input).toURI();
+			new URL(string.toString()).toURI();
 			return true;
 		} catch (Exception e) {
 			return false;

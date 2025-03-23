@@ -6,11 +6,13 @@ import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class AudioService {
+public enum AudioService {
+	
+	INSTANCE;
 	
 	private MediaPlayer mediaPlayer;
 	
-	public AudioService() {
+	private AudioService() {
 		new JFXPanel();
 	}
 	

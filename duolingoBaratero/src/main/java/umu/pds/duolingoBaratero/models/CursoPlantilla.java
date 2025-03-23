@@ -4,7 +4,11 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+
+import umu.pds.duolingoBaratero.services.serializers.Serializer;
+import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 
 public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
@@ -15,9 +19,10 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	private Nivel nivel;
 	private List<BloqueContenido> contenidos;
 	private Set<CursoEnProgreso> cursosEnProgreso;
-	private String imagen;
+	private Optional<String> imagen;
 	private int numAlumnos;
 	private int lastBloqueContenido;
+	private Serializer serializer;
 	
 	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this.nombre = nombre;
@@ -28,8 +33,9 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.contenidos = new LinkedList<>();
 		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
 		numAlumnos = 0;
-		lastBloqueContenido = 0;
+		setLastBloqueContenido(0);
 		Collections.addAll(this.contenidos, contenidos);
+		setSerializer(SerializerFactory.INSTANCE.getSerializer(this));
 	}
 	
 	public String getNombre() {
@@ -79,6 +85,14 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.cursosEnProgreso = cursosEnProgreso;
 	}
 	
+	public int getLastBloqueContenido() {
+		return lastBloqueContenido;
+	}
+
+	public void setLastBloqueContenido(int lastBloqueContenido) {
+		this.lastBloqueContenido = lastBloqueContenido;
+	}
+
 	public int getNumCursosEnProgreso() {
 		return cursosEnProgreso.size();
 	}
@@ -92,18 +106,26 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
 	public void addBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.add(bloqueContenido);
-		lastBloqueContenido += 1;
+		setLastBloqueContenido(getLastBloqueContenido() + 1);
 	}
 	
 	public void removeBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.remove(bloqueContenido);
 	}
-	public String getImagen() {
+	public Optional<String> getImagen() {
 		return imagen;
 	}
 	public void setImagen(String imagen) {
-		this.imagen = imagen;
+		this.imagen = Optional.ofNullable(imagen);
 	}
+	public Serializer getSerializer() {
+		return serializer;
+	}
+
+	public void setSerializer(Serializer serializer) {
+		this.serializer = serializer;
+	}
+
 	public boolean hasImage() {
 		return getImagen() != null;
 	}
@@ -137,7 +159,11 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 				.map(BloqueContenido::getPreguntas)
 				.orElse(new LinkedList<>());
 	}
-
+	
+	public boolean mejorJSON() {
+		return imagen.isPresent();
+	}
+	
 	@Override
 	public int compareTo(CursoPlantilla o) {
 		return Integer.compare(this.getNumCursosEnProgreso(), o.getNumCursosEnProgreso());
