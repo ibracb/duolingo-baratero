@@ -47,16 +47,13 @@ public enum ControladorCurso {
 	private Serializer serializer;
 
 	private ControladorCurso() {
-		initialize();
-		pruebas();
-	}
-	
-	private void initialize() {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
 		this.serializer = SerializerFactory.INSTANCE.getSerializer(cursoActual);
+		pruebas();
 	}
 	
+
 	public boolean isCursoNuevo(CursoEnProgreso curso) {
 		return curso.isNuevo();
 	}

@@ -15,11 +15,12 @@ public enum SerializerFactory {
 	);
 	
 	public Serializer getSerializer(CursoPlantilla cursoPlantilla) {
-		return serializers.stream()
-			.map(Supplier::get)
-			.filter(serializer -> serializer.isBetter(cursoPlantilla))
-			.findFirst()
-			.get();
+		return null;
+//		return serializers.stream()
+//			.map(Supplier::get)
+//			.filter(serializer -> serializer.isBetter(cursoPlantilla))
+//			.findFirst()
+//			.get();
 	}
 	
 }
