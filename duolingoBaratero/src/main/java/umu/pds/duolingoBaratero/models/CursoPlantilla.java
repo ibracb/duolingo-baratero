@@ -24,16 +24,20 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	private int lastBloqueContenido;
 	private Serializer serializer;
 	
-	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
+	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos) {
 		this.nombre = nombre;
 		this.propietario = propietario;
 		this.descripcion = descripcion;
 		this.objetivos = objetivos;
-		this.nivel = nivel;
 		this.contenidos = new LinkedList<>();
 		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
 		numAlumnos = 0;
 		setLastBloqueContenido(0);
+	}
+	
+	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
+		this(nombre, propietario,descripcion,objetivos);
+		this.nivel = nivel;
 		Collections.addAll(this.contenidos, contenidos);
 		setSerializer(SerializerFactory.INSTANCE.getSerializer(this));
 	}

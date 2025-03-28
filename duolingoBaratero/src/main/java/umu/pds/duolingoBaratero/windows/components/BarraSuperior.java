@@ -5,9 +5,11 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import umu.pds.duolingoBaratero.windows.vista.VentanaCreaPregunta;
 import umu.pds.duolingoBaratero.windows.vista.VentanaCreaTuCurso;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
@@ -68,9 +70,16 @@ public class BarraSuperior extends JPanel {
     }
     
     private void openVentanaCreaTuCurso() {
-    	VentanaCreaTuCurso ventana = new VentanaCreaTuCurso();
-        ventana.setVisible(true);
-        ventanaActual.dispose();
+    	if (ventanaActual instanceof VentanaCreaPregunta) {
+    		JOptionPane.showMessageDialog(this, "No puedes crear un curso desde esta ventana", "Error",
+					JOptionPane.ERROR_MESSAGE);
+    	}
+    	else {
+        	VentanaCreaTuCurso ventana = new VentanaCreaTuCurso();
+            ventana.setVisible(true);
+            ventanaActual.dispose();    		
+    	}
+
     }
 
     private void toggleModoOscuro() {

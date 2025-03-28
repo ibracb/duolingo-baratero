@@ -6,10 +6,12 @@ import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
+import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import java.awt.*;
 import java.io.File;
 import java.net.URL;
+import java.util.LinkedList;
 
 public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes {
 
@@ -19,12 +21,12 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     private JTextArea textAreaObjetivos, textAreaDescripcion;
     private JLabel labelImagen;
     private File destinationFile = null;
-    private JComboBox<String> comboBox;
     private URL url;
     private JButton btnCambiarImagen;
     private JButton btnAceptar;
     private JButton btnCancelar;
     private JButton btnGuardar;
+    private LinkedList<Pregunta> listaPreguntas;
 
     public VentanaCreaTuCurso() {
         setTitle("Crear Curso");
@@ -33,6 +35,7 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
         getContentPane().setLayout(new GridBagLayout());
 
         GridBagConstraints gbc;
+        listaPreguntas = new LinkedList<>();
 
         // Barra superior
         BarraSuperior panelSuperior = new BarraSuperior(this);
@@ -56,14 +59,6 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
         getContentPane().add(textFieldNombre, gbc);
 
         // ComboBox
-        String[] comboBoxOpciones = {"Principiante", "Intermedio", "Avanzado"};
-        comboBox = new JComboBox<>(new DefaultComboBoxModel<>(comboBoxOpciones));
-        gbc = new GridBagConstraints();
-        gbc.gridx = 4;
-        gbc.gridy = 2;
-        gbc.insets = new Insets(5, 5, 5, 5);
-        getContentPane().add(comboBox, gbc);
-
         // Label para la imagen
         JLabel lblImagen = new JLabel("Imagen:");
         gbc = new GridBagConstraints();
@@ -118,6 +113,7 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
         btnGuardar.addActionListener(e -> guardarCurso());
         panelBotones.add(btnGuardar);
         btnAceptar = new JButton("Añadir Pregunta");
+        btnAceptar.addActionListener(e -> añadirPregunta());
         panelBotones.add(btnAceptar);
 
         gbc = new GridBagConstraints();
@@ -127,8 +123,12 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
         gbc.insets = new Insets(10, 5, 10, 5);
         gbc.anchor = GridBagConstraints.CENTER;
         getContentPane().add(panelBotones, gbc);
-
-        setVisible(true);
+    }
+    
+    private void añadirPregunta() {
+    	VentanaElegirTipoPregunta ventana = new VentanaElegirTipoPregunta(this);
+    	ventana.setVisible(true);
+    	this.setVisible(false);
     }
     
     private void guardarCurso() {
@@ -136,8 +136,7 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     	nombre = textFieldNombre.getText();
     	descripcion = textAreaDescripcion.getText();
     	objetivos = textAreaObjetivos.getText();
-    	Nivel lvl = (Nivel) comboBox.getSelectedItem();
-    	CursoPlantilla curso = ControladorCurso.INSTANCE.crearCurso(nombre, descripcion, objetivos, lvl);
+    	CursoPlantilla curso = ControladorCurso.INSTANCE.crearCurso(nombre, descripcion, objetivos);
     	if (curso == null)
     		JOptionPane.showMessageDialog(this, "Algo ha salido mal prueba otra vez", "Error",
 					JOptionPane.ERROR_MESSAGE);
@@ -192,5 +191,9 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
 
     public void setDestinationFile(File d) {
         destinationFile = d;
+    }
+    
+    public void guardarPregunta(Pregunta pregunta) {
+    	listaPreguntas.add(pregunta);
     }
 }

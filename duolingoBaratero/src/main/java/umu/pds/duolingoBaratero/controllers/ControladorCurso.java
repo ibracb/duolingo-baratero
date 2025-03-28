@@ -182,8 +182,8 @@ public enum ControladorCurso {
 		return curso.getPreguntasBloqueContenido(numBloque);
 	}
 
-	public CursoPlantilla crearCurso(String nombre, String descripcion, String objetivos, Nivel lvl) {
-		return new CursoPlantilla(nombre, ControladorUsuario.INSTANCE.getUsuarioActual().getNombre(), descripcion, objetivos, lvl);
+	public CursoPlantilla crearCurso(String nombre, String descripcion, String objetivos) {
+		return new CursoPlantilla(nombre, ControladorUsuario.INSTANCE.getUsuarioActual().getNombre(), descripcion, objetivos);
 	}
 
 	public void setImagenACurso(CursoPlantilla curso, String imagen) {
