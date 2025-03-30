@@ -25,6 +25,7 @@ public class VentanaCambioImagen extends JFrame {
 	public VentanaCambioImagen(VentanaCambiaImagenes v) {
 
 		this.setBounds(100, 100, 700, 300);
+		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);// cierra la ventana cuando cancelas
 
 		this.v = v;

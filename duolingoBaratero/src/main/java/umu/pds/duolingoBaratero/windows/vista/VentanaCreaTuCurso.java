@@ -31,6 +31,7 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     public VentanaCreaTuCurso() {
         setTitle("Crear Curso");
         setSize(550, 500);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setLayout(new GridBagLayout());
 

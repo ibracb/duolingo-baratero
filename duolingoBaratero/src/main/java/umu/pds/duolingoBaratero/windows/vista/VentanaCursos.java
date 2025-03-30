@@ -118,6 +118,7 @@ public class VentanaCursos extends JFrame {
 
 	private void abrirVentanaRegistro() {
 		VentanaRegistro ventanaNueva = new VentanaRegistro(this);
+		ventanaNueva.setLocationRelativeTo(null);
 		ventanaNueva.setVisible(true);
 		this.setVisible(false);
 	}

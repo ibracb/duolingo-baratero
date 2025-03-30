@@ -37,6 +37,7 @@ public class VentanaLogin extends JFrame {
 		this.v = v;
 		this.setTitle("⚡ ¡Regístrate! 🚀¡Sé la diferencia! 🌟");
 		this.setBounds(300, 300, 450, 261);
+		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panelSur = new JPanel();
 		this.getContentPane().add(panelSur, BorderLayout.SOUTH);

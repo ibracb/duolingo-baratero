@@ -18,6 +18,7 @@ public class VentanaElegirTipoPregunta extends JFrame{
 	public VentanaElegirTipoPregunta(VentanaCreaTuCurso v) {
 		this.v = v;	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
         setSize(200, 100);
 		JPanel panelCombox = new JPanel();

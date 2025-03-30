@@ -14,6 +14,7 @@ public class Program {
 		}
 
 		VentanaInicio loginWindow = new VentanaInicio();
+		loginWindow.setLocationRelativeTo(null); // Esto centra la ventana
 		loginWindow.setVisible(true);
 	}
 }

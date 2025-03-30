@@ -27,6 +27,7 @@ public class VentanaCreaPreguntaOpciones extends JFrame implements VentanaCreaPr
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout());
         setSize(550, 400);
+        setLocationRelativeTo(null);
 
         // Panel Inferior
         JPanel panel = new JPanel();

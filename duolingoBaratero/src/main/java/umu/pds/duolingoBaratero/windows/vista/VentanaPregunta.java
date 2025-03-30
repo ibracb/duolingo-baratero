@@ -39,6 +39,7 @@ public class VentanaPregunta extends JFrame {
 	private int puntuacion;
 	private long bloqueContenido;
 	private CursoEnProgreso curso;
+	private int numPreguntas;
 
 	public VentanaPregunta(CursoEnProgreso curso, long bloqueContenido) {
 		this.curso = curso;
@@ -56,7 +57,8 @@ public class VentanaPregunta extends JFrame {
 		controlador = ControladorCurso.INSTANCE; // Controlador
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 772, 482);
+		setBounds(500, 200, 800, 600); // Tamaño recomendado
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout());
@@ -79,6 +81,7 @@ public class VentanaPregunta extends JFrame {
 		// -------Futura funcionalidad real------- NO BORRAR
 		// JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
 		paneles = this.getPaneles();
+		numPreguntas = paneles.length;
 		int i = 0;
 		for (JPanel panel : paneles) {
 			panelCentral.add(panel, "panel" + i);
@@ -133,12 +136,10 @@ public class VentanaPregunta extends JFrame {
 
 		contentPane.add(panelBotones, BorderLayout.SOUTH);
 
-		setLocationRelativeTo(null);
-
 	}
 
 	private void avanzarPregunta() {
-		if (currentPanel < Constantes.PREGUNTAS_POR_BLOQUE - 1) {
+		if (currentPanel < numPreguntas - 1) {
 			currentPanel++;
 			cardLayout.show(panelCentral, "panel" + currentPanel);
 		} else {

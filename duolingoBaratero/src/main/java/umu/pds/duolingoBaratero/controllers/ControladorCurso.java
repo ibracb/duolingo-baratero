@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import umu.pds.duolingoBaratero.models.BloqueContenido;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
+import umu.pds.duolingoBaratero.models.Flashcard;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
@@ -221,7 +222,9 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.BASICO, 3, "Completa la frase: 'I ___ a student'", "am",
 						TipoPregunta.OPCIONES, new String[] { "am", "is", "are", "be" }),
 				new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es el plural de 'child'?", "children",
-						TipoPregunta.OPCIONES, new String[] { "childs", "childes", "children", "child" }));
+						TipoPregunta.OPCIONES, new String[] { "childs", "childes", "children", "child" }),
+				new Flashcard(Nivel.BASICO, 4, "Significado de: Green", "Verde", TipoPregunta.FLASHCARD, 30));
+				
 
 		BloqueContenido bloque2Curso1 = new BloqueContenido(1,
 				new PreguntaOpciones(Nivel.BASICO, 5, "¿Cómo se dice 'Gracias' en inglés?", "Thank you",

@@ -17,6 +17,7 @@ public class VentanaInformacion extends JFrame {
 		this.v = v;
 		setTitle("📚 Aprende sobre " + curso.getNombre());
 		setSize(600, 400);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 
