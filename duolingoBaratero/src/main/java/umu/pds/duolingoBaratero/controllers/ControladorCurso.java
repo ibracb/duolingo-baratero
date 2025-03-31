@@ -1,5 +1,6 @@
 package umu.pds.duolingoBaratero.controllers;
 
+import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
 import java.util.stream.Collectors;
 import java.util.Comparator;
@@ -227,8 +228,10 @@ public enum ControladorCurso {
 						TipoPregunta.OPCIONES, new String[] { "am", "is", "are", "be" }),
 				new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es el plural de 'child'?", "children",
 						TipoPregunta.OPCIONES, new String[] { "childs", "childes", "children", "child" }),
-				new Flashcard(Nivel.BASICO, 4, "Significado de: Green", "Verde", TipoPregunta.FLASHCARD, 30));
-				
+				new Flashcard(Nivel.BASICO, 4, "Significado de: Green", "Verde", TipoPregunta.FLASHCARD, 30),
+				new PreguntaOpciones(Nivel.BASICO, 6, "¿Cuál cual de estos es leche?", "CursosPDS/src/main/resources/milk.png", 
+						TipoPregunta.IMAGEN, new String[] { "tea.png", "milk.png", "coffee.png" }));			
+		
 
 		BloqueContenido bloque2Curso1 = new BloqueContenido(1,
 				new PreguntaOpciones(Nivel.BASICO, 5, "¿Cómo se dice 'Gracias' en inglés?", "Thank you",
@@ -414,5 +417,11 @@ public enum ControladorCurso {
 		
 		cursosPrueba.add(curso2);
 		cursosPrueba.add(curso1);
+	}
+
+
+	public int getNumPreguntas(long bloqueContenido) {
+		// TODO Auto-generated method stub
+		return 6;
 	}
 }

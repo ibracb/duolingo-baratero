@@ -9,20 +9,23 @@ import java.util.List;
 public class BarraProgresoPanel extends JPanel {
     private static final int VALOR_INICIAL_PROGRESO = 0;
     private static final int LIMITE_PROGRESO = 100;
-    private int progreso;
+    private double progreso;
+    private final double avance;
 
     private static final Color VERDE_CORRECTO = new Color(34, 139, 34);  // Verde Bosque
     private static final Color NARANJA_AVANCE = new Color(255, 165, 0);  // Naranja Oscuro
     private static final Color ROJO_INCORRECTO = new Color(220, 20, 60);  // Carmesí
 
     private final List<Color> tramosColores;
-    private final List<Integer> tramosProgreso;
+    private final List<Double> tramosProgreso;
 
-    public BarraProgresoPanel() {
+    public BarraProgresoPanel(int numPreguntas) {
         this.progreso = VALOR_INICIAL_PROGRESO;
         this.tramosColores = new ArrayList<>();
         this.tramosProgreso = new ArrayList<>();
         setPreferredSize(new Dimension(250, 30));
+        this.avance = (double) LIMITE_PROGRESO/ numPreguntas;
+        
     }
 
     @Override
@@ -55,7 +58,7 @@ public class BarraProgresoPanel extends JPanel {
             color = ROJO_INCORRECTO;
         }
         
-        int nuevoProgreso = Math.min(progreso + Constantes.PREGUNTAS_POR_BLOQUE, LIMITE_PROGRESO);
+        double nuevoProgreso = Math.min(progreso + avance, LIMITE_PROGRESO);
         tramosColores.add(color);
         tramosProgreso.add(nuevoProgreso - progreso);
         progreso = nuevoProgreso;
