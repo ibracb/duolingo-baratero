@@ -130,20 +130,15 @@ public class VentanaCreaPreguntaOpciones extends JFrame implements VentanaCreaPr
         gbc_comboNiveles.weightx = 1.0;
         panel_2.add(comboNiveles, gbc_comboNiveles);
     }
-
-    public VentanaCreaTuCurso getVentanaCreaTuCurso() {
-        return v;
-    }
-
+    
+    
+	@Override
     public void closeWindow() {
         v.setVisible(true);
-        cerrar();
-    }
-
-    public void cerrar() {
         this.dispose();
     }
-    
+	
+	@Override
     public void guardarPregunta() {
     	String pregunta, respuesta1, respuesta2, respuesta3, respuestaCorrecta;
     	Nivel lvl = (Nivel)comboNiveles.getSelectedItem();
@@ -172,9 +167,7 @@ public class VentanaCreaPreguntaOpciones extends JFrame implements VentanaCreaPr
 					JOptionPane.ERROR_MESSAGE);
     	}
     	
-    }
-    
-
+    }    
 
 	private boolean hasRequiredFileds(String pregunta, String respuesta1, String respuesta2, String respuesta3,String respuestaCorrecta, Nivel nivel) {
     	return pregunta == null || respuesta1 == null || respuesta2 == null || respuesta3 == null ||  respuestaCorrecta == null || nivel == null;

@@ -91,20 +91,14 @@ public class VentanaCreaPreguntaFlashcard extends JFrame implements VentanaCreaP
 		gbc_comboNiveles.weightx = 1.0;
 		panel_2.add(comboNiveles, gbc_comboNiveles);
 	}
-
-	public VentanaCreaTuCurso getVentanaCreaTuCurso() {
-		return v;
-	}
-
+	
+	@Override
 	public void closeWindow() {
 		v.setVisible(true);
-		cerrar();
-	}
-
-	public void cerrar() {
 		this.dispose();
 	}
-
+	
+	@Override
 	public void guardarPregunta() {
 		String pregunta, respuesta1;
 		Nivel lvl = (Nivel) comboNiveles.getSelectedItem();

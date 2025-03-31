@@ -156,7 +156,7 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
                 ventana = new VentanaCreaPreguntaFlashcard(this);
                 break;
             case "Pregunta Audio":
-                // Aquí puedes añadir la ventana correspondiente si existe
+                ventana = new VentanaCreaPreguntaAudio(this);
                 break;
         }
         

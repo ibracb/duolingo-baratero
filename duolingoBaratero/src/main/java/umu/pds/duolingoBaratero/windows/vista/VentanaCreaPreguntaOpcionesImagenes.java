@@ -31,14 +31,9 @@ public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements Venta
     private JButton btnPregunta1, btnPregunta2, btnPregunta3;
     private URL url;
     private File destinationFile;
-    private String imagen1, imagen2, imagen3;
     private int botonSeleccionado;
     private JLabel lblPregunta1, lblPregunta2, lblPregunta3;
-    private JLabel lblImagenPregunta1;
-    private JLabel lblImagenPregunta2;
-    private JLabel lblImagenPregunta3;
-    private JLabel lblRespuestaCorrecta;
-    private JLabel lblNivel;
+    private JLabel lblImagenPregunta1, lblImagenPregunta2, lblImagenPregunta3, lblRespuestaCorrecta, lblNivel;
 
     public VentanaCreaPreguntaOpcionesImagenes(VentanaCreaTuCurso v) {
         this.v = v;
@@ -206,20 +201,14 @@ public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements Venta
         gbc_comboNiveles.weightx = 1.0;
         panel_2.add(comboNiveles, gbc_comboNiveles);
     }
-
-    public VentanaCreaTuCurso getVentanaCreaTuCurso() {
-        return v;
-    }
-
+    
+    @Override
     public void closeWindow() {
         v.setVisible(true);
-        cerrar();
-    }
-
-    public void cerrar() {
         this.dispose();
     }
-    
+
+    @Override
     public void guardarPregunta() {
     	String pregunta, respuesta1, respuesta2, respuesta3, respuestaCorrecta;
     	Nivel lvl = (Nivel) comboNiveles.getSelectedItem();
@@ -250,12 +239,14 @@ public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements Venta
     	}
     	
     }
-    
-
-
+ 
 	private boolean hasRequiredFileds(String pregunta, String respuesta1, String respuesta2, String respuesta3,String respuestaCorrecta, Nivel nivel) {
     	return pregunta == null || respuesta1 == null || respuesta2 == null || respuesta3 == null ||  respuestaCorrecta == null || nivel == null;
     }
+	
+///////////////////////////////////////////////
+///	Funciones cambios de imagen
+///////////////////////////////////////////////
 	
 	private void abrirVentanaCambioImagen(int boton) {
 		botonSeleccionado = boton;

@@ -10,4 +10,3 @@
 1. Si hay un problema al almacenar el curso nuevo el sistema lo avisará con un mensaje de error.
 **Postcondiciones:**
 1. El curso queda disponible en la plataforma.
-

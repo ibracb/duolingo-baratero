@@ -61,13 +61,9 @@ public class VentanaPrincipal extends JFrame {
 
 		// Panel de botones
 		JPanel panelBotones = new JPanel();
-		JButton btnCrearCurso = new JButton("Crea tu propio curso");
 		JButton btnNuevoCurso = new JButton("Empieza un nuevo curso");
 		btnNuevoCurso.addActionListener(e -> abrirVentanaElegirCurso());
 
-		if (ControladorUsuario.INSTANCE.isUserCreator()) {
-			panelBotones.add(btnCrearCurso);
-		}
 		panelBotones.add(btnNuevoCurso);
 		getContentPane().add(panelBotones, BorderLayout.SOUTH);
 
