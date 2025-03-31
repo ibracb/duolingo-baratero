@@ -144,7 +144,7 @@ public class VentanaCreaPreguntaOpciones extends JFrame implements VentanaCreaPr
         this.dispose();
     }
     
-    public boolean guardarPregunta() {
+    public void guardarPregunta() {
     	String pregunta, respuesta1, respuesta2, respuesta3, respuestaCorrecta;
     	Nivel lvl = (Nivel)comboNiveles.getSelectedItem();
     	pregunta = txtPregunta.getText();
@@ -153,24 +153,23 @@ public class VentanaCreaPreguntaOpciones extends JFrame implements VentanaCreaPr
     	respuesta2 = txtRespuesta_1.getText();
     	respuesta3 = txtRespuesta_2.getText();    	
     	switch(respuestaCorrecta) {
-    	case "Respuesta 1": respuestaCorrecta = respuesta1;
+    	case "Respuesta 1": respuestaCorrecta = "Respuesta 1";
     						break;
-    	case "Respuesta 2": respuestaCorrecta = respuesta2;
+    	case "Respuesta 2": respuestaCorrecta = "Respuesta 2";
     						break;
-    	case "Respuesta 3": respuestaCorrecta = respuesta3;
+    	case "Respuesta 3": respuestaCorrecta = "Respuesta 3";
     						break;
     	}
-    	
     	if (!hasRequiredFileds(pregunta, respuesta1, respuesta2, respuesta3, respuestaCorrecta, lvl)) {
     		String[] opciones = {respuesta1, respuesta2, respuesta3};
         	PreguntaOpciones preguntaOpciones = new PreguntaOpciones(lvl, 0, pregunta, respuestaCorrecta, TIPO_PREGUNTA, opciones);
         	v.guardarPregunta(preguntaOpciones);
-        	return true;
+        	v.setVisible(true);
+        	this.dispose();
     	}
     	else {
     		JOptionPane.showMessageDialog(this, "Tienes que rellenar todos los parametros", "Error",
 					JOptionPane.ERROR_MESSAGE);
-    		return false;
     	}
     	
     }
@@ -178,6 +177,6 @@ public class VentanaCreaPreguntaOpciones extends JFrame implements VentanaCreaPr
 
 
 	private boolean hasRequiredFileds(String pregunta, String respuesta1, String respuesta2, String respuesta3,String respuestaCorrecta, Nivel nivel) {
-    	return pregunta == null || respuesta1 == null || respuesta3 == null || respuesta3 == null ||  respuestaCorrecta == null || nivel == null;
+    	return pregunta == null || respuesta1 == null || respuesta2 == null || respuesta3 == null ||  respuestaCorrecta == null || nivel == null;
     }
 }

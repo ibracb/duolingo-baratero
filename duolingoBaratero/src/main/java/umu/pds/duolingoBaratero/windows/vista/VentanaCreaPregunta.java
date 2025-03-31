@@ -8,6 +8,6 @@ public interface VentanaCreaPregunta {
 
 	void closeWindow();
 	
-	boolean guardarPregunta();
+	void guardarPregunta();
 
 }

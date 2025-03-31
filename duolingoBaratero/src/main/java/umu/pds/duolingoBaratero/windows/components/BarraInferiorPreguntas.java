@@ -18,49 +18,38 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 public class BarraInferiorPreguntas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btnCancelar, btnGuardar, btnAddPregunta;
-    private VentanaCreaPregunta ventanaActual;
+	private JButton btnCancelar, btnGuardar;
+	private VentanaCreaPregunta ventanaActual;
 
-    public BarraInferiorPreguntas(VentanaCreaPregunta ventanaActual) {
-        setLayout(new BorderLayout());
-        this.ventanaActual = ventanaActual;
-        
-        JToolBar barra = new JToolBar();
-        barra.setFloatable(false);
-        JPanel panelCentral = new JPanel(new FlowLayout(FlowLayout.CENTER));
+	public BarraInferiorPreguntas(VentanaCreaPregunta ventanaActual) {
+		setLayout(new BorderLayout());
+		this.ventanaActual = ventanaActual;
 
-    	btnCancelar = new JButton("Cancelar");
-    	btnCancelar.addActionListener(e -> cancelarPregunta());
-    	add(btnCancelar);
-    	
-    	btnGuardar = new JButton("Guardar");
-    	btnGuardar.addActionListener(e -> guardarPregunta());
-    	add(btnGuardar);
-    	
-    	btnAddPregunta = new JButton("Añadir Pregunta");
-    	btnAddPregunta.addActionListener(e -> añadirPregunta());
-    	add(btnAddPregunta);
-    	
-    	panelCentral.add(btnAddPregunta);
-    	panelCentral.add(btnGuardar);
-    	panelCentral.add(btnCancelar);
-    	
-    	barra.add(panelCentral);
-        add(barra, BorderLayout.SOUTH);
-    }
-    
-    public void guardarPregunta() {
-    	ventanaActual.guardarPregunta();
-    }
-    
-    public void cancelarPregunta() {
-    	ventanaActual.closeWindow();    	
-    }
-    
-    public void añadirPregunta() {
-    	guardarPregunta();
-    	VentanaElegirTipoPregunta ventana = new VentanaElegirTipoPregunta(ventanaActual.getVentanaCreaTuCurso());
-    	ventana.setVisible(true);
-    	ventanaActual.cerrar();    	
-    }
+		JToolBar barra = new JToolBar();
+		barra.setFloatable(false);
+		JPanel panelCentral = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(e -> cancelarPregunta());
+		add(btnCancelar);
+
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(e -> guardarPregunta());
+		add(btnGuardar);
+
+		panelCentral.add(btnGuardar);
+		panelCentral.add(btnCancelar);
+
+		barra.add(panelCentral);
+		add(barra, BorderLayout.SOUTH);
+	}
+
+	public void guardarPregunta() {
+		ventanaActual.guardarPregunta();
+	}
+
+	public void cancelarPregunta() {
+		ventanaActual.closeWindow();
+	}
+
 }

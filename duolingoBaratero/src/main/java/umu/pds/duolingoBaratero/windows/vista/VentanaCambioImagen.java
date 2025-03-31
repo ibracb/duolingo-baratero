@@ -27,7 +27,6 @@ public class VentanaCambioImagen extends JFrame {
 		this.setBounds(100, 100, 700, 300);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);// cierra la ventana cuando cancelas
-
 		this.v = v;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 20, 20, 40, 10, 0, 10, 40, 20, 20, 0 };

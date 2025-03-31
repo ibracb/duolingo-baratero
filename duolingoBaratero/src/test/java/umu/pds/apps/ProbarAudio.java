@@ -19,10 +19,10 @@ public class ProbarAudio {
 			public void run() {
 				try {
 					
-					VentanaPregunta frame = new VentanaPregunta(1);
-					PanelPreguntaAudio panel = new PanelPreguntaAudio(pregunta);
-					frame.add(panel);
-					frame.setVisible(true);
+//					VentanaPregunta frame = new VentanaPregunta(1);
+//					PanelPreguntaAudio panel = new PanelPreguntaAudio(pregunta);
+//					frame.add(panel);
+//					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

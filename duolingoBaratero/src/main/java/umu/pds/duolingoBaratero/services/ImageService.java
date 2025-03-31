@@ -16,7 +16,7 @@ public class ImageService {
 
 	public ImageIcon getScaledImage(ImageIcon image, int dimensiones) {
 		BufferedImage bufferedImage = iconToBufferedImage(image);
-		BufferedImage scaledImage = scaleAndMakeCircular(bufferedImage, dimensiones);
+		BufferedImage scaledImage = scaleImage(bufferedImage, dimensiones, dimensiones);
 		return new ImageIcon(scaledImage);
 	}
 

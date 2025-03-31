@@ -43,8 +43,10 @@ public class VentanaElegirTipoPregunta extends JFrame{
 		case "Pregunta Audio":
 			break;
 		case "Pregunta Fotos":
+			ventana = new VentanaCreaPreguntaOpcionesImagenes(v);
 			break;
 		case "FlashCard":
+			ventana = new VentanaCreaPreguntaFlashcard(v);
 			break;
 		}
 		ventana.setVisible(true);

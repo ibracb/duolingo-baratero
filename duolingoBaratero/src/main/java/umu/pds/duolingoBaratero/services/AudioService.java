@@ -13,7 +13,7 @@ public enum AudioService {
 	private MediaPlayer mediaPlayer;
 	
 	private AudioService() {
-		new JFXPanel();
+		//new JFXPanel();
 	}
 	
 	public void playAudio(String ruta) {

@@ -127,9 +127,43 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     }
     
     private void añadirPregunta() {
-    	VentanaElegirTipoPregunta ventana = new VentanaElegirTipoPregunta(this);
-    	ventana.setVisible(true);
-    	this.setVisible(false);
+        String[] opciones = {"Pregunta Audio", "Pregunta Fotos", "FlashCard", "Pregunta Opciones"};
+        JComboBox<String> comboBox = new JComboBox<>(opciones);
+        
+        int respuesta = JOptionPane.showConfirmDialog(
+            null,
+            comboBox,
+            "Elige el tipo de pregunta",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+        
+        if (respuesta != JOptionPane.OK_OPTION) {
+            return; // Si el usuario cancela, no se abre la nueva ventana
+        }
+        
+        String seleccion = (String) comboBox.getSelectedItem();
+        JFrame ventana = null;
+        
+        switch (seleccion) {
+            case "Pregunta Opciones":
+                ventana = new VentanaCreaPreguntaOpciones(this);
+                break;
+            case "Pregunta Fotos":
+                ventana = new VentanaCreaPreguntaOpcionesImagenes(this);
+                break;
+            case "FlashCard":
+                ventana = new VentanaCreaPreguntaFlashcard(this);
+                break;
+            case "Pregunta Audio":
+                // Aquí puedes añadir la ventana correspondiente si existe
+                break;
+        }
+        
+        if (ventana != null) {
+            ventana.setVisible(true);
+            this.setVisible(false);
+        }
     }
     
     private void guardarCurso() {

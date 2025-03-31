@@ -58,12 +58,37 @@ public class BarraSuperior extends JPanel {
     }
 
     private void openVentanaPrincipal() {
+        if (ventanaActual instanceof VentanaCreaPregunta) {
+            int respuesta = JOptionPane.showConfirmDialog(
+                null,
+                "Si continúas, perderás todo sobre el curso. ¿Deseas continuar?",
+                "Advertencia",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.WARNING_MESSAGE
+            );
+            
+            if (respuesta != JOptionPane.OK_OPTION) {
+                return; // Si el usuario cancela, no se abre la nueva ventana
+            }
+        }
         VentanaPrincipal ventana = new VentanaPrincipal();
         ventana.setVisible(true);
         ventanaActual.dispose();
     }
 
     private void openVentanaEstadisticas() {
+        if (ventanaActual instanceof VentanaCreaPregunta) {
+            int respuesta = JOptionPane.showConfirmDialog(
+                null,
+                "Si continúas, perderás la informacion sobre el curso. ¿Deseas continuar?",
+                "Advertencia",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.WARNING_MESSAGE
+            );            
+            if (respuesta != JOptionPane.OK_OPTION) {
+                return; // Si el usuario cancela, no se abre la nueva ventana
+            }
+        }
         VentanaEstadisticas ventana = new VentanaEstadisticas();
         ventana.setVisible(true);
         ventanaActual.dispose();
@@ -84,7 +109,6 @@ public class BarraSuperior extends JPanel {
 
     private void toggleModoOscuro() {
         modoOscuroActivo = !modoOscuroActivo;
-
         // Aplicar los colores de modo oscuro o modo claro
         if (modoOscuroActivo) {
             setModoOscuro();

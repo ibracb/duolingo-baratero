@@ -42,7 +42,6 @@ public enum ControladorCurso {
 	private static final String ORDEN_DEFAULT = "Mas cursados";
 	private List<CursoPlantilla> cursosPrueba = null;
 	private CursoPlantilla cursoActual;
-	
 	private ImageService sevicioImagenes;
 	private AudioService reproductor;
 	private Serializer serializer;
@@ -78,11 +77,15 @@ public enum ControladorCurso {
 		return optionalCurso;
 	}
 	
+	public String getNombrePropietario(CursoPlantilla curso) {
+		return curso.getPropietario().getNombre();
+	}
+	
 	public CursoEnProgreso getCursoEnProgreso(String nombre) {
 		LinkedList<TipoPregunta> lista = new LinkedList<>();
 		lista.add(TipoPregunta.OPCIONES);
-		CursoPlantilla cursoPlantilla = new CursoPlantilla("Idiomas", "Baratero's Company" , "🗣️ Curso de aprendizaje de idiomas", "📈 Mejorar tus habilidades lingüísticas", Nivel.AVANZADO, null);
-        CursoEnProgreso cursoEnProgreso = new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoPlantilla, null, null, null);
+		CursoPlantilla cursoPlantilla = new CursoPlantilla("Idiomas", ControladorUsuario.INSTANCE.getUsuarioActual() , "🗣️ Curso de aprendizaje de idiomas", "📈 Mejorar tus habilidades lingüísticas", Nivel.AVANZADO, null);
+        CursoEnProgreso cursoEnProgreso = new CursoEnProgreso( ControladorUsuario.INSTANCE.getUsuarioActual(), cursoPlantilla, null, null, null);
 		return cursoEnProgreso;
 	}
 	
@@ -184,7 +187,7 @@ public enum ControladorCurso {
 	}
 
 	public CursoPlantilla crearCurso(String nombre, String descripcion, String objetivos) {
-		return new CursoPlantilla(nombre, ControladorUsuario.INSTANCE.getUsuarioActual().getNombre(), descripcion, objetivos);
+		return new CursoPlantilla(nombre,  ControladorUsuario.INSTANCE.getUsuarioActual() , descripcion, objetivos);
 	}
 
 	public void setImagenACurso(CursoPlantilla curso, String imagen) {
@@ -214,6 +217,7 @@ public enum ControladorCurso {
 	// ***************************************************
 	private void pruebas() {
 		cursosPrueba = new LinkedList<>();
+		Usuario usuarioPrueba = new Usuario("Profesor B", "Mr B", "profesorb@gmail.com", "1234");
 		BloqueContenido bloque1Curso1 = new BloqueContenido(0,
 				new PreguntaOpciones(Nivel.BASICO, 1, "¿Cómo se dice 'Hola' en inglés?", "Hello", TipoPregunta.OPCIONES,
 						new String[] { "Hello", "Hi", "Bye", "Goodbye" }),
@@ -246,7 +250,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.BASICO, 12, "Completa la frase: 'They ___ at home'", "are",
 						TipoPregunta.OPCIONES, new String[] { "are", "is", "am", "be" }));
 
-		CursoPlantilla curso1 = new CursoPlantilla("Ingles", "Profesor A", "Curso para principiantes",
+		CursoPlantilla curso1 = new CursoPlantilla("Ingles", usuarioPrueba, "Curso para principiantes",
 				"Aprender vocabulario básico", Nivel.BASICO, bloque1Curso1, bloque2Curso1, bloque3Curso1);
 
 		curso1.addBloqueContenido(bloque3Curso1);
@@ -281,7 +285,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.INTERMEDIO, 12, "Completa la frase: 'We ___ to the park'", "go",
 						TipoPregunta.OPCIONES, new String[] { "go", "going", "went", "gone" }));
 
-		CursoPlantilla curso2 = new CursoPlantilla("Ingles", "Profesor B", "Curso intermedio",
+		CursoPlantilla curso2 = new CursoPlantilla("Ingles", usuarioPrueba, "Curso intermedio",
 				"Mejorar gramática y vocabulario", Nivel.INTERMEDIO, bloque1Curso2, bloque2Curso2, bloque3Curso2);
 		
 		// Curso de Informática
@@ -308,7 +312,7 @@ public enum ControladorCurso {
 			            TipoPregunta.OPCIONES, new String[]{"Un servicio de almacenamiento y computación en internet", "Un programa de edición de texto", "Un procesador", "Un navegador web"})
 			);
 
-		CursoPlantilla cursoInformatica = new CursoPlantilla("Informatica", "Profesor C", "Conceptos básicos de computación",
+		CursoPlantilla cursoInformatica = new CursoPlantilla("Informatica", usuarioPrueba, "Conceptos básicos de computación",
 		        "Aprender sobre hardware y software", Nivel.BASICO, bloque1Informatica);
 
 		// Curso de Música
@@ -335,7 +339,7 @@ public enum ControladorCurso {
 			            TipoPregunta.OPCIONES, new String[]{"Escala mayor", "Escala menor", "Escala cromática", "Escala pentatónica"})
 			);
 
-		CursoPlantilla cursoMusica = new CursoPlantilla("Música", "Profesor D", "Introducción a la teoría musical",
+		CursoPlantilla cursoMusica = new CursoPlantilla("Música", usuarioPrueba, "Introducción a la teoría musical",
 		        "Aprender sobre notas y claves musicales", Nivel.BASICO, bloque1Musica);
 
 		// Curso de Ciencia
@@ -362,7 +366,7 @@ public enum ControladorCurso {
 			            TipoPregunta.OPCIONES, new String[]{"Evaporación", "Condensación", "Sublimación", "Fusión"})
 			);
 
-		CursoPlantilla cursoCiencia = new CursoPlantilla("Ciencia", "Profesor E", "Principios básicos de la ciencia",
+		CursoPlantilla cursoCiencia = new CursoPlantilla("Ciencia", usuarioPrueba, "Principios básicos de la ciencia",
 		        "Introducción a conceptos científicos", Nivel.BASICO, bloque1Ciencia);
 
 		// Curso de Estudios
@@ -388,7 +392,7 @@ public enum ControladorCurso {
 			    new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué puede ayudar a mantener la motivación al estudiar?", "Establecer metas claras",
 			            TipoPregunta.OPCIONES, new String[]{"Establecer metas claras", "Estudiar sin plan", "Evitar descansos", "Solo estudiar antes del examen"})
 			);
-		CursoPlantilla cursoEstudios = new CursoPlantilla("Estudios", "Profesor F", "Estrategias para mejorar el aprendizaje",
+		CursoPlantilla cursoEstudios = new CursoPlantilla("Estudios", usuarioPrueba, "Estrategias para mejorar el aprendizaje",
 		        "Técnicas y hábitos de estudio", Nivel.BASICO, bloque1Estudios);
 
 		// Curso de Diseño
@@ -398,7 +402,7 @@ public enum ControladorCurso {
 		        new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué es la teoría del color?", "El estudio de cómo los colores interactúan",
 		                TipoPregunta.OPCIONES, new String[]{"El estudio de cómo los colores interactúan", "La combinación de colores", "El uso de filtros en fotos", "La elección de tipografías"}));
 
-		CursoPlantilla cursoDiseno = new CursoPlantilla("Diseño", "Profesor G", "Fundamentos del diseño gráfico",
+		CursoPlantilla cursoDiseno = new CursoPlantilla("Diseño", usuarioPrueba, "Fundamentos del diseño gráfico",
 		        "Aprender sobre composición y colores", Nivel.BASICO, bloque1Diseno);
 
 		cursosPrueba.add(cursoInformatica);

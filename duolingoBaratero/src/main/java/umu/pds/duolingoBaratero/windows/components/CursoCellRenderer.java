@@ -32,7 +32,7 @@ public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoE
 
         add(lblIcono, BorderLayout.WEST);
         add(panelTexto, BorderLayout.CENTER);
-    }
+   }
 
     @Override
 	public Component getListCellRendererComponent(JList<? extends CursoEnProgreso> list, CursoEnProgreso curso, int index,

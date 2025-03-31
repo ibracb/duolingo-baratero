@@ -20,6 +20,8 @@ public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<
 	private JLabel lblIcono = new JLabel();
     private JLabel lblNombre = new JLabel();
     private JLabel lblNivel = new JLabel();
+    private final JLabel lblPropietario = new JLabel();
+    private final JLabel lblNombrePropietario = new JLabel();
 
     public CursoCreadoCellRenderer() {
         setLayout(new BorderLayout());
@@ -29,9 +31,10 @@ public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<
         JPanel panelTexto = new JPanel(new GridLayout(2, 1));
         panelTexto.add(lblNombre);
         panelTexto.add(lblNivel);
-
+        panelTexto.add(lblNombrePropietario);
         add(lblIcono, BorderLayout.WEST);
         add(panelTexto, BorderLayout.CENTER);
+        
     }
 
     @Override
@@ -39,6 +42,7 @@ public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<
 			boolean isSelected, boolean cellHasFocus) {
     	ImageIcon image = new ImageIcon(getClass().getResource("/"+curso.getNombre()+".png"));
     	image = ControladorCurso.INSTANCE.getScaledImage(image, 100);
+    	lblNombrePropietario.setText(ControladorCurso.INSTANCE.getNombrePropietario(curso));
     	lblIcono.setIcon(image); // Imagen de ejemplo
         lblNombre.setText(curso.getNombre());
         lblNivel.setText("Nivel: " + curso.getNivel());

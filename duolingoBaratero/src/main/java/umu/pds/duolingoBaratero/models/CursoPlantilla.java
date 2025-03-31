@@ -1,6 +1,7 @@
 package umu.pds.duolingoBaratero.models;
 
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +14,7 @@ import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
 	private String nombre;
-	private String propietario;
+	private Usuario propietario;
 	private String descripcion;
 	private String objetivos;
 	private Nivel nivel;
@@ -24,7 +25,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	private int lastBloqueContenido;
 	private Serializer serializer;
 	
-	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos) {
+	public CursoPlantilla(String nombre, Usuario propietario, String descripcion, String objetivos) {
 		this.nombre = nombre;
 		this.propietario = propietario;
 		this.descripcion = descripcion;
@@ -35,7 +36,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		setLastBloqueContenido(0);
 	}
 	
-	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
+	public CursoPlantilla(String nombre, Usuario propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this(nombre, propietario,descripcion,objetivos);
 		this.nivel = nivel;
 		if(contenidos != null) {
@@ -50,11 +51,11 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getPropietario() {
+	public Usuario getPropietario() {
 		return propietario;
 	}
 
-	public void setPropietario(String propietario) {
+	public void setPropietario(Usuario propietario) {
 		this.propietario = propietario;
 	}
 
@@ -144,17 +145,12 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 
 	public Set<TipoPregunta> getTipoPreguntas(){
 		HashSet<TipoPregunta> tipos = new HashSet<>();
-//		for (BloqueContenido bloque : contenidos) {
-//			if (tipos.containsAll(EnumSet.allOf(TipoPregunta.class))){
-//				break;
-//			}
-//			tipos.addAll(bloque.getTiposPreguntas());
-//		}
-		tipos.add(TipoPregunta.OPCIONES);
-		tipos.add(TipoPregunta.FLASHCARD);
-		tipos.add(TipoPregunta.IMAGEN);
-		tipos.add(TipoPregunta.AUDIO);
-
+		for (BloqueContenido bloque : contenidos) {
+			if (tipos.containsAll(EnumSet.allOf(TipoPregunta.class))){
+				break;
+			}
+			tipos.addAll(bloque.getTiposPreguntas());
+		}
 		return tipos;
 	}
 

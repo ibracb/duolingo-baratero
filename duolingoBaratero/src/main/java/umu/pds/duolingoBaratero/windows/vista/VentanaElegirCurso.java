@@ -165,7 +165,7 @@ public class VentanaElegirCurso extends JFrame {
 		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos(nombre, valoracion, propietario, orden)) {
 			modeloCursosCreados.addElement(curso);
 		}
-		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas", "Aprende nuevos idiomas", null, "title", Nivel.AVANZADO, null));
+		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas",ControladorUsuario.INSTANCE.getUsuarioActual(), null, "title", Nivel.AVANZADO, null));
 
 		listaCursosCreados.setModel(modeloCursosCreados);
 	}
@@ -175,7 +175,6 @@ public class VentanaElegirCurso extends JFrame {
 		v.refreshCursos();
 		this.closeWindow();
 	}
-	
 
 	private void closeWindow() {
 		v.setVisible(true);
