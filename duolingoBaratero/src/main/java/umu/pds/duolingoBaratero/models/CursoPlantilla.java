@@ -38,7 +38,9 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
 		this(nombre, propietario,descripcion,objetivos);
 		this.nivel = nivel;
-		Collections.addAll(this.contenidos, contenidos);
+		if(contenidos != null) {
+			Collections.addAll(this.contenidos, contenidos);
+		}
 		setSerializer(SerializerFactory.INSTANCE.getSerializer(this));
 	}
 	
