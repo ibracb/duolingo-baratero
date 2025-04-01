@@ -11,6 +11,7 @@
 4. El usuario sube un archivo con la estructura del curso.
 5. El usuario confirma que desea instalar el curso, [desde la ventana de confirmación](../Ventanas/VentanaConfirmarInstalacionCurso.png).  
 6. El sistema valida el archivo y lo instala en la biblioteca interna.  
+7. El sistema informa que el curso ha sido instalado correctamente mediante la [ventana de confirmación](../Ventanas/VentanaCursoInstalado.png).  
 
 **Flujos alternativos:**  
 5a. El usuario informa que no quiere instalar el curso seleccionado, [desde la ventana de confirmación](../Ventanas/VentanaConfirmarInstalacionCurso.png).  
