@@ -8,7 +8,6 @@ import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
-import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.components.CursoCellRenderer;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
