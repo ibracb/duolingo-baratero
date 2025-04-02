@@ -17,6 +17,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import com.fasterxml.jackson.databind.ser.std.JsonValueSerializer;
+
 import umu.pds.duolingoBaratero.models.BloqueContenido;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -34,6 +36,7 @@ import umu.pds.duolingoBaratero.services.filters.FiltroBasico;
 import umu.pds.duolingoBaratero.services.filters.FiltroCursosPorNombre;
 import umu.pds.duolingoBaratero.services.filters.FiltroCursosPorPropietario;
 import umu.pds.duolingoBaratero.services.filters.FiltroCursosValoracion;
+import umu.pds.duolingoBaratero.services.serializers.JSONSerializer;
 import umu.pds.duolingoBaratero.services.serializers.Serializer;
 import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 
@@ -50,7 +53,7 @@ public enum ControladorCurso {
 	private ControladorCurso() {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
-		this.serializer = SerializerFactory.INSTANCE.getSerializer(cursoActual);
+		this.serializer = new JSONSerializer();
 		pruebas();
 	}
 	
@@ -421,7 +424,13 @@ public enum ControladorCurso {
 
 
 	public int getNumPreguntas(long bloqueContenido) {
-		// TODO Auto-generated method stub
+		// TODO Cuando este hecha la persistencia habra que recuperar dinamicamente 
+		// el bloque y mirar cuantas pregutnas tiene o simplemente obenet el bloque
 		return 6;
+	}
+
+
+	public void compartirCurso(CursoEnProgreso curso) {
+		serializer.serialize("/CursosPDS/src/main/resources/cursos/"+ curso.getNombre(), curso.getCursoPlantilla());
 	}
 }

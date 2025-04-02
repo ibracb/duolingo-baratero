@@ -18,127 +18,126 @@ public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton btnHome, btnDesafio, btnEstadisticas, btnModoNocturno, btnCreaTuCurso;
-    private JFrame ventanaActual;
-    private boolean modoOscuroActivo = false;
+	private JFrame ventanaActual;
+	private boolean modoOscuroActivo = false;
+	private JButton btnCompartirCurso;
 
-    public BarraSuperior(JFrame ventanaActual) {
-        setLayout(new BorderLayout());
-        this.ventanaActual = ventanaActual;
+	public BarraSuperior(JFrame ventanaActual) {
+		setLayout(new BorderLayout());
+		this.ventanaActual = ventanaActual;
 
-        // Crear la barra de herramientas y deshabilitar el movimiento
-        JToolBar barra = new JToolBar();
-        barra.setFloatable(false);
+		// Crear la barra de herramientas y deshabilitar el movimiento
+		JToolBar barra = new JToolBar();
+		barra.setFloatable(false);
 
-        // Crear un panel para centrar los botones
-        JPanel panelCentral = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		// Crear un panel para centrar los botones
+		JPanel panelCentral = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        // Crear los botones
-        btnHome = new JButton("Home 🏠");
-        btnHome.addActionListener(e -> openVentanaPrincipal());
-        btnDesafio = new JButton("Desafío ⚡");
-        btnEstadisticas = new JButton("Estadísticas 📊");
-        btnEstadisticas.addActionListener(e -> openVentanaEstadisticas());
-        btnModoNocturno = new JButton("Modo Nocturno 🌙");
-        btnModoNocturno.addActionListener(e -> toggleModoOscuro()); // Activar/desactivar modo nocturno
-        btnCreaTuCurso = new JButton("Crea tu curso");
-        btnCreaTuCurso.addActionListener(e -> openVentanaCreaTuCurso());
+		// Crear los botones
+		btnHome = new JButton("Home 🏠");
+		btnHome.addActionListener(e -> openVentanaPrincipal());
+		btnEstadisticas = new JButton("Estadísticas 📊");
+		btnEstadisticas.addActionListener(e -> openVentanaEstadisticas());
+		btnModoNocturno = new JButton("Modo Nocturno 🌙");
+		btnModoNocturno.addActionListener(e -> toggleModoOscuro()); // Activar/desactivar modo nocturno
+		btnCreaTuCurso = new JButton("Crea tu curso");
+		btnCreaTuCurso.addActionListener(e -> openVentanaCreaTuCurso());
+		btnCompartirCurso = new JButton("Compartir Curso");
+		btnCompartirCurso.addActionListener(e -> compartirCurso((VentanaPrincipal) ventanaActual));
 
-        // Agregar botones al panel central
-        panelCentral.add(btnHome);
-        panelCentral.add(btnDesafio);
-        panelCentral.add(btnEstadisticas);
-        panelCentral.add(btnModoNocturno);
-        panelCentral.add(btnCreaTuCurso);
+		// Agregar botones al panel central
+		panelCentral.add(btnHome);
+		panelCentral.add(btnEstadisticas);
+		panelCentral.add(btnModoNocturno);
+		panelCentral.add(btnCreaTuCurso);
+		panelCentral.add(btnCompartirCurso);
+		// Agregar el panel central dentro de la barra de herramientas
+		barra.add(panelCentral);
 
-        // Agregar el panel central dentro de la barra de herramientas
-        barra.add(panelCentral);
+		// Agregar la barra de herramientas a la parte superior del panel
+		add(barra, BorderLayout.NORTH);
+	}
 
-        // Agregar la barra de herramientas a la parte superior del panel
-        add(barra, BorderLayout.NORTH);
-    }
+	private void openVentanaPrincipal() {
+		if (ventanaActual instanceof VentanaCreaPregunta) {
+			int respuesta = JOptionPane.showConfirmDialog(null,
+					"Si continúas, perderás todo sobre el curso. ¿Deseas continuar?", "Advertencia",
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
-    private void openVentanaPrincipal() {
-        if (ventanaActual instanceof VentanaCreaPregunta) {
-            int respuesta = JOptionPane.showConfirmDialog(
-                null,
-                "Si continúas, perderás todo sobre el curso. ¿Deseas continuar?",
-                "Advertencia",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.WARNING_MESSAGE
-            );
-            
-            if (respuesta != JOptionPane.OK_OPTION) {
-                return; // Si el usuario cancela, no se abre la nueva ventana
-            }
-        }
-        VentanaPrincipal ventana = new VentanaPrincipal();
-        ventana.setVisible(true);
-        ventanaActual.dispose();
-    }
+			if (respuesta != JOptionPane.OK_OPTION) {
+				return; // Si el usuario cancela, no se abre la nueva ventana
+			}
+		}
+		VentanaPrincipal ventana = new VentanaPrincipal();
+		ventana.setVisible(true);
+		ventanaActual.dispose();
+	}
 
-    private void openVentanaEstadisticas() {
-        if (ventanaActual instanceof VentanaCreaPregunta) {
-            int respuesta = JOptionPane.showConfirmDialog(
-                null,
-                "Si continúas, perderás la informacion sobre el curso. ¿Deseas continuar?",
-                "Advertencia",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.WARNING_MESSAGE
-            );            
-            if (respuesta != JOptionPane.OK_OPTION) {
-                return; // Si el usuario cancela, no se abre la nueva ventana
-            }
-        }
-        VentanaEstadisticas ventana = new VentanaEstadisticas();
-        ventana.setVisible(true);
-        ventanaActual.dispose();
-    }
-    
-    private void openVentanaCreaTuCurso() {
-    	if (ventanaActual instanceof VentanaCreaPregunta) {
-    		JOptionPane.showMessageDialog(this, "No puedes crear un curso desde esta ventana", "Error",
+	private void openVentanaEstadisticas() {
+		if (ventanaActual instanceof VentanaCreaPregunta) {
+			int respuesta = JOptionPane.showConfirmDialog(null,
+					"Si continúas, perderás la informacion sobre el curso. ¿Deseas continuar?", "Advertencia",
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+			if (respuesta != JOptionPane.OK_OPTION) {
+				return; // Si el usuario cancela, no se abre la nueva ventana
+			}
+		}
+		VentanaEstadisticas ventana = new VentanaEstadisticas();
+		ventana.setVisible(true);
+		ventanaActual.dispose();
+	}
+
+	private void compartirCurso(VentanaPrincipal ventanaActual) {
+		if (ventanaActual instanceof VentanaPrincipal) {
+			ventanaActual.compartirCurso();
+		}
+
+	}
+
+	private void openVentanaCreaTuCurso() {
+		if (ventanaActual instanceof VentanaCreaPregunta) {
+			JOptionPane.showMessageDialog(this, "No puedes crear un curso desde esta ventana", "Error",
 					JOptionPane.ERROR_MESSAGE);
-    	}
-    	else {
-        	VentanaCreaTuCurso ventana = new VentanaCreaTuCurso();
-            ventana.setVisible(true);
-            ventanaActual.dispose();    		
-    	}
+		} else {
+			VentanaCreaTuCurso ventana = new VentanaCreaTuCurso();
+			ventana.setVisible(true);
+			ventanaActual.dispose();
+		}
 
-    }
+	}
 
-    private void toggleModoOscuro() {
-        modoOscuroActivo = !modoOscuroActivo;
-        // Aplicar los colores de modo oscuro o modo claro
-        if (modoOscuroActivo) {
-            setModoOscuro();
-        } else {
-            setModoClaro();
-        }
-    }
+	private void toggleModoOscuro() {
+		modoOscuroActivo = !modoOscuroActivo;
+		// Aplicar los colores de modo oscuro o modo claro
+		if (modoOscuroActivo) {
+			setModoOscuro();
+		} else {
+			setModoClaro();
+		}
+	}
 
-    private void setModoOscuro() {
-        // Cambiar el fondo y los colores del texto a colores oscuros
-        setBackground(Color.BLACK);
-        setForeground(Color.WHITE);
+	private void setModoOscuro() {
+		// Cambiar el fondo y los colores del texto a colores oscuros
+		setBackground(Color.BLACK);
+		setForeground(Color.WHITE);
 
-        btnHome.setBackground(Color.DARK_GRAY);
-        btnHome.setForeground(Color.WHITE);
+		btnHome.setBackground(Color.DARK_GRAY);
+		btnHome.setForeground(Color.WHITE);
 
-        btnDesafio.setBackground(Color.DARK_GRAY);
-        btnDesafio.setForeground(Color.WHITE);
+		btnDesafio.setBackground(Color.DARK_GRAY);
+		btnDesafio.setForeground(Color.WHITE);
 
-        btnEstadisticas.setBackground(Color.DARK_GRAY);
-        btnEstadisticas.setForeground(Color.WHITE);
+		btnEstadisticas.setBackground(Color.DARK_GRAY);
+		btnEstadisticas.setForeground(Color.WHITE);
 
-        btnModoNocturno.setBackground(Color.DARK_GRAY);
-        btnModoNocturno.setForeground(Color.WHITE);
+		btnModoNocturno.setBackground(Color.DARK_GRAY);
+		btnModoNocturno.setForeground(Color.WHITE);
 
-        btnCreaTuCurso.setBackground(Color.DARK_GRAY);
-        btnCreaTuCurso.setForeground(Color.WHITE);
-    }
+		btnCreaTuCurso.setBackground(Color.DARK_GRAY);
+		btnCreaTuCurso.setForeground(Color.WHITE);
+	}
 
-    private void setModoClaro() {
+	private void setModoClaro() {
         // Cambiar el fondo y los colores del texto a colores claros
         setBackground(Color.WHITE);
         setForeground(Color.BLACK);
@@ -159,4 +158,5 @@ public class BarraSuperior extends JPanel {
         btnCreaTuCurso.setForeground(Color.BLACK);
 
     }
+
 }

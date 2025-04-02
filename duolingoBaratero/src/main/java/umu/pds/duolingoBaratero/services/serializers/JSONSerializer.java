@@ -7,7 +7,7 @@ public class JSONSerializer extends Serializer {
 	
 	private static final String JSON_EXTENSION = ".json";
 	
-	protected JSONSerializer() {
+	public JSONSerializer() {
 		super(new JsonMapper(), JSON_EXTENSION);
 	}
 

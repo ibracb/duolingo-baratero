@@ -12,6 +12,7 @@ import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.components.CursoCellRenderer;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
+import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -119,6 +120,15 @@ public class VentanaPrincipal extends JFrame {
 		VentanaElegirCurso ventana = new VentanaElegirCurso(this);
 		ventana.setVisible(true);
 		this.setVisible(false);
+	}
+
+	public void compartirCurso() {
+		CursoEnProgreso curso = listaCursos.getSelectedValue();
+		if (curso != null) {
+			ControladorCurso.INSTANCE.compartirCurso(curso);
+			Constantes.mostrarMensaje("Seguro que quieres exportar el curso: " + curso.getNombre(),JOptionPane.INFORMATION_MESSAGE  );
+		}
+	
 	}
 
 
