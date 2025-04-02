@@ -2,7 +2,7 @@
 
 **Actor principal:** Usuario estudiante
 **Objetivo:** Mostrar el tiempo de uso, la mejor racha y otros indicadores de progreso.  
-**Precondiciones*:*  
+**Precondiciones:**  
 1. El usuario debe estar registrado
 **Pasos:**
 1. El usuario accede a la [ventana principal](../Ventanas/VentanaPrincipal.png).
