@@ -84,6 +84,10 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.contenidos = contenidos;
 	}
 	
+	public boolean addPregunta(Pregunta pregunta) {
+		return true;		
+	}
+	
 	public Set<CursoEnProgreso> getCursosEnProgreso() {
 		return cursosEnProgreso;
 	}

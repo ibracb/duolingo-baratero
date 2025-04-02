@@ -184,6 +184,10 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
 			ControladorCurso.INSTANCE.setImagenACurso(curso, url.toString());
 		}		
     	
+    	if (listaPreguntas != null) {
+    		ControladorCurso.INSTANCE.guardarPreguntas(listaPreguntas, curso);
+    	}
+    	
     	
     }
 

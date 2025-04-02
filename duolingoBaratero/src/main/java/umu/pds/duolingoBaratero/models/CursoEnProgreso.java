@@ -20,7 +20,13 @@ public class CursoEnProgreso {
 		this.aprendizaje = aprendizaje;
 		setEstado(new EstadoNuevo(this));
 		setValoracion(valoracion);
-		//Collections.addAll(this.contenidosProgreso, contenidosProgreso);
+		this.contenidosProgreso = new LinkedList<>();
+		if (contenidosProgreso != null) {
+			for (BloqueContenidoProgreso bloque : contenidosProgreso) {
+				this.contenidosProgreso.add(bloque);
+			}
+		}
+	
 	}
 
 	public String getNombre() {

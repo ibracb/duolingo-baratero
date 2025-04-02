@@ -86,15 +86,18 @@ public enum ControladorCurso {
 	}
 	
 	public CursoEnProgreso getCursoEnProgreso(String nombre) {
-		LinkedList<TipoPregunta> lista = new LinkedList<>();
-		lista.add(TipoPregunta.OPCIONES);
-		CursoPlantilla cursoPlantilla = new CursoPlantilla("Idiomas", ControladorUsuario.INSTANCE.getUsuarioActual() , "🗣️ Curso de aprendizaje de idiomas", "📈 Mejorar tus habilidades lingüísticas", Nivel.AVANZADO, null);
-        CursoEnProgreso cursoEnProgreso = new CursoEnProgreso( ControladorUsuario.INSTANCE.getUsuarioActual(), cursoPlantilla, null, null, null);
-		return cursoEnProgreso;
+		Optional<CursoPlantilla> cursoPlantilla = this.getCursoPlantilla(nombre);
+		if (cursoPlantilla.isPresent())
+			return new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoPlantilla.get(), null, null, null);
+		return null;
 	}
 	
 	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, Usuario user) {
         return new CursoEnProgreso(user, curso, null, null, null);
+	}
+	
+	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
+	
 	}
 	
 	public void playAudio(String ruta) {
