@@ -66,7 +66,7 @@ public class VentanaPregunta extends JFrame {
 
 		// ------- barra superior-------
 		barraSuperior = new BarraSuperiorPreguntas();
-		barraProgreso = new BarraProgresoPanel(controlador.getNumPreguntas(bloqueContenido));
+		barraProgreso = new BarraProgresoPanel(curso.getCursoPlantilla().getContenidos().get((int) bloqueContenido).getNumPreguntas());
 
 		// Panel que une la barra superior con la barra de progreso
 		JPanel panelSuperior = new JPanel(new BorderLayout());

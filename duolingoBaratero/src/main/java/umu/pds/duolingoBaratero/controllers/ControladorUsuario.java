@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Usuario;
+import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.ImageService;
 
 public enum ControladorUsuario {
@@ -84,7 +85,11 @@ public enum ControladorUsuario {
 	}
 	
 	public boolean addCursosEnProgreso(CursoPlantilla curso) {
-		boolean resultado=  user.addCursoEnProgreso(ControladorCurso.INSTANCE.getCursoEnProgreso(curso, this.user));
+		CursoEnProgreso cursoProgreso = ControladorCurso.INSTANCE.getCursoEnProgreso(curso, this.user);
+		boolean resultado=  user.addCursoEnProgreso(cursoProgreso);
+		if(resultado) {
+			RepositorioCurso.INSTANCE.agregarCursoEnProgreso(cursoProgreso);
+		}
 		return resultado;
 	}
 	

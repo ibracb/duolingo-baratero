@@ -29,6 +29,7 @@ import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.PreguntaProgreso;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
+import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.AudioService;
 import umu.pds.duolingoBaratero.services.ImageService;
 import umu.pds.duolingoBaratero.services.filters.Filtro;
@@ -420,13 +421,45 @@ public enum ControladorCurso {
 		
 		cursosPrueba.add(curso2);
 		cursosPrueba.add(curso1);
+		// Crear los cursos y agregar los bloques de contenido al repositorio
+		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso1);
+		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso2);
+		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoInformatica);
+		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoMusica);
+		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoCiencia);
+		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoEstudios);
+		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoDiseno);
+
+		// Agregar bloques de contenido para el curso 1
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso1);
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso1);
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso1);
+
+		// Agregar bloques de contenido para el curso 2
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso2);
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso2);
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso2);
+
+		// Agregar bloques de contenido para el curso de informática
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Informatica);
+
+		// Agregar bloques de contenido para el curso de música
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Musica);
+
+		// Agregar bloques de contenido para el curso de ciencia
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Ciencia);
+
+		// Agregar bloques de contenido para el curso de estudios
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Estudios);
+
+		// Agregar bloques de contenido para el curso de diseño
+		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Diseno);
+
 	}
 
 
 	public int getNumPreguntas(long bloqueContenido) {
-		// TODO Cuando este hecha la persistencia habra que recuperar dinamicamente 
-		// el bloque y mirar cuantas pregutnas tiene o simplemente obenet el bloque
-		return 6;
+		return RepositorioCurso.INSTANCE.obtenerBloqueContenido(bloqueContenido).getNumPreguntas();
 	}
 
 

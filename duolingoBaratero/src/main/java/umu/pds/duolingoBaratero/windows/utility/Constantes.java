@@ -10,6 +10,7 @@ import javax.swing.Timer;
 public class Constantes {
 	public static final int MAX_SALTOS = 1;
 	public static final int PREGUNTAS_POR_BLOQUE = 10;
+	private static long ID = 0;
 
 	public static void mostrarMensaje(String mensaje, int tipoMensaje) {
 		// Mostrar el JOptionPane
@@ -27,5 +28,11 @@ public class Constantes {
 		timer.setRepeats(false); // Solo ejecuta una vez
 		timer.start(); // Iniciar el Timer
 		dialog.setVisible(true);
+	}
+
+	public static long getID() {
+
+		ID++;
+		return ID;
 	}
 }

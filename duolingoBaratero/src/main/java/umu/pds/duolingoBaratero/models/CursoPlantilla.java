@@ -10,6 +10,7 @@ import java.util.Set;
 
 import umu.pds.duolingoBaratero.services.serializers.Serializer;
 import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
+import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	
@@ -24,7 +25,13 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	private int numAlumnos;
 	private int lastBloqueContenido;
 	private Serializer serializer;
+	private long id;
 	
+	public long getId() {
+		return id;
+	}
+
+
 	public CursoPlantilla(String nombre, Usuario propietario, String descripcion, String objetivos) {
 		this.nombre = nombre;
 		this.propietario = propietario;
@@ -34,6 +41,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
 		numAlumnos = 0;
 		setLastBloqueContenido(0);
+		id = Constantes.getID();
 	}
 	
 	public CursoPlantilla(String nombre, Usuario propietario, String descripcion, String objetivos, Nivel nivel, BloqueContenido... contenidos) {
@@ -76,6 +84,9 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	}
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public List<BloqueContenido> getContenidos() {
 		return Collections.unmodifiableList(contenidos);

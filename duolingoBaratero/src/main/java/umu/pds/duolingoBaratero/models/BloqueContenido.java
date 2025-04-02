@@ -7,9 +7,10 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import umu.pds.duolingoBaratero.windows.utility.Constantes;
+
 public class BloqueContenido {
 	
-	public static final int NUMERO_DE_PREGUNTAS = 10;
 	private long id;
 	private List<Pregunta> preguntas;
 	
@@ -17,6 +18,7 @@ public class BloqueContenido {
 	public BloqueContenido(long id, Pregunta...preguntas) {
 		this.preguntas = new LinkedList<>();
 		Collections.addAll(this.preguntas, preguntas);
+		id = Constantes.getID();
 	}
 
 	public long getId() {
@@ -57,6 +59,10 @@ public class BloqueContenido {
         return preguntas.stream()
                 .map(Pregunta::getTipo)
                 .collect(Collectors.toSet());
+    }
+    
+    public int getNumPreguntas() {
+    	return preguntas.size();
     }
 	
 }

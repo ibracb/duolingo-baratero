@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+import umu.pds.duolingoBaratero.windows.utility.Constantes;
+
 public class CursoEnProgreso {
 	
 	private Usuario estudiante;
@@ -13,6 +15,7 @@ public class CursoEnProgreso {
 	private List<BloqueContenidoProgreso> contenidosProgreso;
 	private EstadoCursoEnProgreso estado;
 	private Valoracion valoracion;
+	private long id;
 	
 	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion, BloqueContenidoProgreso...contenidosProgreso) {
 		this.estudiante = usuario;
@@ -21,6 +24,7 @@ public class CursoEnProgreso {
 		setEstado(new EstadoNuevo(this));
 		setValoracion(valoracion);
 		//Collections.addAll(this.contenidosProgreso, contenidosProgreso);
+		id = Constantes.getID();
 	}
 
 	public String getNombre() {
@@ -77,6 +81,14 @@ public class CursoEnProgreso {
 	
     public List<Pregunta> getPreguntasBloqueContenido(long bloqueContenidoProgreso) {
 		return cursoPlantilla.getPreguntasDeBloque(bloqueContenidoProgreso);
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public List<PreguntaProgreso> getTodasLasPreguntas() {
