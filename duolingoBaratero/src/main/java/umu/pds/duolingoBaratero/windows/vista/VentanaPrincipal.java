@@ -3,6 +3,7 @@ package umu.pds.duolingoBaratero.windows.vista;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Set;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
@@ -70,7 +71,7 @@ public class VentanaPrincipal extends JFrame {
 		refreshCursos();
 	}
 
-	private List<CursoEnProgreso> getCursosEnProgreso() {
+	private Set<CursoEnProgreso> getCursosEnProgreso() {
 		return ControladorUsuario.INSTANCE.getCursosUsuarioActual();
 	}
 

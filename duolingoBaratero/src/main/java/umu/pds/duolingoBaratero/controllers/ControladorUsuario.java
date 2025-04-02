@@ -8,8 +8,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -71,7 +73,7 @@ public enum ControladorUsuario {
 	}
 	
 	public void setCursos(String[] nombresCursos) {
-		LinkedList<CursoEnProgreso> cursos = new LinkedList<>();
+		Set<CursoEnProgreso> cursos = new HashSet<>();
 		if (cursos != null) {
 			for (String nombreCurso : nombresCursos) {
 				cursos.add(ControladorCurso.INSTANCE.getCursoEnProgreso(nombreCurso));
@@ -81,11 +83,12 @@ public enum ControladorUsuario {
 		
 	}
 	
-	public void addCursosEnProgreso(CursoPlantilla curso) {
-		user.addCursoEnProgreso(ControladorCurso.INSTANCE.getCursoEnProgreso(curso, this.user));
+	public boolean addCursosEnProgreso(CursoPlantilla curso) {
+		boolean resultado=  user.addCursoEnProgreso(ControladorCurso.INSTANCE.getCursoEnProgreso(curso, this.user));
+		return resultado;
 	}
 	
-	public List<CursoEnProgreso> getCursosUsuarioActual() {
+	public Set<CursoEnProgreso> getCursosUsuarioActual() {
 		return user.getCursos();
 	}
 	

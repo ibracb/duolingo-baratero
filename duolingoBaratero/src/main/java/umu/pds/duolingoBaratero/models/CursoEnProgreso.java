@@ -3,6 +3,7 @@ package umu.pds.duolingoBaratero.models;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class CursoEnProgreso {
 	
@@ -130,4 +131,18 @@ public class CursoEnProgreso {
 	public long getNumLastBloqueContenido() {
 		return (long) 69;
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CursoEnProgreso that = (CursoEnProgreso) o;
+        return Objects.equals(estudiante, that.estudiante) &&
+               Objects.equals(cursoPlantilla, that.cursoPlantilla);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(estudiante, cursoPlantilla);
+    }
 }

@@ -13,6 +13,8 @@ import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.components.CursoCellRenderer;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
+import umu.pds.duolingoBaratero.windows.utility.Constantes;
+
 import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -22,6 +24,7 @@ import java.util.LinkedList;
 
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -170,10 +173,20 @@ public class VentanaElegirCurso extends JFrame {
 		listaCursosCreados.setModel(modeloCursosCreados);
 	}
 	
+	/**
+	 * Si el curso Progreso elegido ya lo esta realizando el usuario no se añade
+	 * TODO: Falta ver pq dos cursos progreso que se creand en diferente vez no tienen el mismo id 
+	 * Preguntar a Jorge en caso de duda.
+	 * @param curso
+	 */
 	private void manejarSeleccionCurso(CursoPlantilla curso) {
-		ControladorUsuario.INSTANCE.addCursosEnProgreso(curso);
-		v.refreshCursos();
-		this.closeWindow();
+		if (!ControladorUsuario.INSTANCE.addCursosEnProgreso(curso)) {
+			Constantes.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
+		}
+		else {
+			v.refreshCursos();
+			this.closeWindow();
+		}
 	}
 
 	private void closeWindow() {

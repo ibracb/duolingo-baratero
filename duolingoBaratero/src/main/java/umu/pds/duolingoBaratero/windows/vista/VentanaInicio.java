@@ -105,8 +105,11 @@ public class VentanaInicio extends JFrame {
 		gbc_etiquetaIconoCentro.gridy = 2;
 		centerPanel.add(etiquetaIconoCentro, gbc_etiquetaIconoCentro);
 
-		JButton LogInButton = new JButton("Ya tengo Cuenta");
-		LogInButton.addActionListener(e -> abrirVentanaLogin());
+		JButton loginButton = new JButton("Ya tengo Cuenta");
+		loginButton.setPreferredSize(new Dimension(120, 25));
+		loginButton.setMinimumSize(new Dimension(120, 25));
+		loginButton.setMaximumSize(new Dimension(120, 25));
+		loginButton.addActionListener(e -> abrirVentanaLogin());
 
 		Component verticalStrut_1_1 = Box.createVerticalStrut(20);
 		verticalStrut_1_1.setMinimumSize(new Dimension(0, 40));
@@ -119,9 +122,12 @@ public class VentanaInicio extends JFrame {
 		gbc_LogInButton.insets = new Insets(0, 0, 5, 5);
 		gbc_LogInButton.gridx = 2;
 		gbc_LogInButton.gridy = 6;
-		centerPanel.add(LogInButton, gbc_LogInButton);
+		centerPanel.add(loginButton, gbc_LogInButton);
 
 		JButton StartButton = new JButton("Empieza Ahora");
+		StartButton.setPreferredSize(new Dimension(120, 25));
+		StartButton.setMinimumSize(new Dimension(120, 25));
+		StartButton.setMaximumSize(new Dimension(120, 25));
 		StartButton.addActionListener( e -> abrirTemasWindow());
 		GridBagConstraints gbc_StartButton = new GridBagConstraints();
 		gbc_StartButton.insets = new Insets(0, 0, 5, 5);

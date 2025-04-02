@@ -16,7 +16,7 @@ public class Usuario {
 	private String passwd;
 	private String imagen;
 	private Set<Rol> roles;
-	private List<CursoEnProgreso> cursos;
+	private Set<CursoEnProgreso> cursos;
 	private List<CursoPlantilla> cursosCreados;
 	private Estadistica estadistica;
 
@@ -25,7 +25,7 @@ public class Usuario {
 		this.nickname = nickname;
 		this.correo = correo;
 		this.passwd = passwd;
-		this.cursos = new LinkedList<>();
+		this.cursos = new HashSet<>();
 		this.cursosCreados = new LinkedList<>();
 		roles = new HashSet<>();
 		roles.add(ROL_POR_DEFECTO);
@@ -42,16 +42,16 @@ public class Usuario {
 		this.imagen = imagen;
 	}
 
-	public List<CursoEnProgreso> getCursos() {
+	public Set<CursoEnProgreso> getCursos() {
 		return cursos;
 	}
 
-	public void setCursos(List<CursoEnProgreso> cursos) {
+	public void setCursos(Set<CursoEnProgreso> cursos) {
 		this.cursos = cursos;
 	}
 	
-	public void addCursoEnProgreso(CursoEnProgreso curso) {
-		cursos.add(curso);
+	public boolean addCursoEnProgreso(CursoEnProgreso curso) {
+		return cursos.add(curso);
 	}
 
 	public List<CursoPlantilla> getCursosCreados() {
