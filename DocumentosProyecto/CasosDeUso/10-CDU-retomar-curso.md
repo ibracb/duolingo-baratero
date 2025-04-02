@@ -21,5 +21,5 @@ Permitir que un usuario retome un curso por un punto donde lo ha dejado.
 - El usuario sale de Duolingo Baratero.
 
 **Postcondiciones:**
-Las preguntas contestadas en el último acceso al cerrar, no se guardan.
+Las preguntas contestadas en el último acceso al cerrar, no se guardan.  
 Los guardados de los progresos de un curso, se generan al finalizar cada bloque de contenido.
