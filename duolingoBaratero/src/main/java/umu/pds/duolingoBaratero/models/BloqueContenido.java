@@ -13,11 +13,11 @@ public class BloqueContenido {
 	
 	private long id;
 	private List<Pregunta> preguntas;
-	
 
 	public BloqueContenido(long id, Pregunta...preguntas) {
 		this.preguntas = new LinkedList<>();
 		Collections.addAll(this.preguntas, preguntas);
+		setNumPreguntas();
 		id = Constantes.getID();
 	}
 
@@ -63,6 +63,13 @@ public class BloqueContenido {
     
     public int getNumPreguntas() {
     	return preguntas.size();
+    }
+    
+    public void setNumPreguntas() {
+		int i = 0;
+		for (Pregunta p: preguntas) {
+			p.setNumero(i++);
+		}
     }
 	
 }

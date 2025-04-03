@@ -184,5 +184,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	public int compareTo(CursoPlantilla o) {
 		return Integer.compare(this.getNumCursosEnProgreso(), o.getNumCursosEnProgreso());
 	}
+	
+	
 
 }

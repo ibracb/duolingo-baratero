@@ -1,145 +1,156 @@
 package umu.pds.duolingoBaratero.models;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.Set;
+import java.util.List;
 
 public class CursoEnProgresoTest {
+
     private CursoEnProgreso cursoEnProgreso;
-    private Usuario estudianteMock;
+    private Usuario usuarioMock;
     private CursoPlantilla cursoPlantillaMock;
     private Aprendizaje aprendizajeMock;
     private Valoracion valoracionMock;
-    private BloqueContenidoProgreso bloqueContenidoProgresoMock;
-    private EstadoCursoEnProgreso estadoMock;
+    private BloqueContenidoProgreso bloqueMock1;
+    private BloqueContenidoProgreso bloqueMock2;
+    private BloqueContenido bloqueContenidoMock;
+    private Pregunta preguntaMock;
+    private PreguntaProgreso preguntaProgresoMock;
 
     @BeforeEach
     void setUp() {
-        estudianteMock = mock(Usuario.class);
-        cursoPlantillaMock = mock(CursoPlantilla.class);
-        aprendizajeMock = Aprendizaje.SECUENCIAL;
-        valoracionMock = mock(Valoracion.class);
-        bloqueContenidoProgresoMock = mock(BloqueContenidoProgreso.class);
-        estadoMock = mock(EstadoCursoEnProgreso.class);
+        // Mocks de dependencias
+        usuarioMock = Mockito.mock(Usuario.class);
+        cursoPlantillaMock = Mockito.mock(CursoPlantilla.class);
+        aprendizajeMock = Aprendizaje.SECUENCIAL;  // Enum, no necesita mock
+        valoracionMock = Mockito.mock(Valoracion.class);
+        bloqueMock1 = Mockito.mock(BloqueContenidoProgreso.class);
+        bloqueMock2 = Mockito.mock(BloqueContenidoProgreso.class);
+        bloqueContenidoMock = Mockito.mock(BloqueContenido.class);
+        preguntaMock = Mockito.mock(Pregunta.class);
+        preguntaProgresoMock = Mockito.mock(PreguntaProgreso.class);
+        
+        Mockito.when(bloqueMock1.getBloqueContenido()).thenReturn(bloqueContenidoMock);
 
-        // Constructor del cursoEnProgreso
-        cursoEnProgreso = new CursoEnProgreso(estudianteMock, cursoPlantillaMock, aprendizajeMock, valoracionMock, bloqueContenidoProgresoMock);
+        // Configuración de métodos mock
+        Mockito.when(cursoPlantillaMock.getNombre()).thenReturn("Curso de Prueba");
+        Mockito.when(cursoPlantillaMock.getDescripcion()).thenReturn("Descripción de prueba");
+        Mockito.when(cursoPlantillaMock.getObjetivos()).thenReturn("Aprender Mockito");
+        Mockito.when(cursoPlantillaMock.getPreguntasDeBloque(1L)).thenReturn(Arrays.asList(preguntaMock));
+        Mockito.when(bloqueMock1.getPreguntasAleatoriamente()).thenReturn(Arrays.asList(preguntaProgresoMock));
+        Mockito.when(bloqueMock1.getPreguntasSecuencialmente()).thenReturn(Set.of(preguntaProgresoMock));
+
+        Mockito.when(valoracionMock.getValor()).thenReturn(5);
+
+        // Inicializar CursoEnProgreso
+        cursoEnProgreso = new CursoEnProgreso(usuarioMock, cursoPlantillaMock, aprendizajeMock, valoracionMock, bloqueMock1, bloqueMock2);
     }
 
     @Test
-    void testCursoEnProgresoInicializacion() {
-        assertEquals(estudianteMock, cursoEnProgreso.getEstudiante());
+    void testGetters() {
+        assertEquals("Curso de Prueba", cursoEnProgreso.getNombre());
+        assertEquals("Descripción de prueba", cursoEnProgreso.getDescripcion());
+        assertEquals("Aprender Mockito", cursoEnProgreso.getObjetivos());
+        assertEquals(usuarioMock, cursoEnProgreso.getEstudiante());
         assertEquals(cursoPlantillaMock, cursoEnProgreso.getCursoPlantilla());
         assertEquals(aprendizajeMock, cursoEnProgreso.getAprendizaje());
         assertEquals(valoracionMock, cursoEnProgreso.getValoracion());
-    }
-
-    @Test
-    void testSetEstudiante() {
-        Usuario nuevoEstudiante = mock(Usuario.class);
-        cursoEnProgreso.setEstudiante(nuevoEstudiante);
-        assertEquals(nuevoEstudiante, cursoEnProgreso.getEstudiante());
-    }
-
-    @Test
-    void testSetCursoPlantilla() {
-        CursoPlantilla nuevoCurso = mock(CursoPlantilla.class);
-        cursoEnProgreso.setCursoPlantilla(nuevoCurso);
-        assertEquals(nuevoCurso, cursoEnProgreso.getCursoPlantilla());
-    }
-
-    @Test
-    void testSetAprendizaje() {
-        cursoEnProgreso.setAprendizaje(Aprendizaje.ALEATORIO);
-        assertEquals(Aprendizaje.ALEATORIO, cursoEnProgreso.getAprendizaje());
-    }
-
-    @Test
-    void testSetValoracion() {
-        Valoracion nuevaValoracion = mock(Valoracion.class);
-        cursoEnProgreso.setValoracion(nuevaValoracion);
-        assertEquals(nuevaValoracion, cursoEnProgreso.getValoracion());
-    }
-
-    @Test
-    void testGetValoracionNumerica() {
-        when(valoracionMock.getValor()).thenReturn(5);
         assertEquals(5, cursoEnProgreso.getValoracionNumerica());
     }
 
     @Test
-    void testGetPreguntasBloqueContenido() {
-        when(cursoPlantillaMock.getPreguntasDeBloque(1L)).thenReturn(List.of(mock(PreguntaOpciones.class)));
-        assertFalse(cursoEnProgreso.getPreguntasBloqueContenido(1L).isEmpty());
+    void testSetters() {
+        Usuario nuevoUsuarioMock = Mockito.mock(Usuario.class);
+        cursoEnProgreso.setEstudiante(nuevoUsuarioMock);
+        assertEquals(nuevoUsuarioMock, cursoEnProgreso.getEstudiante());
+
+        CursoPlantilla nuevoCursoMock = Mockito.mock(CursoPlantilla.class);
+        cursoEnProgreso.setCursoPlantilla(nuevoCursoMock);
+        assertEquals(nuevoCursoMock, cursoEnProgreso.getCursoPlantilla());
+
+        Valoracion nuevaValoracionMock = Mockito.mock(Valoracion.class);
+        Mockito.when(nuevaValoracionMock.getValor()).thenReturn(10);
+        cursoEnProgreso.setValoracion(nuevaValoracionMock);
+        assertEquals(10, cursoEnProgreso.getValoracionNumerica());
+
+        Aprendizaje nuevoAprendizaje = Aprendizaje.ALEATORIO;
+        cursoEnProgreso.setAprendizaje(nuevoAprendizaje);
+        assertEquals(nuevoAprendizaje, cursoEnProgreso.getAprendizaje());
     }
 
     @Test
-    void testSetEstado() {
-        cursoEnProgreso.setEstado(estadoMock);
-        assertEquals(estadoMock, cursoEnProgreso.getEstado());
+    void testGetContenidosProgreso() {
+        List<BloqueContenidoProgreso> contenidos = cursoEnProgreso.getContenidosProgreso();
+        assertEquals(2, contenidos.size());
+        assertTrue(contenidos.contains(bloqueMock1));
+        assertTrue(contenidos.contains(bloqueMock2));
     }
 
     @Test
-    void testEstadosDelCurso() {
-        EstadoCursoEnProgreso nuevoEstado = mock(EstadoNuevo.class);
-        cursoEnProgreso.setEstado(nuevoEstado);
+    void testEstados() {
         assertTrue(cursoEnProgreso.isNuevo());
-    }
 
-    @Test
-    void testIniciar() {
-        EstadoCursoEnProgreso nuevoEstado = mock(EstadoNuevo.class);
-        cursoEnProgreso.setEstado(nuevoEstado);
         cursoEnProgreso.iniciar();
-        verify(nuevoEstado).iniciar(cursoEnProgreso);
-    }
+        assertTrue(cursoEnProgreso.isEnMarcha());
 
-    @Test
-    void testFinalizar() {
-        EstadoCursoEnProgreso nuevoEstado = mock(EstadoEnMarcha.class);
-        cursoEnProgreso.setEstado(nuevoEstado);
         cursoEnProgreso.finalizar();
-        verify(nuevoEstado).finalizar(cursoEnProgreso);
+        assertTrue(cursoEnProgreso.isFinalizado());
     }
 
     @Test
-    void testGetTodasLasPreguntasAleatorio() {
+    void testEstadosCambio() {
+        // De EstadoNuevo a EstadoEnMarcha
+        cursoEnProgreso.iniciar();
+        assertTrue(cursoEnProgreso.getEstado() instanceof EstadoEnMarcha);
 
-//		  FIXME: No se por que dan error    	
-//        List<BloqueContenidoProgreso> contenidos = new LinkedList<BloqueContenidoProgreso>();
-//        contenidos.add(bloqueContenidoProgresoMock);
-//        when(cursoEnProgreso.getContenidosProgreso()).thenReturn(contenidos);
-//        when(bloqueContenidoProgresoMock.getBloqueContenido()).thenReturn(mock(BloqueContenido.class));
-//        when(bloqueContenidoProgresoMock.getBloqueContenido().getPreguntasAleatoriamente()).thenReturn((List<Pregunta>) mock(PreguntaOpciones.class));
-//        
-//        cursoEnProgreso.setAprendizaje(Aprendizaje.ALEATORIO);
-//        List<PreguntaProgreso> preguntas = cursoEnProgreso.getTodasLasPreguntas();
-//        assertEquals(1, preguntas.size());
-    }
-
-    @Test
-    void testGetTodasLasPreguntasSecuencial() {
-//		  FIXME: No se por que dan error
-//        List<BloqueContenidoProgreso> contenidos = List.of(bloqueContenidoProgresoMock);
-//        when(cursoEnProgreso.getContenidosProgreso()).thenReturn(contenidos);
-//        when(bloqueContenidoProgresoMock.getBloqueContenido()).thenReturn(mock(BloqueContenido.class));
-//        when(bloqueContenidoProgresoMock.getBloqueContenido().getPreguntasSecuencialmente()).thenReturn((Set<Pregunta>) mock(PreguntaOpciones.class));
-//        
-//        cursoEnProgreso.setAprendizaje(Aprendizaje.SECUENCIAL);
-//        List<PreguntaProgreso> preguntas = cursoEnProgreso.getTodasLasPreguntas();
-//        assertEquals(1, preguntas.size());
+        // De EstadoEnMarcha a EstadoFinalizado
+        cursoEnProgreso.finalizar();
+        assertTrue(cursoEnProgreso.getEstado() instanceof EstadoFinalizado);
     }
 
     @Test
     void testEqualsAndHashCode() {
-        CursoEnProgreso otroCurso = new CursoEnProgreso(estudianteMock, cursoPlantillaMock, aprendizajeMock, valoracionMock);
-        assertTrue(cursoEnProgreso.equals(otroCurso));
+        CursoEnProgreso otroCurso = new CursoEnProgreso(usuarioMock, cursoPlantillaMock, aprendizajeMock, valoracionMock, bloqueMock1);
+        assertEquals(cursoEnProgreso, otroCurso);
         assertEquals(cursoEnProgreso.hashCode(), otroCurso.hashCode());
+
+        CursoEnProgreso cursoDiferente = new CursoEnProgreso(Mockito.mock(Usuario.class), cursoPlantillaMock, aprendizajeMock, valoracionMock);
+        assertNotEquals(cursoEnProgreso, cursoDiferente);
+    }
+
+    @Test
+    void testGetNumLastBloqueContenido() {
+        assertEquals(69, cursoEnProgreso.getNumLastBloqueContenido());
+    }
+    
+    @Test
+    void testGetPreguntasBloqueContenido() {
+        List<Pregunta> preguntas = cursoEnProgreso.getPreguntasBloqueContenido(1L);
+        assertNotNull(preguntas);
+        assertEquals(1, preguntas.size());
+        assertEquals(preguntaMock, preguntas.get(0));
+    }
+
+    @Test
+    void testGetTodasLasPreguntasSecuencial() {
+        List<PreguntaProgreso> preguntas = cursoEnProgreso.getTodasLasPreguntas();
+        System.out.println(preguntas);
+        assertNotNull(preguntas);
+        assertEquals(1, preguntas.size());
+        assertInstanceOf(PreguntaProgreso.class, preguntas.get(0)); // Verifica el tipo correcto
+    }
+
+    @Test
+    void testGetTodasLasPreguntasAleatorio() {
+        cursoEnProgreso.setAprendizaje(Aprendizaje.ALEATORIO);
+        List<PreguntaProgreso> preguntas = cursoEnProgreso.getTodasLasPreguntas();
+        System.out.println(preguntas);
+        assertNotNull(preguntas);
+        assertEquals(1, preguntas.size());
+        assertInstanceOf(PreguntaProgreso.class, preguntas.get(0));
     }
 }

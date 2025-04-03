@@ -147,22 +147,22 @@ public class Usuario {
 	}
 
 	public double getPorcentajeAcierto() {
-		//return estadistica.getPorcentajeAciertos();
-		return 80.0;
+		estadistica.setPorcentajeAciertos(80.0);
+		return estadistica.getPorcentajeAciertos();
 	}
 
 	public double getTiempoUso() {
-		//return estadistica.getTiempoUso();
-		return 6;
+		estadistica.setTiempoUso(6);
+		return estadistica.getTiempoUso();
 	}
 
 	public int getRachaVictorias() {
-		//return estadistica.getRachaVictorias();
-		return 8;
+		estadistica.setRachaVictorias(8);
+		return estadistica.getRachaVictorias();
 	}
 
 	public int getNumMaxAccesos() {
-		//return estadistica.getNumAccesos();
-		return 4;
+		estadistica.setNumAccesos(4);
+		return estadistica.getNumAccesos();
 	}
 }

@@ -1,6 +1,7 @@
 package umu.pds.duolingoBaratero.models;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -52,7 +53,7 @@ public class BloqueContenidoProgreso {
 	}
 	
 	public Set<PreguntaProgreso> getPreguntasSecuencialmente() {
-		return Collections.unmodifiableSet(new TreeSet<>(preguntasProgreso));
+		return Collections.unmodifiableSet(new HashSet<>(preguntasProgreso));
 	}
 	
 	public List<PreguntaProgreso> getPreguntasAleatoriamente() {

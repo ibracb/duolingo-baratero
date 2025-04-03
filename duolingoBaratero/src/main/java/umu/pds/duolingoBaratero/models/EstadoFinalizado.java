@@ -25,5 +25,8 @@ public class EstadoFinalizado implements EstadoCursoEnProgreso {
 	public void finalizar(CursoEnProgreso curso) {
 		curso.setEstado(curso.getEstado());
 	}
+	
+	
 
 }
+ 

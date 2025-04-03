@@ -56,7 +56,7 @@ public class VentanaPregunta extends JFrame {
 
 		controlador = ControladorCurso.INSTANCE; // Controlador
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 200, 800, 600); // Tamaño recomendado
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();

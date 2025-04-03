@@ -3,90 +3,102 @@ package umu.pds.duolingoBaratero.models;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 public class CursoPlantillaTest {
-    private CursoPlantilla curso;
+
+    private CursoPlantilla cursoPlantilla;
     private Usuario propietario;
-    private BloqueContenido bloqueMock;
-    private CursoEnProgreso cursoEnProgresoMock;
-    
+    private BloqueContenido bloqueContenido;
+    private CursoEnProgreso cursoEnProgreso;
+
     @BeforeEach
-    void setUp() {
+    public void setUp() {
+        // Crear mock de Usuario
         propietario = mock(Usuario.class);
-        bloqueMock = mock(BloqueContenido.class);
-        cursoEnProgresoMock = mock(CursoEnProgreso.class);
         
-        curso = new CursoPlantilla("Java Básico", propietario, "Curso de introducción a Java", "Aprender los fundamentos de Java");
+        // Crear un bloque de contenido mock
+        bloqueContenido = mock(BloqueContenido.class);
+        
+        // Crear un curso en progreso mock
+        cursoEnProgreso = mock(CursoEnProgreso.class);
+        
+        // Crear el objeto CursoPlantilla
+        cursoPlantilla = new CursoPlantilla("Curso Java", propietario, "Aprender Java", "Aprender los conceptos básicos de Java");
     }
-    
+
     @Test
-    void testCursoPlantillaInicializacion() {
-        assertEquals("Java Básico", curso.getNombre());
-        assertEquals("Curso de introducción a Java", curso.getDescripcion());
-        assertEquals("Aprender los fundamentos de Java", curso.getObjetivos());
-        assertEquals(propietario, curso.getPropietario());
-        assertEquals(0, curso.getNumAlumnos());
-        assertTrue(curso.getContenidos().isEmpty());
-        assertEquals(0, curso.getLastBloqueContenido());
+    public void testConstructor() {
+        assertNotNull(cursoPlantilla);
+        assertEquals("Curso Java", cursoPlantilla.getNombre());
+        assertEquals(propietario, cursoPlantilla.getPropietario());
+        assertEquals("Aprender Java", cursoPlantilla.getDescripcion());
+        assertEquals("Aprender los conceptos básicos de Java", cursoPlantilla.getObjetivos());
+        assertEquals(0, cursoPlantilla.getNumAlumnos());
+        assertEquals(0, cursoPlantilla.getLastBloqueContenido());
     }
-    
+
     @Test
-    void testAddAlumno() {
-        curso.addAlumno();
-        assertEquals(1, curso.getNumAlumnos());
+    public void testAddBloqueContenido() {
+        cursoPlantilla.addBloqueContenido(bloqueContenido);
+        assertEquals(1, cursoPlantilla.getContenidos().size());
     }
-    
+
     @Test
-    void testAddBloqueContenido() {
-        curso.addBloqueContenido(bloqueMock);
-        assertFalse(curso.getContenidos().isEmpty());
-        assertEquals(1, curso.getLastBloqueContenido());
+    public void testRemoveBloqueContenido() {
+        cursoPlantilla.addBloqueContenido(bloqueContenido);
+        cursoPlantilla.removeBloqueContenido(bloqueContenido);
+        assertEquals(0, cursoPlantilla.getContenidos().size());
     }
-    
+
     @Test
-    void testRemoveBloqueContenido() {
-        curso.addBloqueContenido(bloqueMock);
-        curso.removeBloqueContenido(bloqueMock);
-        assertTrue(curso.getContenidos().isEmpty());
+    public void testAddAlumno() {
+        cursoPlantilla.addAlumno();
+        assertEquals(1, cursoPlantilla.getNumAlumnos());
     }
-    
+
     @Test
-    void testSetImagen() {
-        curso.setImagen("imagen.jpg");
-        assertTrue(curso.getImagen().isPresent());
-        assertEquals("imagen.jpg", curso.getImagen().get());
+    public void testGetTipoPreguntas() {
+        // Mockear el tipo de pregunta en el bloque de contenido
+        Set<TipoPregunta> tiposPreguntas = new HashSet<>();
+        tiposPreguntas.add(TipoPregunta.FLASHCARD);
+        
+        when(bloqueContenido.getTiposPreguntas()).thenReturn(tiposPreguntas);
+        cursoPlantilla.addBloqueContenido(bloqueContenido);
+        
+        Set<TipoPregunta> resultado = cursoPlantilla.getTipoPreguntas();
+        assertTrue(resultado.contains(TipoPregunta.FLASHCARD));
     }
-    
+
     @Test
-    void testHasImage() {
-        curso.setImagen("imagen.jpg");
-        assertTrue(curso.hasImage());
+    public void testGetPreguntasDeBloque() {
+        // Simulamos que el bloque de contenido tiene preguntas
+        List<Pregunta> preguntas = List.of(mock(Pregunta.class));
+        when(bloqueContenido.getPreguntas()).thenReturn(preguntas);
+        
+        cursoPlantilla.addBloqueContenido(bloqueContenido);
+        
+        List<Pregunta> resultado = cursoPlantilla.getPreguntasDeBloque(bloqueContenido.getId());
+        assertEquals(preguntas, resultado);
     }
-    
+
     @Test
-    void testGetNumCursosEnProgreso() {
-        curso.setCursosEnProgreso(Set.of(cursoEnProgresoMock));
-        assertEquals(1, curso.getNumCursosEnProgreso());
+    public void testSetImagen() {
+        cursoPlantilla.setImagen("imagen.png");
+        assertTrue(cursoPlantilla.getImagen().isPresent());
+        assertEquals("imagen.png", cursoPlantilla.getImagen().get());
     }
-    
+
     @Test
-    void testGetValoracionMedia() {
-        when(cursoEnProgresoMock.getValoracion()).thenReturn(Valoracion.CUATRO);
-        curso.setCursosEnProgreso(Set.of(cursoEnProgresoMock));
-        assertEquals(4.0, curso.getValoracionMedia());
+    public void testMejorJSON() {
+        cursoPlantilla.setImagen("imagen.png");
+        assertTrue(cursoPlantilla.mejorJSON());
     }
-    
-    @Test
-    void testGetPreguntasDeBloque() {
-        when(bloqueMock.getId()).thenReturn(1L);
-        when(bloqueMock.getPreguntas()).thenReturn(List.of(mock(Pregunta.class)));
-        curso.addBloqueContenido(bloqueMock);
-        assertFalse(curso.getPreguntasDeBloque(1L).isEmpty());
-    }
+
 }

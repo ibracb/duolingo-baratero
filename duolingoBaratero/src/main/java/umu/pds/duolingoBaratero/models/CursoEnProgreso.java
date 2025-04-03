@@ -104,10 +104,10 @@ public class CursoEnProgreso {
 		List<PreguntaProgreso> listaPreguntas = new LinkedList<>();
 		switch(this.aprendizaje) {
 			case ALEATORIO:
-				listaPreguntas.add((PreguntaProgreso) listaContenidos.get(0).getBloqueContenido().getPreguntasAleatoriamente());
+				listaPreguntas.addAll(listaContenidos.get(0).getPreguntasAleatoriamente());
 				break;
 			case SECUENCIAL:
-				listaPreguntas.add((PreguntaProgreso) listaContenidos.get(0).getBloqueContenido().getPreguntasSecuencialmente());
+				listaPreguntas.addAll(listaContenidos.get(0).getPreguntasSecuencialmente());
 				break;
 			default:
 				break;
