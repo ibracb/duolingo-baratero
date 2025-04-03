@@ -25,6 +25,14 @@ public class CursoEnProgreso {
 		setValoracion(valoracion);
 		//Collections.addAll(this.contenidosProgreso, contenidosProgreso);
 		id = Constantes.getID();
+
+		this.contenidosProgreso = new LinkedList<>();
+		if (contenidosProgreso != null) {
+			for (BloqueContenidoProgreso bloque : contenidosProgreso) {
+				this.contenidosProgreso.add(bloque);
+			}
+		}
+	
 	}
 
 	public String getNombre() {

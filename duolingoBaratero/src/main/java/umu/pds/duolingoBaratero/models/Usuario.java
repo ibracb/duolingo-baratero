@@ -61,6 +61,10 @@ public class Usuario {
 	public void setCursosCrados(List<CursoPlantilla> cursos) {
 		this.cursosCreados = cursos;
 	}
+	
+	public void addCursoPlantilla(CursoPlantilla curso) {
+		this.cursosCreados.add(curso);
+	}
 
 	public long getId() {
 		return id;
