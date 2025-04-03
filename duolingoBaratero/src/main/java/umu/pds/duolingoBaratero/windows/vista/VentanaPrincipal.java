@@ -79,43 +79,43 @@ public class VentanaPrincipal extends JFrame {
 	private List<CursoPlantilla> getCursosCreados() {
 		return ControladorUsuario.INSTANCE.getCursosCreadosUsuarioActual();
 	}
-	
+
 	private void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
 		System.err.println("ManejarSeleccion de cursos");
 		if (ControladorCurso.INSTANCE.isCursoNuevo(curso)) {
 			System.err.println("Se mete en 1 ");
-			VentanaPregunta ventanaPregunta = new VentanaPregunta(curso,0);
+			VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, 0);
 			ventanaPregunta.setVisible(true);
 		}
 
 		else if (ControladorCurso.INSTANCE.isCursoEnMarcha(curso)) {
 			System.err.println("Se mete en 2");
-			VentanaPregunta ventana = new VentanaPregunta(curso, ControladorCurso.INSTANCE.getNumLastBloqueContenido(curso));
+			VentanaPregunta ventana = new VentanaPregunta(curso,
+					ControladorCurso.INSTANCE.getNumLastBloqueContenido(curso));
 			ventana.setLocation(null);
 			ventana.setVisible(true);
-		}
-		else {
+		} else {
 			JOptionPane.showMessageDialog(this, "Has finalizado este curso. ¿Quieres empezarlo de nuevo?",
 					"Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
 	public void refreshCursos() {
-        modeloCursos.clear();
-        for (CursoEnProgreso curso : getCursosEnProgreso()) {
-            modeloCursos.addElement(curso);
-        }
-        listaCursos.setModel(modeloCursos);
+		modeloCursos.clear();
+		for (CursoEnProgreso curso : getCursosEnProgreso()) {
+			modeloCursos.addElement(curso);
+		}
+		listaCursos.setModel(modeloCursos);
 
-        if (ControladorUsuario.INSTANCE.isUserCreator()) {
-            modeloCursosCreados.clear();
-            for (CursoPlantilla curso : getCursosCreados()) {
-                modeloCursosCreados.addElement(curso);
-            }
-            listaCursosCreados.setModel(modeloCursosCreados);
-        }
-    }
-	
+		if (ControladorUsuario.INSTANCE.isUserCreator()) {
+			modeloCursosCreados.clear();
+			for (CursoPlantilla curso : getCursosCreados()) {
+				modeloCursosCreados.addElement(curso);
+			}
+			listaCursosCreados.setModel(modeloCursosCreados);
+		}
+	}
+
 	private void abrirVentanaElegirCurso() {
 		VentanaElegirCurso ventana = new VentanaElegirCurso(this);
 		ventana.setVisible(true);
@@ -123,14 +123,17 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public void compartirCurso() {
-		CursoEnProgreso curso = listaCursos.getSelectedValue();
-		if (curso != null) {
+		if (listaCursos.getSelectedIndex() != -1) {
+			CursoEnProgreso curso = listaCursos.getSelectedValue();
 			ControladorCurso.INSTANCE.compartirCurso(curso);
-			Constantes.mostrarMensaje("Seguro que quieres exportar el curso: " + curso.getNombre(),JOptionPane.INFORMATION_MESSAGE  );
+			Constantes.mostrarMensaje("Seguro que quieres exportar el curso: " + curso.getNombre(),
+					JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			Constantes.mostrarMensaje("No hay ningun curso seleccionado ",
+					JOptionPane.ERROR_MESSAGE);
 		}
-	
+
+
 	}
 
-
-  
 }

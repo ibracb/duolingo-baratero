@@ -2,6 +2,7 @@ package umu.pds.duolingoBaratero.services.serializers;
 
 import java.io.File;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import umu.pds.duolingoBaratero.models.CursoPlantilla;

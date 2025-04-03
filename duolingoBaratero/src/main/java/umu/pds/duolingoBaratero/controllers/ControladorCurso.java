@@ -4,6 +4,7 @@ import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
 import java.util.stream.Collectors;
 import java.util.Comparator;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -467,6 +468,6 @@ public enum ControladorCurso {
 
 
 	public void compartirCurso(CursoEnProgreso curso) {
-		serializer.serialize("/CursosPDS/src/main/resources/cursos/"+ curso.getNombre(), curso.getCursoPlantilla());
+		serializer.serialize("C:\\Users\\joque\\Downloads"+curso.getNombre() + ".json", curso.getCursoPlantilla());
 	}
 }
