@@ -17,11 +17,11 @@ El usuario debe estar registrado en Duolingo Baratero.
 6. El sistema informa que el curso ha sido compartido correctamente en la [ventana de OK](../Ventanas/VentanaCursoCompartido.png).  
 
 **Flujos alternativos:**  
-4a. El usuario indica que no desea compartir el curso indicado en la [ventana de confirmación](/../Ventanas/VentanaConfirmarComparteCurso.png).
+4a. El usuario indica que no desea compartir el curso indicado en la [ventana de confirmación](../Ventanas/VentanaConfirmarComparteCurso.png).
 1. El usuario vuelve a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioCreador.png).
 
 5a. El sistema informa de un error en la serialización del curso a JSON/YAML en la respectiva [ventana de error](../Ventanas/VentanaSerializacionError.png).  
-1. El usuario indica indica que lo entiende, y vuelve a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioCreador.png).
+1. El usuario indica que lo entiende, y vuelve a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioCreador.png).
 
 **Postcondiciones:**
 1. El sistema ha compartido el curso creado por el usuario a partir del fichero para que otros usuarios puedan realizarlo.

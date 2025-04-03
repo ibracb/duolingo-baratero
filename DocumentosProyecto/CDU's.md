@@ -14,29 +14,25 @@
 ---
 ## Caso de uso 4
 **Actor Principal:** Usuario estudiante 
-**Nombre Cdu:** [Guardar progreso](CasosDeUso/04-CDU-guardar-progreso.md)    
+**Nombre Cdu:** [Consultar estadísticas](CasosDeUso/04-CDU-consultar-estadisticas.md)  
 ---
 ## Caso de uso 5
-**Actor Principal:** Usuario estudiante 
-**Nombre Cdu:** [Consultar estadísticas](CasosDeUso/05-CDU-consultar-estadisticas.md)  
+**Actor Principal:** Usuario creador  
+**Nombre Cdu:** [Crear un curso](CasosDeUso/05-CDU-crear-curso.md)  
 ---
 ## Caso de uso 6
-**Actor Principal:** Usuario creador  
-**Nombre Cdu:** [Crear un curso](CasosDeUso/06-CDU-crear-curso.md)  
+**Actor Principal:** Usuario creador 
+**Nombre Cdu:** [Compartir un curso](CasosDeUso/06-CDU-compartir-curso.md)  
 ---
 ## Caso de uso 7
-**Actor Principal:** Usuario creador 
-**Nombre Cdu:** [Compartir un curso](CasosDeUso/07-CDU-compartir-curso.md)  
+**Actor Principal:** Usuario creador  
+**Nombre Cdu:** [Instalar un curso desde un archivo](CasosDeUso/07-CDU-instalar-curso-desde-archivo.md)  
 ---
 ## Caso de uso 8
-**Actor Principal:** Usuario creador  
-**Nombre Cdu:** [Instalar un curso desde un archivo](CasosDeUso/08-CDU-instalar-curso-desde-archivo.md)  
+**Actor Principal:** Usuario creador   
+**Nombre Cdu:**  [Agregar nuevos tipos de preguntas](CasosDeUso/08-CDU-agregar-preguntas.md)  
 ---
 ## Caso de uso 9
-**Actor Principal:** Usuario creador   
-**Nombre Cdu:**  [Agregar nuevos tipos de preguntas](CasosDeUso/09-CDU-agregar-preguntas.md)  
----
-## Caso de uso 10
 **Actor Principal:** Usuario estudiante de un curso que ya ha empezado   
-**Nombre Cdu:** [Retomar curso](CasosDeUso/10-CDU-retomar-curso.md)  
+**Nombre Cdu:** [Retomar curso](CasosDeUso/09-CDU-retomar-curso.md)  
 ---

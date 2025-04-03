@@ -5,7 +5,7 @@
 **Objetivo:** Permitir la carga de nuevos cursos desde archivos.  
 
 **Pasos:**
-1. El usuario entra a la [ventana principal](../Ventanas/.png).  
+1. El usuario entra a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioCreador.png.png).  
 2. El usuario accede a la parte de _Mis Cursos_.
 3. El usuario selecciona la opción de cargar un curso desde archivo.
 4. El usuario sube un archivo con la estructura del curso.

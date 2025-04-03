@@ -10,9 +10,9 @@ Permitir que un usuario retome un curso por un punto donde lo ha dejado.
 1. El usuario debe haber empezado el curso.
 
 **Pasos:**
-1. El usuario se loggea en la aplicación, [desde la ventana de inicio de sesión](../Ventanas/VentanaLogin.png).
+1. El usuario se loguea en la aplicación, [desde la ventana de inicio de sesión](../Ventanas/VentanaLogin.png).
 2. El usuario indica el curso que ya tenía empezado de la lista de cursos empezados, en la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioEstudiante.png).
-3. El sistema reanuda el curso por la ultima pregunta que contestó el usuario, desde la [ventana de preguntas](../Ventanas/VentanaPreguntaTest.png).
+3. El sistema reanuda el curso por la última pregunta que contestó el usuario, desde la [ventana de preguntas](../Ventanas/VentanaPreguntaTest.png).
 4. El usuario continua con la realización del curso.
 
 **Flujos alternativos:**    

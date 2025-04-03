@@ -12,10 +12,10 @@
 3. El usuario accede a la [ventana para elegir curso](../Ventanas/VentanaElegirCurso.png)
 4. El usuario selecciona el curso que quiere hacer aplicando los filtros que necesite.
 5. El sistema devuelve al usuario a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioEstudiante.png) con el nuevo curso añadido.
-6. El usuario pulsa en el nuevo curso para [inciarlo](03-CDU-inciar-curso.md)
+6. El usuario pulsa en el nuevo curso para [iniciarlo](03-CDU-inciar-curso.md)
 
 **Flujo alternativo:**
-04a. El usuario pulsa el botón "home" porque no le ha interesado ningun curso.  
+04a. El usuario pulsa el botón "home" porque no le ha interesado ningún curso.  
 05a. El sistema devuelve al usuario a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioEstudiante.png)  
 
 **Postcondiciones:**
