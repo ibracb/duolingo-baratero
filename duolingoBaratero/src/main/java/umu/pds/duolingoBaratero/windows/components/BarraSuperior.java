@@ -43,7 +43,7 @@ public class BarraSuperior extends JPanel {
 		btnCreaTuCurso = new JButton("Crea tu curso");
 		btnCreaTuCurso.addActionListener(e -> openVentanaCreaTuCurso());
 		btnCompartirCurso = new JButton("Compartir Curso");
-		btnCompartirCurso.addActionListener(e -> compartirCurso((VentanaPrincipal) ventanaActual));
+		btnCompartirCurso.addActionListener(e -> compartirCurso(ventanaActual));
 
 		// Agregar botones al panel central
 		panelCentral.add(btnHome);
@@ -68,42 +68,64 @@ public class BarraSuperior extends JPanel {
 				return; // Si el usuario cancela, no se abre la nueva ventana
 			}
 		}
-		VentanaPrincipal ventana = new VentanaPrincipal();
-		ventana.setVisible(true);
-		ventanaActual.dispose();
+
+		// Evitar cast incorrecto
+		if (!(ventanaActual instanceof VentanaPrincipal)) {
+			VentanaPrincipal ventana = new VentanaPrincipal();
+			ventana.setVisible(true);
+			ventanaActual.dispose();
+		} else {
+			JOptionPane.showMessageDialog(this, "Ya estás en la ventana principal.", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void openVentanaEstadisticas() {
 		if (ventanaActual instanceof VentanaCreaPregunta) {
 			int respuesta = JOptionPane.showConfirmDialog(null,
-					"Si continúas, perderás la informacion sobre el curso. ¿Deseas continuar?", "Advertencia",
+					"Si continúas, perderás la información sobre el curso. ¿Deseas continuar?", "Advertencia",
 					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 			if (respuesta != JOptionPane.OK_OPTION) {
 				return; // Si el usuario cancela, no se abre la nueva ventana
 			}
 		}
-		VentanaEstadisticas ventana = new VentanaEstadisticas();
-		ventana.setVisible(true);
-		ventanaActual.dispose();
+
+		// Evitar cast incorrecto
+		if (!(ventanaActual instanceof VentanaEstadisticas)) {
+			VentanaEstadisticas ventana = new VentanaEstadisticas();
+			ventana.setVisible(true);
+			ventanaActual.dispose();
+		} else {
+			JOptionPane.showMessageDialog(this, "Ya estás en la ventana de estadísticas.", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
-	private void compartirCurso(VentanaPrincipal ventanaActual) {
+	private void compartirCurso(JFrame ventanaActual) {
 		if (ventanaActual instanceof VentanaPrincipal) {
-			ventanaActual.compartirCurso();
+			// Solo podemos compartir curso si estamos en la VentanaPrincipal
+			VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) ventanaActual;
+			ventanaPrincipal.compartirCurso();
+		} else {
+			// Si no estamos en VentanaPrincipal, mostramos un mensaje de error
+			JOptionPane.showMessageDialog(this, "Este botón solo está disponible en la ventana principal.", "Error",
+					JOptionPane.ERROR_MESSAGE);
 		}
-
 	}
 
 	private void openVentanaCreaTuCurso() {
 		if (ventanaActual instanceof VentanaCreaPregunta) {
 			JOptionPane.showMessageDialog(this, "No puedes crear un curso desde esta ventana", "Error",
 					JOptionPane.ERROR_MESSAGE);
-		} else {
+		} else if (!(ventanaActual instanceof VentanaCreaTuCurso)) {
+			// Abrimos VentanaCreaTuCurso solo si no estamos ya en ella
 			VentanaCreaTuCurso ventana = new VentanaCreaTuCurso();
 			ventana.setVisible(true);
 			ventanaActual.dispose();
+		} else {
+			JOptionPane.showMessageDialog(this, "Ya estás en la ventana de creación de curso.", "Error",
+					JOptionPane.ERROR_MESSAGE);
 		}
-
 	}
 
 	private void toggleModoOscuro() {
@@ -132,31 +154,29 @@ public class BarraSuperior extends JPanel {
 
 		btnCreaTuCurso.setBackground(Color.DARK_GRAY);
 		btnCreaTuCurso.setForeground(Color.WHITE);
-		
+
 		btnCompartirCurso.setBackground(Color.DARK_GRAY);
 		btnCompartirCurso.setForeground(Color.WHITE);
 	}
 
 	private void setModoClaro() {
-        // Cambiar el fondo y los colores del texto a colores claros
-        setBackground(Color.WHITE);
-        setForeground(Color.BLACK);
+		// Cambiar el fondo y los colores del texto a colores claros
+		setBackground(Color.WHITE);
+		setForeground(Color.BLACK);
 
-        btnHome.setBackground(Color.LIGHT_GRAY);
-        btnHome.setForeground(Color.BLACK);
+		btnHome.setBackground(Color.LIGHT_GRAY);
+		btnHome.setForeground(Color.BLACK);
 
-        btnEstadisticas.setBackground(Color.LIGHT_GRAY);
-        btnEstadisticas.setForeground(Color.BLACK);
+		btnEstadisticas.setBackground(Color.LIGHT_GRAY);
+		btnEstadisticas.setForeground(Color.BLACK);
 
-        btnModoNocturno.setBackground(Color.LIGHT_GRAY);
-        btnModoNocturno.setForeground(Color.BLACK);
+		btnModoNocturno.setBackground(Color.LIGHT_GRAY);
+		btnModoNocturno.setForeground(Color.BLACK);
 
-        btnCreaTuCurso.setBackground(Color.LIGHT_GRAY);
-        btnCreaTuCurso.setForeground(Color.BLACK);
-        
-        btnCompartirCurso.setBackground(Color.LIGHT_GRAY);
-        btnCompartirCurso.setForeground(Color.BLACK);
+		btnCreaTuCurso.setBackground(Color.LIGHT_GRAY);
+		btnCreaTuCurso.setForeground(Color.BLACK);
 
-    }
-
+		btnCompartirCurso.setBackground(Color.LIGHT_GRAY);
+		btnCompartirCurso.setForeground(Color.BLACK);
+	}
 }

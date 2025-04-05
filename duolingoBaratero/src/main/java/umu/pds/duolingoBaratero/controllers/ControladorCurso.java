@@ -57,6 +57,10 @@ public enum ControladorCurso {
 	
 
 	public boolean isCursoNuevo(CursoEnProgreso curso) {
+		if (curso == null) {
+			System.out.println("Curso nulo");
+			return false;
+		}
 		return curso.isNuevo();
 	}
 	
@@ -464,6 +468,10 @@ public enum ControladorCurso {
 
 
 	public void compartirCurso(CursoEnProgreso curso) {
+		if (curso == null) {
+	        System.err.println("Error: El curso es null.");
+	        return;  // Termina la ejecución del método si curso es null.
+	    }
 		serializer.serialize("src/main/resources/cursos/"+curso.getNombre() + ".json", curso.getCursoPlantilla());
 	}
 }
