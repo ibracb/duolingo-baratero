@@ -13,6 +13,10 @@ public class PDSCursoEnProgresoDAO extends PDSEntidadDAO<CursoEnProgreso> {
 		return instance;
 	}
 	
+	private PDSCursoEnProgresoDAO() {
+		super();
+	}
+	
 	@Override
 	protected Class<CursoEnProgreso> getEntityClass() {
 		return CursoEnProgreso.class;

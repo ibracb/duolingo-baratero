@@ -13,6 +13,10 @@ public class PDSUsuarioDAO extends PDSEntidadDAO<Usuario> {
 		return instance;
 	}
 	
+	private PDSUsuarioDAO() {
+		super();
+	}
+	
 	@Override
 	protected Class<Usuario> getEntityClass() {
 		return Usuario.class;

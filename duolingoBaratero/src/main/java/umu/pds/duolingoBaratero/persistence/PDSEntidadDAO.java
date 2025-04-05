@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.EntityManager;
 
 public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
+	
 	private EntityManager em;
 
 	public PDSEntidadDAO() {
