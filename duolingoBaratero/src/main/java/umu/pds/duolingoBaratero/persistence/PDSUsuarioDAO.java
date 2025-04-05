@@ -4,6 +4,15 @@ import umu.pds.duolingoBaratero.models.Usuario;
 
 public class PDSUsuarioDAO extends PDSEntidadDAO<Usuario> {
 	
+	private static PDSUsuarioDAO instance;
+	
+	public static PDSUsuarioDAO getInstance() {
+		if (instance == null) {
+			instance = new PDSUsuarioDAO();
+		}
+		return instance;
+	}
+	
 	@Override
 	protected Class<Usuario> getEntityClass() {
 		return Usuario.class;

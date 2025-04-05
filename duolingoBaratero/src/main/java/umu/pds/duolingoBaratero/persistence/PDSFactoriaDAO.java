@@ -5,15 +5,15 @@ public enum PDSFactoriaDAO {
 	INSTANCE;
 	
 	public PDSUsuarioDAO getUsuarioDAO() {
-		return new PDSUsuarioDAO();
+		return PDSUsuarioDAO.getInstance();
 	}
 	
 	public PDSCursoPlantillaDAO getCursoPlantillaDAO() {
-		return new PDSCursoPlantillaDAO();
+		return PDSCursoPlantillaDAO.getInstance();
 	}
 	
 	public PDSCursoEnProgresoDAO getCursoEnProgresoDAO() {
-		return new PDSCursoEnProgresoDAO();
+		return PDSCursoEnProgresoDAO.getInstance();
 	}
 	
 }

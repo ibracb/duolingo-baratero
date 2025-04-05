@@ -4,6 +4,15 @@ import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
 public class PDSCursoPlantillaDAO extends PDSEntidadDAO<CursoPlantilla> {
 	
+	private static PDSCursoPlantillaDAO instance;
+	
+	public static PDSCursoPlantillaDAO getInstance() {
+		if (instance == null) {
+			instance = new PDSCursoPlantillaDAO();
+		}
+		return instance;
+	}
+	
 	@Override
 	protected Class<CursoPlantilla> getEntityClass() {
 		return CursoPlantilla.class;
