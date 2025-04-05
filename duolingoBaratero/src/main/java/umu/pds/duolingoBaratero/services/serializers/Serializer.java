@@ -2,7 +2,6 @@ package umu.pds.duolingoBaratero.services.serializers;
 
 import java.io.File;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -20,9 +19,11 @@ public abstract class Serializer {
 	public void serialize(String path, CursoPlantilla cursoPlantilla) {
 		assert(path.endsWith(extension));
 		try {
-			mapper.writeValue(new File(path), cursoPlantilla);
+			mapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), cursoPlantilla);
+			System.out.println("Serialized to " + path);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Error serializing to " + path);
 		}
 	}
 	

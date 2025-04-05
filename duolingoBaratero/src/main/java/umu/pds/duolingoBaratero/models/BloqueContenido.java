@@ -7,8 +7,12 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
+@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class BloqueContenido {
 	
 	private long id;

@@ -20,7 +20,7 @@ public class VentanaPrincipal extends JFrame {
 	private DefaultListModel<CursoEnProgreso> modeloCursos;
 	private JList<CursoPlantilla> listaCursosCreados;
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
-
+	
 	public VentanaPrincipal() {
 		setTitle("Continúa tus cursos");
 		setSize(600, 450);

@@ -8,23 +8,42 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import umu.pds.duolingoBaratero.services.serializers.Serializer;
-import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
+@Entity
+@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class CursoPlantilla implements Comparable<CursoPlantilla> {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
 	private String nombre;
+	
+	@JsonProperty("propietario")
 	private Usuario propietario;
+	
 	private String descripcion;
 	private String objetivos;
 	private Nivel nivel;
+	
+	@JsonProperty("contenidos")
 	private List<BloqueContenido> contenidos;
+	
+	@JsonProperty("cursosEnProgreso")
 	private Set<CursoEnProgreso> cursosEnProgreso;
+	
 	private Optional<String> imagen;
 	private int numAlumnos;
 	private int lastBloqueContenido;
-	private long id;
 
 	public long getId() {
 		return id;

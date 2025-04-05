@@ -1,10 +1,8 @@
 package umu.pds.duolingoBaratero.controllers;
 
-import java.awt.LayoutManager;
 import java.awt.image.BufferedImage;
 import java.util.stream.Collectors;
 import java.util.Comparator;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -14,11 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
-import com.fasterxml.jackson.databind.ser.std.JsonValueSerializer;
 
 import umu.pds.duolingoBaratero.models.BloqueContenido;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
@@ -27,11 +22,11 @@ import umu.pds.duolingoBaratero.models.Flashcard;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
-import umu.pds.duolingoBaratero.models.PreguntaProgreso;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.AudioService;
+import umu.pds.duolingoBaratero.services.CursoService;
 import umu.pds.duolingoBaratero.services.ImageService;
 import umu.pds.duolingoBaratero.services.filters.Filtro;
 import umu.pds.duolingoBaratero.services.filters.FiltroBasico;
@@ -40,7 +35,6 @@ import umu.pds.duolingoBaratero.services.filters.FiltroCursosPorPropietario;
 import umu.pds.duolingoBaratero.services.filters.FiltroCursosValoracion;
 import umu.pds.duolingoBaratero.services.serializers.JSONSerializer;
 import umu.pds.duolingoBaratero.services.serializers.Serializer;
-import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 
 public enum ControladorCurso {
 	INSTANCE;
@@ -51,11 +45,13 @@ public enum ControladorCurso {
 	private ImageService sevicioImagenes;
 	private AudioService reproductor;
 	private Serializer serializer;
+	private CursoService servicioCursos;
 
 	private ControladorCurso() {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
 		this.serializer = new JSONSerializer();
+		this.servicioCursos = CursoService.INSTANCE;
 		pruebas();
 	}
 	
@@ -468,6 +464,6 @@ public enum ControladorCurso {
 
 
 	public void compartirCurso(CursoEnProgreso curso) {
-		serializer.serialize("C:\\Users\\joque\\Downloads"+curso.getNombre() + ".json", curso.getCursoPlantilla());
+		serializer.serialize("src/main/resources/cursos/"+curso.getNombre() + ".json", curso.getCursoPlantilla());
 	}
 }

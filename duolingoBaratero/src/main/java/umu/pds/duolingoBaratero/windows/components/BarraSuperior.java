@@ -17,7 +17,7 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btnHome, btnDesafio, btnEstadisticas, btnModoNocturno, btnCreaTuCurso;
+	private JButton btnHome, btnEstadisticas, btnModoNocturno, btnCreaTuCurso;
 	private JFrame ventanaActual;
 	private boolean modoOscuroActivo = false;
 	private JButton btnCompartirCurso;
@@ -124,9 +124,6 @@ public class BarraSuperior extends JPanel {
 		btnHome.setBackground(Color.DARK_GRAY);
 		btnHome.setForeground(Color.WHITE);
 
-		btnDesafio.setBackground(Color.DARK_GRAY);
-		btnDesafio.setForeground(Color.WHITE);
-
 		btnEstadisticas.setBackground(Color.DARK_GRAY);
 		btnEstadisticas.setForeground(Color.WHITE);
 
@@ -135,6 +132,9 @@ public class BarraSuperior extends JPanel {
 
 		btnCreaTuCurso.setBackground(Color.DARK_GRAY);
 		btnCreaTuCurso.setForeground(Color.WHITE);
+		
+		btnCompartirCurso.setBackground(Color.DARK_GRAY);
+		btnCompartirCurso.setForeground(Color.WHITE);
 	}
 
 	private void setModoClaro() {
@@ -145,9 +145,6 @@ public class BarraSuperior extends JPanel {
         btnHome.setBackground(Color.LIGHT_GRAY);
         btnHome.setForeground(Color.BLACK);
 
-        btnDesafio.setBackground(Color.LIGHT_GRAY);
-        btnDesafio.setForeground(Color.BLACK);
-
         btnEstadisticas.setBackground(Color.LIGHT_GRAY);
         btnEstadisticas.setForeground(Color.BLACK);
 
@@ -156,6 +153,9 @@ public class BarraSuperior extends JPanel {
 
         btnCreaTuCurso.setBackground(Color.LIGHT_GRAY);
         btnCreaTuCurso.setForeground(Color.BLACK);
+        
+        btnCompartirCurso.setBackground(Color.LIGHT_GRAY);
+        btnCompartirCurso.setForeground(Color.BLACK);
 
     }
 

@@ -5,11 +5,24 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class Usuario {
 
 	private static final Rol ROL_POR_DEFECTO = Rol.ESTUDIANTE;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	private String nombre;
 	private String nickname;
 	private String correo;

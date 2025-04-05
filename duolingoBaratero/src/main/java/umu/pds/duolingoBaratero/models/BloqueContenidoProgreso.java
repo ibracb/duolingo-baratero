@@ -5,21 +5,20 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class BloqueContenidoProgreso {
 	
-	private CursoEnProgreso cursoEnProgreso;
 	private BloqueContenido bloqueContenido;
 	private EstadoBloqueContenido estado;
 	private List<PreguntaProgreso> preguntasProgreso;
+	private CursoEnProgreso cursoEnProgreso;
 	
-	public BloqueContenidoProgreso(CursoEnProgreso cursoEnProgreso, BloqueContenido bloqueContenido) {
-		this.cursoEnProgreso = cursoEnProgreso;
+	public BloqueContenidoProgreso(CursoEnProgreso cursoEnprogreso, BloqueContenido bloqueContenido) {
+		this.cursoEnProgreso = cursoEnprogreso;
 		this.bloqueContenido = bloqueContenido;
 		this.estado = EstadoBloqueContenido.INICIO;
 	}
-	
+
 	public CursoEnProgreso getCursoEnProgreso() {
 		return cursoEnProgreso;
 	}

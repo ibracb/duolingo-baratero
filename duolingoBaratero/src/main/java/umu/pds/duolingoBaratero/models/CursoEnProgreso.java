@@ -5,17 +5,33 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
+@Entity
+@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class CursoEnProgreso {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
 	private Usuario estudiante;
+	
 	private CursoPlantilla cursoPlantilla;
+	
 	private Aprendizaje aprendizaje;
+	
 	private List<BloqueContenidoProgreso> contenidosProgreso;
+	
 	private EstadoCursoEnProgreso estado;
 	private Valoracion valoracion;
-	private long id;
 	
 	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion, BloqueContenidoProgreso...contenidosProgreso) {
 		this.estudiante = usuario;
