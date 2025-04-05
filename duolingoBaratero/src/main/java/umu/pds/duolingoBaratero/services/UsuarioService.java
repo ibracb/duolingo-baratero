@@ -1,6 +1,5 @@
 package umu.pds.duolingoBaratero.services;
 
-import umu.pds.duolingoBaratero.persistence.PDSFactoriaDAO;
 import umu.pds.duolingoBaratero.persistence.PDSUsuarioDAO;
 
 public enum UsuarioService {
@@ -9,7 +8,7 @@ public enum UsuarioService {
 	private PDSUsuarioDAO usuarioDAO;
 	
 	private UsuarioService() {
-		this.usuarioDAO = PDSFactoriaDAO.INSTANCE.getUsuarioDAO();
+		//this.usuarioDAO = PDSFactoriaDAO.INSTANCE.getUsuarioDAO();	por ahora, no inicializamos el DAO para evitar excepciones
 	}
 	
 }

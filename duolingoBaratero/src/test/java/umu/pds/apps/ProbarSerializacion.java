@@ -20,11 +20,11 @@ public class ProbarSerializacion {
 		Usuario usuario = new Usuario("ibrahim", "Ibra", "ibra@gmail.com", "1234", "src/main/resources/profile.png");
 		
 		PreguntaAudio pregunta1 = new PreguntaAudio(Nivel.BASICO, 1, "Pregunta 1?", "a", new String[] {"opcion1", "opcion2", "opcion3"}, "src/main/resources/audios/town-10169.mp3");
-		PreguntaOpciones pregunta2 = new PreguntaOpciones(null, 2, "Pregunta 2?", "b", TipoPregunta.OPCIONES, new String[] {"opcion1", "opcion2", "opcion3"});
+		PreguntaOpciones pregunta2 = new PreguntaOpciones(Nivel.PRINCIPIANTE, 2, "Pregunta 2?", "b", TipoPregunta.OPCIONES, new String[] {"opcion1", "opcion2", "opcion3"});
 		BloqueContenido bloqueContenido1 = new BloqueContenido(0, pregunta1, pregunta2);
 		
-		PreguntaOpciones pregunta3 = new PreguntaOpciones(null, 3, "Pregunta 3?", "c", TipoPregunta.OPCIONES, new String[] {"opcion1", "opcion2", "opcion3"});
-		PreguntaAudio pregunta4 = new PreguntaAudio(Nivel.BASICO, 4, "Pregunta 4?", "d", new String[] {"opcion1", "opcion2", "opcion3"}, "src/main/resources/audios/town-10169.mp3");
+		PreguntaOpciones pregunta3 = new PreguntaOpciones(Nivel.INTERMEDIO, 3, "Pregunta 3?", "c", TipoPregunta.OPCIONES, new String[] {"opcion1", "opcion2", "opcion3"});
+		PreguntaAudio pregunta4 = new PreguntaAudio(Nivel.AVANZADO, 4, "Pregunta 4?", "d", new String[] {"opcion1", "opcion2", "opcion3"}, "src/main/resources/audios/town-10169.mp3");
 		BloqueContenido bloqueContenido2 = new BloqueContenido(1, pregunta3, pregunta4);
 		
 		CursoPlantilla plantilla1 = new CursoPlantilla("plantilla_prueba_1", usuario, "descripcion prueba", "objetivos prueba", Nivel.BASICO, bloqueContenido1, bloqueContenido2);
