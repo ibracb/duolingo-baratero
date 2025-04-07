@@ -66,7 +66,10 @@ public class VentanaPregunta extends JFrame {
 
 		// ------- barra superior-------
 		barraSuperior = new BarraSuperiorPreguntas(this);
-		barraProgreso = new BarraProgresoPanel(curso.getCursoPlantilla().getContenidos().get((int) bloqueContenido).getNumPreguntas()); // FIXME: Esto esta falta 
+		barraProgreso = new BarraProgresoPanel(
+				curso.getCursoPlantilla().getContenidos().get((int) bloqueContenido).getNumPreguntas()); // FIXME: Esto
+																											// esta
+																											// falta
 
 		// Panel que une la barra superior con la barra de progreso
 		JPanel panelSuperior = new JPanel(new BorderLayout());
@@ -88,7 +91,6 @@ public class VentanaPregunta extends JFrame {
 			i++;
 		}
 
-
 		// Panel para los botones de acción
 		JPanel panelBotones = new JPanel(new FlowLayout());
 		btnSiguiente = new JButton("Siguiente");
@@ -105,7 +107,9 @@ public class VentanaPregunta extends JFrame {
 					puntuacion++;
 					Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					Constantes.mostrarMensaje("Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(), JOptionPane.ERROR_MESSAGE);
+					Constantes.mostrarMensaje(
+							"Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(),
+							JOptionPane.ERROR_MESSAGE);
 				}
 				barraProgreso.avanzar(respuestaCorrecta);
 				avanzarPregunta();
@@ -152,7 +156,8 @@ public class VentanaPregunta extends JFrame {
 	// --------METODO DE PRUEBA --------------
 	private JPanel[] getPaneles() {
 
-		LinkedList<Pregunta> preguntas = (LinkedList<Pregunta>) controlador.getPreguntasDeBloqueContenido(curso, bloqueContenido);
+		LinkedList<Pregunta> preguntas = (LinkedList<Pregunta>) controlador.getPreguntasDeBloqueContenido(curso,
+				bloqueContenido);
 		for (Pregunta pregunta : preguntas) {
 			if (pregunta instanceof PreguntaOpciones) {
 				System.out.println("Si soy");
@@ -177,19 +182,19 @@ public class VentanaPregunta extends JFrame {
 			setSize(300, 150);
 			setLocationRelativeTo(ventanaPregunta); // Centrar sobre la ventana principal
 			setLayout(new BorderLayout());
-			
-			JLabel mensaje;
-			String resultado = (puntuacion / (double) numPreguntas >= 0.8) ? "Aprobado :)" : "Suspenso :(";
-			mensaje = new JLabel("¡Juego terminado! Resultado : " + resultado , JLabel.CENTER);
-			
+
+			boolean aprobado = (puntuacion / (double) numPreguntas >= 0.8);
+			controlador.INSTANCE.avanzarBloqueContenido(curso, aprobado);
+			String resultado = aprobado ? "Aprobado :)" : "Suspenso :(";
+			JLabel mensaje = new JLabel("¡Juego terminado! Resultado : " + resultado, JLabel.CENTER);
+
 			// Mensaje de resultado
-			
+
 			add(mensaje, BorderLayout.CENTER);
 
 			// Botones
 			JPanel panelBotones = new JPanel();
 			JButton btnSalir = new JButton("Salir");
-
 
 			// Acción para salir
 			btnSalir.addActionListener(e -> {

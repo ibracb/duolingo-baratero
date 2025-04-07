@@ -20,6 +20,7 @@ public class CursoEnProgreso {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private final int BLOQUE_COTENIDO_INICIAL = 0;
 	private long id;
 	
 	private Usuario estudiante;
@@ -29,9 +30,9 @@ public class CursoEnProgreso {
 	private Aprendizaje aprendizaje;
 	
 	private List<BloqueContenidoProgreso> contenidosProgreso;
-	
 	private EstadoCursoEnProgreso estado;
 	private Valoracion valoracion;
+	private int bloqueActual;	//INFO: Se que se puede calcular cual es el bloque actual pero es ineficiente
 	
 	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion, BloqueContenidoProgreso...contenidosProgreso) {
 		this.estudiante = usuario;
@@ -43,6 +44,7 @@ public class CursoEnProgreso {
 		id = Constantes.getID();
 
 		this.contenidosProgreso = new LinkedList<>();
+		bloqueActual = BLOQUE_COTENIDO_INICIAL;
 		if (contenidosProgreso != null) {
 			for (BloqueContenidoProgreso bloque : contenidosProgreso) {
 				this.contenidosProgreso.add(bloque);
@@ -103,7 +105,25 @@ public class CursoEnProgreso {
 		return getValoracion().getValor();
 	}
 	
-    public List<Pregunta> getPreguntasBloqueContenido(long bloqueContenidoProgreso) {
+	
+    public int getBloqueActual() {
+		return bloqueActual;
+	}
+
+	public void setBloqueActual(int bloqueActual) {
+		this.bloqueActual = bloqueActual;
+	}
+	
+	public void avanzarBloqueActual(boolean aprobado) {
+		if (aprobado) {
+			bloqueActual++;
+			if (bloqueActual == contenidosProgreso.size()) {
+				estado.finalizar(this);
+			}
+		}
+	}
+
+	public List<Pregunta> getPreguntasBloqueContenido(long bloqueContenidoProgreso) {
 		return cursoPlantilla.getPreguntasDeBloque(bloqueContenidoProgreso);
 	}
 

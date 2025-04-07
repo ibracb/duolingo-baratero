@@ -474,4 +474,9 @@ public enum ControladorCurso {
 	    }
 		serializer.serialize("src/main/resources/cursos/"+curso.getNombre() + ".json", curso.getCursoPlantilla());
 	}
+
+
+	public void avanzarBloqueContenido(CursoEnProgreso curso, boolean aprobado) {
+		curso.avanzarBloqueActual(aprobado);
+	}
 }

@@ -81,29 +81,21 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
-		System.err.println("ManejarSeleccion de cursos");
+		listaCursos.clearSelection();
 		if(curso != null) {
-			if (ControladorCurso.INSTANCE.isCursoNuevo(curso)) {
-				System.err.println("Se mete en 1 ");
-				VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, 0);
-				ventanaPregunta.setVisible(true);
-			}
-
-			else if (ControladorCurso.INSTANCE.isCursoEnMarcha(curso)) {
-				System.err.println("Se mete en 2");
-				VentanaPregunta ventana = new VentanaPregunta(curso,
-						ControladorCurso.INSTANCE.getNumLastBloqueContenido(curso));
-				ventana.setLocation(null);
-				ventana.setVisible(true);
-			} else {
+			if (ControladorCurso.INSTANCE.isCursoFinalizado(curso)) {
 				JOptionPane.showMessageDialog(this, "Has finalizado este curso. ¿Quieres empezarlo de nuevo?",
 						"Information", JOptionPane.INFORMATION_MESSAGE);
 			}
+			else {
+				VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, curso.getBloqueActual());
+				ventanaPregunta.setVisible(true);
+			}
 		}
-		else {
-			JOptionPane.showMessageDialog(this, "No hay ningun curso seleccionado", "Error",
-					JOptionPane.ERROR_MESSAGE);
-		}
+//		else {
+//			JOptionPane.showMessageDialog(this, "No hay ningun curso seleccionado", "Error",
+//					JOptionPane.ERROR_MESSAGE);
+//		}
 		
 	}
 
