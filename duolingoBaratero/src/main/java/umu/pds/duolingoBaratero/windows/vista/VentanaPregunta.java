@@ -65,8 +65,8 @@ public class VentanaPregunta extends JFrame {
 		setContentPane(contentPane);
 
 		// ------- barra superior-------
-		barraSuperior = new BarraSuperiorPreguntas();
-		barraProgreso = new BarraProgresoPanel(curso.getCursoPlantilla().getContenidos().get((int) bloqueContenido).getNumPreguntas());
+		barraSuperior = new BarraSuperiorPreguntas(this);
+		barraProgreso = new BarraProgresoPanel(curso.getCursoPlantilla().getContenidos().get((int) bloqueContenido).getNumPreguntas()); // FIXME: Esto esta falta 
 
 		// Panel que une la barra superior con la barra de progreso
 		JPanel panelSuperior = new JPanel(new BorderLayout());
@@ -102,6 +102,7 @@ public class VentanaPregunta extends JFrame {
 				boolean respuestaCorrecta = controlador.procesarRespuesta(panel.getPregunta(),
 						panel.getRespuestaUsuario());
 				if (respuestaCorrecta) {
+					puntuacion++;
 					Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					Constantes.mostrarMensaje("Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(), JOptionPane.ERROR_MESSAGE);
@@ -176,21 +177,19 @@ public class VentanaPregunta extends JFrame {
 			setSize(300, 150);
 			setLocationRelativeTo(ventanaPregunta); // Centrar sobre la ventana principal
 			setLayout(new BorderLayout());
-
+			
+			JLabel mensaje;
+			String resultado = (puntuacion / (double) numPreguntas >= 0.8) ? "Aprobado :)" : "Suspenso :(";
+			mensaje = new JLabel("¡Juego terminado! Resultado : " + resultado , JLabel.CENTER);
+			
 			// Mensaje de resultado
-			JLabel mensaje = new JLabel("¡Juego terminado! Puntuación: " + puntuacion, JLabel.CENTER);
+			
 			add(mensaje, BorderLayout.CENTER);
 
 			// Botones
 			JPanel panelBotones = new JPanel();
-			JButton btnRepetir = new JButton("Repetir");
 			JButton btnSalir = new JButton("Salir");
 
-			// Acción para repetir
-			btnRepetir.addActionListener(e -> {
-				setVisible(false); // Cierra el diálogo
-				// Aquí puedes reiniciar el juego, llamando a un método de la ventana principal
-			});
 
 			// Acción para salir
 			btnSalir.addActionListener(e -> {
@@ -198,7 +197,6 @@ public class VentanaPregunta extends JFrame {
 				ventanaPregunta.dispose();
 			});
 
-			panelBotones.add(btnRepetir);
 			panelBotones.add(btnSalir);
 			add(panelBotones, BorderLayout.SOUTH);
 		}
