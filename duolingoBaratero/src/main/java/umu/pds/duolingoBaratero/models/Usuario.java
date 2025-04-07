@@ -66,6 +66,10 @@ public class Usuario {
 	public boolean addCursoEnProgreso(CursoEnProgreso curso) {
 		return cursos.add(curso);
 	}
+	
+	public void eliminarCurso(CursoEnProgreso curso) {
+		cursos.remove(curso);
+	}
 
 	public List<CursoPlantilla> getCursosCreados() {
 		return cursosCreados;

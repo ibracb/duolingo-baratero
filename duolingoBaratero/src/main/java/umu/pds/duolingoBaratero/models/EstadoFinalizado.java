@@ -23,7 +23,7 @@ public class EstadoFinalizado implements EstadoCursoEnProgreso {
 
 	@Override
 	public void finalizar(CursoEnProgreso curso) {
-		curso.setEstado(curso.getEstado());
+		curso.setEstado(new EstadoFinalizado(curso));
 	}
 	
 	

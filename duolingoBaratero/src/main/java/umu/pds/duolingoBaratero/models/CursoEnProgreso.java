@@ -34,7 +34,27 @@ public class CursoEnProgreso {
 	private Valoracion valoracion;
 	private int bloqueActual;	//INFO: Se que se puede calcular cual es el bloque actual pero es ineficiente
 	
-	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion, BloqueContenidoProgreso...contenidosProgreso) {
+//	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion) {
+//		this.estudiante = usuario;
+//		this.cursoPlantilla = cursoPlantilla;
+//		this.aprendizaje = aprendizaje;
+//		setEstado(new EstadoNuevo(this));
+//		setValoracion(valoracion);
+//		//Collections.addAll(this.contenidosProgreso, contenidosProgreso);
+//		id = Constantes.getID();
+//
+//		this.contenidosProgreso = new LinkedList<>();
+//		bloqueActual = BLOQUE_COTENIDO_INICIAL;
+//		if (contenidosProgreso != null) {
+//			for (BloqueContenidoProgreso bloque : contenidosProgreso) {
+//				this.contenidosProgreso.add(bloque);
+//			}
+//		}
+//	
+//	}
+	
+	
+	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion) {
 		this.estudiante = usuario;
 		this.cursoPlantilla = cursoPlantilla;
 		this.aprendizaje = aprendizaje;
@@ -45,12 +65,6 @@ public class CursoEnProgreso {
 
 		this.contenidosProgreso = new LinkedList<>();
 		bloqueActual = BLOQUE_COTENIDO_INICIAL;
-		if (contenidosProgreso != null) {
-			for (BloqueContenidoProgreso bloque : contenidosProgreso) {
-				this.contenidosProgreso.add(bloque);
-			}
-		}
-	
 	}
 
 	public String getNombre() {
@@ -117,14 +131,18 @@ public class CursoEnProgreso {
 	public void avanzarBloqueActual(boolean aprobado) {
 		if (aprobado) {
 			bloqueActual++;
-			if (bloqueActual == contenidosProgreso.size()) {
+			if (cursoPlantilla.isCursoFinalizado(bloqueActual)) {
 				estado.finalizar(this);
 			}
 		}
 	}
 
-	public List<Pregunta> getPreguntasBloqueContenido(long bloqueContenidoProgreso) {
+	public List<Pregunta> getPreguntasBloqueContenido(int bloqueContenidoProgreso) {
 		return cursoPlantilla.getPreguntasDeBloque(bloqueContenidoProgreso);
+	}
+	
+	public List<Pregunta> getPreguntasBloqueContenido() {
+		return cursoPlantilla.getPreguntasDeBloque(bloqueActual);
 	}
 
 	public long getId() {
@@ -168,9 +186,16 @@ public class CursoEnProgreso {
 		estado.iniciar(this);
 	}
 	
+	public void reiniciar() {
+		estado.iniciar(this);
+		bloqueActual = BLOQUE_COTENIDO_INICIAL;
+	}
+	
 	public void finalizar() {
 		estado.finalizar(this);
 	}
+	
+	
 	
 	public boolean isNuevo() {
 		return estado instanceof EstadoNuevo;

@@ -90,12 +90,12 @@ public enum ControladorCurso {
 	public CursoEnProgreso getCursoEnProgreso(String nombre) {
 		Optional<CursoPlantilla> cursoPlantilla = this.getCursoPlantilla(nombre);
 		if (cursoPlantilla.isPresent())
-			return new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoPlantilla.get(), null, null, null);
+			return new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoPlantilla.get(), null, null);
 		return null;
 	}
 	
 	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, Usuario user) {
-        return new CursoEnProgreso(user, curso, null, null, null);
+        return new CursoEnProgreso(user, curso, null, null);
 	}
 	
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
@@ -191,8 +191,8 @@ public enum ControladorCurso {
 		return new JPanel[0];
 	}
 
-	public List<Pregunta> getPreguntasDeBloqueContenido(CursoEnProgreso curso, long numBloque) {
-		return curso.getPreguntasBloqueContenido(numBloque);
+	public List<Pregunta> getPreguntasDeBloqueContenido(CursoEnProgreso curso) {
+		return curso.getPreguntasBloqueContenido();
 	}
 
 	public CursoPlantilla crearCurso(String nombre, String descripcion, String objetivos) {
@@ -478,5 +478,10 @@ public enum ControladorCurso {
 
 	public void avanzarBloqueContenido(CursoEnProgreso curso, boolean aprobado) {
 		curso.avanzarBloqueActual(aprobado);
+	}
+
+
+	public void reiniciarCurso(CursoEnProgreso curso) {
+		curso.reiniciar();
 	}
 }

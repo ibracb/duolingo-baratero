@@ -121,6 +121,10 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	public void setContenidos(List<BloqueContenido> contenidos) {
 		this.contenidos = contenidos;
 	}
+	
+	public boolean isCursoFinalizado(int bloqueActual) {
+		return bloqueActual == contenidos.size();
+	}
 
 	public boolean addPregunta(Pregunta pregunta) {
 		return true;
@@ -190,9 +194,8 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		return tipos;
 	}
 
-	public List<Pregunta> getPreguntasDeBloque(long bloque) {
-		return contenidos.stream().filter(b -> b.getId() == bloque).findFirst().map(BloqueContenido::getPreguntas)
-				.orElse(new LinkedList<>());
+	public List<Pregunta> getPreguntasDeBloque(int bloque) {
+		return contenidos.get(bloque).getPreguntas();
 	}
 
 	public boolean mejorJSON() {

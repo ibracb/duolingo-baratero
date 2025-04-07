@@ -114,7 +114,7 @@ public class CursoEnProgresoTest {
 
     @Test
     void testEqualsAndHashCode() {
-        CursoEnProgreso otroCurso = new CursoEnProgreso(usuarioMock, cursoPlantillaMock, aprendizajeMock, valoracionMock, bloqueMock1);
+        CursoEnProgreso otroCurso = new CursoEnProgreso(usuarioMock, cursoPlantillaMock, aprendizajeMock, valoracionMock);
         assertEquals(cursoEnProgreso, otroCurso);
         assertEquals(cursoEnProgreso.hashCode(), otroCurso.hashCode());
 

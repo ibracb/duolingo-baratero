@@ -20,7 +20,7 @@ public class VentanaPrincipal extends JFrame {
 	private DefaultListModel<CursoEnProgreso> modeloCursos;
 	private JList<CursoPlantilla> listaCursosCreados;
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
-	
+
 	public VentanaPrincipal() {
 		setTitle("Continúa tus cursos");
 		setSize(600, 450);
@@ -80,24 +80,40 @@ public class VentanaPrincipal extends JFrame {
 		return ControladorUsuario.INSTANCE.getCursosCreadosUsuarioActual();
 	}
 
-	private void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
-		listaCursos.clearSelection();
-		if(curso != null) {
-			if (ControladorCurso.INSTANCE.isCursoFinalizado(curso)) {
-				JOptionPane.showMessageDialog(this, "Has finalizado este curso. ¿Quieres empezarlo de nuevo?",
-						"Information", JOptionPane.INFORMATION_MESSAGE);
-			}
-			else {
-				VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, curso.getBloqueActual());
-				ventanaPregunta.setVisible(true);
-			}
-		}
-//		else {
-//			JOptionPane.showMessageDialog(this, "No hay ningun curso seleccionado", "Error",
-//					JOptionPane.ERROR_MESSAGE);
-//		}
-		
+	private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
+	    // Aseguramos que solo un hilo acceda a este bloque a la vez.
+	    if (curso != null) {
+	        if (ControladorCurso.INSTANCE.isCursoFinalizado(curso)) {
+
+	            Object[] opciones = { "Sí", "No" };
+	            int opcion = JOptionPane.showOptionDialog(this,
+	                    "Has finalizado este curso. ¿Quieres empezarlo de nuevo?", "Aviso", JOptionPane.YES_NO_OPTION,
+	                    JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[1]);
+
+	            if (opcion == JOptionPane.YES_OPTION) {
+	                ControladorCurso.INSTANCE.reiniciarCurso(curso);
+	            } else {
+	                int index = listaCursos.getSelectedIndex(); // Obtener el índice seleccionado
+	                if (index != -1) { // Verificar que se haya seleccionado un curso
+	                    DefaultListModel<CursoEnProgreso> model = (DefaultListModel<CursoEnProgreso>) listaCursos.getModel();
+	                    model.remove(index);
+	                }
+	                ControladorUsuario.INSTANCE.borrarCurso(curso);
+	            }
+	        } else {
+	            // Si el curso no está finalizado, mostrar la ventana de preguntas
+	            VentanaPregunta ventanaPregunta = new VentanaPregunta(curso);
+	            ventanaPregunta.setVisible(true);
+	        }
+	    }
+	    listaCursos.clearSelection(); // Limpiar la selección
+
+	    // Descomentamos esta línea si quieres mostrar un mensaje cuando no hay curso seleccionado
+	    // else {
+	    //     JOptionPane.showMessageDialog(this, "No hay ningún curso seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+	    // }
 	}
+
 
 	public void refreshCursos() {
 		modeloCursos.clear();
@@ -128,10 +144,8 @@ public class VentanaPrincipal extends JFrame {
 			Constantes.mostrarMensaje("Seguro que quieres exportar el curso: " + curso.getNombre(),
 					JOptionPane.INFORMATION_MESSAGE);
 		} else {
-			Constantes.mostrarMensaje("No hay ningun curso seleccionado ",
-					JOptionPane.ERROR_MESSAGE);
+			Constantes.mostrarMensaje("No hay ningun curso seleccionado ", JOptionPane.ERROR_MESSAGE);
 		}
-
 
 	}
 

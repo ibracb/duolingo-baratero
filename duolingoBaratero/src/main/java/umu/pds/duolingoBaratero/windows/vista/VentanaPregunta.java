@@ -9,6 +9,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.border.EmptyBorder;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
@@ -26,10 +28,9 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 public class VentanaPregunta extends JFrame {
 	private static final int PANEL_Y_PUNTUCAION_INICIAL = 0;
 	private static final long serialVersionUID = 1L;
-	private ControladorCurso controlador;
 	private JPanel contentPane;
 	private JPanel panelCentral;
-	private JPanel[] paneles;
+	private ArrayList<JPanel> paneles;
 	private CardLayout cardLayout;
 	private BarraProgresoPanel barraProgreso;
 	private BarraSuperiorPreguntas barraSuperior;
@@ -37,24 +38,21 @@ public class VentanaPregunta extends JFrame {
 	private Component horizontalGlue;
 	private int currentPanel;
 	private int puntuacion;
-	private long bloqueContenido;
 	private CursoEnProgreso curso;
-	private int numPreguntas;
 
-	public VentanaPregunta(CursoEnProgreso curso, long bloqueContenido) {
+	public VentanaPregunta(CursoEnProgreso curso) {
 		this.curso = curso;
-		this.bloqueContenido = bloqueContenido;
 		currentPanel = PANEL_Y_PUNTUCAION_INICIAL;
 		puntuacion = PANEL_Y_PUNTUCAION_INICIAL;
+		paneles = this.getPaneles();
 		inicializar();
+		
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public void inicializar() {
-
-		controlador = ControladorCurso.INSTANCE; // Controlador
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(500, 200, 800, 600); // Tamaño recomendado
@@ -66,12 +64,8 @@ public class VentanaPregunta extends JFrame {
 
 		// ------- barra superior-------
 		barraSuperior = new BarraSuperiorPreguntas(this);
-		barraProgreso = new BarraProgresoPanel(
-				curso.getCursoPlantilla().getContenidos().get((int) bloqueContenido).getNumPreguntas()); // FIXME: Esto
-																											// esta
-																											// falta
+		barraProgreso = new BarraProgresoPanel(paneles.size());
 
-		// Panel que une la barra superior con la barra de progreso
 		JPanel panelSuperior = new JPanel(new BorderLayout());
 		panelSuperior.add(barraSuperior, BorderLayout.NORTH);
 		panelSuperior.add(barraProgreso, BorderLayout.SOUTH);
@@ -81,10 +75,8 @@ public class VentanaPregunta extends JFrame {
 		panelCentral = new JPanel(new CardLayout());
 		cardLayout = (CardLayout) panelCentral.getLayout();
 
-		// -------Futura funcionalidad real------- NO BORRAR
-		// JPanel[] paneles = controlador.generarLeccion(bloqueContenido);
-		paneles = this.getPaneles();
-		numPreguntas = paneles.length;
+		// ------- OPTENCION DE PANELES-----
+
 		int i = 0;
 		for (JPanel panel : paneles) {
 			panelCentral.add(panel, "panel" + i);
@@ -99,9 +91,9 @@ public class VentanaPregunta extends JFrame {
 
 		// TODO: Cambiar esto por un metodo
 		btnSiguiente.addActionListener(e -> {
-			RespuestaPanel panel = (RespuestaPanel) paneles[currentPanel];
+			RespuestaPanel panel = (RespuestaPanel) paneles.get(currentPanel);
 			if (panel.isOpcionElegida()) {
-				boolean respuestaCorrecta = controlador.procesarRespuesta(panel.getPregunta(),
+				boolean respuestaCorrecta = ControladorCurso.INSTANCE.procesarRespuesta(panel.getPregunta(),
 						panel.getRespuestaUsuario());
 				if (respuestaCorrecta) {
 					puntuacion++;
@@ -144,7 +136,7 @@ public class VentanaPregunta extends JFrame {
 	}
 
 	private void avanzarPregunta() {
-		if (currentPanel < numPreguntas - 1) {
+		if (currentPanel < paneles.size() - 1) {
 			currentPanel++;
 			cardLayout.show(panelCentral, "panel" + currentPanel);
 		} else {
@@ -154,25 +146,12 @@ public class VentanaPregunta extends JFrame {
 	}
 
 	// --------METODO DE PRUEBA --------------
-	private JPanel[] getPaneles() {
-
-		LinkedList<Pregunta> preguntas = (LinkedList<Pregunta>) controlador.getPreguntasDeBloqueContenido(curso,
-				bloqueContenido);
+	private ArrayList<JPanel> getPaneles() {
+		LinkedList<Pregunta> preguntas = (LinkedList<Pregunta>) ControladorCurso.INSTANCE.getPreguntasDeBloqueContenido(curso);
+		ArrayList<JPanel> paneles = new ArrayList<JPanel>();
 		for (Pregunta pregunta : preguntas) {
-			if (pregunta instanceof PreguntaOpciones) {
-				System.out.println("Si soy");
-			}
-			System.out.println(pregunta.toString());
+			paneles.add(pregunta.crearPanel());
 		}
-		System.out.println(preguntas);
-		JPanel[] paneles = new JPanel[preguntas.size()];
-
-		int i = 0;
-		for (Pregunta pregunta : preguntas) {
-			paneles[i] = pregunta.crearPanel();
-			i++;
-		}
-
 		return paneles;
 	}
 
@@ -183,8 +162,8 @@ public class VentanaPregunta extends JFrame {
 			setLocationRelativeTo(ventanaPregunta); // Centrar sobre la ventana principal
 			setLayout(new BorderLayout());
 
-			boolean aprobado = (puntuacion / (double) numPreguntas >= 0.8);
-			controlador.INSTANCE.avanzarBloqueContenido(curso, aprobado);
+			boolean aprobado = (puntuacion / (double) paneles.size() >= 0.0); //FIXME: Para la entrega hay que ponerlo en 0.8
+			ControladorCurso.INSTANCE.avanzarBloqueContenido(curso, aprobado);
 			String resultado = aprobado ? "Aprobado :)" : "Suspenso :(";
 			JLabel mensaje = new JLabel("¡Juego terminado! Resultado : " + resultado, JLabel.CENTER);
 

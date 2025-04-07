@@ -168,5 +168,12 @@ public enum ControladorUsuario {
 		return sevicioImagenes.getScaledImage(image, dimensiones);
 	}
 
+	public void borrarCurso(CursoEnProgreso curso) {
+		user.eliminarCurso(curso);
+		
+	}
+
+	
+
 
 }
