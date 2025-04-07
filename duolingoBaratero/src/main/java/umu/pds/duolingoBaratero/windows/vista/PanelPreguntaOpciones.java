@@ -4,11 +4,11 @@ import javax.swing.*;
 
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
-import umu.pds.duolingoBaratero.services.RespuestaPanel;
+import umu.pds.duolingoBaratero.services.IComprobador;
 
 import java.awt.*;
 
-public class PanelPreguntaOpciones extends JPanel implements RespuestaPanel {
+public class PanelPreguntaOpciones extends JPanel implements IComprobador {
 
     private static final long serialVersionUID = 1L;
     private JLabel lblPregunta;

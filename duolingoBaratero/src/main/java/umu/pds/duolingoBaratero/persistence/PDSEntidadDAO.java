@@ -57,31 +57,23 @@ public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
 	@Override
 	public T get(long id) {
 		try {
-			em.getTransaction().begin();
-			T entidad = em.find(getEntityClass(), id);
-			em.getTransaction().commit();
-			return entidad;
+			return em.find(getEntityClass(), id);
 		} catch (Exception e) {
-			manejarExcepcion(e, getGetExceptionMessage());
+			throw new DAOException(getGetExceptionMessage(), e);
 		} finally {
 			em.close();
 		}
-		return null;
 	}
 
 	@Override
 	public List<T> getAll() {
 		try {
-			em.getTransaction().begin();
-			List<T> entidades = em.createQuery(getAllQuery(), getEntityClass()).getResultList();
-			em.getTransaction().commit();
-			return entidades;
+			return em.createQuery(getAllQuery(), getEntityClass()).getResultList();
 		} catch (Exception e) {
-			manejarExcepcion(e, getGetAllExceptionMessage());
+			throw new DAOException(getGetAllExceptionMessage(), e);
 		} finally {
 			em.close();
 		}
-		return null;
 	}
 	
 	protected abstract Class<T> getEntityClass();

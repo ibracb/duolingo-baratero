@@ -9,9 +9,9 @@ import javax.swing.*;
 
 import umu.pds.duolingoBaratero.models.Flashcard;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
-import umu.pds.duolingoBaratero.services.RespuestaPanel;
+import umu.pds.duolingoBaratero.services.IComprobador;
 
-public class PanelFlashcard extends JPanel implements RespuestaPanel {
+public class PanelFlashcard extends JPanel implements IComprobador {
 
 	private JLabel label;
 	private JButton button;

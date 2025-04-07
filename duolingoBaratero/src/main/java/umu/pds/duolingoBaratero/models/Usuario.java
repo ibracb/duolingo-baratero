@@ -44,6 +44,7 @@ public class Usuario {
 		roles.add(ROL_POR_DEFECTO);
 		roles.add(Rol.CREADOR);
 		this.estadistica = new Estadistica(this);
+		this.imagen = "";
 	}
 
 	public Usuario(String nombre, String nickname, String correo, String passwd, String imagen) {

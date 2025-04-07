@@ -20,7 +20,7 @@ import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
-import umu.pds.duolingoBaratero.services.RespuestaPanel;
+import umu.pds.duolingoBaratero.services.IComprobador;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
@@ -91,7 +91,7 @@ public class VentanaPregunta extends JFrame {
 
 		// TODO: Cambiar esto por un metodo
 		btnSiguiente.addActionListener(e -> {
-			RespuestaPanel panel = (RespuestaPanel) paneles.get(currentPanel);
+			IComprobador panel = (IComprobador) paneles.get(currentPanel);
 			if (panel.isOpcionElegida()) {
 				boolean respuestaCorrecta = ControladorCurso.INSTANCE.procesarRespuesta(panel.getPregunta(),
 						panel.getRespuestaUsuario());

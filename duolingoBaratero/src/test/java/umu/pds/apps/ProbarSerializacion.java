@@ -32,14 +32,14 @@ public class ProbarSerializacion {
 		CursoPlantilla plantilla2 = new CursoPlantilla("plantilla_prueba_2", usuario, "descripcion prueba", "objetivos prueba", Nivel.BASICO, bloqueContenido1, bloqueContenido2);
 		
 		BloqueContenidoProgreso bp1 = new BloqueContenidoProgreso(
-			new CursoEnProgreso(usuario, plantilla1, Aprendizaje.SECUENCIAL, Valoracion.CERO, new BloqueContenidoProgreso(null, bloqueContenido1)),
+			new CursoEnProgreso(usuario, plantilla1, Aprendizaje.SECUENCIAL, Valoracion.CERO),
 			bloqueContenido1);
-		CursoEnProgreso progreso2 = new CursoEnProgreso(usuario, plantilla1, Aprendizaje.SECUENCIAL, Valoracion.CUATRO, bp1);
+		CursoEnProgreso progreso2 = new CursoEnProgreso(usuario, plantilla1, Aprendizaje.SECUENCIAL, Valoracion.CUATRO);
 		
 		BloqueContenidoProgreso bp3 = new BloqueContenidoProgreso(
-				new CursoEnProgreso(usuario, plantilla2, Aprendizaje.SECUENCIAL, Valoracion.CERO, new BloqueContenidoProgreso(null, bloqueContenido1)),
+				new CursoEnProgreso(usuario, plantilla2, Aprendizaje.SECUENCIAL, Valoracion.CERO),
 				bloqueContenido2);
-		CursoEnProgreso progreso4 = new CursoEnProgreso(usuario, plantilla2, Aprendizaje.SECUENCIAL, Valoracion.CUATRO, bp3);
+		CursoEnProgreso progreso4 = new CursoEnProgreso(usuario, plantilla2, Aprendizaje.SECUENCIAL, Valoracion.CUATRO);
 		
 		ControladorCurso.INSTANCE.compartirCurso(progreso2);
 		ControladorCurso.INSTANCE.compartirCurso(progreso4);

@@ -1,7 +1,5 @@
 package umu.pds.duolingoBaratero.models;
 
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,53 +16,28 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 @JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class CursoEnProgreso {
 	
+	private final int BLOQUE_CONTENIDO_INICIAL = 0;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final int BLOQUE_COTENIDO_INICIAL = 0;
 	private long id;
-	
-	private Usuario estudiante;
 	
 	private CursoPlantilla cursoPlantilla;
 	
 	private Aprendizaje aprendizaje;
 	
-	private List<BloqueContenidoProgreso> contenidosProgreso;
 	private EstadoCursoEnProgreso estado;
 	private Valoracion valoracion;
-	private int bloqueActual;	//INFO: Se que se puede calcular cual es el bloque actual pero es ineficiente
-	
-//	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion) {
-//		this.estudiante = usuario;
-//		this.cursoPlantilla = cursoPlantilla;
-//		this.aprendizaje = aprendizaje;
-//		setEstado(new EstadoNuevo(this));
-//		setValoracion(valoracion);
-//		//Collections.addAll(this.contenidosProgreso, contenidosProgreso);
-//		id = Constantes.getID();
-//
-//		this.contenidosProgreso = new LinkedList<>();
-//		bloqueActual = BLOQUE_COTENIDO_INICIAL;
-//		if (contenidosProgreso != null) {
-//			for (BloqueContenidoProgreso bloque : contenidosProgreso) {
-//				this.contenidosProgreso.add(bloque);
-//			}
-//		}
-//	
-//	}
+	private int bloqueActual;
 	
 	
-	public CursoEnProgreso(Usuario usuario, CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion) {
-		this.estudiante = usuario;
+	public CursoEnProgreso(CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion) {
 		this.cursoPlantilla = cursoPlantilla;
 		this.aprendizaje = aprendizaje;
 		setEstado(new EstadoNuevo(this));
 		setValoracion(valoracion);
-		//Collections.addAll(this.contenidosProgreso, contenidosProgreso);
 		id = Constantes.getID();
-
-		this.contenidosProgreso = new LinkedList<>();
-		bloqueActual = BLOQUE_COTENIDO_INICIAL;
+		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
 	}
 
 	public String getNombre() {
@@ -81,14 +54,6 @@ public class CursoEnProgreso {
 
 	public Nivel getNivel() {
 		return cursoPlantilla.getNivel();
-	}
-
-	public Usuario getEstudiante() {
-		return estudiante;
-	}
-
-	public void setEstudiante(Usuario estudiante) {
-		this.estudiante = estudiante;
 	}
 
 	public CursoPlantilla getCursoPlantilla() {
@@ -153,27 +118,6 @@ public class CursoEnProgreso {
 		this.id = id;
 	}
 
-	public List<PreguntaProgreso> getTodasLasPreguntas() {
-		List<BloqueContenidoProgreso> listaContenidos = getContenidosProgreso();
-		List<PreguntaProgreso> listaPreguntas = new LinkedList<>();
-		switch(this.aprendizaje) {
-			case ALEATORIO:
-				listaPreguntas.addAll(listaContenidos.get(0).getPreguntasAleatoriamente());
-				break;
-			case SECUENCIAL:
-				listaPreguntas.addAll(listaContenidos.get(0).getPreguntasSecuencialmente());
-				break;
-			default:
-				break;
-		}
-		return listaPreguntas;
-		
-	}
-	
-	public List<BloqueContenidoProgreso> getContenidosProgreso() {
-		return Collections.unmodifiableList(contenidosProgreso);
-	}
-
 	public EstadoCursoEnProgreso getEstado() {
 		return estado;
 	}
@@ -188,7 +132,7 @@ public class CursoEnProgreso {
 	
 	public void reiniciar() {
 		estado.iniciar(this);
-		bloqueActual = BLOQUE_COTENIDO_INICIAL;
+		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
 	}
 	
 	public void finalizar() {
@@ -218,12 +162,12 @@ public class CursoEnProgreso {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CursoEnProgreso that = (CursoEnProgreso) o;
-        return Objects.equals(estudiante, that.estudiante) &&
+        return Objects.equals(id, that.id) &&
                Objects.equals(cursoPlantilla, that.cursoPlantilla);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(estudiante, cursoPlantilla);
+        return Objects.hash(id, cursoPlantilla);
     }
 }

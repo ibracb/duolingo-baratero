@@ -3,11 +3,11 @@ package umu.pds.duolingoBaratero.windows.vista;
 import javax.swing.*;
 
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
-import umu.pds.duolingoBaratero.services.RespuestaPanel;
+import umu.pds.duolingoBaratero.services.IComprobador;
 
 import java.awt.*;
 
-public class PanelPreguntaImagenes extends JPanel implements RespuestaPanel {
+public class PanelPreguntaImagenes extends JPanel implements IComprobador {
 
 	private static final long serialVersionUID = 1L;
 	private JToggleButton[] imagenes; // Botones de imagen

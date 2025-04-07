@@ -1,8 +1,6 @@
 package umu.pds.duolingoBaratero.controllers;
 
 import java.awt.image.BufferedImage;
-import java.util.stream.Collectors;
-import java.util.Comparator;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -10,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,7 +25,6 @@ import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.AudioService;
-import umu.pds.duolingoBaratero.services.CursoService;
 import umu.pds.duolingoBaratero.services.ImageService;
 import umu.pds.duolingoBaratero.services.filters.Filtro;
 import umu.pds.duolingoBaratero.services.filters.FiltroBasico;
@@ -41,17 +39,14 @@ public enum ControladorCurso {
 	
 	private static final String ORDEN_DEFAULT = "Mas cursados";
 	private List<CursoPlantilla> cursosPrueba = null;
-	private CursoPlantilla cursoActual;
 	private ImageService sevicioImagenes;
 	private AudioService reproductor;
 	private Serializer serializer;
-	private CursoService servicioCursos;
 
 	private ControladorCurso() {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
 		this.serializer = new JSONSerializer();
-		this.servicioCursos = CursoService.INSTANCE;
 		pruebas();
 	}
 	
@@ -90,12 +85,12 @@ public enum ControladorCurso {
 	public CursoEnProgreso getCursoEnProgreso(String nombre) {
 		Optional<CursoPlantilla> cursoPlantilla = this.getCursoPlantilla(nombre);
 		if (cursoPlantilla.isPresent())
-			return new CursoEnProgreso(ControladorUsuario.INSTANCE.getUsuarioActual(), cursoPlantilla.get(), null, null);
+			return new CursoEnProgreso(cursoPlantilla.get(), null, null);
 		return null;
 	}
 	
 	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, Usuario user) {
-        return new CursoEnProgreso(user, curso, null, null);
+        return new CursoEnProgreso(curso, null, null);
 	}
 	
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
@@ -164,11 +159,11 @@ public enum ControladorCurso {
 		LinkedList<CursoPlantilla> lista = (LinkedList<CursoPlantilla>) filtro.filtrar(cursosPrueba);
 		if (orden.equals(ORDEN_DEFAULT))
 			return lista.stream()
-			        .sorted(Comparator.comparingInt(CursoPlantilla::getNumAlumnos))
+			        .sorted()
 			        .collect(Collectors.toList());
 		else 
 			return lista.stream()
-			        .sorted(Comparator.comparingInt(CursoPlantilla::getNumAlumnos).reversed())
+			        .sorted()
 			        .collect(Collectors.toList());
 	}
 	

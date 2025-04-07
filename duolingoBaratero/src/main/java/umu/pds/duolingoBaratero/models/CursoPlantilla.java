@@ -1,11 +1,10 @@
 package umu.pds.duolingoBaratero.models;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -38,12 +37,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	@JsonProperty("contenidos")
 	private List<BloqueContenido> contenidos;
 	
-	@JsonProperty("cursosEnProgreso")
-	private Set<CursoEnProgreso> cursosEnProgreso;
-	
-	private Optional<String> imagen;
-	private int numAlumnos;
-	private int lastBloqueContenido;
+	private String imagen;
 
 	public long getId() {
 		return id;
@@ -54,10 +48,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.propietario = propietario;
 		this.descripcion = descripcion;
 		this.objetivos = objetivos;
-		this.contenidos = new LinkedList<>();
-		this.cursosEnProgreso = new HashSet<CursoEnProgreso>();
-		numAlumnos = 0;
-		setLastBloqueContenido(0);
+		this.contenidos = new ArrayList<>();
 		id = Constantes.getID();
 	}
 
@@ -130,57 +121,24 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		return true;
 	}
 
-	public Set<CursoEnProgreso> getCursosEnProgreso() {
-		return cursosEnProgreso;
-	}
-
-	public void setCursosEnProgreso(Set<CursoEnProgreso> cursosEnProgreso) {
-		this.cursosEnProgreso = cursosEnProgreso;
-	}
-
-	public int getLastBloqueContenido() {
-		return lastBloqueContenido;
-	}
-
-	public void setLastBloqueContenido(int lastBloqueContenido) {
-		this.lastBloqueContenido = lastBloqueContenido;
-	}
-
-	public int getNumCursosEnProgreso() {
-		return cursosEnProgreso.size();
-	}
-
-	public double getValoracionMedia() {
-		return getCursosEnProgreso().stream().mapToDouble(c -> c.getValoracion().getValor()).average().orElse(0.0);
-	}
-
 	public void addBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.add(bloqueContenido);
-		setLastBloqueContenido(getLastBloqueContenido() + 1);
 	}
 
 	public void removeBloqueContenido(BloqueContenido bloqueContenido) {
 		contenidos.remove(bloqueContenido);
 	}
 
-	public Optional<String> getImagen() {
+	public String getImagen() {
 		return imagen;
 	}
 
 	public void setImagen(String imagen) {
-		this.imagen = Optional.ofNullable(imagen);
+		this.imagen = imagen;
 	}
 
 	public boolean hasImage() {
 		return getImagen() != null;
-	}
-
-	public int getNumAlumnos() {
-		return numAlumnos;
-	}
-
-	public void addAlumno() {
-		numAlumnos += 1;
 	}
 
 	public Set<TipoPregunta> getTipoPreguntas() {
@@ -198,13 +156,9 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		return contenidos.get(bloque).getPreguntas();
 	}
 
-	public boolean mejorJSON() {
-		return imagen.isPresent();
-	}
-
 	@Override
 	public int compareTo(CursoPlantilla o) {
-		return Integer.compare(this.getNumCursosEnProgreso(), o.getNumCursosEnProgreso());
+		return this.nivel.compareTo(o.nivel);
 	}
 	
 	

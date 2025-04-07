@@ -20,9 +20,9 @@ import javax.swing.SwingConstants;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
-import umu.pds.duolingoBaratero.services.RespuestaPanel;
+import umu.pds.duolingoBaratero.services.IComprobador;
 
-public class PanelPreguntaAudio extends JPanel implements RespuestaPanel{
+public class PanelPreguntaAudio extends JPanel implements IComprobador{
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblPregunta;
