@@ -16,17 +16,6 @@ public abstract class Serializer {
 		this.extension = extension;
 	}
 	
-	public void serialize(String path, CursoPlantilla cursoPlantilla) {
-		assert(path.endsWith(extension));
-		try {
-			mapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), cursoPlantilla);
-			System.out.println("Serialized to " + path);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error serializing to " + path);
-		}
-	}
-	
 	public CursoPlantilla deserialize(String path) {
 		assert(path.endsWith(extension));
 		try {
@@ -36,7 +25,4 @@ public abstract class Serializer {
 			return null;
 		}
 	}
-	
-	public abstract boolean isBetter(CursoPlantilla cursoPlantilla);
-	
 }

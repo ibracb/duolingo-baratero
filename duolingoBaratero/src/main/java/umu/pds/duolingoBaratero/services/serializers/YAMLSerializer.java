@@ -11,10 +11,4 @@ public class YAMLSerializer extends Serializer {
 	protected YAMLSerializer() {
 		super(new YAMLMapper(), YAML_EXTENSION);
 	}
-
-	@Override
-	public boolean isBetter(CursoPlantilla cursoPlantilla) {
-		return !cursoPlantilla.mejorJSON();
-	}
-
 }

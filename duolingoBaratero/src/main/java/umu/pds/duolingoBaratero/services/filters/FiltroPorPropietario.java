@@ -5,11 +5,11 @@ import java.util.stream.Collectors;
 
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
-public class FiltroCursosPorPropietario extends FiltroDecorador {
+public class FiltroPorPropietario extends FiltroDecorador {
 
 	private String nombrePropietario;
 
-	public FiltroCursosPorPropietario(Filtro filtro, String nombrePropietario) {
+	public FiltroPorPropietario(Filtro filtro, String nombrePropietario) {
 		super(filtro);
 		this.nombrePropietario = nombrePropietario;
 	}

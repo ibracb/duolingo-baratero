@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows.vista;
+package umu.pds.duolingoBaratero.windows.deported;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +9,9 @@ import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.windows.components.BarraInferiorPreguntas;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
+import umu.pds.duolingoBaratero.windows.vista.VentanaCambiaImagenes;
+import umu.pds.duolingoBaratero.windows.vista.VentanaCambioImagen;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;

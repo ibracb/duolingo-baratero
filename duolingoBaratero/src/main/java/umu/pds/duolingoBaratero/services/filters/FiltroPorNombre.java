@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
-public class FiltroCursosPorNombre extends FiltroDecorador {
+public class FiltroPorNombre extends FiltroDecorador {
 	
 	private String cursoNombre;
 	
-	public FiltroCursosPorNombre(Filtro filtro, String cursoNombre) {
+	public FiltroPorNombre(Filtro filtro, String cursoNombre) {
 		super(filtro);
 		this.cursoNombre = cursoNombre;
 	}

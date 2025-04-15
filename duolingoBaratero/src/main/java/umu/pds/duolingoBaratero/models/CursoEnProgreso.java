@@ -20,22 +20,17 @@ public class CursoEnProgreso {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	private CursoPlantilla cursoPlantilla;
-	
-	private Aprendizaje aprendizaje;
-	
+	private long id;	
+	private CursoPlantilla cursoPlantilla;	
+	private Aprendizaje aprendizaje;	
 	private EstadoCursoEnProgreso estado;
-	private Valoracion valoracion;
 	private int bloqueActual;
 	
 	
-	public CursoEnProgreso(CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje, Valoracion valoracion) {
+	public CursoEnProgreso(CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje) {
 		this.cursoPlantilla = cursoPlantilla;
 		this.aprendizaje = aprendizaje;
 		setEstado(new EstadoNuevo(this));
-		setValoracion(valoracion);
 		id = Constantes.getID();
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
 	}
@@ -71,19 +66,6 @@ public class CursoEnProgreso {
 	public void setAprendizaje(Aprendizaje aprendizaje) {
 		this.aprendizaje = aprendizaje;
 	}
-	
-	public Valoracion getValoracion() {
-		return valoracion;
-	}
-	
-	public void setValoracion(Valoracion valoracion) {
-		this.valoracion = valoracion;
-	}
-	
-	public int getValoracionNumerica() {
-		return getValoracion().getValor();
-	}
-	
 	
     public int getBloqueActual() {
 		return bloqueActual;

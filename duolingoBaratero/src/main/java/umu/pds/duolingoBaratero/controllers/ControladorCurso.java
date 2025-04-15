@@ -1,19 +1,19 @@
 package umu.pds.duolingoBaratero.controllers;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
 import umu.pds.duolingoBaratero.models.BloqueContenido;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -28,16 +28,16 @@ import umu.pds.duolingoBaratero.services.AudioService;
 import umu.pds.duolingoBaratero.services.ImageService;
 import umu.pds.duolingoBaratero.services.filters.Filtro;
 import umu.pds.duolingoBaratero.services.filters.FiltroBasico;
-import umu.pds.duolingoBaratero.services.filters.FiltroCursosPorNombre;
-import umu.pds.duolingoBaratero.services.filters.FiltroCursosPorPropietario;
-import umu.pds.duolingoBaratero.services.filters.FiltroCursosValoracion;
+import umu.pds.duolingoBaratero.services.filters.FiltroPorNivel;
+import umu.pds.duolingoBaratero.services.filters.FiltroPorNombre;
+import umu.pds.duolingoBaratero.services.filters.FiltroPorPropietario;
 import umu.pds.duolingoBaratero.services.serializers.JSONSerializer;
 import umu.pds.duolingoBaratero.services.serializers.Serializer;
 
 public enum ControladorCurso {
 	INSTANCE;
 	
-	private static final String ORDEN_DEFAULT = "Mas cursados";
+	private final static String VALOR_DEFAULT_FILTROS = "";
 	private List<CursoPlantilla> cursosPrueba = null;
 	private ImageService sevicioImagenes;
 	private AudioService reproductor;
@@ -85,12 +85,12 @@ public enum ControladorCurso {
 	public CursoEnProgreso getCursoEnProgreso(String nombre) {
 		Optional<CursoPlantilla> cursoPlantilla = this.getCursoPlantilla(nombre);
 		if (cursoPlantilla.isPresent())
-			return new CursoEnProgreso(cursoPlantilla.get(), null, null);
+			return new CursoEnProgreso(cursoPlantilla.get(), null);
 		return null;
 	}
 	
 	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, Usuario user) {
-        return new CursoEnProgreso(curso, null, null);
+        return new CursoEnProgreso(curso, null);
 	}
 	
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
@@ -100,11 +100,7 @@ public enum ControladorCurso {
 	public void playAudio(String ruta) {
 		reproductor.playAudio(ruta);
 	}
-	
-//	public List<CursoPlantilla> getAllCourses(String nombre, String propietario, String valoracion, String orden){
-//		Filtro filtro = new FiltroCursos();
-//	}
-//	
+
 	// ----------------------------------------------
 	// Funciones imagenes
 	// ----------------------------------------------
@@ -147,41 +143,27 @@ public enum ControladorCurso {
 	
 	//------FILTROS--------
 	
-	public List<CursoPlantilla> buscarCursos(String nombre, int valoracion, String propietario, String orden) {
+	public List<CursoPlantilla> buscarCursos() {
 		Filtro filtro = new FiltroBasico();
-		if (nombre != null) {
-			filtro = new FiltroCursosPorNombre(filtro, nombre);
-		} else if (valoracion > 0) {
-			filtro = new FiltroCursosValoracion(filtro, valoracion);
-		} else if (propietario != null) {
-			filtro = new FiltroCursosPorPropietario(filtro, propietario);
-		}
 		LinkedList<CursoPlantilla> lista = (LinkedList<CursoPlantilla>) filtro.filtrar(cursosPrueba);
-		if (orden.equals(ORDEN_DEFAULT))
-			return lista.stream()
-			        .sorted()
-			        .collect(Collectors.toList());
-		else 
-			return lista.stream()
-			        .sorted()
-			        .collect(Collectors.toList());
+			return lista;
+	}
+	
+	public List<CursoPlantilla> buscarCursos(String nombre, String propietario, Nivel lvl) {
+		Filtro filtro = new FiltroBasico();
+		if (nombre != VALOR_DEFAULT_FILTROS) {
+			filtro = new FiltroPorNombre(filtro, nombre);
+		} else if (propietario != VALOR_DEFAULT_FILTROS) {
+			filtro = new FiltroPorPropietario(filtro, propietario);
+		} else if (lvl != null) {	
+			filtro = new FiltroPorNivel(filtro, lvl);			
+		}
+		ArrayList<CursoPlantilla> lista = (ArrayList<CursoPlantilla>) filtro.filtrar(cursosPrueba);
+			return lista;
 	}
 	
 	//------RENDERIZACION PREGUNTAS--------
-	
-	
-	/**
-	 * Este metodo recibe el id de un bloque de contenido 
-	 * y devuelve todos los paneles pregunta asociados a ese  bloque
-	 * @param bloqueContenido
-	 * @return
-	 */
-	//TODO: 		
-	// Recuperar el bloque de contenido de alguna forma
-	// obtener las preguntas relacionadas con ese bloque
-	// Para cada pregutna crear su propio jpanel
-	// añadirlo al array y devolverlo
-	
+
 	public JPanel[] generarLeccion(long bloqueContenido) {
 		return new JPanel[0];
 	}
@@ -211,6 +193,25 @@ public enum ControladorCurso {
 			
 		}
 		return respuestaCorrecta;
+	}
+	
+	public int getNumPreguntas(long bloqueContenido) {
+		return RepositorioCurso.INSTANCE.obtenerBloqueContenido(bloqueContenido).getNumPreguntas();
+	}
+
+
+	public void avanzarBloqueContenido(CursoEnProgreso curso, boolean aprobado) {
+		curso.avanzarBloqueActual(aprobado);
+	}
+
+
+	public void reiniciarCurso(CursoEnProgreso curso) {
+		curso.reiniciar();
+	}
+
+
+	public CursoPlantilla importarCurso(File archivo) {
+		return serializer.deserialize(archivo.getAbsolutePath());		
 	}
 	
 	
@@ -456,27 +457,4 @@ public enum ControladorCurso {
 
 	}
 
-
-	public int getNumPreguntas(long bloqueContenido) {
-		return RepositorioCurso.INSTANCE.obtenerBloqueContenido(bloqueContenido).getNumPreguntas();
-	}
-
-
-	public void compartirCurso(CursoEnProgreso curso) {
-		if (curso == null) {
-	        System.err.println("Error: El curso es null.");
-	        return;  // Termina la ejecución del método si curso es null.
-	    }
-		serializer.serialize("src/main/resources/cursos/"+curso.getNombre() + ".json", curso.getCursoPlantilla());
-	}
-
-
-	public void avanzarBloqueContenido(CursoEnProgreso curso, boolean aprobado) {
-		curso.avanzarBloqueActual(aprobado);
-	}
-
-
-	public void reiniciarCurso(CursoEnProgreso curso) {
-		curso.reiniciar();
-	}
 }

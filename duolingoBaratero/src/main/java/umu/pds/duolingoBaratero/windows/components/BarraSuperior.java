@@ -3,21 +3,26 @@ package umu.pds.duolingoBaratero.windows.components;
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.io.File;
+
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-import umu.pds.duolingoBaratero.windows.vista.VentanaCreaPregunta;
-import umu.pds.duolingoBaratero.windows.vista.VentanaCreaTuCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.models.CursoPlantilla;
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPregunta;
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaTuCurso;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 
 public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btnHome, btnEstadisticas, btnModoNocturno, btnCreaTuCurso;
+	private JButton btnHome, btnEstadisticas, btnModoNocturno;
 	private JFrame ventanaActual;
 	private boolean modoOscuroActivo = false;
 	private JButton btnCompartirCurso;
@@ -40,16 +45,13 @@ public class BarraSuperior extends JPanel {
 		btnEstadisticas.addActionListener(e -> openVentanaEstadisticas());
 		btnModoNocturno = new JButton("Modo Nocturno 🌙");
 		btnModoNocturno.addActionListener(e -> toggleModoOscuro()); // Activar/desactivar modo nocturno
-		btnCreaTuCurso = new JButton("Crea tu curso");
-		btnCreaTuCurso.addActionListener(e -> openVentanaCreaTuCurso());
-		btnCompartirCurso = new JButton("Compartir Curso");
-		btnCompartirCurso.addActionListener(e -> compartirCurso(ventanaActual));
+		btnCompartirCurso = new JButton("Importar Curso");
+		btnCompartirCurso.addActionListener(e -> importarCurso());
 
 		// Agregar botones al panel central
 		panelCentral.add(btnHome);
 		panelCentral.add(btnEstadisticas);
 		panelCentral.add(btnModoNocturno);
-		panelCentral.add(btnCreaTuCurso);
 		panelCentral.add(btnCompartirCurso);
 		// Agregar el panel central dentro de la barra de herramientas
 		barra.add(panelCentral);
@@ -100,18 +102,26 @@ public class BarraSuperior extends JPanel {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+    public void importarCurso() {
+        JFileChooser fileChooser = new JFileChooser();
+        int resultado = fileChooser.showOpenDialog(null);
 
-	private void compartirCurso(JFrame ventanaActual) {
-		if (ventanaActual instanceof VentanaPrincipal) {
-			// Solo podemos compartir curso si estamos en la VentanaPrincipal
-			VentanaPrincipal ventanaPrincipal = (VentanaPrincipal) ventanaActual;
-			ventanaPrincipal.compartirCurso();
-		} else {
-			// Si no estamos en VentanaPrincipal, mostramos un mensaje de error
-			JOptionPane.showMessageDialog(this, "Este botón solo está disponible en la ventana principal.", "Error",
-					JOptionPane.ERROR_MESSAGE);
-		}
-	}
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+            if (!archivo.getName().toLowerCase().endsWith(".yaml")) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Solo se pueden importar ficheros YAML.",
+                    "Formato incorrecto",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            } else {
+                CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo);
+            }
+        }
+    }
+
 
 	private void openVentanaCreaTuCurso() {
 		if (ventanaActual instanceof VentanaCreaPregunta) {
@@ -152,9 +162,6 @@ public class BarraSuperior extends JPanel {
 		btnModoNocturno.setBackground(Color.DARK_GRAY);
 		btnModoNocturno.setForeground(Color.WHITE);
 
-		btnCreaTuCurso.setBackground(Color.DARK_GRAY);
-		btnCreaTuCurso.setForeground(Color.WHITE);
-
 		btnCompartirCurso.setBackground(Color.DARK_GRAY);
 		btnCompartirCurso.setForeground(Color.WHITE);
 	}
@@ -172,9 +179,6 @@ public class BarraSuperior extends JPanel {
 
 		btnModoNocturno.setBackground(Color.LIGHT_GRAY);
 		btnModoNocturno.setForeground(Color.BLACK);
-
-		btnCreaTuCurso.setBackground(Color.LIGHT_GRAY);
-		btnCreaTuCurso.setForeground(Color.BLACK);
 
 		btnCompartirCurso.setBackground(Color.LIGHT_GRAY);
 		btnCompartirCurso.setForeground(Color.BLACK);

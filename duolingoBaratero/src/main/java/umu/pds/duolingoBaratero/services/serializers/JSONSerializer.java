@@ -10,15 +10,7 @@ public class JSONSerializer extends Serializer {
 	
 	public JSONSerializer() {
 		super(new JsonMapper(), JSON_EXTENSION);
-		
+	
 		
 	}
-
-	@Override
-	public boolean isBetter(CursoPlantilla cursoPlantilla) {
-		return cursoPlantilla.mejorJSON();
-	}
-	
-	
-
 }

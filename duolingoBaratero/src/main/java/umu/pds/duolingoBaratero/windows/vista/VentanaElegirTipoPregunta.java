@@ -8,6 +8,12 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPreguntaFlashcard;
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPreguntaOpciones;
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPreguntaOpcionesImagenes;
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaTuCurso;
+
 import javax.swing.DefaultComboBoxModel;
 
 public class VentanaElegirTipoPregunta extends JFrame{

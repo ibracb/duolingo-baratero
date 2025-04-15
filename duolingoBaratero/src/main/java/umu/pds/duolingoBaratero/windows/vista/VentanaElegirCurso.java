@@ -7,45 +7,40 @@ import javax.swing.JPanel;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
-import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
-import umu.pds.duolingoBaratero.windows.components.CursoCellRenderer;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.util.LinkedList;
-
-import javax.swing.JComboBox;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class VentanaElegirCurso extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private static final int VALORACION_DEFAULT = -1;
-	private static final String VALOR_DEFAULT = null;
-	private static final String ORDEN_DEFAULT = "Mas cursados";
+	private final static String VALOR_DEFAULT_FILTROS = "";
 
-	
 	private JTextField textFieldNombre;
 	private JTextField textFieldCreador;
-	private JTextField textFieldValoracion;
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
 	private JList<CursoPlantilla> listaCursosCreados;
+	private JComboBox comboBoxNiveles;
 	private VentanaPrincipal v;
-	private JComboBox<String> comboBoxMasUsados;
-	
+
 
 	public VentanaElegirCurso(VentanaPrincipal v) {
 		this.v = v;
@@ -94,26 +89,15 @@ public class VentanaElegirCurso extends JFrame {
 		gbc_textFieldCreador.gridy = 2;
 		panelCentral.add(textFieldCreador, gbc_textFieldCreador);
 		textFieldCreador.setColumns(10);
-
-		textFieldValoracion = new JTextField();
-		textFieldValoracion.setText("Valoracion:");
-		GridBagConstraints gbc_textFieldValoracion = new GridBagConstraints();
-		gbc_textFieldValoracion.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldValoracion.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldValoracion.gridx = 1;
-		gbc_textFieldValoracion.gridy = 3;
-		panelCentral.add(textFieldValoracion, gbc_textFieldValoracion);
-		textFieldValoracion.setColumns(10);
-
-		String[] comboBoxOptiones = {"Más cursados", "Menos cursados"};
-		comboBoxMasUsados = new JComboBox<>(new DefaultComboBoxModel<>(comboBoxOptiones));
-
-		GridBagConstraints gbc_comboBoxMasUsados = new GridBagConstraints();
-		gbc_comboBoxMasUsados.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxMasUsados.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxMasUsados.gridx = 2;
-		gbc_comboBoxMasUsados.gridy = 3;
-		panelCentral.add(comboBoxMasUsados, gbc_comboBoxMasUsados);
+		
+		Nivel[] niveles = {Nivel.BASICO, Nivel.PRINCIPIANTE, Nivel.INTERMEDIO, Nivel.AVANZADO};
+		comboBoxNiveles = new JComboBox(niveles);
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 1;
+		gbc_comboBox.gridy = 3;
+		panelCentral.add(comboBoxNiveles, gbc_comboBox);
 		
 		JButton btnNewButton_1 = new JButton("Buscar");
 		btnNewButton_1.addActionListener(e -> buscarCursos());
@@ -121,7 +105,7 @@ public class VentanaElegirCurso extends JFrame {
 		gbc_btnNewButton_1.anchor = GridBagConstraints.EAST;
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_1.gridx = 2;
-		gbc_btnNewButton_1.gridy = 4;
+		gbc_btnNewButton_1.gridy = 3;
 		panelCentral.add(btnNewButton_1, gbc_btnNewButton_1);
 
 		JPanel panelCursosCreados = new JPanel(new BorderLayout()); // Establece BorderLayout
@@ -139,7 +123,7 @@ public class VentanaElegirCurso extends JFrame {
 		panelCursosCreados.add(labelCursosCreados, BorderLayout.NORTH);
 
 		modeloCursosCreados = new DefaultListModel<>();
-		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos(VALOR_DEFAULT,VALORACION_DEFAULT,VALOR_DEFAULT,ORDEN_DEFAULT)) {
+		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos()) {
 			modeloCursosCreados.addElement(curso);
 		}
 		listaCursosCreados = new JList<>(modeloCursosCreados);
@@ -157,19 +141,20 @@ public class VentanaElegirCurso extends JFrame {
 
 	}
 	
+	private String isCompleted(String texto) {
+		String [] partes = texto.split(":");
+		return partes.length > 1 ? partes[1] : VALOR_DEFAULT_FILTROS;
+	}
+	
 	private void buscarCursos() {
 		String nombre, propietario;
-		nombre = textFieldNombre.getText();
-		propietario = textFieldCreador.getText();
-		int valoracion = textFieldValoracion.getText() != null && textFieldValoracion.getText().matches("\\d+") ?  Integer.parseInt(textFieldValoracion.getText()) : VALORACION_DEFAULT;
-		String orden = (String)comboBoxMasUsados.getSelectedItem();
-		
+		nombre = isCompleted(textFieldNombre.getText());
+		propietario = isCompleted(textFieldCreador.getText());		
+		Nivel lvl = (Nivel) comboBoxNiveles.getSelectedItem();
 		modeloCursosCreados.clear();
-		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos(nombre, valoracion, propietario, orden)) {
+		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos(nombre, propietario, lvl)) {
 			modeloCursosCreados.addElement(curso);
 		}
-		modeloCursosCreados.addElement(new CursoPlantilla("Idiomas",ControladorUsuario.INSTANCE.getUsuarioActual(), null, "title", Nivel.AVANZADO, null));
-
 		listaCursosCreados.setModel(modeloCursosCreados);
 	}
 	

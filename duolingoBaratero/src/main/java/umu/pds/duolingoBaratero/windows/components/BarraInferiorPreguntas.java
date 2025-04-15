@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
-import umu.pds.duolingoBaratero.windows.vista.VentanaCreaPregunta;
-import umu.pds.duolingoBaratero.windows.vista.VentanaCreaTuCurso;
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPregunta;
+import umu.pds.duolingoBaratero.windows.deported.VentanaCreaTuCurso;
 import umu.pds.duolingoBaratero.windows.vista.VentanaElegirTipoPregunta;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;

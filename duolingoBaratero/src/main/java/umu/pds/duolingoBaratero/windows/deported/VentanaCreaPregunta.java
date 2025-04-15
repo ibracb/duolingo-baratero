@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows.vista;
+package umu.pds.duolingoBaratero.windows.deported;
 
 public interface VentanaCreaPregunta {
 

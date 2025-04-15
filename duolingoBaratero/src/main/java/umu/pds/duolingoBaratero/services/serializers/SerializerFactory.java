@@ -15,8 +15,8 @@ public enum SerializerFactory {
 	);
 	
 	public Serializer getSerializer(CursoPlantilla cursoPlantilla) {
-		return null;
-//		return serializers.stream()
+			return new YAMLSerializer();
+	//		return serializers.stream()
 //			.map(Supplier::get)
 //			.filter(serializer -> serializer.isBetter(cursoPlantilla))
 //			.findFirst()
