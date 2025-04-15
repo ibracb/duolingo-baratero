@@ -33,6 +33,8 @@ import umu.pds.duolingoBaratero.services.filters.FiltroPorNombre;
 import umu.pds.duolingoBaratero.services.filters.FiltroPorPropietario;
 import umu.pds.duolingoBaratero.services.serializers.JSONSerializer;
 import umu.pds.duolingoBaratero.services.serializers.Serializer;
+import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
+import umu.pds.duolingoBaratero.services.serializers.YAMLSerializer;
 
 public enum ControladorCurso {
 	INSTANCE;
@@ -41,12 +43,10 @@ public enum ControladorCurso {
 	private List<CursoPlantilla> cursosPrueba = null;
 	private ImageService sevicioImagenes;
 	private AudioService reproductor;
-	private Serializer serializer;
 
 	private ControladorCurso() {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
-		this.serializer = new JSONSerializer();
 		pruebas();
 	}
 	
@@ -210,7 +210,8 @@ public enum ControladorCurso {
 	}
 
 
-	public CursoPlantilla importarCurso(File archivo) {
+	public CursoPlantilla importarCurso(File archivo, String extension) {
+		Serializer serializer = SerializerFactory.INSTANCE.getSerializer(extension);
 		return serializer.deserialize(archivo.getAbsolutePath());		
 	}
 	

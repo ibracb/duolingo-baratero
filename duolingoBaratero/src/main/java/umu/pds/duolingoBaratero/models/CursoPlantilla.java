@@ -18,29 +18,33 @@ import jakarta.persistence.Id;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 @Entity
-@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class CursoPlantilla implements Comparable<CursoPlantilla> {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String nombre;
-	
+
 	@JsonProperty("propietario")
 	private Usuario propietario;
-	
+
 	private String descripcion;
 	private String objetivos;
 	private Nivel nivel;
-	
+
 	@JsonProperty("contenidos")
 	private List<BloqueContenido> contenidos;
-	
+
 	private String imagen;
 
 	public long getId() {
 		return id;
+	}
+
+	public CursoPlantilla() {
+
 	}
 
 	public CursoPlantilla(String nombre, Usuario propietario, String descripcion, String objetivos) {
@@ -112,7 +116,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	public void setContenidos(List<BloqueContenido> contenidos) {
 		this.contenidos = contenidos;
 	}
-	
+
 	public boolean isCursoFinalizado(int bloqueActual) {
 		return bloqueActual == contenidos.size();
 	}
@@ -143,6 +147,8 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 
 	public Set<TipoPregunta> getTipoPreguntas() {
 		HashSet<TipoPregunta> tipos = new HashSet<>();
+		if (contenidos == null)
+			return tipos;
 		for (BloqueContenido bloque : contenidos) {
 			if (tipos.containsAll(EnumSet.allOf(TipoPregunta.class))) {
 				break;
@@ -152,6 +158,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		return tipos;
 	}
 
+
 	public List<Pregunta> getPreguntasDeBloque(int bloque) {
 		return contenidos.get(bloque).getPreguntas();
 	}
@@ -160,7 +167,5 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	public int compareTo(CursoPlantilla o) {
 		return this.nivel.compareTo(o.nivel);
 	}
-	
-	
 
 }

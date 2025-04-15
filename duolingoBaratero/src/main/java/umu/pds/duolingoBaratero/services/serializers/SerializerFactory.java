@@ -14,13 +14,11 @@ public enum SerializerFactory {
 		YAMLSerializer::new
 	);
 	
-	public Serializer getSerializer(CursoPlantilla cursoPlantilla) {
+	public Serializer getSerializer(String extension) {
+		if (extension.equals("yaml"))
 			return new YAMLSerializer();
-	//		return serializers.stream()
-//			.map(Supplier::get)
-//			.filter(serializer -> serializer.isBetter(cursoPlantilla))
-//			.findFirst()
-//			.get();
+		else 
+			return null;
 	}
 	
 }

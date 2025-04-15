@@ -1,178 +1,100 @@
----
-&3 id: 3
-nombre: "plantilla_prueba_1"
-descripcion: "descripcion prueba"
-objetivos: "objetivos prueba"
-nivel: "BASICO"
-imagen: null
-tipoPreguntas:
-- "OPCIONES"
-- "AUDIO"
+nombre: Ingles
 propietario:
-  &0 id: 0
-  nombre: "ibrahim"
-  nickname: "Ibra"
-  correo: "ibra@gmail.com"
-  passwd: "1234"
-  imagen: "src/main/resources/profile.png"
-  roles:
-  - "CREADOR"
-  - "ESTUDIANTE"
-  cursos: []
-  cursosCreados: []
-  estadistica:
-    usuario: *0
-    tiempoUso: 0.0
-    numAccesos: 0
-    rachaVictorias: 0
-    porcentajeAciertos: 0.0
-  porcentajeAcierto: 80.0
-  numMaxAccesos: 4
-  estudiante: true
-  tiempoUso: 6.0
-  rachaVictorias: 8
-  administrador: false
-  creador: true
+  nombre: Profesor B
+  apodo: Mr B
+  correo: profesorb@gmail.com
+  contrasena: "1234"
+descripcion: Curso para principiantes
+objetivos: Aprender vocabulario básico
+nivel: BASICO
 contenidos:
-- &0 id: 0
-  preguntas:
-  - nivel: "BASICO"
-    numero: 0
-    pregunta: "Pregunta 1?"
-    respuestaCorrecta: "a"
-    tipo: "AUDIO"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    rutaAudio: "src/main/resources/audios/town-10169.mp3"
-    imagen: false
-  - nivel: "PRINCIPIANTE"
-    numero: 1
-    pregunta: "Pregunta 2?"
-    respuestaCorrecta: "b"
-    tipo: "OPCIONES"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    imagen: false
-  preguntasAleatoriamente:
-  - nivel: "BASICO"
-    numero: 0
-    pregunta: "Pregunta 1?"
-    respuestaCorrecta: "a"
-    tipo: "AUDIO"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    rutaAudio: "src/main/resources/audios/town-10169.mp3"
-    imagen: false
-  - nivel: "PRINCIPIANTE"
-    numero: 1
-    pregunta: "Pregunta 2?"
-    respuestaCorrecta: "b"
-    tipo: "OPCIONES"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    imagen: false
-  preguntasSecuencialmente:
-  - nivel: "BASICO"
-    numero: 0
-    pregunta: "Pregunta 1?"
-    respuestaCorrecta: "a"
-    tipo: "AUDIO"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    rutaAudio: "src/main/resources/audios/town-10169.mp3"
-    imagen: false
-  - nivel: "PRINCIPIANTE"
-    numero: 1
-    pregunta: "Pregunta 2?"
-    respuestaCorrecta: "b"
-    tipo: "OPCIONES"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    imagen: false
-  tiposPreguntas:
-  - "OPCIONES"
-  - "AUDIO"
-  numPreguntas: 2
-- &0 id: 0
-  preguntas:
-  - nivel: "INTERMEDIO"
-    numero: 0
-    pregunta: "Pregunta 3?"
-    respuestaCorrecta: "c"
-    tipo: "OPCIONES"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    imagen: false
-  - nivel: "AVANZADO"
-    numero: 1
-    pregunta: "Pregunta 4?"
-    respuestaCorrecta: "d"
-    tipo: "AUDIO"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    rutaAudio: "src/main/resources/audios/town-10169.mp3"
-    imagen: false
-  preguntasAleatoriamente:
-  - nivel: "AVANZADO"
-    numero: 1
-    pregunta: "Pregunta 4?"
-    respuestaCorrecta: "d"
-    tipo: "AUDIO"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    rutaAudio: "src/main/resources/audios/town-10169.mp3"
-    imagen: false
-  - nivel: "INTERMEDIO"
-    numero: 0
-    pregunta: "Pregunta 3?"
-    respuestaCorrecta: "c"
-    tipo: "OPCIONES"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    imagen: false
-  preguntasSecuencialmente:
-  - nivel: "INTERMEDIO"
-    numero: 0
-    pregunta: "Pregunta 3?"
-    respuestaCorrecta: "c"
-    tipo: "OPCIONES"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    imagen: false
-  - nivel: "AVANZADO"
-    numero: 1
-    pregunta: "Pregunta 4?"
-    respuestaCorrecta: "d"
-    tipo: "AUDIO"
-    opciones:
-    - "opcion1"
-    - "opcion2"
-    - "opcion3"
-    rutaAudio: "src/main/resources/audios/town-10169.mp3"
-    imagen: false
-  tiposPreguntas:
-  - "OPCIONES"
-  - "AUDIO"
-  numPreguntas: 2
+  - numeroBloque: 0
+    preguntas:
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 1
+        enunciado: "¿Cómo se dice 'Hola' en inglés?"
+        respuestaCorrecta: "Hello"
+        opciones: [ "Hello", "Hi", "Bye", "Goodbye" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 2
+        enunciado: "¿Qué significa 'Dog' en español?"
+        respuestaCorrecta: "Perro"
+        opciones: [ "Perro", "Gato", "Pájaro", "Pez" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 3
+        enunciado: "Completa la frase: 'I ___ a student'"
+        respuestaCorrecta: "am"
+        opciones: [ "am", "is", "are", "be" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 4
+        enunciado: "¿Cuál es el plural de 'child'?"
+        respuestaCorrecta: "children"
+        opciones: [ "childs", "childes", "children", "child" ]
+      - tipo: FLASHCARD
+        nivel: BASICO
+        id: 4
+        enunciado: "Significado de: Green"
+        respuestaCorrecta: "Verde"
+        tiempoSegundos: 30
+      - tipo: IMAGEN
+        nivel: BASICO
+        id: 6
+        enunciado: "¿Cuál cual de estos es leche?"
+        respuestaCorrecta: "CursosPDS/src/main/resources/milk.png"
+        opciones: [ "tea.png", "milk.png", "coffee.png" ]
+  - numeroBloque: 1
+    preguntas:
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 5
+        enunciado: "¿Cómo se dice 'Gracias' en inglés?"
+        respuestaCorrecta: "Thank you"
+        opciones: [ "Thank you", "Thanks", "You're welcome", "Hello" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 6
+        enunciado: "¿Qué significa 'Car' en español?"
+        respuestaCorrecta: "Coche"
+        opciones: [ "Coche", "Casa", "Camión", "Barco" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 7
+        enunciado: "Completa la frase: 'She ___ a teacher'"
+        respuestaCorrecta: "is"
+        opciones: [ "is", "are", "am", "be" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 8
+        enunciado: "¿Cómo se dice 'Libro' en inglés?"
+        respuestaCorrecta: "Book"
+        opciones: [ "Book", "Notebook", "Table", "Paper" ]
+  - numeroBloque: 2
+    preguntas:
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 9
+        enunciado: "¿Cómo se dice 'Buenos días' en inglés?"
+        respuestaCorrecta: "Good morning"
+        opciones: [ "Good morning", "Good night", "Hello", "Bye" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 10
+        enunciado: "¿Qué significa 'Water' en español?"
+        respuestaCorrecta: "Agua"
+        opciones: [ "Agua", "Fuego", "Aire", "Tierra" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 11
+        enunciado: "¿Qué verbo es sinónimo de 'begin'?"
+        respuestaCorrecta: "start"
+        opciones: [ "start", "stop", "end", "pause" ]
+      - tipo: OPCIONES
+        nivel: BASICO
+        id: 12
+        enunciado: "Completa la frase: 'They ___ at home'"
+        respuestaCorrecta: "are"
+        opciones: [ "are", "is", "am", "be" ]

@@ -6,8 +6,10 @@ import java.awt.FlowLayout;
 import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
@@ -104,39 +106,45 @@ public class BarraSuperior extends JPanel {
 	}
 	
     public void importarCurso() {
-        JFileChooser fileChooser = new JFileChooser();
-        int resultado = fileChooser.showOpenDialog(null);
+        // Crear ComboBox dentro de un JPanel para pasarlo a JOptionPane
+        String[] opciones = {"YAML", "JSON"};
+        JComboBox<String> comboBox = new JComboBox<>(opciones);
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Selecciona el tipo de archivo:"));
+        panel.add(comboBox);
 
-        if (resultado == JFileChooser.APPROVE_OPTION) {
-            File archivo = fileChooser.getSelectedFile();
-            if (!archivo.getName().toLowerCase().endsWith(".yaml")) {
-                JOptionPane.showMessageDialog(
-                    null,
-                    "Solo se pueden importar ficheros YAML.",
-                    "Formato incorrecto",
-                    JOptionPane.ERROR_MESSAGE
-                );
-            } else {
-                CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo);
+        int resultado = JOptionPane.showConfirmDialog(
+            null,
+            panel,
+            "Importar curso",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.PLAIN_MESSAGE
+        );
+
+        if (resultado == JOptionPane.OK_OPTION) {
+            String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
+            String extensionEsperada = "." + tipoSeleccionado;
+
+            JFileChooser fileChooser = new JFileChooser();
+            int seleccionArchivo = fileChooser.showOpenDialog(null);
+
+            if (seleccionArchivo == JFileChooser.APPROVE_OPTION) {
+                File archivo = fileChooser.getSelectedFile();
+
+                if (!archivo.getName().toLowerCase().endsWith(extensionEsperada)) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "El archivo debe tener extensión " + extensionEsperada,
+                        "Formato incorrecto",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                } else {
+                    CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo, tipoSeleccionado);
+                    // Puedes mostrar algo aquí si quieres confirmar que se importó
+                }
             }
         }
     }
-
-
-	private void openVentanaCreaTuCurso() {
-		if (ventanaActual instanceof VentanaCreaPregunta) {
-			JOptionPane.showMessageDialog(this, "No puedes crear un curso desde esta ventana", "Error",
-					JOptionPane.ERROR_MESSAGE);
-		} else if (!(ventanaActual instanceof VentanaCreaTuCurso)) {
-			// Abrimos VentanaCreaTuCurso solo si no estamos ya en ella
-			VentanaCreaTuCurso ventana = new VentanaCreaTuCurso();
-			ventana.setVisible(true);
-			ventanaActual.dispose();
-		} else {
-			JOptionPane.showMessageDialog(this, "Ya estás en la ventana de creación de curso.", "Error",
-					JOptionPane.ERROR_MESSAGE);
-		}
-	}
 
 	private void toggleModoOscuro() {
 		modoOscuroActivo = !modoOscuroActivo;
