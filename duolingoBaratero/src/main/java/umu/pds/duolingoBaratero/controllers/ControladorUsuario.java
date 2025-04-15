@@ -1,15 +1,11 @@
 package umu.pds.duolingoBaratero.controllers;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -18,7 +14,6 @@ import javax.swing.ImageIcon;
 
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
-import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.ImageService;
@@ -106,10 +101,6 @@ public enum ControladorUsuario {
 	
 	public List<CursoPlantilla> getCursosCreadosUsuarioActual(){
 		return user.getCursosCreados();
-	}
-	
-	public boolean isUserCreator() {
-		return this.user.isCreador();
 	}
 	
 	public double getPorcentajeRespuestasCorrectas() {

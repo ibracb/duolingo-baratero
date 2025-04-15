@@ -1,11 +1,9 @@
 package umu.pds.duolingoBaratero.models;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,20 +51,6 @@ class UsuarioTest {
     void testUsuario_HasImage() {
         assertFalse(usuarioSinImagen.hasImage());
         assertTrue(usuarioConImagen.hasImage());
-    }
-
-    @Test
-    void testUsuario_Roles() {
-        assertTrue(usuarioSinImagen.isCreador());
-        assertTrue(usuarioSinImagen.isEstudiante());
-        assertFalse(usuarioSinImagen.isAdministrador());
-
-        Set<Rol> nuevosRoles = new HashSet<>();
-        nuevosRoles.add(Rol.ADMINISTRADOR);
-        usuarioSinImagen.setRoles(nuevosRoles);
-
-        assertTrue(usuarioSinImagen.isAdministrador());
-        assertFalse(usuarioSinImagen.isCreador());
     }
 
     @Test

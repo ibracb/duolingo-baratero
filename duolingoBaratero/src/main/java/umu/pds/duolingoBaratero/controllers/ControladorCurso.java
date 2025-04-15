@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
 import umu.pds.duolingoBaratero.models.BloqueContenido;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -31,10 +32,8 @@ import umu.pds.duolingoBaratero.services.filters.FiltroBasico;
 import umu.pds.duolingoBaratero.services.filters.FiltroPorNivel;
 import umu.pds.duolingoBaratero.services.filters.FiltroPorNombre;
 import umu.pds.duolingoBaratero.services.filters.FiltroPorPropietario;
-import umu.pds.duolingoBaratero.services.serializers.JSONSerializer;
 import umu.pds.duolingoBaratero.services.serializers.Serializer;
 import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
-import umu.pds.duolingoBaratero.services.serializers.YAMLSerializer;
 
 public enum ControladorCurso {
 	INSTANCE;

@@ -160,7 +160,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 
 
 	public List<Pregunta> getPreguntasDeBloque(int bloque) {
-		return contenidos.get(bloque).getPreguntas();
+		return (List<Pregunta>) contenidos.get(bloque).getPreguntas();
 	}
 
 	@Override

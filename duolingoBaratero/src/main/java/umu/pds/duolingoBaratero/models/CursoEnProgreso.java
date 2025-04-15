@@ -10,6 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import umu.pds.duolingoBaratero.models.aprendizajes.Aprendizaje;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 @Entity
@@ -21,15 +24,17 @@ public class CursoEnProgreso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;	
-	private CursoPlantilla cursoPlantilla;	
-	private Aprendizaje aprendizaje;	
+	private CursoPlantilla cursoPlantilla;
+	private AprendizajeSeleccionado aprendizajeSeleccionado;
+	private Aprendizaje aprendizaje;
 	private EstadoCursoEnProgreso estado;
 	private int bloqueActual;
 	
 	
-	public CursoEnProgreso(CursoPlantilla cursoPlantilla, Aprendizaje aprendizaje) {
+	public CursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado) {
 		this.cursoPlantilla = cursoPlantilla;
-		this.aprendizaje = aprendizaje;
+		this.aprendizajeSeleccionado = aprendizajeSeleccionado;
+		updateAprendizaje();
 		setEstado(new EstadoNuevo(this));
 		id = Constantes.getID();
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
@@ -59,12 +64,24 @@ public class CursoEnProgreso {
 		this.cursoPlantilla = cursoPlantilla;
 	}
 
+	public AprendizajeSeleccionado getAprendizajeSeleccionado() {
+		return aprendizajeSeleccionado;
+	}
+
+	public void setAprendizajeSeleccionado(AprendizajeSeleccionado aprendizajeSeleccionado) {
+		this.aprendizajeSeleccionado = aprendizajeSeleccionado;
+	}
+	
 	public Aprendizaje getAprendizaje() {
 		return aprendizaje;
 	}
-
+	
 	public void setAprendizaje(Aprendizaje aprendizaje) {
 		this.aprendizaje = aprendizaje;
+	}
+	
+	public void updateAprendizaje() {
+		this.aprendizaje = FactoriaAprendizaje.INSTANCE.getAprendizaje(aprendizajeSeleccionado);
 	}
 	
     public int getBloqueActual() {

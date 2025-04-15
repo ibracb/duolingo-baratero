@@ -18,7 +18,6 @@ class PreguntasTest {
     private PreguntaOpciones preguntaOpciones;
     private PreguntaAudio preguntaAudio;
     private Flashcard flashcard;
-    private PreguntaProgreso preguntaProgreso;
 
     @BeforeEach
     void setUp() {
@@ -28,9 +27,6 @@ class PreguntasTest {
         preguntaOpciones = new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es la capital de Francia?", "París", TipoPregunta.OPCIONES, opciones);
         preguntaAudio = new PreguntaAudio(Nivel.INTERMEDIO, 2, "Escucha y elige la respuesta correcta", "Bonjour", opciones, "/ruta/audio.mp3");
         flashcard = new Flashcard(Nivel.AVANZADO, 3, "Flashcard", "acierto", TipoPregunta.FLASHCARD, 10);
-
-        // Pregunta en progreso
-        preguntaProgreso = new PreguntaProgreso(preguntaOpciones);
     }
 
     @Test
@@ -58,20 +54,6 @@ class PreguntasTest {
     void testFlashcard_EsRespuestaCorrecta() {
         assertTrue(flashcard.esRespuestaCorrecta("acierto"));
         assertFalse(flashcard.esRespuestaCorrecta("fallo"));
-    }
-
-    @Test
-    void testPreguntaProgreso_EstadoInicial() {
-        assertEquals(EstadoPregunta.PENDIENTE, preguntaProgreso.getEstado());
-    }
-
-    @Test
-    void testPreguntaProgreso_CambioDeEstado() {
-        preguntaProgreso.setEstado(EstadoPregunta.ACIERTO);
-        assertEquals(EstadoPregunta.ACIERTO, preguntaProgreso.getEstado());
-
-        preguntaProgreso.setEstado(EstadoPregunta.FALLO);
-        assertEquals(EstadoPregunta.FALLO, preguntaProgreso.getEstado());
     }
 
     @Test

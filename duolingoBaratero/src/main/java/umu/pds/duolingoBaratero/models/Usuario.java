@@ -17,7 +17,6 @@ import jakarta.persistence.Id;
 @JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class Usuario {
 
-	private static final Rol ROL_POR_DEFECTO = Rol.ESTUDIANTE;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +27,6 @@ public class Usuario {
 	private String correo;
 	private String passwd;
 	private String imagen;
-	private Set<Rol> roles;
 	private Set<CursoEnProgreso> cursos;
 	private List<CursoPlantilla> cursosCreados;
 	private Estadistica estadistica;
@@ -40,9 +38,6 @@ public class Usuario {
 		this.passwd = passwd;
 		this.cursos = new HashSet<>();
 		this.cursosCreados = new LinkedList<>();
-		roles = new HashSet<>();
-		roles.add(ROL_POR_DEFECTO);
-		roles.add(Rol.CREADOR);
 		this.estadistica = new Estadistica(this);
 		this.imagen = "";
 	}
@@ -132,14 +127,6 @@ public class Usuario {
 		this.imagen = imagen;
 	}
 
-	public Set<Rol> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Rol> roles) {
-		this.roles = roles;
-	}
-
 	public Estadistica getEstadistica() {
 		return estadistica;
 	}
@@ -150,18 +137,6 @@ public class Usuario {
 
 	public boolean hasImage() {
 		return imagen != null;
-	}
-
-	public boolean isAdministrador() {
-		return roles.contains(Rol.ADMINISTRADOR);
-	}
-
-	public boolean isCreador() {
-		return roles.contains(Rol.CREADOR);
-	}
-
-	public boolean isEstudiante() {
-		return roles.contains(Rol.ESTUDIANTE);
 	}
 
 	public double getPorcentajeAcierto() {

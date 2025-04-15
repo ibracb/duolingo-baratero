@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.TreeSet;
-import java.util.Collections;
 
 public class BloqueContenidoTest {
 
@@ -51,7 +49,7 @@ public class BloqueContenidoTest {
 
     @Test
     void testGetPreguntas() {
-        List<Pregunta> preguntas = bloqueContenido.getPreguntas();
+        List<Pregunta> preguntas = (List<Pregunta>) bloqueContenido.getPreguntas();
         assertEquals(2, preguntas.size());
         assertTrue(preguntas.contains(preguntaMock1));
         assertTrue(preguntas.contains(preguntaMock2));
@@ -75,7 +73,7 @@ public class BloqueContenidoTest {
         List<Pregunta> nuevasPreguntas = Arrays.asList(preguntaMock3);
         bloqueContenido.setPreguntas(nuevasPreguntas);
         assertEquals(1, bloqueContenido.getPreguntas().size());
-        assertEquals(preguntaMock3, bloqueContenido.getPreguntas().get(0));
+        assertEquals(preguntaMock3, ((List<Pregunta>) bloqueContenido.getPreguntas()).get(0));
     }
 
     @Test

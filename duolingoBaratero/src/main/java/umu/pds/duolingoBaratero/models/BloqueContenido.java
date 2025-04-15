@@ -1,5 +1,6 @@
 package umu.pds.duolingoBaratero.models;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +17,7 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 public class BloqueContenido {
 	
 	private long id;
-	private List<Pregunta> preguntas;
+	private Collection<Pregunta> preguntas;
 
 	public BloqueContenido(long id, Pregunta...preguntas) {
 		this.preguntas = new LinkedList<>();
@@ -33,11 +34,11 @@ public class BloqueContenido {
 		this.id = id;
 	}
 
-	public List<Pregunta> getPreguntas() {
+	public Collection<Pregunta> getPreguntas() {
 		return preguntas;
 	}
 
-	public void setPreguntas(List<Pregunta> preguntas) {
+	public void setPreguntas(Collection<Pregunta> preguntas) {
 		this.preguntas = preguntas;
 	}
 	
