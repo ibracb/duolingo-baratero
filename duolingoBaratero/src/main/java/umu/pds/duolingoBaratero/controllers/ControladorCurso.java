@@ -24,6 +24,7 @@ import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.AudioService;
 import umu.pds.duolingoBaratero.services.ImageService;
@@ -88,8 +89,8 @@ public enum ControladorCurso {
 		return null;
 	}
 	
-	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, Usuario user) {
-        return new CursoEnProgreso(curso, null);
+	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {
+        return new CursoEnProgreso(curso, aprendizajeSeleccionado);
 	}
 	
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {

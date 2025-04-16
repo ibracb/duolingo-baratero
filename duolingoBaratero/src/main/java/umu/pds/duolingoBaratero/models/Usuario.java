@@ -158,4 +158,9 @@ public class Usuario {
 		estadistica.setNumAccesos(4);
 		return estadistica.getNumAccesos();
 	}
+	
+	public boolean estaCursando(CursoPlantilla curso) {
+		return cursos.stream()
+				.anyMatch(cursoProgreso -> cursoProgreso.getCursoPlantilla().equals(curso));
+	}
 }

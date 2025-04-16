@@ -4,10 +4,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+import umu.pds.duolingoBaratero.models.CursoPlantilla;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -17,21 +27,11 @@ public class VentanaSeleccionEstrategica extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    VentanaSeleccionEstrategica frame = new VentanaSeleccionEstrategica();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    public VentanaSeleccionEstrategica() {
+    private VentanaPrincipal v;
+    private CursoPlantilla curso;
+    public VentanaSeleccionEstrategica(VentanaPrincipal v, CursoPlantilla curso) {
+    	this.v = v;
+    	this.curso = curso;
     	setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaSeleccionEstrategica.class.getResource("/com/jtattoo/plaf/icons/large/cup_24x24.png")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -62,6 +62,7 @@ public class VentanaSeleccionEstrategica extends JFrame {
         gbc_btnEstrategia1.gridx = 2;
         gbc_btnEstrategia1.gridy = 3;
         panelAbajo.add(btnEstrategia1, gbc_btnEstrategia1);
+        btnEstrategia1.addActionListener(e -> setAprendizaje(AprendizajeSeleccionado.SECUENCIAL));
         
         JButton btnEstrategia2 = new JButton("🔄Repetitivo");
         btnEstrategia2.setPreferredSize(buttonSize);
@@ -70,6 +71,7 @@ public class VentanaSeleccionEstrategica extends JFrame {
         gbc_btnEstrategia2.gridx = 4;
         gbc_btnEstrategia2.gridy = 3;
         panelAbajo.add(btnEstrategia2, gbc_btnEstrategia2);
+        btnEstrategia2.addActionListener(e -> setAprendizaje(AprendizajeSeleccionado.REPETICION_ESPACIADA));
         
         JButton btnEstrategia3 = new JButton("🎲Aleatorio");
         btnEstrategia3.setPreferredSize(buttonSize);
@@ -78,5 +80,21 @@ public class VentanaSeleccionEstrategica extends JFrame {
         gbc_btnEstrategia3.gridx = 7;
         gbc_btnEstrategia3.gridy = 3;
         panelAbajo.add(btnEstrategia3, gbc_btnEstrategia3);
+        btnEstrategia3.addActionListener(e -> setAprendizaje(AprendizajeSeleccionado.ALEATORIO));
+
     }
+    
+    private void setAprendizaje(AprendizajeSeleccionado aprendizajeSeleccionado) {
+    	if (ControladorUsuario.INSTANCE.addCursosEnProgreso(curso, aprendizajeSeleccionado)) {
+    		// Mensaje de exito
+    		v.refreshCursos();
+    		v.setVisible(true);
+    		this.dispose();
+    	}else {
+    		//Mensaje de error
+    	}
+    	
+    }
+    
+    
 }

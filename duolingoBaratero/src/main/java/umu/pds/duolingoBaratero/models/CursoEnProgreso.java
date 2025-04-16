@@ -25,7 +25,6 @@ public class CursoEnProgreso {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;	
 	private CursoPlantilla cursoPlantilla;
-	private AprendizajeSeleccionado aprendizajeSeleccionado;
 	private Aprendizaje aprendizaje;
 	private EstadoCursoEnProgreso estado;
 	private int bloqueActual;
@@ -33,8 +32,7 @@ public class CursoEnProgreso {
 	
 	public CursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado) {
 		this.cursoPlantilla = cursoPlantilla;
-		this.aprendizajeSeleccionado = aprendizajeSeleccionado;
-		updateAprendizaje();
+		setAprendizaje(aprendizajeSeleccionado);
 		setEstado(new EstadoNuevo(this));
 		id = Constantes.getID();
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
@@ -63,14 +61,6 @@ public class CursoEnProgreso {
 	public void setCursoPlantilla(CursoPlantilla cursoPlantilla) {
 		this.cursoPlantilla = cursoPlantilla;
 	}
-
-	public AprendizajeSeleccionado getAprendizajeSeleccionado() {
-		return aprendizajeSeleccionado;
-	}
-
-	public void setAprendizajeSeleccionado(AprendizajeSeleccionado aprendizajeSeleccionado) {
-		this.aprendizajeSeleccionado = aprendizajeSeleccionado;
-	}
 	
 	public Aprendizaje getAprendizaje() {
 		return aprendizaje;
@@ -80,7 +70,8 @@ public class CursoEnProgreso {
 		this.aprendizaje = aprendizaje;
 	}
 	
-	public void updateAprendizaje() {
+	
+	public void setAprendizaje(AprendizajeSeleccionado aprendizajeSeleccionado) {
 		this.aprendizaje = FactoriaAprendizaje.INSTANCE.getAprendizaje(aprendizajeSeleccionado);
 	}
 	

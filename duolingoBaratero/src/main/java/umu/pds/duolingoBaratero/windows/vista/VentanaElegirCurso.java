@@ -38,7 +38,7 @@ public class VentanaElegirCurso extends JFrame {
 	private JTextField textFieldCreador;
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
 	private JList<CursoPlantilla> listaCursosCreados;
-	private JComboBox comboBoxNiveles;
+	private JComboBox<Nivel> comboBoxNiveles;
 	private VentanaPrincipal v;
 
 
@@ -91,7 +91,7 @@ public class VentanaElegirCurso extends JFrame {
 		textFieldCreador.setColumns(10);
 		
 		Nivel[] niveles = {Nivel.BASICO, Nivel.PRINCIPIANTE, Nivel.INTERMEDIO, Nivel.AVANZADO};
-		comboBoxNiveles = new JComboBox(niveles);
+		comboBoxNiveles = new JComboBox<Nivel>(niveles);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -165,17 +165,21 @@ public class VentanaElegirCurso extends JFrame {
 	 * @param curso
 	 */
 	private void manejarSeleccionCurso(CursoPlantilla curso) {
-		if (!ControladorUsuario.INSTANCE.addCursosEnProgreso(curso)) {
+		if (ControladorUsuario.INSTANCE.estaCursando(curso)) {
 			Constantes.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
 		}
 		else {
-			v.refreshCursos();
-			this.closeWindow();
+			openVentanaEstrategia(curso);
 		}
+	}
+	
+	private void openVentanaEstrategia(CursoPlantilla curso) {
+		VentanaSeleccionEstrategica ventana = new VentanaSeleccionEstrategica(v,curso);
+		ventana.setVisible(true);
+		this.dispose();
 	}
 
 	private void closeWindow() {
-		v.setVisible(true);
 		this.dispose();
 	}
 
