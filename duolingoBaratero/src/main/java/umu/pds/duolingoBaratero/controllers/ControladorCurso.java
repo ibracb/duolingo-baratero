@@ -50,7 +50,7 @@ public enum ControladorCurso {
 	private ControladorCurso() {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
-		//recuperarCursosBase();
+		//this.recuperarCursosBase();
 		pruebas();
 	}
 
@@ -176,7 +176,7 @@ public enum ControladorCurso {
 
 	public List<CursoPlantilla> buscarCursos() {
 		Filtro filtro = new FiltroBasico();
-		LinkedList<CursoPlantilla> lista = (LinkedList<CursoPlantilla>) filtro.filtrar(cursosPrueba);
+		ArrayList<CursoPlantilla> lista = (ArrayList<CursoPlantilla>) filtro.filtrar(cursosPrueba);
 		return lista;
 	}
 
@@ -249,6 +249,16 @@ public enum ControladorCurso {
 			return serializer.serialize(curso);
 		}
 		return false;
+	}
+	
+	public boolean exportarCurso() {
+		Serializer serializerYAML = SerializerFactory.INSTANCE.getSerializer("yaml");
+		Serializer serializerJSON= SerializerFactory.INSTANCE.getSerializer("json");
+		for (CursoPlantilla curso: cursosPrueba) {
+			serializerYAML.serializeCursoBase(curso);
+			serializerJSON.serializeCursoBase(curso);			
+		}
+		return true;
 	}
 
 	// *************************************************

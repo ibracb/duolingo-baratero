@@ -1,0 +1,50 @@
+---
+&18 id: 18
+nombre: "Diseño"
+propietario:
+  &0 id: 0
+  nombre: "Profesor B"
+descripcion: "Fundamentos del diseño gráfico"
+objetivos: "Aprender sobre composición y colores"
+nivel: "BASICO"
+imagen: null
+tipoPreguntas:
+- "OPCIONES"
+contenidos:
+- &0 id: 0
+  preguntas:
+  - !<OPCIONES>
+    &0 id: 0
+    nivel: "BASICO"
+    numero: 0
+    pregunta: "¿Cuál es un software de diseño gráfico?"
+    respuestaCorrecta: "Photoshop"
+    tipo: "OPCIONES"
+    opciones:
+    - "Photoshop"
+    - "Excel"
+    - "Word"
+    - "Windows"
+    imagen: false
+  - !<OPCIONES>
+    &0 id: 0
+    nivel: "BASICO"
+    numero: 1
+    pregunta: "¿Qué es la teoría del color?"
+    respuestaCorrecta: "El estudio de cómo los colores interactúan"
+    tipo: "OPCIONES"
+    opciones:
+    - "El estudio de cómo los colores interactúan"
+    - "La combinación de colores"
+    - "El uso de filtros en fotos"
+    - "La elección de tipografías"
+    imagen: false
+  preguntasSecuencialmente:
+  - *0
+  - *0
+  preguntasAleatoriamente:
+  - *0
+  - *0
+  tiposPreguntas:
+  - "OPCIONES"
+  numPreguntas: 2

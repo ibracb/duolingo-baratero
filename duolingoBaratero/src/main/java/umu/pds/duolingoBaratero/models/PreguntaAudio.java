@@ -2,14 +2,22 @@ package umu.pds.duolingoBaratero.models;
 
 import javax.swing.JPanel;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaAudio;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class PreguntaAudio extends Pregunta {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	private String[] opciones;
 	private String rutaAudio;
-
-	
 	
 	public PreguntaAudio() {
 		super();
@@ -26,6 +34,15 @@ public class PreguntaAudio extends Pregunta {
 		super(nivel, numero, pregunta, respuestaCorrecta, TipoPregunta.AUDIO);
 		this.opciones = opciones;
 		this.rutaAudio = rutaAudio;
+	}
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	

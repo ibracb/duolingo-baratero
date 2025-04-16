@@ -120,7 +120,7 @@ public class BarraSuperior extends JPanel {
 
 		if (resultado == JOptionPane.OK_OPTION) {
 			String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
-			ControladorCurso.INSTANCE.exportarCurso(null, tipoSeleccionado);
+			ControladorCurso.INSTANCE.exportarCurso();
 		}
 
 	}

@@ -6,11 +6,9 @@ import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,16 +22,11 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
 	private String nombre;
-
-	@JsonProperty("propietario")
 	private Usuario propietario;
-
 	private String descripcion;
 	private String objetivos;
 	private Nivel nivel;
-
 	@JsonProperty("contenidos")
 	private List<BloqueContenido> contenidos;
 

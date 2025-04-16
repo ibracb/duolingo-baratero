@@ -2,7 +2,9 @@ package umu.pds.duolingoBaratero.services.serializers;
 
 import java.io.File;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
@@ -13,6 +15,12 @@ public abstract class Serializer {
 
 	protected Serializer(ObjectMapper mapper, String extension) {
 		this.mapper = mapper;
+        this.mapper.configure(com.fasterxml.jackson.databind.SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        mapper.enable(DeserializationFeature.WRAP_EXCEPTIONS);
+        mapper.enable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+
 		this.extension = extension;
 	}
 
@@ -27,4 +35,7 @@ public abstract class Serializer {
 	}
 
 	public abstract boolean serialize(CursoPlantilla curso);
+	
+	public abstract boolean serializeCursoBase(CursoPlantilla curso);
+
 }
