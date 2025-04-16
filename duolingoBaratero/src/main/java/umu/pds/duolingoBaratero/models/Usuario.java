@@ -30,6 +30,10 @@ public class Usuario {
 	private Set<CursoEnProgreso> cursos;
 	private List<CursoPlantilla> cursosCreados;
 	private Estadistica estadistica;
+	
+	public Usuario() {
+		
+	}
 
 	public Usuario(String nombre, String nickname, String correo, String passwd) {
 		this.nombre = nombre;
@@ -138,6 +142,23 @@ public class Usuario {
 	public boolean hasImage() {
 		return imagen != null;
 	}
+	
+	public void setRachaVictorias(int racha) {
+		this.estadistica.setRachaVictorias(racha);
+	}
+
+	public void setTiempoUso(double tiempo) {
+		this.estadistica.setTiempoUso(tiempo);
+	}
+
+	public void setPorcentajeAcierto(double porcentaje) {
+		this.estadistica.setPorcentajeAciertos(porcentaje);
+	}
+
+	public void setNumMaxAccesos(int accesos) {
+		this.estadistica.setNumAccesos(accesos);
+	}
+
 
 	public double getPorcentajeAcierto() {
 		estadistica.setPorcentajeAciertos(80.0);

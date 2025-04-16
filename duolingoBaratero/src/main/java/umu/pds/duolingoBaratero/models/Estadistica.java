@@ -8,6 +8,10 @@ public class Estadistica {
 	private int rachaVictorias;
 	private double porcentajeAciertos;
 	
+	public Estadistica(){
+		
+	}
+	
 	public Estadistica(Usuario usuario) {
 		this.usuario = usuario;
 		this.tiempoUso = 0.0;

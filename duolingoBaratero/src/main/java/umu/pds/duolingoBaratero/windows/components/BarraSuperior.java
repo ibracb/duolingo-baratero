@@ -24,10 +24,9 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btnHome, btnEstadisticas, btnModoNocturno;
+	private JButton btnHome, btnEstadisticas, btnModoNocturno, btnImportarCurso, btnExportarCurso;
 	private JFrame ventanaActual;
 	private boolean modoOscuroActivo = false;
-	private JButton btnCompartirCurso;
 
 	public BarraSuperior(JFrame ventanaActual) {
 		setLayout(new BorderLayout());
@@ -47,14 +46,18 @@ public class BarraSuperior extends JPanel {
 		btnEstadisticas.addActionListener(e -> openVentanaEstadisticas());
 		btnModoNocturno = new JButton("Modo Nocturno 🌙");
 		btnModoNocturno.addActionListener(e -> toggleModoOscuro()); // Activar/desactivar modo nocturno
-		btnCompartirCurso = new JButton("Importar Curso");
-		btnCompartirCurso.addActionListener(e -> importarCurso());
+		btnImportarCurso = new JButton("Importar Curso");
+		btnImportarCurso.addActionListener(e -> importarCurso());
+		btnExportarCurso = new JButton("Exportar Curso");
+		btnExportarCurso.addActionListener(e -> exportarCurso());
 
 		// Agregar botones al panel central
 		panelCentral.add(btnHome);
 		panelCentral.add(btnEstadisticas);
 		panelCentral.add(btnModoNocturno);
-		panelCentral.add(btnCompartirCurso);
+		panelCentral.add(btnImportarCurso);
+		panelCentral.add(btnExportarCurso);
+
 		// Agregar el panel central dentro de la barra de herramientas
 		barra.add(panelCentral);
 
@@ -104,47 +107,55 @@ public class BarraSuperior extends JPanel {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
-    public void importarCurso() {
-        // Crear ComboBox dentro de un JPanel para pasarlo a JOptionPane
-        String[] opciones = {"YAML", "JSON"};
-        JComboBox<String> comboBox = new JComboBox<>(opciones);
-        JPanel panel = new JPanel();
-        panel.add(new JLabel("Selecciona el tipo de archivo:"));
-        panel.add(comboBox);
 
-        int resultado = JOptionPane.showConfirmDialog(
-            null,
-            panel,
-            "Importar curso",
-            JOptionPane.OK_CANCEL_OPTION,
-            JOptionPane.PLAIN_MESSAGE
-        );
+	public void exportarCurso() {
+		String[] opciones = { "YAML", "JSON" };
+		JComboBox<String> comboBox = new JComboBox<>(opciones);
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Selecciona el tipo de archivo:"));
+		panel.add(comboBox);
 
-        if (resultado == JOptionPane.OK_OPTION) {
-            String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
-            String extensionEsperada = "." + tipoSeleccionado;
+		int resultado = JOptionPane.showConfirmDialog(null, panel, "Importar curso", JOptionPane.OK_CANCEL_OPTION,
+				JOptionPane.PLAIN_MESSAGE);
 
-            JFileChooser fileChooser = new JFileChooser();
-            int seleccionArchivo = fileChooser.showOpenDialog(null);
+		if (resultado == JOptionPane.OK_OPTION) {
+			String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
+			ControladorCurso.INSTANCE.exportarCurso(null, tipoSeleccionado);
+		}
 
-            if (seleccionArchivo == JFileChooser.APPROVE_OPTION) {
-                File archivo = fileChooser.getSelectedFile();
+	}
 
-                if (!archivo.getName().toLowerCase().endsWith(extensionEsperada)) {
-                    JOptionPane.showMessageDialog(
-                        null,
-                        "El archivo debe tener extensión " + extensionEsperada,
-                        "Formato incorrecto",
-                        JOptionPane.ERROR_MESSAGE
-                    );
-                } else {
-                    CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo, tipoSeleccionado);
-                    // Puedes mostrar algo aquí si quieres confirmar que se importó
-                }
-            }
-        }
-    }
+	public void importarCurso() {
+		// Crear ComboBox dentro de un JPanel para pasarlo a JOptionPane
+		String[] opciones = { "YAML", "JSON" };
+		JComboBox<String> comboBox = new JComboBox<>(opciones);
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Selecciona el tipo de archivo:"));
+		panel.add(comboBox);
+
+		int resultado = JOptionPane.showConfirmDialog(null, panel, "Importar curso", JOptionPane.OK_CANCEL_OPTION,
+				JOptionPane.PLAIN_MESSAGE);
+
+		if (resultado == JOptionPane.OK_OPTION) {
+			String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
+			String extensionEsperada = "." + tipoSeleccionado;
+
+			JFileChooser fileChooser = new JFileChooser();
+			int seleccionArchivo = fileChooser.showOpenDialog(null);
+
+			if (seleccionArchivo == JFileChooser.APPROVE_OPTION) {
+				File archivo = fileChooser.getSelectedFile();
+
+				if (!archivo.getName().toLowerCase().endsWith(extensionEsperada)) {
+					JOptionPane.showMessageDialog(null, "El archivo debe tener extensión " + extensionEsperada,
+							"Formato incorrecto", JOptionPane.ERROR_MESSAGE);
+				} else {
+					CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo, tipoSeleccionado);
+					// Puedes mostrar algo aquí si quieres confirmar que se importó
+				}
+			}
+		}
+	}
 
 	private void toggleModoOscuro() {
 		modoOscuroActivo = !modoOscuroActivo;
@@ -170,8 +181,8 @@ public class BarraSuperior extends JPanel {
 		btnModoNocturno.setBackground(Color.DARK_GRAY);
 		btnModoNocturno.setForeground(Color.WHITE);
 
-		btnCompartirCurso.setBackground(Color.DARK_GRAY);
-		btnCompartirCurso.setForeground(Color.WHITE);
+		btnImportarCurso.setBackground(Color.DARK_GRAY);
+		btnImportarCurso.setForeground(Color.WHITE);
 	}
 
 	private void setModoClaro() {
@@ -188,7 +199,7 @@ public class BarraSuperior extends JPanel {
 		btnModoNocturno.setBackground(Color.LIGHT_GRAY);
 		btnModoNocturno.setForeground(Color.BLACK);
 
-		btnCompartirCurso.setBackground(Color.LIGHT_GRAY);
-		btnCompartirCurso.setForeground(Color.BLACK);
+		btnImportarCurso.setBackground(Color.LIGHT_GRAY);
+		btnImportarCurso.setForeground(Color.BLACK);
 	}
 }

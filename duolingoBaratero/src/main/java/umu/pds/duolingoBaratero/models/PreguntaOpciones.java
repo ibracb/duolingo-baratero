@@ -14,6 +14,18 @@ public class PreguntaOpciones extends Pregunta {
 
 	private String[] opciones;
 
+	
+	
+	public PreguntaOpciones() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
+		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
+		// TODO Auto-generated constructor stub
+	}
+
 	public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo,
 			String[] opciones) {
 		super(nivel, numero, pregunta, respuestaCorrecta, tipo);

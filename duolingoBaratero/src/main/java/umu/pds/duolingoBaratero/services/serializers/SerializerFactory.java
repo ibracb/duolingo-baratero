@@ -17,8 +17,10 @@ public enum SerializerFactory {
 	public Serializer getSerializer(String extension) {
 		if (extension.equals("yaml"))
 			return new YAMLSerializer();
-		else 
-			return null;
+		else if (extension.equals("json"))
+			System.out.println("Si soy yo");
+			return new JSONSerializer();
+		
 	}
 	
 }

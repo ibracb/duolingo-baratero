@@ -1,6 +1,19 @@
 package umu.pds.duolingoBaratero.models;
 
 import javax.swing.JPanel;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(
+  use = JsonTypeInfo.Id.NAME,
+  include = JsonTypeInfo.As.PROPERTY,
+  property = "tipo"
+)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = PreguntaOpciones.class, name = "OPCIONES"),
+  @JsonSubTypes.Type(value = PreguntaAudio.class, name = "AUDIO"),
+  @JsonSubTypes.Type(value = Flashcard.class, name = "FLASHCARD")
+})
 
 public abstract class Pregunta implements Comparable<Pregunta> {
 
@@ -10,6 +23,9 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	private String respuestaCorrecta;
 	private TipoPregunta tipo;
 
+	public Pregunta() {
+	}
+	
 	public Pregunta(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
 		this.nivel = nivel;
 		this.numero = numero;

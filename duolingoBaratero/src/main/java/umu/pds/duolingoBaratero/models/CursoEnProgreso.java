@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Entity;
@@ -32,7 +33,7 @@ public class CursoEnProgreso {
 	
 	public CursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado) {
 		this.cursoPlantilla = cursoPlantilla;
-		setAprendizaje(aprendizajeSeleccionado);
+		setAprendizajeConEnum(aprendizajeSeleccionado);
 		setEstado(new EstadoNuevo(this));
 		id = Constantes.getID();
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
@@ -71,7 +72,7 @@ public class CursoEnProgreso {
 	}
 	
 	
-	public void setAprendizaje(AprendizajeSeleccionado aprendizajeSeleccionado) {
+	public void setAprendizajeConEnum(AprendizajeSeleccionado aprendizajeSeleccionado) {
 		this.aprendizaje = FactoriaAprendizaje.INSTANCE.getAprendizaje(aprendizajeSeleccionado);
 	}
 	

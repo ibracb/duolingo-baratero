@@ -9,6 +9,19 @@ public class PreguntaAudio extends Pregunta {
 	private String[] opciones;
 	private String rutaAudio;
 
+	
+	
+	public PreguntaAudio() {
+		super();
+	}
+
+
+	public PreguntaAudio(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
+		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public PreguntaAudio(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, String[] opciones, String rutaAudio) {
 		super(nivel, numero, pregunta, respuestaCorrecta, TipoPregunta.AUDIO);
 		this.opciones = opciones;
