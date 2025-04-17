@@ -7,6 +7,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -111,7 +112,7 @@ public enum ControladorCurso {
 	}
 
 	public String getNombrePropietario(CursoPlantilla curso) {
-		return curso.getPropietario().getNombre();
+		return curso.getPropietario();
 	}
 
 	public CursoEnProgreso getCursoEnProgreso(String nombre) {
@@ -175,9 +176,8 @@ public enum ControladorCurso {
 	// ------FILTROS--------
 
 	public List<CursoPlantilla> buscarCursos() {
-		Filtro filtro = new FiltroBasico();
-		ArrayList<CursoPlantilla> lista = (ArrayList<CursoPlantilla>) filtro.filtrar(cursosPrueba);
-		return lista;
+		return Collections.emptyList();
+		//return cursosPrueba;
 	}
 
 	public List<CursoPlantilla> buscarCursos(String nombre, String propietario, Nivel lvl) {
@@ -204,7 +204,7 @@ public enum ControladorCurso {
 	}
 
 	public CursoPlantilla crearCurso(String nombre, String descripcion, String objetivos) {
-		return new CursoPlantilla(nombre, ControladorUsuario.INSTANCE.getUsuarioActual(), descripcion, objetivos);
+		return new CursoPlantilla(nombre, ControladorUsuario.INSTANCE.getUsuarioActual().getNickname(), descripcion, objetivos);
 	}
 
 	public void setImagenACurso(CursoPlantilla curso, String imagen) {
@@ -266,7 +266,7 @@ public enum ControladorCurso {
 	// ***************************************************
 	private void pruebas() {
 		cursosPrueba = new LinkedList<>();
-		Usuario usuarioPrueba = new Usuario("Profesor B", "Mr B", "profesorb@gmail.com", "1234");
+		Usuario usuarioPrueba = new Usuario("Profesor B", "Mr usurioPrueba", "profesorb@gmail.com", "1234");
 		BloqueContenido bloque1Curso1 = new BloqueContenido(0,
 				new PreguntaOpciones(Nivel.BASICO, 1, "¿Cómo se dice 'Hola' en inglés?", "Hello", TipoPregunta.OPCIONES,
 						new String[] { "Hello", "Hi", "Bye", "Goodbye" }),
@@ -301,7 +301,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.BASICO, 12, "Completa la frase: 'They ___ at home'", "are",
 						TipoPregunta.OPCIONES, new String[] { "are", "is", "am", "be" }));
 
-		curso1 = new CursoPlantilla("Ingles", usuarioPrueba, "Curso para principiantes", "Aprender vocabulario básico",
+		curso1 = new CursoPlantilla("Ingles", usuarioPrueba.getNickname(), "Curso para principiantes", "Aprender vocabulario básico",
 				Nivel.BASICO, bloque1Curso1, bloque2Curso1, bloque3Curso1);
 
 		curso1.addBloqueContenido(bloque3Curso1);
@@ -336,7 +336,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.INTERMEDIO, 12, "Completa la frase: 'We ___ to the park'", "go",
 						TipoPregunta.OPCIONES, new String[] { "go", "going", "went", "gone" }));
 
-		CursoPlantilla curso2 = new CursoPlantilla("Ingles", usuarioPrueba, "Curso intermedio",
+		CursoPlantilla curso2 = new CursoPlantilla("Ingles", usuarioPrueba.getNickname(), "Curso intermedio",
 				"Mejorar gramática y vocabulario", Nivel.INTERMEDIO, bloque1Curso2, bloque2Curso2, bloque3Curso2);
 
 		// Curso de Informática
@@ -377,7 +377,7 @@ public enum ControladorCurso {
 						new String[] { "Un servicio de almacenamiento y computación en internet",
 								"Un programa de edición de texto", "Un procesador", "Un navegador web" }));
 
-		CursoPlantilla cursoInformatica = new CursoPlantilla("Informatica", usuarioPrueba,
+		CursoPlantilla cursoInformatica = new CursoPlantilla("Informatica", usuarioPrueba.getNickname(),
 				"Conceptos básicos de computación", "Aprender sobre hardware y software", Nivel.BASICO,
 				bloque1Informatica);
 
@@ -410,7 +410,7 @@ public enum ControladorCurso {
 						TipoPregunta.OPCIONES,
 						new String[] { "Escala mayor", "Escala menor", "Escala cromática", "Escala pentatónica" }));
 
-		CursoPlantilla cursoMusica = new CursoPlantilla("Música", usuarioPrueba, "Introducción a la teoría musical",
+		CursoPlantilla cursoMusica = new CursoPlantilla("Música", usuarioPrueba.getNickname(), "Introducción a la teoría musical",
 				"Aprender sobre notas y claves musicales", Nivel.BASICO, bloque1Musica);
 
 		// Curso de Ciencia
@@ -442,7 +442,7 @@ public enum ControladorCurso {
 						"Evaporación", TipoPregunta.OPCIONES,
 						new String[] { "Evaporación", "Condensación", "Sublimación", "Fusión" }));
 
-		CursoPlantilla cursoCiencia = new CursoPlantilla("Ciencia", usuarioPrueba, "Principios básicos de la ciencia",
+		CursoPlantilla cursoCiencia = new CursoPlantilla("Ciencia", usuarioPrueba.getNickname(), "Principios básicos de la ciencia",
 				"Introducción a conceptos científicos", Nivel.BASICO, bloque1Ciencia);
 
 		// Curso de Estudios
@@ -485,7 +485,7 @@ public enum ControladorCurso {
 				new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué puede ayudar a mantener la motivación al estudiar?",
 						"Establecer metas claras", TipoPregunta.OPCIONES, new String[] { "Establecer metas claras",
 								"Estudiar sin plan", "Evitar descansos", "Solo estudiar antes del examen" }));
-		CursoPlantilla cursoEstudios = new CursoPlantilla("Estudios", usuarioPrueba,
+		CursoPlantilla cursoEstudios = new CursoPlantilla("Estudios", usuarioPrueba.getNickname(),
 				"Estrategias para mejorar el aprendizaje", "Técnicas y hábitos de estudio", Nivel.BASICO,
 				bloque1Estudios);
 
@@ -498,7 +498,7 @@ public enum ControladorCurso {
 						new String[] { "El estudio de cómo los colores interactúan", "La combinación de colores",
 								"El uso de filtros en fotos", "La elección de tipografías" }));
 
-		CursoPlantilla cursoDiseno = new CursoPlantilla("Diseño", usuarioPrueba, "Fundamentos del diseño gráfico",
+		CursoPlantilla cursoDiseno = new CursoPlantilla("Diseño", usuarioPrueba.getNickname(), "Fundamentos del diseño gráfico",
 				"Aprender sobre composición y colores", Nivel.BASICO, bloque1Diseno);
 
 		cursosPrueba.add(cursoInformatica);
@@ -509,39 +509,42 @@ public enum ControladorCurso {
 
 		cursosPrueba.add(curso2);
 		cursosPrueba.add(curso1);
-		// Crear los cursos y agregar los bloques de contenido al repositorio
-		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso1);
-		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso2);
-		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoInformatica);
-		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoMusica);
-		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoCiencia);
-		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoEstudios);
-		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoDiseno);
+		
+		exportarCurso();
 
-		// Agregar bloques de contenido para el curso 1
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso1);
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso1);
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso1);
-
-		// Agregar bloques de contenido para el curso 2
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso2);
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso2);
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso2);
-
-		// Agregar bloques de contenido para el curso de informática
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Informatica);
-
-		// Agregar bloques de contenido para el curso de música
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Musica);
-
-		// Agregar bloques de contenido para el curso de ciencia
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Ciencia);
-
-		// Agregar bloques de contenido para el curso de estudios
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Estudios);
-
-		// Agregar bloques de contenido para el curso de diseño
-		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Diseno);
+//		// Crear los cursos y agregar los bloques de contenido al repositorio
+//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso1);
+//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso2);
+//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoInformatica);
+//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoMusica);
+//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoCiencia);
+//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoEstudios);
+//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoDiseno);
+//
+//		// Agregar bloques de contenido para el curso 1
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso1);
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso1);
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso1);
+//
+//		// Agregar bloques de contenido para el curso 2
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso2);
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso2);
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso2);
+//
+//		// Agregar bloques de contenido para el curso de informática
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Informatica);
+//
+//		// Agregar bloques de contenido para el curso de música
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Musica);
+//
+//		// Agregar bloques de contenido para el curso de ciencia
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Ciencia);
+//
+//		// Agregar bloques de contenido para el curso de estudios
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Estudios);
+//
+//		// Agregar bloques de contenido para el curso de diseño
+//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Diseno);
 
 	}
 

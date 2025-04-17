@@ -1,6 +1,8 @@
 package umu.pds.duolingoBaratero.models;
 
 import javax.swing.JPanel;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -75,6 +77,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 		return tipo;
 	}
 	
+	@JsonIgnore
 	public boolean isImagen() {
 		return tipo.equals(TipoPregunta.IMAGEN);
 	}

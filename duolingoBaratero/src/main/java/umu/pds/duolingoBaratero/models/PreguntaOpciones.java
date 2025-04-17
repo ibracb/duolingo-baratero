@@ -3,6 +3,7 @@ package umu.pds.duolingoBaratero.models;
 import javax.swing.JPanel;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.GeneratedValue;
@@ -16,8 +17,10 @@ import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
  * diferenciar con el atributo "tipo" de la clase "Pregunta"
  * 
  */
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class PreguntaOpciones extends Pregunta {
+	
+	@JsonIgnore
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;

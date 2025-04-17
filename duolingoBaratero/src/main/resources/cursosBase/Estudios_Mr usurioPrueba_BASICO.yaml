@@ -1,0 +1,345 @@
+---
+nombre: "Estudios"
+propietario: "Mr usurioPrueba"
+descripcion: "Estrategias para mejorar el aprendizaje"
+objetivos: "Técnicas y hábitos de estudio"
+nivel: "BASICO"
+imagen: null
+tipoPreguntas:
+- "OPCIONES"
+contenidos:
+- preguntas:
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 0
+    pregunta: "¿Cuál es el beneficio de tomar apuntes?"
+    respuestaCorrecta: "Facilita la retención de información"
+    tipo: "OPCIONES"
+    opciones:
+    - "Facilita la retención de información"
+    - "Consume tiempo"
+    - "Es obligatorio"
+    - "Evita estudiar después"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 1
+    pregunta: "¿Qué ayuda a mejorar la comprensión lectora?"
+    respuestaCorrecta: "Hacer resúmenes"
+    tipo: "OPCIONES"
+    opciones:
+    - "Hacer resúmenes"
+    - "Leer rápido"
+    - "No releer"
+    - "Memorizar palabra por palabra"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 2
+    pregunta: "¿Por qué es importante el descanso en el estudio?"
+    respuestaCorrecta: "Mejora la concentración y la memoria"
+    tipo: "OPCIONES"
+    opciones:
+    - "Mejora la concentración y la memoria"
+    - "Es una pérdida de tiempo"
+    - "Es solo para relajarse"
+    - "Evita aprender"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 3
+    pregunta: "¿Cuál es una técnica efectiva de estudio?"
+    respuestaCorrecta: "Mapas mentales"
+    tipo: "OPCIONES"
+    opciones:
+    - "Mapas mentales"
+    - "Mirar videos"
+    - "Dormir más"
+    - "No tomar apuntes"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 4
+    pregunta: "¿Cómo se puede mejorar la retención de información?"
+    respuestaCorrecta: "Repasando periódicamente"
+    tipo: "OPCIONES"
+    opciones:
+    - "Repasando periódicamente"
+    - "Solo leyendo una vez"
+    - "Dejando todo para el final"
+    - "No revisando apuntes"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 5
+    pregunta: "¿Qué puede ayudar a mantener la motivación al estudiar?"
+    respuestaCorrecta: "Establecer metas claras"
+    tipo: "OPCIONES"
+    opciones:
+    - "Establecer metas claras"
+    - "Estudiar sin plan"
+    - "Evitar descansos"
+    - "Solo estudiar antes del examen"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 6
+    pregunta: "¿Qué técnica ayuda a resumir información visualmente?"
+    respuestaCorrecta: "Diagramas de flujo"
+    tipo: "OPCIONES"
+    opciones:
+    - "Diagramas de flujo"
+    - "Lectura en voz alta"
+    - "Copiar textos"
+    - "Escuchar música"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 7
+    pregunta: "¿Qué es la mnemotecnia?"
+    respuestaCorrecta: "Un método de memorización"
+    tipo: "OPCIONES"
+    opciones:
+    - "Un método de memorización"
+    - "Un idioma antiguo"
+    - "Una asignatura"
+    - "Un deporte"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 8
+    pregunta: "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?"
+    respuestaCorrecta: "La técnica Pomodoro"
+    tipo: "OPCIONES"
+    opciones:
+    - "La técnica Pomodoro"
+    - "Leer sin pausas"
+    - "Estudiar sin planificación"
+    - "Solo estudiar antes del examen"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 9
+    pregunta: "¿Qué técnica facilita recordar listas de palabras?"
+    respuestaCorrecta: "Asociaciones y acrónimos"
+    tipo: "OPCIONES"
+    opciones:
+    - "Asociaciones y acrónimos"
+    - "Leer en silencio"
+    - "Estudiar en grupo"
+    - "Tomar más café"
+  preguntasAleatoriamente:
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 0
+    pregunta: "¿Cuál es el beneficio de tomar apuntes?"
+    respuestaCorrecta: "Facilita la retención de información"
+    tipo: "OPCIONES"
+    opciones:
+    - "Facilita la retención de información"
+    - "Consume tiempo"
+    - "Es obligatorio"
+    - "Evita estudiar después"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 1
+    pregunta: "¿Qué ayuda a mejorar la comprensión lectora?"
+    respuestaCorrecta: "Hacer resúmenes"
+    tipo: "OPCIONES"
+    opciones:
+    - "Hacer resúmenes"
+    - "Leer rápido"
+    - "No releer"
+    - "Memorizar palabra por palabra"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 2
+    pregunta: "¿Por qué es importante el descanso en el estudio?"
+    respuestaCorrecta: "Mejora la concentración y la memoria"
+    tipo: "OPCIONES"
+    opciones:
+    - "Mejora la concentración y la memoria"
+    - "Es una pérdida de tiempo"
+    - "Es solo para relajarse"
+    - "Evita aprender"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 3
+    pregunta: "¿Cuál es una técnica efectiva de estudio?"
+    respuestaCorrecta: "Mapas mentales"
+    tipo: "OPCIONES"
+    opciones:
+    - "Mapas mentales"
+    - "Mirar videos"
+    - "Dormir más"
+    - "No tomar apuntes"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 4
+    pregunta: "¿Cómo se puede mejorar la retención de información?"
+    respuestaCorrecta: "Repasando periódicamente"
+    tipo: "OPCIONES"
+    opciones:
+    - "Repasando periódicamente"
+    - "Solo leyendo una vez"
+    - "Dejando todo para el final"
+    - "No revisando apuntes"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 5
+    pregunta: "¿Qué puede ayudar a mantener la motivación al estudiar?"
+    respuestaCorrecta: "Establecer metas claras"
+    tipo: "OPCIONES"
+    opciones:
+    - "Establecer metas claras"
+    - "Estudiar sin plan"
+    - "Evitar descansos"
+    - "Solo estudiar antes del examen"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 6
+    pregunta: "¿Qué técnica ayuda a resumir información visualmente?"
+    respuestaCorrecta: "Diagramas de flujo"
+    tipo: "OPCIONES"
+    opciones:
+    - "Diagramas de flujo"
+    - "Lectura en voz alta"
+    - "Copiar textos"
+    - "Escuchar música"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 7
+    pregunta: "¿Qué es la mnemotecnia?"
+    respuestaCorrecta: "Un método de memorización"
+    tipo: "OPCIONES"
+    opciones:
+    - "Un método de memorización"
+    - "Un idioma antiguo"
+    - "Una asignatura"
+    - "Un deporte"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 8
+    pregunta: "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?"
+    respuestaCorrecta: "La técnica Pomodoro"
+    tipo: "OPCIONES"
+    opciones:
+    - "La técnica Pomodoro"
+    - "Leer sin pausas"
+    - "Estudiar sin planificación"
+    - "Solo estudiar antes del examen"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 9
+    pregunta: "¿Qué técnica facilita recordar listas de palabras?"
+    respuestaCorrecta: "Asociaciones y acrónimos"
+    tipo: "OPCIONES"
+    opciones:
+    - "Asociaciones y acrónimos"
+    - "Leer en silencio"
+    - "Estudiar en grupo"
+    - "Tomar más café"
+  tiposPreguntas:
+  - "OPCIONES"
+  preguntasSecuencialmente:
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 0
+    pregunta: "¿Cuál es el beneficio de tomar apuntes?"
+    respuestaCorrecta: "Facilita la retención de información"
+    tipo: "OPCIONES"
+    opciones:
+    - "Facilita la retención de información"
+    - "Consume tiempo"
+    - "Es obligatorio"
+    - "Evita estudiar después"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 1
+    pregunta: "¿Qué ayuda a mejorar la comprensión lectora?"
+    respuestaCorrecta: "Hacer resúmenes"
+    tipo: "OPCIONES"
+    opciones:
+    - "Hacer resúmenes"
+    - "Leer rápido"
+    - "No releer"
+    - "Memorizar palabra por palabra"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 2
+    pregunta: "¿Por qué es importante el descanso en el estudio?"
+    respuestaCorrecta: "Mejora la concentración y la memoria"
+    tipo: "OPCIONES"
+    opciones:
+    - "Mejora la concentración y la memoria"
+    - "Es una pérdida de tiempo"
+    - "Es solo para relajarse"
+    - "Evita aprender"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 3
+    pregunta: "¿Cuál es una técnica efectiva de estudio?"
+    respuestaCorrecta: "Mapas mentales"
+    tipo: "OPCIONES"
+    opciones:
+    - "Mapas mentales"
+    - "Mirar videos"
+    - "Dormir más"
+    - "No tomar apuntes"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 4
+    pregunta: "¿Cómo se puede mejorar la retención de información?"
+    respuestaCorrecta: "Repasando periódicamente"
+    tipo: "OPCIONES"
+    opciones:
+    - "Repasando periódicamente"
+    - "Solo leyendo una vez"
+    - "Dejando todo para el final"
+    - "No revisando apuntes"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 5
+    pregunta: "¿Qué puede ayudar a mantener la motivación al estudiar?"
+    respuestaCorrecta: "Establecer metas claras"
+    tipo: "OPCIONES"
+    opciones:
+    - "Establecer metas claras"
+    - "Estudiar sin plan"
+    - "Evitar descansos"
+    - "Solo estudiar antes del examen"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 6
+    pregunta: "¿Qué técnica ayuda a resumir información visualmente?"
+    respuestaCorrecta: "Diagramas de flujo"
+    tipo: "OPCIONES"
+    opciones:
+    - "Diagramas de flujo"
+    - "Lectura en voz alta"
+    - "Copiar textos"
+    - "Escuchar música"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 7
+    pregunta: "¿Qué es la mnemotecnia?"
+    respuestaCorrecta: "Un método de memorización"
+    tipo: "OPCIONES"
+    opciones:
+    - "Un método de memorización"
+    - "Un idioma antiguo"
+    - "Una asignatura"
+    - "Un deporte"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 8
+    pregunta: "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?"
+    respuestaCorrecta: "La técnica Pomodoro"
+    tipo: "OPCIONES"
+    opciones:
+    - "La técnica Pomodoro"
+    - "Leer sin pausas"
+    - "Estudiar sin planificación"
+    - "Solo estudiar antes del examen"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 9
+    pregunta: "¿Qué técnica facilita recordar listas de palabras?"
+    respuestaCorrecta: "Asociaciones y acrónimos"
+    tipo: "OPCIONES"
+    opciones:
+    - "Asociaciones y acrónimos"
+    - "Leer en silencio"
+    - "Estudiar en grupo"
+    - "Tomar más café"

@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.Entity;
@@ -16,14 +17,15 @@ import jakarta.persistence.Id;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class CursoPlantilla implements Comparable<CursoPlantilla> {
-
+	
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String nombre;
-	private Usuario propietario;
+	private String propietario;
 	private String descripcion;
 	private String objetivos;
 	private Nivel nivel;
@@ -40,7 +42,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 
 	}
 
-	public CursoPlantilla(String nombre, Usuario propietario, String descripcion, String objetivos) {
+	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos) {
 		this.nombre = nombre;
 		this.propietario = propietario;
 		this.descripcion = descripcion;
@@ -49,7 +51,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		id = Constantes.getID();
 	}
 
-	public CursoPlantilla(String nombre, Usuario propietario, String descripcion, String objetivos, Nivel nivel,
+	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel,
 			BloqueContenido... contenidos) {
 		this(nombre, propietario, descripcion, objetivos);
 		this.nivel = nivel;
@@ -66,11 +68,11 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.nombre = nombre;
 	}
 
-	public Usuario getPropietario() {
+	public String getPropietario() {
 		return propietario;
 	}
 
-	public void setPropietario(Usuario propietario) {
+	public void setPropietario(String propietario) {
 		this.propietario = propietario;
 	}
 
@@ -103,7 +105,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 	}
 
 	public List<BloqueContenido> getContenidos() {
-		return Collections.unmodifiableList(contenidos);
+	    return contenidos; 
 	}
 
 	public void setContenidos(List<BloqueContenido> contenidos) {

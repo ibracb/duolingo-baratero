@@ -29,7 +29,7 @@ public class JSONSerializer extends Serializer {
 
 			// Construir nombre del archivo
 			String fileName = curso.getNombre() + "_" +
-							  curso.getPropietario().getNombre() + "_" +
+							  curso.getPropietario() + "_" +
 							  curso.getNivel().toString() + extension;
 
 			// Unir path completo
@@ -61,7 +61,7 @@ public class JSONSerializer extends Serializer {
 
 			// Construir nombre del archivo
 			String fileName = curso.getNombre() + "_" +
-							  curso.getPropietario().getNombre() + "_" +
+							  curso.getPropietario() + "_" +
 							  curso.getNivel().toString() + extension;
 
 			// Unir path completo

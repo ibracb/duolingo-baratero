@@ -2,6 +2,7 @@ package umu.pds.duolingoBaratero.models;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -9,6 +10,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.GeneratedValue;
@@ -16,19 +18,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
-@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
+//@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class BloqueContenido {
+	@JsonIgnore
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private Collection<Pregunta> preguntas;
+	private Set<Pregunta> preguntas;
 
 	public BloqueContenido() {
 		
 	}
 	
 	public BloqueContenido(long id, Pregunta...preguntas) {
-		this.preguntas = new LinkedList<>();
+		this.preguntas = new HashSet<>();
 		Collections.addAll(this.preguntas, preguntas);
 		setNumPreguntas();
 		id = Constantes.getID();
@@ -46,17 +49,18 @@ public class BloqueContenido {
 		return preguntas;
 	}
 
-	public void setPreguntas(Collection<Pregunta> preguntas) {
+	public void setPreguntas(Set<Pregunta> preguntas) {
 		this.preguntas = preguntas;
 	}
 	
 	public Set<Pregunta> getPreguntasSecuencialmente() {
-		return Collections.unmodifiableSet(new TreeSet<>(this.preguntas));
+		return this.preguntas;
+//		return Collections.unmodifiableSet(new TreeSet<>(this.preguntas));
 	}
 	
-	public List<Pregunta> getPreguntasAleatoriamente() {
-		List<Pregunta> preguntasAleatorias = new LinkedList<>(preguntas);
-		Collections.shuffle(preguntasAleatorias);
+	public Set<Pregunta> getPreguntasAleatoriamente() {
+		Set<Pregunta> preguntasAleatorias = new HashSet<>(preguntas);
+		//Collections.shuffle(preguntasAleatorias);
 		return preguntasAleatorias;
 	}
 	
@@ -74,6 +78,8 @@ public class BloqueContenido {
                 .collect(Collectors.toSet());
     }
     
+    
+    @JsonIgnore
     public int getNumPreguntas() {
     	return preguntas.size();
     }
@@ -84,5 +90,7 @@ public class BloqueContenido {
 			p.setNumero(i++);
 		}
     }
+    
+    
 	
 }

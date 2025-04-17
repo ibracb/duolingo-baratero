@@ -3,6 +3,7 @@ package umu.pds.duolingoBaratero.models;
 import javax.swing.JPanel;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.GeneratedValue;
@@ -10,9 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Flashcard extends Pregunta {
 	
+	@JsonIgnore
 	private long id;
 	private static final String ACIERTO = "acierto";
 	private int tiempoLimite; // Ahora mismo es adaptable a cada pregutna pero si nos complica mucho la vida
