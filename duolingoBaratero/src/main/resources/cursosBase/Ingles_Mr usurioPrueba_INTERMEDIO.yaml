@@ -12,6 +12,17 @@ contenidos:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
+    pregunta: "Completa la frase: 'She ___ studying'"
+    respuestaCorrecta: "is"
+    tipo: "OPCIONES"
+    opciones:
+    - "is"
+    - "are"
+    - "am"
+    - "be"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 1
     pregunta: "¿Cuál es el pasado de 'go'?"
     respuestaCorrecta: "went"
     tipo: "OPCIONES"
@@ -22,7 +33,7 @@ contenidos:
     - "going"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
-    numero: 1
+    numero: 2
     pregunta: "¿Qué significa 'Table' en español?"
     respuestaCorrecta: "Mesa"
     tipo: "OPCIONES"
@@ -33,7 +44,7 @@ contenidos:
     - "Puerta"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
-    numero: 2
+    numero: 3
     pregunta: "¿Cómo se dice 'Amigo' en inglés?"
     respuestaCorrecta: "Friend"
     tipo: "OPCIONES"
@@ -42,68 +53,21 @@ contenidos:
     - "Brother"
     - "Sister"
     - "Mother"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 3
-    pregunta: "Completa la frase: 'She ___ studying'"
-    respuestaCorrecta: "is"
-    tipo: "OPCIONES"
-    opciones:
-    - "is"
-    - "are"
-    - "am"
-    - "be"
-  preguntasAleatoriamente:
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 0
-    pregunta: "¿Cuál es el pasado de 'go'?"
-    respuestaCorrecta: "went"
-    tipo: "OPCIONES"
-    opciones:
-    - "gone"
-    - "went"
-    - "goed"
-    - "going"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 1
-    pregunta: "¿Qué significa 'Table' en español?"
-    respuestaCorrecta: "Mesa"
-    tipo: "OPCIONES"
-    opciones:
-    - "Mesa"
-    - "Silla"
-    - "Cama"
-    - "Puerta"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 2
-    pregunta: "¿Cómo se dice 'Amigo' en inglés?"
-    respuestaCorrecta: "Friend"
-    tipo: "OPCIONES"
-    opciones:
-    - "Friend"
-    - "Brother"
-    - "Sister"
-    - "Mother"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 3
-    pregunta: "Completa la frase: 'She ___ studying'"
-    respuestaCorrecta: "is"
-    tipo: "OPCIONES"
-    opciones:
-    - "is"
-    - "are"
-    - "am"
-    - "be"
-  tiposPreguntas:
-  - "OPCIONES"
   preguntasSecuencialmente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
+    pregunta: "Completa la frase: 'She ___ studying'"
+    respuestaCorrecta: "is"
+    tipo: "OPCIONES"
+    opciones:
+    - "is"
+    - "are"
+    - "am"
+    - "be"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 1
     pregunta: "¿Cuál es el pasado de 'go'?"
     respuestaCorrecta: "went"
     tipo: "OPCIONES"
@@ -114,7 +78,7 @@ contenidos:
     - "going"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
-    numero: 1
+    numero: 2
     pregunta: "¿Qué significa 'Table' en español?"
     respuestaCorrecta: "Mesa"
     tipo: "OPCIONES"
@@ -125,7 +89,7 @@ contenidos:
     - "Puerta"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
-    numero: 2
+    numero: 3
     pregunta: "¿Cómo se dice 'Amigo' en inglés?"
     respuestaCorrecta: "Friend"
     tipo: "OPCIONES"
@@ -134,9 +98,12 @@ contenidos:
     - "Brother"
     - "Sister"
     - "Mother"
+  tiposPreguntas:
+  - "OPCIONES"
+  preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
-    numero: 3
+    numero: 0
     pregunta: "Completa la frase: 'She ___ studying'"
     respuestaCorrecta: "is"
     tipo: "OPCIONES"
@@ -144,148 +111,237 @@ contenidos:
     - "is"
     - "are"
     - "am"
+    - "be"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 1
+    pregunta: "¿Cuál es el pasado de 'go'?"
+    respuestaCorrecta: "went"
+    tipo: "OPCIONES"
+    opciones:
+    - "gone"
+    - "went"
+    - "goed"
+    - "going"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 2
+    pregunta: "¿Qué significa 'Table' en español?"
+    respuestaCorrecta: "Mesa"
+    tipo: "OPCIONES"
+    opciones:
+    - "Mesa"
+    - "Silla"
+    - "Cama"
+    - "Puerta"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 3
+    pregunta: "¿Cómo se dice 'Amigo' en inglés?"
+    respuestaCorrecta: "Friend"
+    tipo: "OPCIONES"
+    opciones:
+    - "Friend"
+    - "Brother"
+    - "Sister"
+    - "Mother"
+- preguntas:
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 0
+    pregunta: "¿Cómo se dice 'Ventana' en inglés?"
+    respuestaCorrecta: "Window"
+    tipo: "OPCIONES"
+    opciones:
+    - "Window"
+    - "Door"
+    - "Wall"
+    - "Floor"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 1
+    pregunta: "¿Cuál es el opuesto de 'cold'?"
+    respuestaCorrecta: "hot"
+    tipo: "OPCIONES"
+    opciones:
+    - "hot"
+    - "warm"
+    - "cool"
+    - "freezing"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 2
+    pregunta: "¿Qué significa 'Chair' en español?"
+    respuestaCorrecta: "Silla"
+    tipo: "OPCIONES"
+    opciones:
+    - "Silla"
+    - "Mesa"
+    - "Lámpara"
+    - "Pizarra"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 3
+    pregunta: "Completa la frase: 'I ___ going to school'"
+    respuestaCorrecta: "am"
+    tipo: "OPCIONES"
+    opciones:
+    - "am"
+    - "is"
+    - "are"
+    - "be"
+  preguntasSecuencialmente:
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 0
+    pregunta: "¿Cómo se dice 'Ventana' en inglés?"
+    respuestaCorrecta: "Window"
+    tipo: "OPCIONES"
+    opciones:
+    - "Window"
+    - "Door"
+    - "Wall"
+    - "Floor"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 1
+    pregunta: "¿Cuál es el opuesto de 'cold'?"
+    respuestaCorrecta: "hot"
+    tipo: "OPCIONES"
+    opciones:
+    - "hot"
+    - "warm"
+    - "cool"
+    - "freezing"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 2
+    pregunta: "¿Qué significa 'Chair' en español?"
+    respuestaCorrecta: "Silla"
+    tipo: "OPCIONES"
+    opciones:
+    - "Silla"
+    - "Mesa"
+    - "Lámpara"
+    - "Pizarra"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 3
+    pregunta: "Completa la frase: 'I ___ going to school'"
+    respuestaCorrecta: "am"
+    tipo: "OPCIONES"
+    opciones:
+    - "am"
+    - "is"
+    - "are"
+    - "be"
+  tiposPreguntas:
+  - "OPCIONES"
+  preguntasAleatoriamente:
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 0
+    pregunta: "¿Cómo se dice 'Ventana' en inglés?"
+    respuestaCorrecta: "Window"
+    tipo: "OPCIONES"
+    opciones:
+    - "Window"
+    - "Door"
+    - "Wall"
+    - "Floor"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 1
+    pregunta: "¿Cuál es el opuesto de 'cold'?"
+    respuestaCorrecta: "hot"
+    tipo: "OPCIONES"
+    opciones:
+    - "hot"
+    - "warm"
+    - "cool"
+    - "freezing"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 2
+    pregunta: "¿Qué significa 'Chair' en español?"
+    respuestaCorrecta: "Silla"
+    tipo: "OPCIONES"
+    opciones:
+    - "Silla"
+    - "Mesa"
+    - "Lámpara"
+    - "Pizarra"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 3
+    pregunta: "Completa la frase: 'I ___ going to school'"
+    respuestaCorrecta: "am"
+    tipo: "OPCIONES"
+    opciones:
+    - "am"
+    - "is"
+    - "are"
     - "be"
 - preguntas:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
-    pregunta: "¿Qué significa 'Chair' en español?"
-    respuestaCorrecta: "Silla"
+    pregunta: "¿Cómo se dice 'Sol' en inglés?"
+    respuestaCorrecta: "Sun"
     tipo: "OPCIONES"
     opciones:
-    - "Silla"
-    - "Mesa"
-    - "Lámpara"
-    - "Pizarra"
+    - "Sun"
+    - "Star"
+    - "Moon"
+    - "Sky"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 1
-    pregunta: "¿Cuál es el opuesto de 'cold'?"
-    respuestaCorrecta: "hot"
+    pregunta: "¿Qué significa 'Fast' en español?"
+    respuestaCorrecta: "Rápido"
     tipo: "OPCIONES"
     opciones:
-    - "hot"
-    - "warm"
-    - "cool"
-    - "freezing"
+    - "Rápido"
+    - "Lento"
+    - "Fuerte"
+    - "Débil"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 2
-    pregunta: "¿Cómo se dice 'Ventana' en inglés?"
-    respuestaCorrecta: "Window"
+    pregunta: "Completa la frase: 'We ___ to the park'"
+    respuestaCorrecta: "go"
     tipo: "OPCIONES"
     opciones:
-    - "Window"
-    - "Door"
-    - "Wall"
-    - "Floor"
+    - "go"
+    - "going"
+    - "went"
+    - "gone"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 3
-    pregunta: "Completa la frase: 'I ___ going to school'"
-    respuestaCorrecta: "am"
+    pregunta: "¿Cuál es el plural de 'mouse'?"
+    respuestaCorrecta: "mice"
     tipo: "OPCIONES"
     opciones:
-    - "am"
-    - "is"
-    - "are"
-    - "be"
-  preguntasAleatoriamente:
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 0
-    pregunta: "¿Qué significa 'Chair' en español?"
-    respuestaCorrecta: "Silla"
-    tipo: "OPCIONES"
-    opciones:
-    - "Silla"
-    - "Mesa"
-    - "Lámpara"
-    - "Pizarra"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 1
-    pregunta: "¿Cuál es el opuesto de 'cold'?"
-    respuestaCorrecta: "hot"
-    tipo: "OPCIONES"
-    opciones:
-    - "hot"
-    - "warm"
-    - "cool"
-    - "freezing"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 2
-    pregunta: "¿Cómo se dice 'Ventana' en inglés?"
-    respuestaCorrecta: "Window"
-    tipo: "OPCIONES"
-    opciones:
-    - "Window"
-    - "Door"
-    - "Wall"
-    - "Floor"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 3
-    pregunta: "Completa la frase: 'I ___ going to school'"
-    respuestaCorrecta: "am"
-    tipo: "OPCIONES"
-    opciones:
-    - "am"
-    - "is"
-    - "are"
-    - "be"
-  tiposPreguntas:
-  - "OPCIONES"
+    - "mice"
+    - "mouses"
+    - "mouse"
+    - "mousses"
   preguntasSecuencialmente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
-    pregunta: "¿Qué significa 'Chair' en español?"
-    respuestaCorrecta: "Silla"
+    pregunta: "¿Cómo se dice 'Sol' en inglés?"
+    respuestaCorrecta: "Sun"
     tipo: "OPCIONES"
     opciones:
-    - "Silla"
-    - "Mesa"
-    - "Lámpara"
-    - "Pizarra"
+    - "Sun"
+    - "Star"
+    - "Moon"
+    - "Sky"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 1
-    pregunta: "¿Cuál es el opuesto de 'cold'?"
-    respuestaCorrecta: "hot"
-    tipo: "OPCIONES"
-    opciones:
-    - "hot"
-    - "warm"
-    - "cool"
-    - "freezing"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 2
-    pregunta: "¿Cómo se dice 'Ventana' en inglés?"
-    respuestaCorrecta: "Window"
-    tipo: "OPCIONES"
-    opciones:
-    - "Window"
-    - "Door"
-    - "Wall"
-    - "Floor"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 3
-    pregunta: "Completa la frase: 'I ___ going to school'"
-    respuestaCorrecta: "am"
-    tipo: "OPCIONES"
-    opciones:
-    - "am"
-    - "is"
-    - "are"
-    - "be"
-- preguntas:
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 0
     pregunta: "¿Qué significa 'Fast' en español?"
     respuestaCorrecta: "Rápido"
     tipo: "OPCIONES"
@@ -294,17 +350,6 @@ contenidos:
     - "Lento"
     - "Fuerte"
     - "Débil"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 1
-    pregunta: "¿Cuál es el plural de 'mouse'?"
-    respuestaCorrecta: "mice"
-    tipo: "OPCIONES"
-    opciones:
-    - "mice"
-    - "mouses"
-    - "mouse"
-    - "mousses"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 2
@@ -319,18 +364,31 @@ contenidos:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 3
-    pregunta: "¿Cómo se dice 'Sol' en inglés?"
-    respuestaCorrecta: "Sun"
+    pregunta: "¿Cuál es el plural de 'mouse'?"
+    respuestaCorrecta: "mice"
     tipo: "OPCIONES"
     opciones:
-    - "Sun"
-    - "Star"
-    - "Moon"
-    - "Sky"
+    - "mice"
+    - "mouses"
+    - "mouse"
+    - "mousses"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
+    pregunta: "¿Cómo se dice 'Sol' en inglés?"
+    respuestaCorrecta: "Sun"
+    tipo: "OPCIONES"
+    opciones:
+    - "Sun"
+    - "Star"
+    - "Moon"
+    - "Sky"
+  - !<OPCIONES>
+    nivel: "INTERMEDIO"
+    numero: 1
     pregunta: "¿Qué significa 'Fast' en español?"
     respuestaCorrecta: "Rápido"
     tipo: "OPCIONES"
@@ -339,17 +397,6 @@ contenidos:
     - "Lento"
     - "Fuerte"
     - "Débil"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 1
-    pregunta: "¿Cuál es el plural de 'mouse'?"
-    respuestaCorrecta: "mice"
-    tipo: "OPCIONES"
-    opciones:
-    - "mice"
-    - "mouses"
-    - "mouse"
-    - "mousses"
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 2
@@ -364,31 +411,6 @@ contenidos:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 3
-    pregunta: "¿Cómo se dice 'Sol' en inglés?"
-    respuestaCorrecta: "Sun"
-    tipo: "OPCIONES"
-    opciones:
-    - "Sun"
-    - "Star"
-    - "Moon"
-    - "Sky"
-  tiposPreguntas:
-  - "OPCIONES"
-  preguntasSecuencialmente:
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 0
-    pregunta: "¿Qué significa 'Fast' en español?"
-    respuestaCorrecta: "Rápido"
-    tipo: "OPCIONES"
-    opciones:
-    - "Rápido"
-    - "Lento"
-    - "Fuerte"
-    - "Débil"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 1
     pregunta: "¿Cuál es el plural de 'mouse'?"
     respuestaCorrecta: "mice"
     tipo: "OPCIONES"
@@ -397,25 +419,3 @@ contenidos:
     - "mouses"
     - "mouse"
     - "mousses"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 2
-    pregunta: "Completa la frase: 'We ___ to the park'"
-    respuestaCorrecta: "go"
-    tipo: "OPCIONES"
-    opciones:
-    - "go"
-    - "going"
-    - "went"
-    - "gone"
-  - !<OPCIONES>
-    nivel: "INTERMEDIO"
-    numero: 3
-    pregunta: "¿Cómo se dice 'Sol' en inglés?"
-    respuestaCorrecta: "Sun"
-    tipo: "OPCIONES"
-    opciones:
-    - "Sun"
-    - "Star"
-    - "Moon"
-    - "Sky"

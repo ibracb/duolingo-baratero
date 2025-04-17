@@ -11,30 +11,6 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
-      "pregunta" : "¿Qué significa CPU?",
-      "respuestaCorrecta" : "Unidad Central de Procesamiento",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
-      "pregunta" : "¿Qué es un bit?",
-      "respuestaCorrecta" : "La unidad más pequeña de información en un ordenador",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "La unidad más pequeña de información en un ordenador", "Un procesador", "Un programa", "Un sistema operativo" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "¿Qué es HTML?",
-      "respuestaCorrecta" : "Un lenguaje de marcado para crear páginas web",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Un lenguaje de marcado para crear páginas web", "Un sistema operativo", "Un programa de edición de fotos", "Un lenguaje de programación" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
       "pregunta" : "¿Cuál es un sistema operativo?",
       "respuestaCorrecta" : "Windows",
       "tipo" : "OPCIONES",
@@ -42,11 +18,35 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 4,
-      "pregunta" : "¿Cuál es la función del sistema operativo?",
-      "respuestaCorrecta" : "Gestionar los recursos del hardware y software",
+      "numero" : 1,
+      "pregunta" : "¿Qué es HTML?",
+      "respuestaCorrecta" : "Un lenguaje de marcado para crear páginas web",
       "tipo" : "OPCIONES",
-      "opciones" : [ "Gestionar los recursos del hardware y software", "Crear archivos de texto", "Navegar por internet", "Acelerar la memoria RAM" ]
+      "opciones" : [ "Un lenguaje de marcado para crear páginas web", "Un sistema operativo", "Un programa de edición de fotos", "Un lenguaje de programación" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Qué significa CPU?",
+      "respuestaCorrecta" : "Unidad Central de Procesamiento",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
+      "pregunta" : "¿Qué es la nube en informática?",
+      "respuestaCorrecta" : "Un servicio de almacenamiento y computación en internet",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Un servicio de almacenamiento y computación en internet", "Un programa de edición de texto", "Un procesador", "Un navegador web" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 4,
+      "pregunta" : "¿Para qué sirve un antivirus?",
+      "respuestaCorrecta" : "Proteger el sistema contra malware y virus",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Proteger el sistema contra malware y virus", "Mejorar la velocidad del internet", "Eliminar archivos duplicados", "Aumentar la memoria RAM" ]
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -67,14 +67,6 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 7,
-      "pregunta" : "¿Para qué sirve un antivirus?",
-      "respuestaCorrecta" : "Proteger el sistema contra malware y virus",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Proteger el sistema contra malware y virus", "Mejorar la velocidad del internet", "Eliminar archivos duplicados", "Aumentar la memoria RAM" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 8,
       "pregunta" : "¿Cuál es un navegador web?",
       "respuestaCorrecta" : "Google Chrome",
       "tipo" : "OPCIONES",
@@ -82,24 +74,7 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 9,
-      "pregunta" : "¿Qué es la nube en informática?",
-      "respuestaCorrecta" : "Un servicio de almacenamiento y computación en internet",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Un servicio de almacenamiento y computación en internet", "Un programa de edición de texto", "Un procesador", "Un navegador web" ]
-    } ],
-    "preguntasAleatoriamente" : [ {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 0,
-      "pregunta" : "¿Qué significa CPU?",
-      "respuestaCorrecta" : "Unidad Central de Procesamiento",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
+      "numero" : 8,
       "pregunta" : "¿Qué es un bit?",
       "respuestaCorrecta" : "La unidad más pequeña de información en un ordenador",
       "tipo" : "OPCIONES",
@@ -107,97 +82,16 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "¿Qué es HTML?",
-      "respuestaCorrecta" : "Un lenguaje de marcado para crear páginas web",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Un lenguaje de marcado para crear páginas web", "Un sistema operativo", "Un programa de edición de fotos", "Un lenguaje de programación" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
-      "pregunta" : "¿Cuál es un sistema operativo?",
-      "respuestaCorrecta" : "Windows",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Windows", "Google", "Intel", "HTML" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 4,
+      "numero" : 9,
       "pregunta" : "¿Cuál es la función del sistema operativo?",
       "respuestaCorrecta" : "Gestionar los recursos del hardware y software",
       "tipo" : "OPCIONES",
       "opciones" : [ "Gestionar los recursos del hardware y software", "Crear archivos de texto", "Navegar por internet", "Acelerar la memoria RAM" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 5,
-      "pregunta" : "¿Qué significa RAM?",
-      "respuestaCorrecta" : "Memoria de acceso aleatorio",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Memoria de acceso aleatorio", "Unidad de almacenamiento", "Procesador", "Tarjeta madre" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 6,
-      "pregunta" : "¿Cuál es un lenguaje de programación?",
-      "respuestaCorrecta" : "Python",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Python", "Windows", "Google Chrome", "Facebook" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 7,
-      "pregunta" : "¿Para qué sirve un antivirus?",
-      "respuestaCorrecta" : "Proteger el sistema contra malware y virus",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Proteger el sistema contra malware y virus", "Mejorar la velocidad del internet", "Eliminar archivos duplicados", "Aumentar la memoria RAM" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 8,
-      "pregunta" : "¿Cuál es un navegador web?",
-      "respuestaCorrecta" : "Google Chrome",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Google Chrome", "Microsoft Word", "Windows", "Linux" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 9,
-      "pregunta" : "¿Qué es la nube en informática?",
-      "respuestaCorrecta" : "Un servicio de almacenamiento y computación en internet",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Un servicio de almacenamiento y computación en internet", "Un programa de edición de texto", "Un procesador", "Un navegador web" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasSecuencialmente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
-      "pregunta" : "¿Qué significa CPU?",
-      "respuestaCorrecta" : "Unidad Central de Procesamiento",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
-      "pregunta" : "¿Qué es un bit?",
-      "respuestaCorrecta" : "La unidad más pequeña de información en un ordenador",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "La unidad más pequeña de información en un ordenador", "Un procesador", "Un programa", "Un sistema operativo" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "¿Qué es HTML?",
-      "respuestaCorrecta" : "Un lenguaje de marcado para crear páginas web",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Un lenguaje de marcado para crear páginas web", "Un sistema operativo", "Un programa de edición de fotos", "Un lenguaje de programación" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
       "pregunta" : "¿Cuál es un sistema operativo?",
       "respuestaCorrecta" : "Windows",
       "tipo" : "OPCIONES",
@@ -205,11 +99,35 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 4,
-      "pregunta" : "¿Cuál es la función del sistema operativo?",
-      "respuestaCorrecta" : "Gestionar los recursos del hardware y software",
+      "numero" : 1,
+      "pregunta" : "¿Qué es HTML?",
+      "respuestaCorrecta" : "Un lenguaje de marcado para crear páginas web",
       "tipo" : "OPCIONES",
-      "opciones" : [ "Gestionar los recursos del hardware y software", "Crear archivos de texto", "Navegar por internet", "Acelerar la memoria RAM" ]
+      "opciones" : [ "Un lenguaje de marcado para crear páginas web", "Un sistema operativo", "Un programa de edición de fotos", "Un lenguaje de programación" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Qué significa CPU?",
+      "respuestaCorrecta" : "Unidad Central de Procesamiento",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
+      "pregunta" : "¿Qué es la nube en informática?",
+      "respuestaCorrecta" : "Un servicio de almacenamiento y computación en internet",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Un servicio de almacenamiento y computación en internet", "Un programa de edición de texto", "Un procesador", "Un navegador web" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 4,
+      "pregunta" : "¿Para qué sirve un antivirus?",
+      "respuestaCorrecta" : "Proteger el sistema contra malware y virus",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Proteger el sistema contra malware y virus", "Mejorar la velocidad del internet", "Eliminar archivos duplicados", "Aumentar la memoria RAM" ]
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -230,14 +148,6 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 7,
-      "pregunta" : "¿Para qué sirve un antivirus?",
-      "respuestaCorrecta" : "Proteger el sistema contra malware y virus",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Proteger el sistema contra malware y virus", "Mejorar la velocidad del internet", "Eliminar archivos duplicados", "Aumentar la memoria RAM" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 8,
       "pregunta" : "¿Cuál es un navegador web?",
       "respuestaCorrecta" : "Google Chrome",
       "tipo" : "OPCIONES",
@@ -245,11 +155,101 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
+      "numero" : 8,
+      "pregunta" : "¿Qué es un bit?",
+      "respuestaCorrecta" : "La unidad más pequeña de información en un ordenador",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "La unidad más pequeña de información en un ordenador", "Un procesador", "Un programa", "Un sistema operativo" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
       "numero" : 9,
+      "pregunta" : "¿Cuál es la función del sistema operativo?",
+      "respuestaCorrecta" : "Gestionar los recursos del hardware y software",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Gestionar los recursos del hardware y software", "Crear archivos de texto", "Navegar por internet", "Acelerar la memoria RAM" ]
+    } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
+    "preguntasAleatoriamente" : [ {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 0,
+      "pregunta" : "¿Cuál es un sistema operativo?",
+      "respuestaCorrecta" : "Windows",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Windows", "Google", "Intel", "HTML" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 1,
+      "pregunta" : "¿Qué es HTML?",
+      "respuestaCorrecta" : "Un lenguaje de marcado para crear páginas web",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Un lenguaje de marcado para crear páginas web", "Un sistema operativo", "Un programa de edición de fotos", "Un lenguaje de programación" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Qué significa CPU?",
+      "respuestaCorrecta" : "Unidad Central de Procesamiento",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM", "Tarjeta Gráfica" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
       "pregunta" : "¿Qué es la nube en informática?",
       "respuestaCorrecta" : "Un servicio de almacenamiento y computación en internet",
       "tipo" : "OPCIONES",
       "opciones" : [ "Un servicio de almacenamiento y computación en internet", "Un programa de edición de texto", "Un procesador", "Un navegador web" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 4,
+      "pregunta" : "¿Para qué sirve un antivirus?",
+      "respuestaCorrecta" : "Proteger el sistema contra malware y virus",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Proteger el sistema contra malware y virus", "Mejorar la velocidad del internet", "Eliminar archivos duplicados", "Aumentar la memoria RAM" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 5,
+      "pregunta" : "¿Qué significa RAM?",
+      "respuestaCorrecta" : "Memoria de acceso aleatorio",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Memoria de acceso aleatorio", "Unidad de almacenamiento", "Procesador", "Tarjeta madre" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 6,
+      "pregunta" : "¿Cuál es un lenguaje de programación?",
+      "respuestaCorrecta" : "Python",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Python", "Windows", "Google Chrome", "Facebook" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 7,
+      "pregunta" : "¿Cuál es un navegador web?",
+      "respuestaCorrecta" : "Google Chrome",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Google Chrome", "Microsoft Word", "Windows", "Linux" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 8,
+      "pregunta" : "¿Qué es un bit?",
+      "respuestaCorrecta" : "La unidad más pequeña de información en un ordenador",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "La unidad más pequeña de información en un ordenador", "Un procesador", "Un programa", "Un sistema operativo" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 9,
+      "pregunta" : "¿Cuál es la función del sistema operativo?",
+      "respuestaCorrecta" : "Gestionar los recursos del hardware y software",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Gestionar los recursos del hardware y software", "Crear archivos de texto", "Navegar por internet", "Acelerar la memoria RAM" ]
     } ]
   } ]
 }

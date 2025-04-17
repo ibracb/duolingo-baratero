@@ -151,6 +151,7 @@ public class BarraSuperior extends JPanel {
 							"Formato incorrecto", JOptionPane.ERROR_MESSAGE);
 				} else {
 					CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo, tipoSeleccionado);
+					
 					// Puedes mostrar algo aquí si quieres confirmar que se importó
 				}
 			}

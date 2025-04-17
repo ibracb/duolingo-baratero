@@ -51,7 +51,7 @@ public enum ControladorCurso {
 	private ControladorCurso() {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
-		//this.recuperarCursosBase();
+		this.recuperarCursosBase();
 		pruebas();
 	}
 
@@ -176,8 +176,7 @@ public enum ControladorCurso {
 	// ------FILTROS--------
 
 	public List<CursoPlantilla> buscarCursos() {
-		return Collections.emptyList();
-		//return cursosPrueba;
+		return cursosPrueba;
 	}
 
 	public List<CursoPlantilla> buscarCursos(String nombre, String propietario, Nivel lvl) {

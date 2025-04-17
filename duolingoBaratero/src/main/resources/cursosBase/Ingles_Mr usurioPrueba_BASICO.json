@@ -5,24 +5,24 @@
   "objetivos" : "Aprender vocabulario básico",
   "nivel" : "BASICO",
   "imagen" : null,
-  "tipoPreguntas" : [ "OPCIONES", "FLASHCARD", "IMAGEN" ],
+  "tipoPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCIONES" ],
   "contenidos" : [ {
     "preguntas" : [ {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 0,
-      "pregunta" : "¿Qué significa 'Dog' en español?",
-      "respuestaCorrecta" : "Perro",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
-    }, {
       "tipo" : "FLASHCARD",
       "nivel" : "BASICO",
-      "numero" : 1,
+      "numero" : 0,
       "pregunta" : "Significado de: Green",
       "respuestaCorrecta" : "Verde",
       "tipo" : "FLASHCARD",
       "tiempoLimite" : 30
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 1,
+      "pregunta" : "¿Cuál cual de estos es leche?",
+      "respuestaCorrecta" : "CursosPDS/src/main/resources/milk.png",
+      "tipo" : "IMAGEN",
+      "opciones" : [ "tea.png", "milk.png", "coffee.png" ]
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -35,93 +35,43 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 3,
-      "pregunta" : "¿Cuál cual de estos es leche?",
-      "respuestaCorrecta" : "CursosPDS/src/main/resources/milk.png",
-      "tipo" : "IMAGEN",
-      "opciones" : [ "tea.png", "milk.png", "coffee.png" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 4,
-      "pregunta" : "¿Cuál es el plural de 'child'?",
-      "respuestaCorrecta" : "children",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "childs", "childes", "children", "child" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 5,
-      "pregunta" : "Completa la frase: 'I ___ a student'",
-      "respuestaCorrecta" : "am",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "am", "is", "are", "be" ]
-    } ],
-    "preguntasAleatoriamente" : [ {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 0,
       "pregunta" : "¿Qué significa 'Dog' en español?",
       "respuestaCorrecta" : "Perro",
       "tipo" : "OPCIONES",
       "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
     }, {
-      "tipo" : "FLASHCARD",
-      "nivel" : "BASICO",
-      "numero" : 1,
-      "pregunta" : "Significado de: Green",
-      "respuestaCorrecta" : "Verde",
-      "tipo" : "FLASHCARD",
-      "tiempoLimite" : 30
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "¿Cómo se dice 'Hola' en inglés?",
-      "respuestaCorrecta" : "Hello",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Hello", "Hi", "Bye", "Goodbye" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
-      "pregunta" : "¿Cuál cual de estos es leche?",
-      "respuestaCorrecta" : "CursosPDS/src/main/resources/milk.png",
-      "tipo" : "IMAGEN",
-      "opciones" : [ "tea.png", "milk.png", "coffee.png" ]
-    }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 4,
-      "pregunta" : "¿Cuál es el plural de 'child'?",
-      "respuestaCorrecta" : "children",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "childs", "childes", "children", "child" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 5,
       "pregunta" : "Completa la frase: 'I ___ a student'",
       "respuestaCorrecta" : "am",
       "tipo" : "OPCIONES",
       "opciones" : [ "am", "is", "are", "be" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 5,
+      "pregunta" : "¿Cuál es el plural de 'child'?",
+      "respuestaCorrecta" : "children",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "childs", "childes", "children", "child" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES", "FLASHCARD", "IMAGEN" ],
     "preguntasSecuencialmente" : [ {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 0,
-      "pregunta" : "¿Qué significa 'Dog' en español?",
-      "respuestaCorrecta" : "Perro",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
-    }, {
       "tipo" : "FLASHCARD",
       "nivel" : "BASICO",
-      "numero" : 1,
+      "numero" : 0,
       "pregunta" : "Significado de: Green",
       "respuestaCorrecta" : "Verde",
       "tipo" : "FLASHCARD",
       "tiempoLimite" : 30
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 1,
+      "pregunta" : "¿Cuál cual de estos es leche?",
+      "respuestaCorrecta" : "CursosPDS/src/main/resources/milk.png",
+      "tipo" : "IMAGEN",
+      "opciones" : [ "tea.png", "milk.png", "coffee.png" ]
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -134,6 +84,40 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 3,
+      "pregunta" : "¿Qué significa 'Dog' en español?",
+      "respuestaCorrecta" : "Perro",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 4,
+      "pregunta" : "Completa la frase: 'I ___ a student'",
+      "respuestaCorrecta" : "am",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "am", "is", "are", "be" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 5,
+      "pregunta" : "¿Cuál es el plural de 'child'?",
+      "respuestaCorrecta" : "children",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "childs", "childes", "children", "child" ]
+    } ],
+    "tiposPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCIONES" ],
+    "preguntasAleatoriamente" : [ {
+      "tipo" : "FLASHCARD",
+      "nivel" : "BASICO",
+      "numero" : 0,
+      "pregunta" : "Significado de: Green",
+      "respuestaCorrecta" : "Verde",
+      "tipo" : "FLASHCARD",
+      "tiempoLimite" : 30
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 1,
       "pregunta" : "¿Cuál cual de estos es leche?",
       "respuestaCorrecta" : "CursosPDS/src/main/resources/milk.png",
       "tipo" : "IMAGEN",
@@ -141,19 +125,35 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 4,
-      "pregunta" : "¿Cuál es el plural de 'child'?",
-      "respuestaCorrecta" : "children",
+      "numero" : 2,
+      "pregunta" : "¿Cómo se dice 'Hola' en inglés?",
+      "respuestaCorrecta" : "Hello",
       "tipo" : "OPCIONES",
-      "opciones" : [ "childs", "childes", "children", "child" ]
+      "opciones" : [ "Hello", "Hi", "Bye", "Goodbye" ]
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 5,
+      "numero" : 3,
+      "pregunta" : "¿Qué significa 'Dog' en español?",
+      "respuestaCorrecta" : "Perro",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 4,
       "pregunta" : "Completa la frase: 'I ___ a student'",
       "respuestaCorrecta" : "am",
       "tipo" : "OPCIONES",
       "opciones" : [ "am", "is", "are", "be" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 5,
+      "pregunta" : "¿Cuál es el plural de 'child'?",
+      "respuestaCorrecta" : "children",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "childs", "childes", "children", "child" ]
     } ]
   }, {
     "preguntas" : [ {
@@ -168,10 +168,10 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 1,
-      "pregunta" : "¿Qué significa 'Car' en español?",
-      "respuestaCorrecta" : "Coche",
+      "pregunta" : "Completa la frase: 'She ___ a teacher'",
+      "respuestaCorrecta" : "is",
       "tipo" : "OPCIONES",
-      "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
+      "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -184,45 +184,11 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 3,
-      "pregunta" : "Completa la frase: 'She ___ a teacher'",
-      "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "is", "are", "am", "be" ]
-    } ],
-    "preguntasAleatoriamente" : [ {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 0,
-      "pregunta" : "¿Cómo se dice 'Libro' en inglés?",
-      "respuestaCorrecta" : "Book",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Book", "Notebook", "Table", "Paper" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
       "pregunta" : "¿Qué significa 'Car' en español?",
       "respuestaCorrecta" : "Coche",
       "tipo" : "OPCIONES",
       "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "¿Cómo se dice 'Gracias' en inglés?",
-      "respuestaCorrecta" : "Thank you",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Thank you", "Thanks", "You're welcome", "Hello" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
-      "pregunta" : "Completa la frase: 'She ___ a teacher'",
-      "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "is", "are", "am", "be" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasSecuencialmente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -235,10 +201,10 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 1,
-      "pregunta" : "¿Qué significa 'Car' en español?",
-      "respuestaCorrecta" : "Coche",
+      "pregunta" : "Completa la frase: 'She ___ a teacher'",
+      "respuestaCorrecta" : "is",
       "tipo" : "OPCIONES",
-      "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
+      "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -251,24 +217,50 @@
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 3,
+      "pregunta" : "¿Qué significa 'Car' en español?",
+      "respuestaCorrecta" : "Coche",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
+    } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
+    "preguntasAleatoriamente" : [ {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 0,
+      "pregunta" : "¿Cómo se dice 'Libro' en inglés?",
+      "respuestaCorrecta" : "Book",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Book", "Notebook", "Table", "Paper" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 1,
       "pregunta" : "Completa la frase: 'She ___ a teacher'",
       "respuestaCorrecta" : "is",
       "tipo" : "OPCIONES",
       "opciones" : [ "is", "are", "am", "be" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Cómo se dice 'Gracias' en inglés?",
+      "respuestaCorrecta" : "Thank you",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Thank you", "Thanks", "You're welcome", "Hello" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
+      "pregunta" : "¿Qué significa 'Car' en español?",
+      "respuestaCorrecta" : "Coche",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
     } ]
   }, {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
-      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
-      "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "start", "stop", "end", "pause" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
       "tipo" : "OPCIONES",
@@ -276,24 +268,15 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "Completa la frase: 'They ___ at home'",
-      "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "are", "is", "am", "be" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
+      "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
       "tipo" : "OPCIONES",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
-    } ],
-    "preguntasAleatoriamente" : [ {
+    }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 0,
+      "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
       "tipo" : "OPCIONES",
@@ -301,41 +284,16 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 1,
-      "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
-      "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 2,
+      "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
       "tipo" : "OPCIONES",
       "opciones" : [ "are", "is", "am", "be" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
-      "pregunta" : "¿Qué significa 'Water' en español?",
-      "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasSecuencialmente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
-      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
-      "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "start", "stop", "end", "pause" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
       "tipo" : "OPCIONES",
@@ -343,33 +301,67 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "Completa la frase: 'They ___ at home'",
-      "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "are", "is", "am", "be" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
+      "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
       "tipo" : "OPCIONES",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
+      "respuestaCorrecta" : "start",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "start", "stop", "end", "pause" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
+      "pregunta" : "Completa la frase: 'They ___ at home'",
+      "respuestaCorrecta" : "are",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "are", "is", "am", "be" ]
+    } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
+    "preguntasAleatoriamente" : [ {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 0,
+      "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
+      "respuestaCorrecta" : "Good morning",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 1,
+      "pregunta" : "¿Qué significa 'Water' en español?",
+      "respuestaCorrecta" : "Agua",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
+      "respuestaCorrecta" : "start",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "start", "stop", "end", "pause" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
+      "pregunta" : "Completa la frase: 'They ___ at home'",
+      "respuestaCorrecta" : "are",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "are", "is", "am", "be" ]
     } ]
   }, {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
-      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
-      "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "start", "stop", "end", "pause" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
       "tipo" : "OPCIONES",
@@ -377,24 +369,15 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "Completa la frase: 'They ___ at home'",
-      "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "are", "is", "am", "be" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
+      "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
       "tipo" : "OPCIONES",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
-    } ],
-    "preguntasAleatoriamente" : [ {
+    }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 0,
+      "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
       "tipo" : "OPCIONES",
@@ -402,41 +385,16 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 1,
-      "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
-      "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 2,
+      "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
       "tipo" : "OPCIONES",
       "opciones" : [ "are", "is", "am", "be" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
-      "pregunta" : "¿Qué significa 'Water' en español?",
-      "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasSecuencialmente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
-      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
-      "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "start", "stop", "end", "pause" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 1,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
       "tipo" : "OPCIONES",
@@ -444,19 +402,61 @@
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
-      "numero" : 2,
-      "pregunta" : "Completa la frase: 'They ___ at home'",
-      "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
-      "opciones" : [ "are", "is", "am", "be" ]
-    }, {
-      "tipo" : "OPCIONES",
-      "nivel" : "BASICO",
-      "numero" : 3,
+      "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
       "tipo" : "OPCIONES",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
+      "respuestaCorrecta" : "start",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "start", "stop", "end", "pause" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
+      "pregunta" : "Completa la frase: 'They ___ at home'",
+      "respuestaCorrecta" : "are",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "are", "is", "am", "be" ]
+    } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
+    "preguntasAleatoriamente" : [ {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 0,
+      "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
+      "respuestaCorrecta" : "Good morning",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 1,
+      "pregunta" : "¿Qué significa 'Water' en español?",
+      "respuestaCorrecta" : "Agua",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 2,
+      "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
+      "respuestaCorrecta" : "start",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "start", "stop", "end", "pause" ]
+    }, {
+      "tipo" : "OPCIONES",
+      "nivel" : "BASICO",
+      "numero" : 3,
+      "pregunta" : "Completa la frase: 'They ___ at home'",
+      "respuestaCorrecta" : "are",
+      "tipo" : "OPCIONES",
+      "opciones" : [ "are", "is", "am", "be" ]
     } ]
   } ]
 }

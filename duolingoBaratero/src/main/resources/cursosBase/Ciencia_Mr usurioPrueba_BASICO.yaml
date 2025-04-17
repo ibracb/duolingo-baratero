@@ -23,39 +23,17 @@ contenidos:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 1
-    pregunta: "¿Cuál es el planeta más grande del sistema solar?"
-    respuestaCorrecta: "Júpiter"
+    pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
+    respuestaCorrecta: "Evaporación"
     tipo: "OPCIONES"
     opciones:
-    - "Júpiter"
-    - "Saturno"
-    - "Neptuno"
-    - "Tierra"
+    - "Evaporación"
+    - "Condensación"
+    - "Sublimación"
+    - "Fusión"
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 2
-    pregunta: "¿Qué gas es esencial para la respiración humana?"
-    respuestaCorrecta: "Oxígeno"
-    tipo: "OPCIONES"
-    opciones:
-    - "Oxígeno"
-    - "Nitrógeno"
-    - "Dióxido de carbono"
-    - "Helio"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 3
-    pregunta: "¿Cuál es la fórmula del agua?"
-    respuestaCorrecta: "H2O"
-    tipo: "OPCIONES"
-    opciones:
-    - "H2O"
-    - "CO2"
-    - "O2"
-    - "H2SO4"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 4
     pregunta: "¿Qué partícula subatómica tiene carga negativa?"
     respuestaCorrecta: "Electrón"
     tipo: "OPCIONES"
@@ -66,7 +44,18 @@ contenidos:
     - "Quark"
   - !<OPCIONES>
     nivel: "BASICO"
-    numero: 5
+    numero: 3
+    pregunta: "¿Qué tipo de energía es producida por el sol?"
+    respuestaCorrecta: "Energía solar"
+    tipo: "OPCIONES"
+    opciones:
+    - "Energía solar"
+    - "Energía eólica"
+    - "Energía térmica"
+    - "Energía química"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 4
     pregunta: "¿Cómo se llama el proceso mediante el cual las plantas producen su\
       \ alimento?"
     respuestaCorrecta: "Fotosíntesis"
@@ -78,29 +67,7 @@ contenidos:
     - "Digestión"
   - !<OPCIONES>
     nivel: "BASICO"
-    numero: 6
-    pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
-    respuestaCorrecta: "Evaporación"
-    tipo: "OPCIONES"
-    opciones:
-    - "Evaporación"
-    - "Condensación"
-    - "Sublimación"
-    - "Fusión"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 7
-    pregunta: "¿Qué tipo de energía es producida por el sol?"
-    respuestaCorrecta: "Energía solar"
-    tipo: "OPCIONES"
-    opciones:
-    - "Energía solar"
-    - "Energía eólica"
-    - "Energía térmica"
-    - "Energía química"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 8
+    numero: 5
     pregunta: "¿Qué estudia la biología?"
     respuestaCorrecta: "Los seres vivos"
     tipo: "OPCIONES"
@@ -111,52 +78,7 @@ contenidos:
     - "Las rocas"
   - !<OPCIONES>
     nivel: "BASICO"
-    numero: 9
-    pregunta: "¿Qué científico formuló la teoría de la relatividad?"
-    respuestaCorrecta: "Albert Einstein"
-    tipo: "OPCIONES"
-    opciones:
-    - "Albert Einstein"
-    - "Isaac Newton"
-    - "Galileo Galilei"
-    - "Nikola Tesla"
-  preguntasAleatoriamente:
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 0
-    pregunta: "¿Cuál es el metal más abundante en la corteza terrestre?"
-    respuestaCorrecta: "Aluminio"
-    tipo: "OPCIONES"
-    opciones:
-    - "Aluminio"
-    - "Hierro"
-    - "Cobre"
-    - "Oro"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 1
-    pregunta: "¿Cuál es el planeta más grande del sistema solar?"
-    respuestaCorrecta: "Júpiter"
-    tipo: "OPCIONES"
-    opciones:
-    - "Júpiter"
-    - "Saturno"
-    - "Neptuno"
-    - "Tierra"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 2
-    pregunta: "¿Qué gas es esencial para la respiración humana?"
-    respuestaCorrecta: "Oxígeno"
-    tipo: "OPCIONES"
-    opciones:
-    - "Oxígeno"
-    - "Nitrógeno"
-    - "Dióxido de carbono"
-    - "Helio"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 3
+    numero: 6
     pregunta: "¿Cuál es la fórmula del agua?"
     respuestaCorrecta: "H2O"
     tipo: "OPCIONES"
@@ -167,63 +89,7 @@ contenidos:
     - "H2SO4"
   - !<OPCIONES>
     nivel: "BASICO"
-    numero: 4
-    pregunta: "¿Qué partícula subatómica tiene carga negativa?"
-    respuestaCorrecta: "Electrón"
-    tipo: "OPCIONES"
-    opciones:
-    - "Electrón"
-    - "Protón"
-    - "Neutrón"
-    - "Quark"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 5
-    pregunta: "¿Cómo se llama el proceso mediante el cual las plantas producen su\
-      \ alimento?"
-    respuestaCorrecta: "Fotosíntesis"
-    tipo: "OPCIONES"
-    opciones:
-    - "Fotosíntesis"
-    - "Respiración"
-    - "Fermentación"
-    - "Digestión"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 6
-    pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
-    respuestaCorrecta: "Evaporación"
-    tipo: "OPCIONES"
-    opciones:
-    - "Evaporación"
-    - "Condensación"
-    - "Sublimación"
-    - "Fusión"
-  - !<OPCIONES>
-    nivel: "BASICO"
     numero: 7
-    pregunta: "¿Qué tipo de energía es producida por el sol?"
-    respuestaCorrecta: "Energía solar"
-    tipo: "OPCIONES"
-    opciones:
-    - "Energía solar"
-    - "Energía eólica"
-    - "Energía térmica"
-    - "Energía química"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 8
-    pregunta: "¿Qué estudia la biología?"
-    respuestaCorrecta: "Los seres vivos"
-    tipo: "OPCIONES"
-    opciones:
-    - "Los seres vivos"
-    - "Los planetas"
-    - "Los elementos químicos"
-    - "Las rocas"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 9
     pregunta: "¿Qué científico formuló la teoría de la relatividad?"
     respuestaCorrecta: "Albert Einstein"
     tipo: "OPCIONES"
@@ -232,8 +98,28 @@ contenidos:
     - "Isaac Newton"
     - "Galileo Galilei"
     - "Nikola Tesla"
-  tiposPreguntas:
-  - "OPCIONES"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 8
+    pregunta: "¿Qué gas es esencial para la respiración humana?"
+    respuestaCorrecta: "Oxígeno"
+    tipo: "OPCIONES"
+    opciones:
+    - "Oxígeno"
+    - "Nitrógeno"
+    - "Dióxido de carbono"
+    - "Helio"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 9
+    pregunta: "¿Cuál es el planeta más grande del sistema solar?"
+    respuestaCorrecta: "Júpiter"
+    tipo: "OPCIONES"
+    opciones:
+    - "Júpiter"
+    - "Saturno"
+    - "Neptuno"
+    - "Tierra"
   preguntasSecuencialmente:
   - !<OPCIONES>
     nivel: "BASICO"
@@ -249,39 +135,17 @@ contenidos:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 1
-    pregunta: "¿Cuál es el planeta más grande del sistema solar?"
-    respuestaCorrecta: "Júpiter"
+    pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
+    respuestaCorrecta: "Evaporación"
     tipo: "OPCIONES"
     opciones:
-    - "Júpiter"
-    - "Saturno"
-    - "Neptuno"
-    - "Tierra"
+    - "Evaporación"
+    - "Condensación"
+    - "Sublimación"
+    - "Fusión"
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 2
-    pregunta: "¿Qué gas es esencial para la respiración humana?"
-    respuestaCorrecta: "Oxígeno"
-    tipo: "OPCIONES"
-    opciones:
-    - "Oxígeno"
-    - "Nitrógeno"
-    - "Dióxido de carbono"
-    - "Helio"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 3
-    pregunta: "¿Cuál es la fórmula del agua?"
-    respuestaCorrecta: "H2O"
-    tipo: "OPCIONES"
-    opciones:
-    - "H2O"
-    - "CO2"
-    - "O2"
-    - "H2SO4"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 4
     pregunta: "¿Qué partícula subatómica tiene carga negativa?"
     respuestaCorrecta: "Electrón"
     tipo: "OPCIONES"
@@ -292,7 +156,18 @@ contenidos:
     - "Quark"
   - !<OPCIONES>
     nivel: "BASICO"
-    numero: 5
+    numero: 3
+    pregunta: "¿Qué tipo de energía es producida por el sol?"
+    respuestaCorrecta: "Energía solar"
+    tipo: "OPCIONES"
+    opciones:
+    - "Energía solar"
+    - "Energía eólica"
+    - "Energía térmica"
+    - "Energía química"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 4
     pregunta: "¿Cómo se llama el proceso mediante el cual las plantas producen su\
       \ alimento?"
     respuestaCorrecta: "Fotosíntesis"
@@ -304,29 +179,7 @@ contenidos:
     - "Digestión"
   - !<OPCIONES>
     nivel: "BASICO"
-    numero: 6
-    pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
-    respuestaCorrecta: "Evaporación"
-    tipo: "OPCIONES"
-    opciones:
-    - "Evaporación"
-    - "Condensación"
-    - "Sublimación"
-    - "Fusión"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 7
-    pregunta: "¿Qué tipo de energía es producida por el sol?"
-    respuestaCorrecta: "Energía solar"
-    tipo: "OPCIONES"
-    opciones:
-    - "Energía solar"
-    - "Energía eólica"
-    - "Energía térmica"
-    - "Energía química"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 8
+    numero: 5
     pregunta: "¿Qué estudia la biología?"
     respuestaCorrecta: "Los seres vivos"
     tipo: "OPCIONES"
@@ -337,7 +190,18 @@ contenidos:
     - "Las rocas"
   - !<OPCIONES>
     nivel: "BASICO"
-    numero: 9
+    numero: 6
+    pregunta: "¿Cuál es la fórmula del agua?"
+    respuestaCorrecta: "H2O"
+    tipo: "OPCIONES"
+    opciones:
+    - "H2O"
+    - "CO2"
+    - "O2"
+    - "H2SO4"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 7
     pregunta: "¿Qué científico formuló la teoría de la relatividad?"
     respuestaCorrecta: "Albert Einstein"
     tipo: "OPCIONES"
@@ -346,3 +210,139 @@ contenidos:
     - "Isaac Newton"
     - "Galileo Galilei"
     - "Nikola Tesla"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 8
+    pregunta: "¿Qué gas es esencial para la respiración humana?"
+    respuestaCorrecta: "Oxígeno"
+    tipo: "OPCIONES"
+    opciones:
+    - "Oxígeno"
+    - "Nitrógeno"
+    - "Dióxido de carbono"
+    - "Helio"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 9
+    pregunta: "¿Cuál es el planeta más grande del sistema solar?"
+    respuestaCorrecta: "Júpiter"
+    tipo: "OPCIONES"
+    opciones:
+    - "Júpiter"
+    - "Saturno"
+    - "Neptuno"
+    - "Tierra"
+  tiposPreguntas:
+  - "OPCIONES"
+  preguntasAleatoriamente:
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 0
+    pregunta: "¿Cuál es el metal más abundante en la corteza terrestre?"
+    respuestaCorrecta: "Aluminio"
+    tipo: "OPCIONES"
+    opciones:
+    - "Aluminio"
+    - "Hierro"
+    - "Cobre"
+    - "Oro"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 1
+    pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
+    respuestaCorrecta: "Evaporación"
+    tipo: "OPCIONES"
+    opciones:
+    - "Evaporación"
+    - "Condensación"
+    - "Sublimación"
+    - "Fusión"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 2
+    pregunta: "¿Qué partícula subatómica tiene carga negativa?"
+    respuestaCorrecta: "Electrón"
+    tipo: "OPCIONES"
+    opciones:
+    - "Electrón"
+    - "Protón"
+    - "Neutrón"
+    - "Quark"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 3
+    pregunta: "¿Qué tipo de energía es producida por el sol?"
+    respuestaCorrecta: "Energía solar"
+    tipo: "OPCIONES"
+    opciones:
+    - "Energía solar"
+    - "Energía eólica"
+    - "Energía térmica"
+    - "Energía química"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 4
+    pregunta: "¿Cómo se llama el proceso mediante el cual las plantas producen su\
+      \ alimento?"
+    respuestaCorrecta: "Fotosíntesis"
+    tipo: "OPCIONES"
+    opciones:
+    - "Fotosíntesis"
+    - "Respiración"
+    - "Fermentación"
+    - "Digestión"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 5
+    pregunta: "¿Qué estudia la biología?"
+    respuestaCorrecta: "Los seres vivos"
+    tipo: "OPCIONES"
+    opciones:
+    - "Los seres vivos"
+    - "Los planetas"
+    - "Los elementos químicos"
+    - "Las rocas"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 6
+    pregunta: "¿Cuál es la fórmula del agua?"
+    respuestaCorrecta: "H2O"
+    tipo: "OPCIONES"
+    opciones:
+    - "H2O"
+    - "CO2"
+    - "O2"
+    - "H2SO4"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 7
+    pregunta: "¿Qué científico formuló la teoría de la relatividad?"
+    respuestaCorrecta: "Albert Einstein"
+    tipo: "OPCIONES"
+    opciones:
+    - "Albert Einstein"
+    - "Isaac Newton"
+    - "Galileo Galilei"
+    - "Nikola Tesla"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 8
+    pregunta: "¿Qué gas es esencial para la respiración humana?"
+    respuestaCorrecta: "Oxígeno"
+    tipo: "OPCIONES"
+    opciones:
+    - "Oxígeno"
+    - "Nitrógeno"
+    - "Dióxido de carbono"
+    - "Helio"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 9
+    pregunta: "¿Cuál es el planeta más grande del sistema solar?"
+    respuestaCorrecta: "Júpiter"
+    tipo: "OPCIONES"
+    opciones:
+    - "Júpiter"
+    - "Saturno"
+    - "Neptuno"
+    - "Tierra"
