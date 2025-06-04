@@ -71,14 +71,15 @@ public enum ControladorUsuario {
 	}
 	
 	public void setCursos(String[] nombresCursos) {
-		Set<CursoEnProgreso> cursos = new HashSet<>();
-		if (cursos != null) {
-			for (String nombreCurso : nombresCursos) {
-				cursos.add(ControladorCurso.INSTANCE.getCursoEnProgreso(nombreCurso));
-			}
-			user.setCursos(cursos);
-		}
-		
+	    Set<CursoEnProgreso> cursos = new HashSet<>();
+
+	    for (String nombre : nombresCursos) {
+	        ControladorCurso.INSTANCE.getCursoPlantilla(nombre).ifPresent(plantilla ->
+	            cursos.add(ContraldorCursoProgreso.INSTANCE.getCursoEnProgreso(plantilla, null))
+	        );
+	    }
+
+	    user.setCursos(cursos);
 	}
 	
 	public boolean addCursosEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {

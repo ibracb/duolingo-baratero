@@ -92,7 +92,7 @@ public class VentanaPregunta extends JFrame {
 		btnSiguiente.setBackground(new Color(0, 255, 0));
 		btnSiguiente.setPreferredSize(new Dimension(100, 30));
 
-		// TODO: Cambiar esto por un metodo
+		// FIXME: Esto deberia hacerlo un servicio no la clase
 		btnSiguiente.addActionListener(e -> {
 			IComprobador panel = (IComprobador) paneles.get(currentPanel);
 			if (panel.isOpcionElegida()) {
@@ -148,7 +148,7 @@ public class VentanaPregunta extends JFrame {
 
 	}
 
-	// --------METODO DE PRUEBA --------------
+	// -------- METODO DE PRUEBA --------------
 	private ArrayList<JPanel> getPaneles() {
 		Set<Pregunta> preguntas = ControladorCurso.INSTANCE.getPreguntasDeBloqueContenido(curso);
 		return preguntas.stream()

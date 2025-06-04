@@ -40,6 +40,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "Friend", "Brother", "Sister", "Mother" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "INTERMEDIO",
@@ -105,8 +106,7 @@
       "respuestaCorrecta" : "Friend",
       "tipo" : "OPCIONES",
       "opciones" : [ "Friend", "Brother", "Sister", "Mother" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   }, {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -141,6 +141,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "am", "is", "are", "be" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "INTERMEDIO",
@@ -206,8 +207,7 @@
       "respuestaCorrecta" : "am",
       "tipo" : "OPCIONES",
       "opciones" : [ "am", "is", "are", "be" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   }, {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -242,6 +242,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "mice", "mouses", "mouse", "mousses" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "INTERMEDIO",
@@ -307,7 +308,6 @@
       "respuestaCorrecta" : "mice",
       "tipo" : "OPCIONES",
       "opciones" : [ "mice", "mouses", "mouse", "mousses" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   } ]
 }

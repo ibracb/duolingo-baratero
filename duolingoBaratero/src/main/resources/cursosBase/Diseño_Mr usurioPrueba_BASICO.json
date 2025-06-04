@@ -24,6 +24,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "El estudio de cómo los colores interactúan", "La combinación de colores", "El uso de filtros en fotos", "La elección de tipografías" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -57,7 +58,6 @@
       "respuestaCorrecta" : "El estudio de cómo los colores interactúan",
       "tipo" : "OPCIONES",
       "opciones" : [ "El estudio de cómo los colores interactúan", "La combinación de colores", "El uso de filtros en fotos", "La elección de tipografías" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   } ]
 }

@@ -53,6 +53,8 @@ contenidos:
     - "Brother"
     - "Sister"
     - "Mother"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
@@ -143,8 +145,6 @@ contenidos:
     - "Brother"
     - "Sister"
     - "Mother"
-  tiposPreguntas:
-  - "OPCIONES"
 - preguntas:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
@@ -190,6 +190,8 @@ contenidos:
     - "is"
     - "are"
     - "be"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
@@ -280,8 +282,6 @@ contenidos:
     - "is"
     - "are"
     - "be"
-  tiposPreguntas:
-  - "OPCIONES"
 - preguntas:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
@@ -327,6 +327,8 @@ contenidos:
     - "mouses"
     - "mouse"
     - "mousses"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
@@ -417,5 +419,3 @@ contenidos:
     - "mouses"
     - "mouse"
     - "mousses"
-  tiposPreguntas:
-  - "OPCIONES"

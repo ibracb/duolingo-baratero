@@ -119,6 +119,8 @@ contenidos:
     - "Crear archivos de texto"
     - "Navegar por internet"
     - "Acelerar la memoria RAM"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
@@ -341,5 +343,3 @@ contenidos:
     - "Crear archivos de texto"
     - "Navegar por internet"
     - "Acelerar la memoria RAM"
-  tiposPreguntas:
-  - "OPCIONES"

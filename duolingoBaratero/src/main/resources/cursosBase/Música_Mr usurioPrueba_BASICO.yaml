@@ -120,6 +120,8 @@ contenidos:
     - "Escala menor"
     - "Escala cromática"
     - "Escala pentatónica"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
@@ -344,5 +346,3 @@ contenidos:
     - "Escala menor"
     - "Escala cromática"
     - "Escala pentatónica"
-  tiposPreguntas:
-  - "OPCIONES"

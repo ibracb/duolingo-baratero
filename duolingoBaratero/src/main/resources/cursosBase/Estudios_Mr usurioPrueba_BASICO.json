@@ -88,6 +88,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "Un método de memorización", "Un idioma antiguo", "Una asignatura", "Un deporte" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -249,7 +250,6 @@
       "respuestaCorrecta" : "Un método de memorización",
       "tipo" : "OPCIONES",
       "opciones" : [ "Un método de memorización", "Un idioma antiguo", "Una asignatura", "Un deporte" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   } ]
 }

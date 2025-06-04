@@ -5,7 +5,7 @@
   "objetivos" : "Aprender vocabulario básico",
   "nivel" : "BASICO",
   "imagen" : null,
-  "tipoPreguntas" : [ "IMAGEN", "FLASHCARD", "OPCIONES" ],
+  "tipoPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCIONES" ],
   "contenidos" : [ {
     "preguntas" : [ {
       "tipo" : "FLASHCARD",
@@ -56,6 +56,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "childs", "childes", "children", "child" ]
     } ],
+    "tiposPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "FLASHCARD",
       "nivel" : "BASICO",
@@ -153,8 +154,7 @@
       "respuestaCorrecta" : "children",
       "tipo" : "OPCIONES",
       "opciones" : [ "childs", "childes", "children", "child" ]
-    } ],
-    "tiposPreguntas" : [ "IMAGEN", "FLASHCARD", "OPCIONES" ]
+    } ]
   }, {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -189,6 +189,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -254,8 +255,7 @@
       "respuestaCorrecta" : "Coche",
       "tipo" : "OPCIONES",
       "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   }, {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -290,6 +290,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "are", "is", "am", "be" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -355,8 +356,7 @@
       "respuestaCorrecta" : "are",
       "tipo" : "OPCIONES",
       "opciones" : [ "are", "is", "am", "be" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   }, {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -391,6 +391,7 @@
       "tipo" : "OPCIONES",
       "opciones" : [ "are", "is", "am", "be" ]
     } ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -456,7 +457,6 @@
       "respuestaCorrecta" : "are",
       "tipo" : "OPCIONES",
       "opciones" : [ "are", "is", "am", "be" ]
-    } ],
-    "tiposPreguntas" : [ "OPCIONES" ]
+    } ]
   } ]
 }

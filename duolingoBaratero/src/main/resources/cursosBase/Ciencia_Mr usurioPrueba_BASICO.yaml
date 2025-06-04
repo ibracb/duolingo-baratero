@@ -120,6 +120,8 @@ contenidos:
     - "Saturno"
     - "Neptuno"
     - "Tierra"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
@@ -344,5 +346,3 @@ contenidos:
     - "Saturno"
     - "Neptuno"
     - "Tierra"
-  tiposPreguntas:
-  - "OPCIONES"

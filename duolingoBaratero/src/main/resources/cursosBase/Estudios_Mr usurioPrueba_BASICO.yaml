@@ -119,6 +119,8 @@ contenidos:
     - "Un idioma antiguo"
     - "Una asignatura"
     - "Un deporte"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
@@ -341,5 +343,3 @@ contenidos:
     - "Un idioma antiguo"
     - "Una asignatura"
     - "Un deporte"
-  tiposPreguntas:
-  - "OPCIONES"

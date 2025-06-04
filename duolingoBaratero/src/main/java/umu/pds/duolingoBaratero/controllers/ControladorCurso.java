@@ -47,7 +47,6 @@ public enum ControladorCurso {
 	// Estos dos atributos son de prueba hay que borrarlos
 	private List<CursoPlantilla> cursosPrueba = null;
 	private CursoPlantilla curso1;
-	////////////////////////////////////////////////////////
 	private ImageService sevicioImagenes;
 	private AudioService reproductor;
 

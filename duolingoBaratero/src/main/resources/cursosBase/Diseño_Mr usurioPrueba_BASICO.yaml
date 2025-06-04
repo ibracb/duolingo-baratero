@@ -31,6 +31,8 @@ contenidos:
     - "La combinación de colores"
     - "El uso de filtros en fotos"
     - "La elección de tipografías"
+  tiposPreguntas:
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
@@ -77,5 +79,3 @@ contenidos:
     - "La combinación de colores"
     - "El uso de filtros en fotos"
     - "La elección de tipografías"
-  tiposPreguntas:
-  - "OPCIONES"
