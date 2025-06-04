@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -36,7 +37,9 @@ import umu.pds.duolingoBaratero.services.filters.FiltroPorNombre;
 import umu.pds.duolingoBaratero.services.filters.FiltroPorPropietario;
 import umu.pds.duolingoBaratero.services.serializers.Serializer;
 import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
-
+/**
+ * Responsabilidad: crear, buscar y administrar cursos (alta, baja, modificación).
+ */
 public enum ControladorCurso {
 	INSTANCE;
 
@@ -198,7 +201,7 @@ public enum ControladorCurso {
 		return new JPanel[0];
 	}
 
-	public List<Pregunta> getPreguntasDeBloqueContenido(CursoEnProgreso curso) {
+	public Set<Pregunta> getPreguntasDeBloqueContenido(CursoEnProgreso curso) {
 		return curso.getPreguntasBloqueContenido();
 	}
 

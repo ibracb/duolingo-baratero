@@ -6,12 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.stream.Collectors;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.border.EmptyBorder;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Set;
+
 import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.Flashcard;
@@ -147,12 +150,10 @@ public class VentanaPregunta extends JFrame {
 
 	// --------METODO DE PRUEBA --------------
 	private ArrayList<JPanel> getPaneles() {
-		LinkedList<Pregunta> preguntas = (LinkedList<Pregunta>) ControladorCurso.INSTANCE.getPreguntasDeBloqueContenido(curso);
-		ArrayList<JPanel> paneles = new ArrayList<JPanel>();
-		for (Pregunta pregunta : preguntas) {
-			paneles.add(pregunta.crearPanel());
-		}
-		return paneles;
+		Set<Pregunta> preguntas = ControladorCurso.INSTANCE.getPreguntasDeBloqueContenido(curso);
+		return preguntas.stream()
+			    .map(Pregunta::crearPanel)
+			    .collect(Collectors.toCollection(ArrayList::new));
 	}
 
 	public class DialogoFinal extends JDialog {

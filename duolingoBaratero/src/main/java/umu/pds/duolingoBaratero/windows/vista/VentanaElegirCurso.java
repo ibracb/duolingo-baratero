@@ -56,7 +56,7 @@ public class VentanaElegirCurso extends JFrame {
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 
 		JButton btnNewButton = new JButton("Volver");
-		btnNewButton.addActionListener(e -> closeWindow());
+		btnNewButton.addActionListener(e -> {this.dispose(); v.setVisible(true);} );
 		panelInferior.add(btnNewButton);
 
 		JPanel panelCentral = new JPanel();
@@ -171,6 +171,7 @@ public class VentanaElegirCurso extends JFrame {
 		else {
 			openVentanaEstrategia(curso);
 		}
+		
 	}
 	
 	private void openVentanaEstrategia(CursoPlantilla curso) {

@@ -2,6 +2,7 @@ package umu.pds.duolingoBaratero.models;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -90,12 +91,20 @@ public class CursoEnProgreso {
 			}
 		}
 	}
-
-	public List<Pregunta> getPreguntasBloqueContenido(int bloqueContenidoProgreso) {
+	/**
+	 * Devuelve las pregunas del bloque de contenido pasado como parametro
+	 * @return preguntas
+	 */
+	public Set<Pregunta> getPreguntasBloqueContenido(int bloqueContenidoProgreso) {
 		return cursoPlantilla.getPreguntasDeBloque(bloqueContenidoProgreso);
 	}
 	
-	public List<Pregunta> getPreguntasBloqueContenido() {
+	/**
+	 * Devuelve las pregunas del bloque de contenido actual
+	 * @return preguntas
+	 */
+	
+	public Set<Pregunta> getPreguntasBloqueContenido() {
 		return cursoPlantilla.getPreguntasDeBloque(bloqueActual);
 	}
 

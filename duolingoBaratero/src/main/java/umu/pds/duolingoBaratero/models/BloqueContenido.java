@@ -45,7 +45,7 @@ public class BloqueContenido {
 		this.id = id;
 	}
 
-	public Collection<Pregunta> getPreguntas() {
+	public Set<Pregunta> getPreguntas() {
 		return preguntas;
 	}
 

@@ -119,6 +119,117 @@ contenidos:
     - "Crear archivos de texto"
     - "Navegar por internet"
     - "Acelerar la memoria RAM"
+  preguntasAleatoriamente:
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 0
+    pregunta: "¿Cuál es un sistema operativo?"
+    respuestaCorrecta: "Windows"
+    tipo: "OPCIONES"
+    opciones:
+    - "Windows"
+    - "Google"
+    - "Intel"
+    - "HTML"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 1
+    pregunta: "¿Qué es HTML?"
+    respuestaCorrecta: "Un lenguaje de marcado para crear páginas web"
+    tipo: "OPCIONES"
+    opciones:
+    - "Un lenguaje de marcado para crear páginas web"
+    - "Un sistema operativo"
+    - "Un programa de edición de fotos"
+    - "Un lenguaje de programación"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 2
+    pregunta: "¿Qué significa CPU?"
+    respuestaCorrecta: "Unidad Central de Procesamiento"
+    tipo: "OPCIONES"
+    opciones:
+    - "Unidad Central de Procesamiento"
+    - "Unidad de Control"
+    - "Memoria RAM"
+    - "Tarjeta Gráfica"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 3
+    pregunta: "¿Qué es la nube en informática?"
+    respuestaCorrecta: "Un servicio de almacenamiento y computación en internet"
+    tipo: "OPCIONES"
+    opciones:
+    - "Un servicio de almacenamiento y computación en internet"
+    - "Un programa de edición de texto"
+    - "Un procesador"
+    - "Un navegador web"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 4
+    pregunta: "¿Para qué sirve un antivirus?"
+    respuestaCorrecta: "Proteger el sistema contra malware y virus"
+    tipo: "OPCIONES"
+    opciones:
+    - "Proteger el sistema contra malware y virus"
+    - "Mejorar la velocidad del internet"
+    - "Eliminar archivos duplicados"
+    - "Aumentar la memoria RAM"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 5
+    pregunta: "¿Qué significa RAM?"
+    respuestaCorrecta: "Memoria de acceso aleatorio"
+    tipo: "OPCIONES"
+    opciones:
+    - "Memoria de acceso aleatorio"
+    - "Unidad de almacenamiento"
+    - "Procesador"
+    - "Tarjeta madre"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 6
+    pregunta: "¿Cuál es un lenguaje de programación?"
+    respuestaCorrecta: "Python"
+    tipo: "OPCIONES"
+    opciones:
+    - "Python"
+    - "Windows"
+    - "Google Chrome"
+    - "Facebook"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 7
+    pregunta: "¿Cuál es un navegador web?"
+    respuestaCorrecta: "Google Chrome"
+    tipo: "OPCIONES"
+    opciones:
+    - "Google Chrome"
+    - "Microsoft Word"
+    - "Windows"
+    - "Linux"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 8
+    pregunta: "¿Qué es un bit?"
+    respuestaCorrecta: "La unidad más pequeña de información en un ordenador"
+    tipo: "OPCIONES"
+    opciones:
+    - "La unidad más pequeña de información en un ordenador"
+    - "Un procesador"
+    - "Un programa"
+    - "Un sistema operativo"
+  - !<OPCIONES>
+    nivel: "BASICO"
+    numero: 9
+    pregunta: "¿Cuál es la función del sistema operativo?"
+    respuestaCorrecta: "Gestionar los recursos del hardware y software"
+    tipo: "OPCIONES"
+    opciones:
+    - "Gestionar los recursos del hardware y software"
+    - "Crear archivos de texto"
+    - "Navegar por internet"
+    - "Acelerar la memoria RAM"
   preguntasSecuencialmente:
   - !<OPCIONES>
     nivel: "BASICO"
@@ -232,114 +343,3 @@ contenidos:
     - "Acelerar la memoria RAM"
   tiposPreguntas:
   - "OPCIONES"
-  preguntasAleatoriamente:
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 0
-    pregunta: "¿Cuál es un sistema operativo?"
-    respuestaCorrecta: "Windows"
-    tipo: "OPCIONES"
-    opciones:
-    - "Windows"
-    - "Google"
-    - "Intel"
-    - "HTML"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 1
-    pregunta: "¿Qué es HTML?"
-    respuestaCorrecta: "Un lenguaje de marcado para crear páginas web"
-    tipo: "OPCIONES"
-    opciones:
-    - "Un lenguaje de marcado para crear páginas web"
-    - "Un sistema operativo"
-    - "Un programa de edición de fotos"
-    - "Un lenguaje de programación"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 2
-    pregunta: "¿Qué significa CPU?"
-    respuestaCorrecta: "Unidad Central de Procesamiento"
-    tipo: "OPCIONES"
-    opciones:
-    - "Unidad Central de Procesamiento"
-    - "Unidad de Control"
-    - "Memoria RAM"
-    - "Tarjeta Gráfica"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 3
-    pregunta: "¿Qué es la nube en informática?"
-    respuestaCorrecta: "Un servicio de almacenamiento y computación en internet"
-    tipo: "OPCIONES"
-    opciones:
-    - "Un servicio de almacenamiento y computación en internet"
-    - "Un programa de edición de texto"
-    - "Un procesador"
-    - "Un navegador web"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 4
-    pregunta: "¿Para qué sirve un antivirus?"
-    respuestaCorrecta: "Proteger el sistema contra malware y virus"
-    tipo: "OPCIONES"
-    opciones:
-    - "Proteger el sistema contra malware y virus"
-    - "Mejorar la velocidad del internet"
-    - "Eliminar archivos duplicados"
-    - "Aumentar la memoria RAM"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 5
-    pregunta: "¿Qué significa RAM?"
-    respuestaCorrecta: "Memoria de acceso aleatorio"
-    tipo: "OPCIONES"
-    opciones:
-    - "Memoria de acceso aleatorio"
-    - "Unidad de almacenamiento"
-    - "Procesador"
-    - "Tarjeta madre"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 6
-    pregunta: "¿Cuál es un lenguaje de programación?"
-    respuestaCorrecta: "Python"
-    tipo: "OPCIONES"
-    opciones:
-    - "Python"
-    - "Windows"
-    - "Google Chrome"
-    - "Facebook"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 7
-    pregunta: "¿Cuál es un navegador web?"
-    respuestaCorrecta: "Google Chrome"
-    tipo: "OPCIONES"
-    opciones:
-    - "Google Chrome"
-    - "Microsoft Word"
-    - "Windows"
-    - "Linux"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 8
-    pregunta: "¿Qué es un bit?"
-    respuestaCorrecta: "La unidad más pequeña de información en un ordenador"
-    tipo: "OPCIONES"
-    opciones:
-    - "La unidad más pequeña de información en un ordenador"
-    - "Un procesador"
-    - "Un programa"
-    - "Un sistema operativo"
-  - !<OPCIONES>
-    nivel: "BASICO"
-    numero: 9
-    pregunta: "¿Cuál es la función del sistema operativo?"
-    respuestaCorrecta: "Gestionar los recursos del hardware y software"
-    tipo: "OPCIONES"
-    opciones:
-    - "Gestionar los recursos del hardware y software"
-    - "Crear archivos de texto"
-    - "Navegar por internet"
-    - "Acelerar la memoria RAM"
