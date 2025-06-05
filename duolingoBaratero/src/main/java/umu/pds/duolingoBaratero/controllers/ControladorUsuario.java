@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import umu.pds.duolingoBaratero.persistence.DBUsuarioDAO;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -22,6 +22,7 @@ import umu.pds.duolingoBaratero.services.ImageService;
 public enum ControladorUsuario {
 	INSTANCE;
 
+	private DBUsuarioDAO dbUsuarioDAO = DBUsuarioDAO.getDBUsuarioDAO();
 	private Usuario user;
 	private ImageService sevicioImagenes;
 
@@ -32,12 +33,7 @@ public enum ControladorUsuario {
 	public boolean registrarUsuario(String nombre, String apellidos, String telefono, String contrasena) {
 		Usuario usuario = new Usuario(nombre, apellidos, telefono, contrasena);
 		this.user = usuario;
-//		if (usuario.isPresent()) {
-//			Usuario u = usuario.get();
-//			this.user = u;
-//		}
-//		return usuario.isPresent();
-		return true;
+		dbUsuarioDAO.create(usuario);
 	}
 
 	public boolean comprobarUsuario(String correo, String passwd) {

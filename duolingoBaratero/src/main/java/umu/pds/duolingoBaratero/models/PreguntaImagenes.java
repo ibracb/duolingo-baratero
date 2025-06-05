@@ -1,12 +1,9 @@
 package umu.pds.duolingoBaratero.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -16,50 +13,42 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaImagenes;
-import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
 
-/**
- * Esta clase almacena tanto preguntasOpciones como preguntaImagenes; Se puede
- * diferenciar con el atributo "tipo" de la clase "Pregunta"
- * 
- */
 @Entity
-@Table(name = "pregunta_opciones")
-@DiscriminatorValue("OPCIONES")
-public class PreguntaOpciones extends Pregunta {
+@Table(name = "pregunta_imagenes")
+@DiscriminatorValue("IMAGENES")
+public class PreguntaImagenes extends Pregunta {
 
 	@ElementCollection
 	@CollectionTable(name = "pregunta_opciones_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
 	@Column(name = "opciones")
 	private List<String> opciones;
 
-	public PreguntaOpciones() {
+	public PreguntaImagenes() {
 		super();
-
 	}
 
-	public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
+	public PreguntaImagenes(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
 		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
 	}
 
-	public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo,
+	public PreguntaImagenes(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo,
 			List<String> opciones) {
 		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
 		this.opciones = opciones;
 	}
 
-
-	@Override
-	public JPanel crearPanel() {
-		return new PanelPreguntaOpciones(this);
-	}
-
 	public List<String> getOpciones() {
-		return opciones;
+		return (ArrayList<String>) opciones;
 	}
 
 	public void setOpciones(List<String> opciones) {
 		this.opciones = opciones;
+	}
+
+	@Override
+	public JPanel crearPanel() {
+		return new PanelPreguntaImagenes(this);
 	}
 
 }

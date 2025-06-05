@@ -3,8 +3,7 @@ package umu.pds.duolingoBaratero.models.aprendizajes;
 import java.util.Set;
 import java.util.function.Supplier;
 
-public enum FactoriaAprendizaje {
-	
+public enum FactoriaAprendizaje {	
 	INSTANCE;
 	
 	private static final Set<Supplier<Aprendizaje>> aprendizajes = Set.of(

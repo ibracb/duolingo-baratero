@@ -10,43 +10,55 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="usuarios")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
+	
+	@Column(name="nombre")
 	private String nombre;
 
 	@JsonIgnore
+	@Column(name="nickname")
 	private String nickname;
 
 	@JsonIgnore
+	@Column(name="correo")
 	private String correo;
 
 	@JsonIgnore
+	@Column(name="passwd")
 	private String passwd;
 
 	@JsonIgnore
+	@Column(name="imagen")
 	private String imagen;
 
 	@JsonIgnore
+	@OneToMany
+	@JoinColumn(name="usuario_id")
 	private Set<CursoEnProgreso> cursos;
 
 	@JsonIgnore
-	private List<CursoPlantilla> cursosCreados;   // Esto hay que sacarlod e auqi esta mal deberia ser recuperado dinamicamente
-	
-
-	@JsonIgnore
+	@OneToOne
+	@JoinColumn(unique=true)
 	private Estadistica estadistica;
 
+	
 	public Usuario() {
 	}
 
@@ -56,7 +68,6 @@ public class Usuario {
 		this.correo = correo;
 		this.passwd = passwd;
 		this.cursos = new HashSet<>();
-		this.cursosCreados = new LinkedList<>();
 		this.estadistica = new Estadistica(this);
 		this.imagen = "";
 	}
@@ -84,18 +95,6 @@ public class Usuario {
 
 	public void eliminarCurso(CursoEnProgreso curso) {
 		cursos.remove(curso);
-	}
-
-	public List<CursoPlantilla> getCursosCreados() {
-		return cursosCreados;
-	}
-
-	public void setCursosCrados(List<CursoPlantilla> cursos) {
-		this.cursosCreados = cursos;
-	}
-
-	public void addCursoPlantilla(CursoPlantilla curso) {
-		this.cursosCreados.add(curso);
 	}
 
 	public long getId() {

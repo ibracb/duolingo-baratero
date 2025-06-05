@@ -2,6 +2,7 @@ package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.*;
 
+import umu.pds.duolingoBaratero.models.PreguntaImagenes;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.services.IComprobador;
 
@@ -12,11 +13,11 @@ public class PanelPreguntaImagenes extends JPanel implements IComprobador {
 	private static final long serialVersionUID = 1L;
 	private JToggleButton[] imagenes; // Botones de imagen
 	private JLabel lblPregunta;
-	private PreguntaOpciones pregunta;
+	private PreguntaImagenes pregunta;
 	private String respuestaUsuario;
 
-	public PanelPreguntaImagenes(PreguntaOpciones pregunta) {
-		this.pregunta = pregunta;
+	public PanelPreguntaImagenes(PreguntaImagenes preguntaImagenes) {
+		this.pregunta = preguntaImagenes;
 		inicializar();
 	}
 
@@ -38,7 +39,8 @@ public class PanelPreguntaImagenes extends JPanel implements IComprobador {
 		imagenes = new JToggleButton[3];
 		ButtonGroup grupoImagenes = new ButtonGroup(); // Para selección única
 		for (int i = 0; i < 3; i++) {
-			imagenes[i] = new JToggleButton(new ImageIcon("src/main/resources/" + pregunta.getOpciones()[i] ));
+			//TODO: Arreglar esto pasar pregunta a arraylist
+			//imagenes[i] = new JToggleButton(new ImageIcon("src/main/resources/" + pregunta.getOpciones()[i] ));
 			imagenes[i].setPreferredSize(new Dimension(250, 250));
 			grupoImagenes.add(imagenes[i]);
 			panelImagenes.add(imagenes[i]);
@@ -64,7 +66,7 @@ public class PanelPreguntaImagenes extends JPanel implements IComprobador {
 	}
 	
 	@Override
-	public PreguntaOpciones getPregunta() {
+	public PreguntaImagenes getPregunta() {
 		return pregunta;
 	}
 

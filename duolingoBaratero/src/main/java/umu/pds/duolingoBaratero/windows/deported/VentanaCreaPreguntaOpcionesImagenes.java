@@ -1,7 +1,21 @@
 package umu.pds.duolingoBaratero.windows.deported;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.io.File;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.Nivel;
@@ -11,11 +25,6 @@ import umu.pds.duolingoBaratero.windows.components.BarraInferiorPreguntas;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.vista.VentanaCambiaImagenes;
 import umu.pds.duolingoBaratero.windows.vista.VentanaCambioImagen;
-
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.net.URL;
-import java.awt.event.ActionEvent;
 
 public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements VentanaCreaPregunta, VentanaCambiaImagenes {
     private static final long serialVersionUID = 1L;

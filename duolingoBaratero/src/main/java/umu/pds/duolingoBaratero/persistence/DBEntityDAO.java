@@ -4,14 +4,14 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 
-public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
-	
+public abstract class DBEntityDAO<T> implements EntityDAO<T> {
+
 	private EntityManager em;
 
-	public PDSEntidadDAO() {
-		em = JPAUtils.emf.createEntityManager();
+	protected DBEntityDAO() {
+		em = EntityManagerHelper.getEntityManager();
 	}
-	
+
 	@Override
 	public void create(T entidad) {
 		try {
@@ -75,14 +75,6 @@ public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
 			em.close();
 		}
 	}
-	
-	protected abstract Class<T> getEntityClass();
-	protected abstract String getCreateExceptionMessage();
-	protected abstract String getUpdateExceptionMessage();
-	protected abstract String getDeleteExceptionMessage();
-	protected abstract String getGetExceptionMessage();
-	protected abstract String getGetAllExceptionMessage();
-	protected abstract String getAllQuery();
 
 	private void manejarExcepcion(Exception e, String message) {
 		if (em.getTransaction().isActive()) {
@@ -90,4 +82,18 @@ public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
 		}
 		throw new DAOException(message, e);
 	}
+
+	protected abstract Class<T> getEntityClass();
+
+	protected abstract String getCreateExceptionMessage();
+
+	protected abstract String getUpdateExceptionMessage();
+
+	protected abstract String getDeleteExceptionMessage();
+
+	protected abstract String getGetExceptionMessage();
+
+	protected abstract String getGetAllExceptionMessage();
+
+	protected abstract String getAllQuery();
 }

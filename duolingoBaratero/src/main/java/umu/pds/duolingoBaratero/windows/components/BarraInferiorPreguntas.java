@@ -1,19 +1,13 @@
 package umu.pds.duolingoBaratero.windows.components;
 
-import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPregunta;
-import umu.pds.duolingoBaratero.windows.deported.VentanaCreaTuCurso;
-import umu.pds.duolingoBaratero.windows.vista.VentanaElegirTipoPregunta;
-import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
-import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 
 public class BarraInferiorPreguntas extends JPanel {
 
