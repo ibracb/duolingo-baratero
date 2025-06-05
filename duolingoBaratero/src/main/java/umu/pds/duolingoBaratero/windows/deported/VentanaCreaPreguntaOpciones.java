@@ -10,7 +10,7 @@ import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 
 public class VentanaCreaPreguntaOpciones extends JFrame implements VentanaCreaPregunta {
     private static final long serialVersionUID = 1L;
-    private static final TipoPregunta TIPO_PREGUNTA = TipoPregunta.OPCIONES;
+    private static final TipoPregunta TIPO_PREGUNTA = TipoPregunta.OPCION;
     private JTextField txtPregunta;
     private JTextField txtRespuesta;
     private JTextField txtRespuesta_1;

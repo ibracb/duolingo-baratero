@@ -29,6 +29,8 @@ public class CursoEnProgreso {
 	private EstadoCursoEnProgreso estado;
 	private int bloqueActual;
 	
+	// Y aqui falta meter una relacion hacia el usuario para que un curos en progreso pertenezca a un usuario
+	
 	
 	public CursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado) {
 		this.cursoPlantilla = cursoPlantilla;

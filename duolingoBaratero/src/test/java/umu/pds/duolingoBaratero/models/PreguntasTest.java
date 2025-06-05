@@ -24,7 +24,7 @@ class PreguntasTest {
         String[] opciones = {"Opción A", "Opción B", "Opción C"};
 
         // Creación de preguntas de diferentes tipos
-        preguntaOpciones = new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es la capital de Francia?", "París", TipoPregunta.OPCIONES, opciones);
+        preguntaOpciones = new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es la capital de Francia?", "París", TipoPregunta.OPCION, opciones);
         preguntaAudio = new PreguntaAudio(Nivel.INTERMEDIO, 2, "Escucha y elige la respuesta correcta", "Bonjour", opciones, "/ruta/audio.mp3");
         flashcard = new Flashcard(Nivel.AVANZADO, 3, "Flashcard", "acierto", TipoPregunta.FLASHCARD, 10);
     }
