@@ -13,8 +13,7 @@
       "numero" : 0,
       "pregunta" : "Significado de: Green",
       "respuestaCorrecta" : "Verde",
-      "tipo" : "FLASHCARD",
-      "tiempoLimite" : 30
+      "tipo" : "FLASHCARD"
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -63,8 +62,7 @@
       "numero" : 0,
       "pregunta" : "Significado de: Green",
       "respuestaCorrecta" : "Verde",
-      "tipo" : "FLASHCARD",
-      "tiempoLimite" : 30
+      "tipo" : "FLASHCARD"
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
@@ -112,8 +110,7 @@
       "numero" : 0,
       "pregunta" : "Significado de: Green",
       "respuestaCorrecta" : "Verde",
-      "tipo" : "FLASHCARD",
-      "tiempoLimite" : 30
+      "tipo" : "FLASHCARD"
     }, {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",

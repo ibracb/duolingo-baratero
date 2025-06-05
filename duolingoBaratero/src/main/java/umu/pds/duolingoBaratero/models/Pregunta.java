@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -31,6 +33,10 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name = "bloque_de_contenido_id")
+	private BloqueContenido bloque;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "nivel")
@@ -46,7 +52,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	private String respuestaCorrecta;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "tipo")
+	@Column(name = "tipo", insertable = false, updatable = false)
 	private TipoPregunta tipo;
 
 	public Pregunta() {
@@ -72,6 +78,14 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public BloqueContenido getBloque() {
+		return bloque;
+	}
+
+	public void setBloque(BloqueContenido bloque) {
+		this.bloque = bloque;
 	}
 
 	public Nivel getNivel() {

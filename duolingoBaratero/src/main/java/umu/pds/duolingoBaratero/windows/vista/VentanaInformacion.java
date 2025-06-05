@@ -1,6 +1,5 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
-import umu.pds.duolingoBaratero.controllers.ControladorDuolingoBaratero;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;

@@ -106,7 +106,7 @@ public class VentanaCreaPreguntaFlashcard extends JFrame implements VentanaCreaP
 		respuesta1 = txtRespuesta.getText();
 
 		if (!hasRequiredFileds(pregunta, respuesta1, lvl)) {
-			Flashcard preguntaFlashcard = new Flashcard(lvl, 0, pregunta, respuesta1, TIPO_PREGUNTA, 30);
+			Flashcard preguntaFlashcard = new Flashcard(lvl, 0, pregunta, respuesta1, TIPO_PREGUNTA);
 			v.guardarPregunta(preguntaFlashcard);
 			v.setVisible(true);
 			this.dispose();

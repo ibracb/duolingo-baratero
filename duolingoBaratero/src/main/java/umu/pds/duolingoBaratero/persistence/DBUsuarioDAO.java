@@ -9,7 +9,7 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	private static final String ERROR_MESSAGE_UPDATE = "Exception updating user";
 	private static final String ERROR_MESSAGE_GET = "Exception getting user";
 	private static final String ERROR_MESSAGE_GETALL = "Exception getting all users";
-	private static final String QUERY_GET_ALL = "SELECT u FROM Usuario u";
+	private static final String QUERY_GET_ALL = "SELECT model FROM Usuario model";
 
 	private static DBUsuarioDAO unicaInstancia;
 
@@ -23,6 +23,51 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	private DBUsuarioDAO() {
 		super();
 	}
+	
+	public boolean existeUsuario(long id) {
+
+	    try {
+	        Long count = em.createQuery(
+	                "SELECT COUNT(u) FROM Usuario u WHERE u.id = :id", Long.class)
+	            .setParameter("id", id)
+	            .getSingleResult();
+
+	        return count != null && count > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+	
+	public boolean existeUsuario(String correo) {
+
+	    try {
+	        Long count = em.createQuery(
+	                "SELECT COUNT(u) FROM Usuario u WHERE u.correo= :correo", Long.class)
+	            .setParameter("correo", correo)
+	            .getSingleResult();
+
+	        return count != null && count > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+	
+	public Usuario get(String correo) {
+	    try {
+	        return em.createQuery(
+	                "SELECT u FROM Usuario u WHERE u.correo = :correo", Usuario.class)
+	            .setParameter("correo", correo)
+	            .getSingleResult();
+	    } catch (jakarta.persistence.NoResultException e) {
+	        return null; 
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}
+
 
 	@Override
 	protected Class<Usuario> getEntityClass() {

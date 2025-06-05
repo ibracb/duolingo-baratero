@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
@@ -164,7 +167,7 @@ public class VentanaCreaPreguntaAudio extends JFrame implements VentanaCreaPregu
     						break;
     	}
     	if (!hasRequiredFileds(pregunta, respuesta1, respuesta2, respuesta3, respuestaCorrecta, lvl)) {
-    		String[] opciones = {respuesta1, respuesta2, respuesta3};
+    		ArrayList<String> opciones = new ArrayList<>(Arrays.asList(respuesta1, respuesta2, respuesta3));
         	PreguntaOpciones preguntaOpciones = new PreguntaOpciones(lvl, 0, pregunta, respuestaCorrecta, TIPO_PREGUNTA, opciones);
         	v.guardarPregunta(preguntaOpciones);
         	v.setVisible(true);

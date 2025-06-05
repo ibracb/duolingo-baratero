@@ -9,11 +9,11 @@ public class DBEstadisticaDAO extends DBEntityDAO<Estadistica> {
 	private static final String ERROR_MESSAGE_UPDATE = "Exception updating estadistica";
 	private static final String ERROR_MESSAGE_GET = "Exception getting estadistica";
 	private static final String ERROR_MESSAGE_GETALL = "Exception getting all estadisticas";
-	private static final String QUERY_GET_ALL = "SELECT u FROM estadisticas u";
+	private static final String QUERY_GET_ALL = "SELECT model FROM Estadistica model";
 
 	private static DBEstadisticaDAO unicaInstancia;
 
-	public DBEstadisticaDAO getDBUsuarioDAO() {
+	public static DBEstadisticaDAO getDBEstadisticaDAO() {
 		if (unicaInstancia == null) {
 			unicaInstancia = new DBEstadisticaDAO();
 		}

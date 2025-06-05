@@ -58,7 +58,7 @@ public class PanelPreguntaOpciones extends JPanel implements IComprobador {
 		ButtonGroup grupoOpciones = new ButtonGroup();
 
 		for (int i = 0; i < 3; i++) {
-			opciones[i] = new JToggleButton(pregunta.getOpciones()[i]);
+//			opciones[i] = new JToggleButton(pregunta.getOpciones()[i]);
 			opciones[i].setFont(new Font("Arial", Font.PLAIN, 15));
 
 			opciones[i].setMinimumSize(new Dimension(300, 75)); // Tamaño mínimo

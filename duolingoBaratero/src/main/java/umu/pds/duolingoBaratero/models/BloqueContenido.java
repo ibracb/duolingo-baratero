@@ -18,6 +18,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
@@ -32,6 +33,10 @@ public class BloqueContenido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	@ManyToOne
+	@JoinColumn(name = "curso_id")
+	private CursoPlantilla curso;
+	
 	@OneToMany
 	@JoinColumn(name = "bloque_de_contenido_id")
 	private Set<Pregunta> preguntas;
@@ -53,6 +58,14 @@ public class BloqueContenido {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public CursoPlantilla getCurso() {
+		return curso;
+	}
+
+	public void setCurso(CursoPlantilla curso) {
+		this.curso = curso;
 	}
 
 	public Set<Pregunta> getPreguntas() {

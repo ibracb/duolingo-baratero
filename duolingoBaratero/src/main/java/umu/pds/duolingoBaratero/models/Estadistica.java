@@ -30,6 +30,9 @@ public class Estadistica {
 	
 	@Column(name="porcentaje_aciertos")
 	private double porcentajeAciertos;
+	
+	public Estadistica() {
+	}
 
 	public Estadistica(Usuario usuario) {
 		this.usuario = usuario;

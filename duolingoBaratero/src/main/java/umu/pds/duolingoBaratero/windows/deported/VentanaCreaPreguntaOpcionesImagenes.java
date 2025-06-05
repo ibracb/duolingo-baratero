@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -239,7 +241,7 @@ public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements Venta
     	}
     	
     	if (!hasRequiredFileds(pregunta, respuesta1, respuesta2, respuesta3, respuestaCorrecta, lvl)) {
-    		String[] opciones = {respuesta1, respuesta2, respuesta3};
+    		ArrayList<String> opciones = new ArrayList<>(Arrays.asList(respuesta1, respuesta2, respuesta3));
         	PreguntaOpciones preguntaOpciones = new PreguntaOpciones(lvl, 0, pregunta, respuestaCorrecta, TIPO_PREGUNTA, opciones);
         	v.guardarPregunta(preguntaOpciones);
         	v.setVisible(true);

@@ -9,11 +9,11 @@ public class DBCursoEnProgresoDAO extends DBEntityDAO<CursoEnProgreso> {
 	private static final String ERROR_MESSAGE_UPDATE = "Exception updating curso en progreso";
 	private static final String ERROR_MESSAGE_GET = "Exception getting curso en progreso";
 	private static final String ERROR_MESSAGE_GETALL = "Exception getting all curso en progreso";
-	private static final String QUERY_GET_ALL = "SELECT u FROM cursos_en_progreso u";
+	private static final String QUERY_GET_ALL = "SELECT model FROM CursosEnProgreso model";
 
 	private static DBCursoEnProgresoDAO unicaInstancia;
 
-	public DBCursoEnProgresoDAO getDBUsuarioDAO() {
+	public static DBCursoEnProgresoDAO getDBCursoEnProgresoDAO() {
 		if (unicaInstancia == null) {
 			unicaInstancia = new DBCursoEnProgresoDAO();
 		}

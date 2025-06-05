@@ -30,14 +30,19 @@ public enum ControladorUsuario {
 		this.sevicioImagenes = new ImageService();
 	}
 
-	public boolean registrarUsuario(String nombre, String apellidos, String telefono, String contrasena) {
-		Usuario usuario = new Usuario(nombre, apellidos, telefono, contrasena);
-		this.user = usuario;
-		dbUsuarioDAO.create(usuario);
+	public boolean registrarUsuario(String nombre, String apellidos, String correo, String contrasena) {
+		boolean result = !dbUsuarioDAO.existeUsuario(correo);
+		if (result) {
+			Usuario usuario = new Usuario(nombre, apellidos, correo, contrasena);
+			dbUsuarioDAO.create(usuario);
+			this.user = usuario;
+		}
+		return result;
+
 	}
 
 	public boolean comprobarUsuario(String correo, String passwd) {
-		Usuario usuario = new Usuario("a", "a", "a", "A");
+		Usuario usuario = dbUsuarioDAO.get(correo);
 		boolean result = usuario != null;
 		if (result) {
 			this.user = usuario;

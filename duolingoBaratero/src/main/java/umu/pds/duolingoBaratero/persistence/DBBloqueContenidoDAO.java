@@ -9,11 +9,11 @@ public class DBBloqueContenidoDAO extends DBEntityDAO<BloqueContenido> {
 	private static final String ERROR_MESSAGE_UPDATE = "Exception updating  bloque de contenido";
 	private static final String ERROR_MESSAGE_GET = "Exception getting  bloque de contenido";
 	private static final String ERROR_MESSAGE_GETALL = "Exception getting all  bloque de contenido";
-	private static final String QUERY_GET_ALL = "SELECT u FROM bloques_contenido u";
+	private static final String QUERY_GET_ALL = "SELECT model FROM BloqueContenido model";
 
 	private static DBBloqueContenidoDAO unicaInstancia;
 
-	public DBBloqueContenidoDAO getDBUsuarioDAO() {
+	public static DBBloqueContenidoDAO getDBBloqueContenidoDAO() {
 		if (unicaInstancia == null) {
 			unicaInstancia = new DBBloqueContenidoDAO();
 		}

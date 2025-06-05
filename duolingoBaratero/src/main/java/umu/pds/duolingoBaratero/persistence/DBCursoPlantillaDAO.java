@@ -1,5 +1,6 @@
 package umu.pds.duolingoBaratero.persistence;
 
+import jakarta.persistence.Query;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
 public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
@@ -9,15 +10,40 @@ public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 	private static final String ERROR_MESSAGE_UPDATE = "Exception updating curso plantilla";
 	private static final String ERROR_MESSAGE_GET = "Exception getting curso plantilla";
 	private static final String ERROR_MESSAGE_GETALL = "Exception getting all plantilla";
-	private static final String QUERY_GET_ALL = "SELECT u FROM cursos_plantilla u";
+	private static final String QUERY_GET_ALL = "SELECT model FROM CursoPlantilla model";
 
 	private static DBCursoPlantillaDAO unicaInstancia;
 
-	public DBCursoPlantillaDAO getDBUsuarioDAO() {
+	public static DBCursoPlantillaDAO getDBCursoPlantillaDAO() {
 		if (unicaInstancia == null) {
 			unicaInstancia = new DBCursoPlantillaDAO();
 		}
 		return unicaInstancia;
+	}
+
+	public CursoPlantilla obtenerCursoConBloquesYPreguntas(Long cursoId) {
+		return em.createQuery(
+	        "SELECT c FROM CursoPlantilla c " +
+	        "LEFT JOIN FETCH c.bloques b " +
+	        "LEFT JOIN FETCH b.preguntas " +
+	        "WHERE c.id = :id", CursoPlantilla.class)		
+	        .setParameter("id", cursoId)
+	        .getSingleResult();
+	}
+	
+	public boolean existeCursoPlantilla(String nombre) {
+
+	    try {
+	        Long count = em.createQuery(
+	                "SELECT COUNT(u) FROM CursoPlantilla u WHERE u.nombre = :nombre", Long.class)
+	            .setParameter("nombre", nombre)
+	            .getSingleResult();
+
+	        return count != null && count > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
 
 	private DBCursoPlantillaDAO() {

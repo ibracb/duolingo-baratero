@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManager;
 
 public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 
-	private EntityManager em;
+	protected EntityManager em;
 
 	protected DBEntityDAO() {
 		em = EntityManagerHelper.getEntityManager();
@@ -20,9 +20,7 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			manejarExcepcion(e, getCreateExceptionMessage());
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	@Override
@@ -33,9 +31,7 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			manejarExcepcion(e, getUpdateExceptionMessage());
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	@Override
@@ -49,9 +45,7 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			manejarExcepcion(e, getDeleteExceptionMessage());
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	@Override
@@ -60,9 +54,7 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 			return em.find(getEntityClass(), id);
 		} catch (Exception e) {
 			throw new DAOException(getGetExceptionMessage(), e);
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	@Override
@@ -71,9 +63,7 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 			return em.createQuery(getAllQuery(), getEntityClass()).getResultList();
 		} catch (Exception e) {
 			throw new DAOException(getGetAllExceptionMessage(), e);
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	private void manejarExcepcion(Exception e, String message) {

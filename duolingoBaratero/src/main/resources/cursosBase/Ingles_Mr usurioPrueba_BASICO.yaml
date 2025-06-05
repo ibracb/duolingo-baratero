@@ -17,7 +17,6 @@ contenidos:
     pregunta: "Significado de: Green"
     respuestaCorrecta: "Verde"
     tipo: "FLASHCARD"
-    tiempoLimite: 30
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 1
@@ -83,7 +82,6 @@ contenidos:
     pregunta: "Significado de: Green"
     respuestaCorrecta: "Verde"
     tipo: "FLASHCARD"
-    tiempoLimite: 30
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 1
@@ -145,7 +143,6 @@ contenidos:
     pregunta: "Significado de: Green"
     respuestaCorrecta: "Verde"
     tipo: "FLASHCARD"
-    tiempoLimite: 30
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 1

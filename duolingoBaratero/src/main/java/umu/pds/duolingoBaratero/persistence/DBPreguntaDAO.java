@@ -9,11 +9,11 @@ public class DBPreguntaDAO extends DBEntityDAO<Pregunta> {
 	private static final String ERROR_MESSAGE_UPDATE = "Exception updating  pregunta";
 	private static final String ERROR_MESSAGE_GET = "Exception getting  pregunta";
 	private static final String ERROR_MESSAGE_GETALL = "Exception getting all  pregunta";
-	private static final String QUERY_GET_ALL = "SELECT u FROM preguntas u";
+	private static final String QUERY_GET_ALL = "SELECT model FROM Pregunta model";
 
 	private static DBPreguntaDAO unicaInstancia;
 
-	public DBPreguntaDAO getDBUsuarioDAO() {
+	public static DBPreguntaDAO getDBPreguntaDAOO() {
 		if (unicaInstancia == null) {
 			unicaInstancia = new DBPreguntaDAO();
 		}

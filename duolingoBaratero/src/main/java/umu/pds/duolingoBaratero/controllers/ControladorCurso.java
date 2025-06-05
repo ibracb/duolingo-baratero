@@ -26,6 +26,10 @@ import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.persistence.DBBloqueContenidoDAO;
+import umu.pds.duolingoBaratero.persistence.DBCursoEnProgresoDAO;
+import umu.pds.duolingoBaratero.persistence.DBCursoPlantillaDAO;
+import umu.pds.duolingoBaratero.persistence.DBPreguntaDAO;
 import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.AudioService;
 import umu.pds.duolingoBaratero.services.ImageService;
@@ -48,13 +52,34 @@ public enum ControladorCurso {
 	private CursoPlantilla curso1;
 	private ImageService sevicioImagenes;
 	private AudioService reproductor;
+	private DBCursoPlantillaDAO dbCursoPlantillaDAO;
+	private DBCursoEnProgresoDAO dbCursoEnProgresoDAO;
+	private DBBloqueContenidoDAO dbBloqueContenidoDAO;
+	private DBPreguntaDAO dbPreguntaDAO;
+
+
+
 
 	private ControladorCurso() {
+		this.dbCursoPlantillaDAO = DBCursoPlantillaDAO.getDBCursoPlantillaDAO();
+		this.dbPreguntaDAO = DBPreguntaDAO.getDBPreguntaDAOO();
+		this.dbCursoEnProgresoDAO = DBCursoEnProgresoDAO.getDBCursoEnProgresoDAO();
+		this.dbBloqueContenidoDAO = DBBloqueContenidoDAO.getDBBloqueContenidoDAO();
+
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
-		this.recuperarCursosBase();
-		//pruebas();
+		this.cursosPrueba = dbCursoPlantillaDAO.getAll();
+		//recuperarCursosBase();
 	}
+
+	public boolean isCursoNuevo(CursoEnProgreso curso) {
+		if (curso == null) {
+			System.out.println("Curso nulo");
+			return false;
+		}
+		return curso.isNuevo();
+	}
+	
 
 	public void recuperarCursosBase() {
 		List<CursoPlantilla> cursos = new ArrayList<>();
@@ -79,19 +104,21 @@ public enum ControladorCurso {
 					cursos.add(curso);
 				}
 			}
+			
+			for (CursoPlantilla curso : cursos) {
+				dbCursoPlantillaDAO.create(curso);
+				for (BloqueContenido bloque : curso.getContenidos()) {
+					bloque.setCurso(curso);
+					dbBloqueContenidoDAO.create(bloque);
+					for (Pregunta pregunta: bloque.getPreguntas()) {
+						pregunta.setBloque(bloque);
+						dbPreguntaDAO.create(pregunta);
+					}
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		this.cursosPrueba = cursos;
-	}
-
-	public boolean isCursoNuevo(CursoEnProgreso curso) {
-		if (curso == null) {
-			System.out.println("Curso nulo");
-			return false;
-		}
-		return curso.isNuevo();
 	}
 
 	public boolean isCursoEnMarcha(CursoEnProgreso curso) {
@@ -123,8 +150,10 @@ public enum ControladorCurso {
 		return null;
 	}
 
-	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado, Usuario usuario) {
-		return new CursoEnProgreso(curso, aprendizajeSeleccionado, usuario);
+	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado, Usuario usuario) {
+		CursoEnProgreso curso = new CursoEnProgreso(cursoPlantilla, aprendizajeSeleccionado, usuario);
+		dbCursoEnProgresoDAO.create(curso);
+		return curso;
 	}
 
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
@@ -259,293 +288,6 @@ public enum ControladorCurso {
 			serializerJSON.serializeCursoBase(curso);			
 		}
 		return true;
-	}
-
-	// *************************************************
-	// PRUEBAS
-	// ***************************************************
-	private void pruebas() {
-		cursosPrueba = new LinkedList<>();
-		Usuario usuarioPrueba = new Usuario("Profesor B", "Mr usurioPrueba", "profesorb@gmail.com", "1234");
-		BloqueContenido bloque1Curso1 = new BloqueContenido(0,
-				new PreguntaOpciones(Nivel.BASICO, 1, "¿Cómo se dice 'Hola' en inglés?", "Hello", TipoPregunta.OPCION,
-						new String[] { "Hello", "Hi", "Bye", "Goodbye" }),
-				new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué significa 'Dog' en español?", "Perro",
-						TipoPregunta.OPCION, new String[] { "Perro", "Gato", "Pájaro", "Pez" }),
-				new PreguntaOpciones(Nivel.BASICO, 3, "Completa la frase: 'I ___ a student'", "am",
-						TipoPregunta.OPCION, new String[] { "am", "is", "are", "be" }),
-				new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es el plural de 'child'?", "children",
-						TipoPregunta.OPCION, new String[] { "childs", "childes", "children", "child" }),
-				new Flashcard(Nivel.BASICO, 4, "Significado de: Green", "Verde", TipoPregunta.FLASHCARD, 30),
-				new PreguntaOpciones(Nivel.BASICO, 6, "¿Cuál cual de estos es leche?",
-						"CursosPDS/src/main/resources/milk.png", TipoPregunta.IMAGEN,
-						new String[] { "tea.png", "milk.png", "coffee.png" }));
-
-		BloqueContenido bloque2Curso1 = new BloqueContenido(1,
-				new PreguntaOpciones(Nivel.BASICO, 5, "¿Cómo se dice 'Gracias' en inglés?", "Thank you",
-						TipoPregunta.OPCION, new String[] { "Thank you", "Thanks", "You're welcome", "Hello" }),
-				new PreguntaOpciones(Nivel.BASICO, 6, "¿Qué significa 'Car' en español?", "Coche",
-						TipoPregunta.OPCION, new String[] { "Coche", "Casa", "Camión", "Barco" }),
-				new PreguntaOpciones(Nivel.BASICO, 7, "Completa la frase: 'She ___ a teacher'", "is",
-						TipoPregunta.OPCION, new String[] { "is", "are", "am", "be" }),
-				new PreguntaOpciones(Nivel.BASICO, 8, "¿Cómo se dice 'Libro' en inglés?", "Book", TipoPregunta.OPCION,
-						new String[] { "Book", "Notebook", "Table", "Paper" }));
-
-		BloqueContenido bloque3Curso1 = new BloqueContenido(2,
-				new PreguntaOpciones(Nivel.BASICO, 9, "¿Cómo se dice 'Buenos días' en inglés?", "Good morning",
-						TipoPregunta.OPCION, new String[] { "Good morning", "Good night", "Hello", "Bye" }),
-				new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué significa 'Water' en español?", "Agua",
-						TipoPregunta.OPCION, new String[] { "Agua", "Fuego", "Aire", "Tierra" }),
-				new PreguntaOpciones(Nivel.BASICO, 11, "¿Qué verbo es sinónimo de 'begin'?", "start",
-						TipoPregunta.OPCION, new String[] { "start", "stop", "end", "pause" }),
-				new PreguntaOpciones(Nivel.BASICO, 12, "Completa la frase: 'They ___ at home'", "are",
-						TipoPregunta.OPCION, new String[] { "are", "is", "am", "be" }));
-
-		curso1 = new CursoPlantilla("Ingles", usuarioPrueba.getNickname(), "Curso para principiantes", "Aprender vocabulario básico",
-				Nivel.BASICO, bloque1Curso1, bloque2Curso1, bloque3Curso1);
-
-		curso1.addBloqueContenido(bloque3Curso1);
-		// Crear preguntas para el segundo curso
-		BloqueContenido bloque1Curso2 = new BloqueContenido(0,
-				new PreguntaOpciones(Nivel.INTERMEDIO, 1, "¿Cómo se dice 'Amigo' en inglés?", "Friend",
-						TipoPregunta.OPCION, new String[] { "Friend", "Brother", "Sister", "Mother" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 2, "¿Qué significa 'Table' en español?", "Mesa",
-						TipoPregunta.OPCION, new String[] { "Mesa", "Silla", "Cama", "Puerta" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 3, "Completa la frase: 'She ___ studying'", "is",
-						TipoPregunta.OPCION, new String[] { "is", "are", "am", "be" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 4, "¿Cuál es el pasado de 'go'?", "went", TipoPregunta.OPCION,
-						new String[] { "gone", "went", "goed", "going" }));
-
-		BloqueContenido bloque2Curso2 = new BloqueContenido(1,
-				new PreguntaOpciones(Nivel.INTERMEDIO, 5, "¿Cómo se dice 'Ventana' en inglés?", "Window",
-						TipoPregunta.OPCION, new String[] { "Window", "Door", "Wall", "Floor" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 6, "¿Qué significa 'Chair' en español?", "Silla",
-						TipoPregunta.OPCION, new String[] { "Silla", "Mesa", "Lámpara", "Pizarra" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 7, "Completa la frase: 'I ___ going to school'", "am",
-						TipoPregunta.OPCION, new String[] { "am", "is", "are", "be" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 8, "¿Cuál es el opuesto de 'cold'?", "hot",
-						TipoPregunta.OPCION, new String[] { "hot", "warm", "cool", "freezing" }));
-
-		BloqueContenido bloque3Curso2 = new BloqueContenido(2,
-				new PreguntaOpciones(Nivel.INTERMEDIO, 9, "¿Cómo se dice 'Sol' en inglés?", "Sun",
-						TipoPregunta.OPCION, new String[] { "Sun", "Star", "Moon", "Sky" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 10, "¿Qué significa 'Fast' en español?", "Rápido",
-						TipoPregunta.OPCION, new String[] { "Rápido", "Lento", "Fuerte", "Débil" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 11, "¿Cuál es el plural de 'mouse'?", "mice",
-						TipoPregunta.OPCION, new String[] { "mice", "mouses", "mouse", "mousses" }),
-				new PreguntaOpciones(Nivel.INTERMEDIO, 12, "Completa la frase: 'We ___ to the park'", "go",
-						TipoPregunta.OPCION, new String[] { "go", "going", "went", "gone" }));
-
-		CursoPlantilla curso2 = new CursoPlantilla("Ingles", usuarioPrueba.getNickname(), "Curso intermedio",
-				"Mejorar gramática y vocabulario", Nivel.INTERMEDIO, bloque1Curso2, bloque2Curso2, bloque3Curso2);
-
-		// Curso de Informática
-		BloqueContenido bloque1Informatica = new BloqueContenido(0,
-				new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué significa CPU?", "Unidad Central de Procesamiento",
-						TipoPregunta.OPCION,
-						new String[] { "Unidad Central de Procesamiento", "Unidad de Control", "Memoria RAM",
-								"Tarjeta Gráfica" }),
-				new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es un sistema operativo?", "Windows",
-						TipoPregunta.OPCION, new String[] { "Windows", "Google", "Intel", "HTML" }),
-				new PreguntaOpciones(Nivel.BASICO, 3, "¿Qué significa RAM?", "Memoria de acceso aleatorio",
-						TipoPregunta.OPCION,
-						new String[] { "Memoria de acceso aleatorio", "Unidad de almacenamiento", "Procesador",
-								"Tarjeta madre" }),
-				new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es un lenguaje de programación?", "Python",
-						TipoPregunta.OPCION, new String[] { "Python", "Windows", "Google Chrome", "Facebook" }),
-				new PreguntaOpciones(Nivel.BASICO, 5, "¿Qué es un bit?",
-						"La unidad más pequeña de información en un ordenador", TipoPregunta.OPCION,
-						new String[] { "La unidad más pequeña de información en un ordenador", "Un procesador",
-								"Un programa", "Un sistema operativo" }),
-				new PreguntaOpciones(Nivel.BASICO, 6, "¿Cuál es la función del sistema operativo?",
-						"Gestionar los recursos del hardware y software", TipoPregunta.OPCION,
-						new String[] { "Gestionar los recursos del hardware y software", "Crear archivos de texto",
-								"Navegar por internet", "Acelerar la memoria RAM" }),
-				new PreguntaOpciones(Nivel.BASICO, 7, "¿Cuál es un navegador web?", "Google Chrome",
-						TipoPregunta.OPCION, new String[] { "Google Chrome", "Microsoft Word", "Windows", "Linux" }),
-				new PreguntaOpciones(Nivel.BASICO, 8, "¿Para qué sirve un antivirus?",
-						"Proteger el sistema contra malware y virus", TipoPregunta.OPCION,
-						new String[] { "Proteger el sistema contra malware y virus",
-								"Mejorar la velocidad del internet", "Eliminar archivos duplicados",
-								"Aumentar la memoria RAM" }),
-				new PreguntaOpciones(Nivel.BASICO, 9, "¿Qué es HTML?", "Un lenguaje de marcado para crear páginas web",
-						TipoPregunta.OPCION,
-						new String[] { "Un lenguaje de marcado para crear páginas web", "Un sistema operativo",
-								"Un programa de edición de fotos", "Un lenguaje de programación" }),
-				new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué es la nube en informática?",
-						"Un servicio de almacenamiento y computación en internet", TipoPregunta.OPCION,
-						new String[] { "Un servicio de almacenamiento y computación en internet",
-								"Un programa de edición de texto", "Un procesador", "Un navegador web" }));
-
-		CursoPlantilla cursoInformatica = new CursoPlantilla("Informatica", usuarioPrueba.getNickname(),
-				"Conceptos básicos de computación", "Aprender sobre hardware y software", Nivel.BASICO,
-				bloque1Informatica);
-
-		// Curso de Música
-		BloqueContenido bloque1Musica = new BloqueContenido(0,
-				new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuántas notas musicales existen?", "Siete",
-						TipoPregunta.OPCION, new String[] { "Siete", "Cinco", "Doce", "Cuatro" }),
-				new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la clave musical más usada en partituras?",
-						"Clave de sol", TipoPregunta.OPCION,
-						new String[] { "Clave de sol", "Clave de fa", "Clave de do", "Clave de la" }),
-				new PreguntaOpciones(Nivel.BASICO, 3, "¿Qué instrumento tiene teclas blancas y negras?", "Piano",
-						TipoPregunta.OPCION, new String[] { "Piano", "Guitarra", "Batería", "Violín" }),
-				new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuántas cuerdas tiene una guitarra clásica?", "Seis",
-						TipoPregunta.OPCION, new String[] { "Seis", "Cuatro", "Ocho", "Cinco" }),
-				new PreguntaOpciones(Nivel.BASICO, 5,
-						"¿Cómo se llama el signo que representa la duración del sonido en una partitura?",
-						"Figura musical", TipoPregunta.OPCION,
-						new String[] { "Figura musical", "Clave", "Tempo", "Pentagrama" }),
-				new PreguntaOpciones(Nivel.BASICO, 6, "¿Cuál es el tempo musical más rápido?", "Presto",
-						TipoPregunta.OPCION, new String[] { "Presto", "Andante", "Adagio", "Largo" }),
-				new PreguntaOpciones(Nivel.BASICO, 7, "¿Qué familia de instrumentos incluye la trompeta y el trombón?",
-						"Viento-metal", TipoPregunta.OPCION,
-						new String[] { "Viento-metal", "Cuerda", "Percusión", "Viento-madera" }),
-				new PreguntaOpciones(Nivel.BASICO, 8, "¿Qué elemento define la intensidad del sonido en la música?",
-						"Dinámica", TipoPregunta.OPCION, new String[] { "Dinámica", "Tempo", "Melodía", "Armonía" }),
-				new PreguntaOpciones(Nivel.BASICO, 9, "¿Cómo se llama la parte de la canción que se repite?",
-						"Estribillo", TipoPregunta.OPCION, new String[] { "Estribillo", "Verso", "Puente", "Coda" }),
-				new PreguntaOpciones(Nivel.BASICO, 10,
-						"¿Cuál es el nombre de la escala musical más común en la música occidental?", "Escala mayor",
-						TipoPregunta.OPCION,
-						new String[] { "Escala mayor", "Escala menor", "Escala cromática", "Escala pentatónica" }));
-
-		CursoPlantilla cursoMusica = new CursoPlantilla("Música", usuarioPrueba.getNickname(), "Introducción a la teoría musical",
-				"Aprender sobre notas y claves musicales", Nivel.BASICO, bloque1Musica);
-
-		// Curso de Ciencia
-		BloqueContenido bloque1Ciencia = new BloqueContenido(0,
-				new PreguntaOpciones(Nivel.BASICO, 1, "¿Qué estudia la biología?", "Los seres vivos",
-						TipoPregunta.OPCION,
-						new String[] { "Los seres vivos", "Los planetas", "Los elementos químicos", "Las rocas" }),
-				new PreguntaOpciones(Nivel.BASICO, 2, "¿Cuál es la fórmula del agua?", "H2O", TipoPregunta.OPCION,
-						new String[] { "H2O", "CO2", "O2", "H2SO4" }),
-				new PreguntaOpciones(Nivel.BASICO, 3, "¿Cuál es el planeta más grande del sistema solar?", "Júpiter",
-						TipoPregunta.OPCION, new String[] { "Júpiter", "Saturno", "Neptuno", "Tierra" }),
-				new PreguntaOpciones(Nivel.BASICO, 4, "¿Qué tipo de energía es producida por el sol?", "Energía solar",
-						TipoPregunta.OPCION,
-						new String[] { "Energía solar", "Energía eólica", "Energía térmica", "Energía química" }),
-				new PreguntaOpciones(Nivel.BASICO, 5, "¿Qué gas es esencial para la respiración humana?", "Oxígeno",
-						TipoPregunta.OPCION, new String[] { "Oxígeno", "Nitrógeno", "Dióxido de carbono", "Helio" }),
-				new PreguntaOpciones(Nivel.BASICO, 6,
-						"¿Cómo se llama el proceso mediante el cual las plantas producen su alimento?", "Fotosíntesis",
-						TipoPregunta.OPCION,
-						new String[] { "Fotosíntesis", "Respiración", "Fermentación", "Digestión" }),
-				new PreguntaOpciones(Nivel.BASICO, 7, "¿Cuál es el metal más abundante en la corteza terrestre?",
-						"Aluminio", TipoPregunta.OPCION, new String[] { "Aluminio", "Hierro", "Cobre", "Oro" }),
-				new PreguntaOpciones(Nivel.BASICO, 8, "¿Qué científico formuló la teoría de la relatividad?",
-						"Albert Einstein", TipoPregunta.OPCION,
-						new String[] { "Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla" }),
-				new PreguntaOpciones(Nivel.BASICO, 9, "¿Qué partícula subatómica tiene carga negativa?", "Electrón",
-						TipoPregunta.OPCION, new String[] { "Electrón", "Protón", "Neutrón", "Quark" }),
-				new PreguntaOpciones(Nivel.BASICO, 10, "¿Cuál es el proceso por el cual el agua se convierte en vapor?",
-						"Evaporación", TipoPregunta.OPCION,
-						new String[] { "Evaporación", "Condensación", "Sublimación", "Fusión" }));
-
-		CursoPlantilla cursoCiencia = new CursoPlantilla("Ciencia", usuarioPrueba.getNickname(), "Principios básicos de la ciencia",
-				"Introducción a conceptos científicos", Nivel.BASICO, bloque1Ciencia);
-
-		// Curso de Estudios
-		BloqueContenido bloque1Estudios = new BloqueContenido(0,
-				new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es una técnica efectiva de estudio?", "Mapas mentales",
-						TipoPregunta.OPCION,
-						new String[] { "Mapas mentales", "Mirar videos", "Dormir más", "No tomar apuntes" }),
-				new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué es la mnemotecnia?", "Un método de memorización",
-						TipoPregunta.OPCION,
-						new String[] { "Un método de memorización", "Un idioma antiguo", "Una asignatura",
-								"Un deporte" }),
-				new PreguntaOpciones(Nivel.BASICO, 3, "¿Qué técnica ayuda a resumir información visualmente?",
-						"Diagramas de flujo", TipoPregunta.OPCION,
-						new String[] { "Diagramas de flujo", "Lectura en voz alta", "Copiar textos",
-								"Escuchar música" }),
-				new PreguntaOpciones(Nivel.BASICO, 4, "¿Cuál es el beneficio de tomar apuntes?",
-						"Facilita la retención de información", TipoPregunta.OPCION,
-						new String[] { "Facilita la retención de información", "Consume tiempo", "Es obligatorio",
-								"Evita estudiar después" }),
-				new PreguntaOpciones(Nivel.BASICO, 5, "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?",
-						"La técnica Pomodoro", TipoPregunta.OPCION,
-						new String[] { "La técnica Pomodoro", "Leer sin pausas", "Estudiar sin planificación",
-								"Solo estudiar antes del examen" }),
-				new PreguntaOpciones(Nivel.BASICO, 6, "¿Qué ayuda a mejorar la comprensión lectora?", "Hacer resúmenes",
-						TipoPregunta.OPCION,
-						new String[] { "Hacer resúmenes", "Leer rápido", "No releer",
-								"Memorizar palabra por palabra" }),
-				new PreguntaOpciones(Nivel.BASICO, 7, "¿Por qué es importante el descanso en el estudio?",
-						"Mejora la concentración y la memoria", TipoPregunta.OPCION,
-						new String[] { "Mejora la concentración y la memoria", "Es una pérdida de tiempo",
-								"Es solo para relajarse", "Evita aprender" }),
-				new PreguntaOpciones(Nivel.BASICO, 8, "¿Cómo se puede mejorar la retención de información?",
-						"Repasando periódicamente", TipoPregunta.OPCION,
-						new String[] { "Repasando periódicamente", "Solo leyendo una vez", "Dejando todo para el final",
-								"No revisando apuntes" }),
-				new PreguntaOpciones(Nivel.BASICO, 9, "¿Qué técnica facilita recordar listas de palabras?",
-						"Asociaciones y acrónimos", TipoPregunta.OPCION,
-						new String[] { "Asociaciones y acrónimos", "Leer en silencio", "Estudiar en grupo",
-								"Tomar más café" }),
-				new PreguntaOpciones(Nivel.BASICO, 10, "¿Qué puede ayudar a mantener la motivación al estudiar?",
-						"Establecer metas claras", TipoPregunta.OPCION, new String[] { "Establecer metas claras",
-								"Estudiar sin plan", "Evitar descansos", "Solo estudiar antes del examen" }));
-		CursoPlantilla cursoEstudios = new CursoPlantilla("Estudios", usuarioPrueba.getNickname(),
-				"Estrategias para mejorar el aprendizaje", "Técnicas y hábitos de estudio", Nivel.BASICO,
-				bloque1Estudios);
-
-		// Curso de Diseño
-		BloqueContenido bloque1Diseno = new BloqueContenido(0,
-				new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es un software de diseño gráfico?", "Photoshop",
-						TipoPregunta.OPCION, new String[] { "Photoshop", "Excel", "Word", "Windows" }),
-				new PreguntaOpciones(Nivel.BASICO, 2, "¿Qué es la teoría del color?",
-						"El estudio de cómo los colores interactúan", TipoPregunta.OPCION,
-						new String[] { "El estudio de cómo los colores interactúan", "La combinación de colores",
-								"El uso de filtros en fotos", "La elección de tipografías" }));
-
-		CursoPlantilla cursoDiseno = new CursoPlantilla("Diseño", usuarioPrueba.getNickname(), "Fundamentos del diseño gráfico",
-				"Aprender sobre composición y colores", Nivel.BASICO, bloque1Diseno);
-
-		cursosPrueba.add(cursoInformatica);
-		cursosPrueba.add(cursoMusica);
-		cursosPrueba.add(cursoCiencia);
-		cursosPrueba.add(cursoEstudios);
-		cursosPrueba.add(cursoDiseno);
-
-		cursosPrueba.add(curso2);
-		cursosPrueba.add(curso1);
-		
-		exportarCurso();
-
-//		// Crear los cursos y agregar los bloques de contenido al repositorio
-//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso1);
-//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(curso2);
-//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoInformatica);
-//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoMusica);
-//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoCiencia);
-//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoEstudios);
-//		RepositorioCurso.INSTANCE.agregarCursoPlantilla(cursoDiseno);
-//
-//		// Agregar bloques de contenido para el curso 1
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso1);
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso1);
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso1);
-//
-//		// Agregar bloques de contenido para el curso 2
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Curso2);
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque2Curso2);
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque3Curso2);
-//
-//		// Agregar bloques de contenido para el curso de informática
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Informatica);
-//
-//		// Agregar bloques de contenido para el curso de música
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Musica);
-//
-//		// Agregar bloques de contenido para el curso de ciencia
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Ciencia);
-//
-//		// Agregar bloques de contenido para el curso de estudios
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Estudios);
-//
-//		// Agregar bloques de contenido para el curso de diseño
-//		RepositorioCurso.INSTANCE.agregarBloqueContenido(bloque1Diseno);
-
 	}
 
 }

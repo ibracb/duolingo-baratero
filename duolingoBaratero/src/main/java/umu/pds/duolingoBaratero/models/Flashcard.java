@@ -15,16 +15,11 @@ import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
 
 @Entity
-@Table(name="flashcards")
+@Table(name = "flashcards")
 @DiscriminatorValue("FLASHCARD")
 public class Flashcard extends Pregunta {
 
 	private static final String ACIERTO = "acierto";
-
-	public Flashcard(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo,
-			int tiempoLimite) {
-		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
-	}
 
 	public Flashcard() {
 		super();
