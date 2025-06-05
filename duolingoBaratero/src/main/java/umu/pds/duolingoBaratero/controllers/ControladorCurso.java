@@ -54,7 +54,7 @@ public enum ControladorCurso {
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
 		this.recuperarCursosBase();
-		pruebas();
+		//pruebas();
 	}
 
 	public void recuperarCursosBase() {
@@ -117,15 +117,15 @@ public enum ControladorCurso {
 		return curso.getPropietario();
 	}
 
-	public CursoEnProgreso getCursoEnProgreso(String nombre) {
+	public CursoEnProgreso getCursoEnProgreso(String nombre, Usuario usuario) {
 		Optional<CursoPlantilla> cursoPlantilla = this.getCursoPlantilla(nombre);
 		if (cursoPlantilla.isPresent())
-			return new CursoEnProgreso(cursoPlantilla.get(), null);
+			return new CursoEnProgreso(cursoPlantilla.get(), null, usuario);
 		return null;
 	}
 
-	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {
-		return new CursoEnProgreso(curso, aprendizajeSeleccionado);
+	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado, Usuario usuario) {
+		return new CursoEnProgreso(curso, aprendizajeSeleccionado, usuario);
 	}
 
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {

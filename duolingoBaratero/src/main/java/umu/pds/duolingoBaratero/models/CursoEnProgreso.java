@@ -28,12 +28,14 @@ public class CursoEnProgreso {
 	private Aprendizaje aprendizaje;
 	private EstadoCursoEnProgreso estado;
 	private int bloqueActual;
+	private Usuario usuario;
 	
 	// Y aqui falta meter una relacion hacia el usuario para que un curos en progreso pertenezca a un usuario
 	
 	
-	public CursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado) {
+	public CursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado, Usuario usuario) {
 		this.cursoPlantilla = cursoPlantilla;
+		this.usuario = usuario;
 		setAprendizajeConEnum(aprendizajeSeleccionado);
 		setEstado(new EstadoNuevo(this));
 		id = Constantes.getID();

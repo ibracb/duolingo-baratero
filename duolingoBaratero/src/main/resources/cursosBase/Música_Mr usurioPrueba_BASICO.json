@@ -5,7 +5,7 @@
   "objetivos" : "Aprender sobre notas y claves musicales",
   "nivel" : "BASICO",
   "imagen" : null,
-  "tipoPreguntas" : [ "OPCIONES" ],
+  "tipoPreguntas" : [ "OPCION" ],
   "contenidos" : [ {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -13,7 +13,7 @@
       "numero" : 0,
       "pregunta" : "¿Cuál es el tempo musical más rápido?",
       "respuestaCorrecta" : "Presto",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Presto", "Andante", "Adagio", "Largo" ]
     }, {
       "tipo" : "OPCIONES",
@@ -21,7 +21,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué elemento define la intensidad del sonido en la música?",
       "respuestaCorrecta" : "Dinámica",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Dinámica", "Tempo", "Melodía", "Armonía" ]
     }, {
       "tipo" : "OPCIONES",
@@ -29,7 +29,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué instrumento tiene teclas blancas y negras?",
       "respuestaCorrecta" : "Piano",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Piano", "Guitarra", "Batería", "Violín" ]
     }, {
       "tipo" : "OPCIONES",
@@ -37,7 +37,7 @@
       "numero" : 3,
       "pregunta" : "¿Cuántas cuerdas tiene una guitarra clásica?",
       "respuestaCorrecta" : "Seis",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Seis", "Cuatro", "Ocho", "Cinco" ]
     }, {
       "tipo" : "OPCIONES",
@@ -45,7 +45,7 @@
       "numero" : 4,
       "pregunta" : "¿Cómo se llama el signo que representa la duración del sonido en una partitura?",
       "respuestaCorrecta" : "Figura musical",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Figura musical", "Clave", "Tempo", "Pentagrama" ]
     }, {
       "tipo" : "OPCIONES",
@@ -53,7 +53,7 @@
       "numero" : 5,
       "pregunta" : "¿Cómo se llama la parte de la canción que se repite?",
       "respuestaCorrecta" : "Estribillo",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Estribillo", "Verso", "Puente", "Coda" ]
     }, {
       "tipo" : "OPCIONES",
@@ -61,7 +61,7 @@
       "numero" : 6,
       "pregunta" : "¿Qué familia de instrumentos incluye la trompeta y el trombón?",
       "respuestaCorrecta" : "Viento-metal",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Viento-metal", "Cuerda", "Percusión", "Viento-madera" ]
     }, {
       "tipo" : "OPCIONES",
@@ -69,7 +69,7 @@
       "numero" : 7,
       "pregunta" : "¿Cuál es la clave musical más usada en partituras?",
       "respuestaCorrecta" : "Clave de sol",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Clave de sol", "Clave de fa", "Clave de do", "Clave de la" ]
     }, {
       "tipo" : "OPCIONES",
@@ -77,7 +77,7 @@
       "numero" : 8,
       "pregunta" : "¿Cuántas notas musicales existen?",
       "respuestaCorrecta" : "Siete",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Siete", "Cinco", "Doce", "Cuatro" ]
     }, {
       "tipo" : "OPCIONES",
@@ -85,17 +85,17 @@
       "numero" : 9,
       "pregunta" : "¿Cuál es el nombre de la escala musical más común en la música occidental?",
       "respuestaCorrecta" : "Escala mayor",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Escala mayor", "Escala menor", "Escala cromática", "Escala pentatónica" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
+    "tiposPreguntas" : [ "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
       "pregunta" : "¿Cuál es el tempo musical más rápido?",
       "respuestaCorrecta" : "Presto",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Presto", "Andante", "Adagio", "Largo" ]
     }, {
       "tipo" : "OPCIONES",
@@ -103,7 +103,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué elemento define la intensidad del sonido en la música?",
       "respuestaCorrecta" : "Dinámica",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Dinámica", "Tempo", "Melodía", "Armonía" ]
     }, {
       "tipo" : "OPCIONES",
@@ -111,7 +111,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué instrumento tiene teclas blancas y negras?",
       "respuestaCorrecta" : "Piano",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Piano", "Guitarra", "Batería", "Violín" ]
     }, {
       "tipo" : "OPCIONES",
@@ -119,7 +119,7 @@
       "numero" : 3,
       "pregunta" : "¿Cuántas cuerdas tiene una guitarra clásica?",
       "respuestaCorrecta" : "Seis",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Seis", "Cuatro", "Ocho", "Cinco" ]
     }, {
       "tipo" : "OPCIONES",
@@ -127,7 +127,7 @@
       "numero" : 4,
       "pregunta" : "¿Cómo se llama el signo que representa la duración del sonido en una partitura?",
       "respuestaCorrecta" : "Figura musical",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Figura musical", "Clave", "Tempo", "Pentagrama" ]
     }, {
       "tipo" : "OPCIONES",
@@ -135,7 +135,7 @@
       "numero" : 5,
       "pregunta" : "¿Cómo se llama la parte de la canción que se repite?",
       "respuestaCorrecta" : "Estribillo",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Estribillo", "Verso", "Puente", "Coda" ]
     }, {
       "tipo" : "OPCIONES",
@@ -143,7 +143,7 @@
       "numero" : 6,
       "pregunta" : "¿Qué familia de instrumentos incluye la trompeta y el trombón?",
       "respuestaCorrecta" : "Viento-metal",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Viento-metal", "Cuerda", "Percusión", "Viento-madera" ]
     }, {
       "tipo" : "OPCIONES",
@@ -151,7 +151,7 @@
       "numero" : 7,
       "pregunta" : "¿Cuál es la clave musical más usada en partituras?",
       "respuestaCorrecta" : "Clave de sol",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Clave de sol", "Clave de fa", "Clave de do", "Clave de la" ]
     }, {
       "tipo" : "OPCIONES",
@@ -159,7 +159,7 @@
       "numero" : 8,
       "pregunta" : "¿Cuántas notas musicales existen?",
       "respuestaCorrecta" : "Siete",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Siete", "Cinco", "Doce", "Cuatro" ]
     }, {
       "tipo" : "OPCIONES",
@@ -167,7 +167,7 @@
       "numero" : 9,
       "pregunta" : "¿Cuál es el nombre de la escala musical más común en la música occidental?",
       "respuestaCorrecta" : "Escala mayor",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Escala mayor", "Escala menor", "Escala cromática", "Escala pentatónica" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -176,7 +176,7 @@
       "numero" : 0,
       "pregunta" : "¿Cuál es el tempo musical más rápido?",
       "respuestaCorrecta" : "Presto",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Presto", "Andante", "Adagio", "Largo" ]
     }, {
       "tipo" : "OPCIONES",
@@ -184,7 +184,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué elemento define la intensidad del sonido en la música?",
       "respuestaCorrecta" : "Dinámica",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Dinámica", "Tempo", "Melodía", "Armonía" ]
     }, {
       "tipo" : "OPCIONES",
@@ -192,7 +192,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué instrumento tiene teclas blancas y negras?",
       "respuestaCorrecta" : "Piano",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Piano", "Guitarra", "Batería", "Violín" ]
     }, {
       "tipo" : "OPCIONES",
@@ -200,7 +200,7 @@
       "numero" : 3,
       "pregunta" : "¿Cuántas cuerdas tiene una guitarra clásica?",
       "respuestaCorrecta" : "Seis",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Seis", "Cuatro", "Ocho", "Cinco" ]
     }, {
       "tipo" : "OPCIONES",
@@ -208,7 +208,7 @@
       "numero" : 4,
       "pregunta" : "¿Cómo se llama el signo que representa la duración del sonido en una partitura?",
       "respuestaCorrecta" : "Figura musical",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Figura musical", "Clave", "Tempo", "Pentagrama" ]
     }, {
       "tipo" : "OPCIONES",
@@ -216,7 +216,7 @@
       "numero" : 5,
       "pregunta" : "¿Cómo se llama la parte de la canción que se repite?",
       "respuestaCorrecta" : "Estribillo",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Estribillo", "Verso", "Puente", "Coda" ]
     }, {
       "tipo" : "OPCIONES",
@@ -224,7 +224,7 @@
       "numero" : 6,
       "pregunta" : "¿Qué familia de instrumentos incluye la trompeta y el trombón?",
       "respuestaCorrecta" : "Viento-metal",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Viento-metal", "Cuerda", "Percusión", "Viento-madera" ]
     }, {
       "tipo" : "OPCIONES",
@@ -232,7 +232,7 @@
       "numero" : 7,
       "pregunta" : "¿Cuál es la clave musical más usada en partituras?",
       "respuestaCorrecta" : "Clave de sol",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Clave de sol", "Clave de fa", "Clave de do", "Clave de la" ]
     }, {
       "tipo" : "OPCIONES",
@@ -240,7 +240,7 @@
       "numero" : 8,
       "pregunta" : "¿Cuántas notas musicales existen?",
       "respuestaCorrecta" : "Siete",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Siete", "Cinco", "Doce", "Cuatro" ]
     }, {
       "tipo" : "OPCIONES",
@@ -248,7 +248,7 @@
       "numero" : 9,
       "pregunta" : "¿Cuál es el nombre de la escala musical más común en la música occidental?",
       "respuestaCorrecta" : "Escala mayor",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Escala mayor", "Escala menor", "Escala cromática", "Escala pentatónica" ]
     } ]
   } ]

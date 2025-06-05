@@ -1,8 +1,8 @@
 package umu.pds.duolingoBaratero.controllers;
 
-
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
+import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 
 /**
@@ -11,10 +11,11 @@ import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
  */
 public enum ContraldorCursoProgreso {
 	INSTANCE;
-	
-    public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizaje) {
-        return new CursoEnProgreso(curso, aprendizaje);
-    }
+
+	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizaje,
+			Usuario usuario) {
+		return new CursoEnProgreso(curso, aprendizaje, usuario);
+	}
 
 	public boolean isCursoNuevo(CursoEnProgreso curso) {
 		if (curso == null) {

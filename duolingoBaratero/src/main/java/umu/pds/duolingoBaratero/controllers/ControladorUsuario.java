@@ -21,6 +21,7 @@ import umu.pds.duolingoBaratero.services.ImageService;
 
 public enum ControladorUsuario {
 	INSTANCE;
+
 	private Usuario user;
 	private ImageService sevicioImagenes;
 
@@ -69,46 +70,40 @@ public enum ControladorUsuario {
 			user.setImagen(image);
 		}
 	}
-	
+
 	public void setCursos(String[] nombresCursos) {
-	    Set<CursoEnProgreso> cursos = new HashSet<>();
+		Set<CursoEnProgreso> cursos = new HashSet<>();
 
-	    for (String nombre : nombresCursos) {
-	        ControladorCurso.INSTANCE.getCursoPlantilla(nombre).ifPresent(plantilla ->
-	            cursos.add(ContraldorCursoProgreso.INSTANCE.getCursoEnProgreso(plantilla, null))
-	        );
-	    }
+		for (String nombre : nombresCursos) {
+			ControladorCurso.INSTANCE.getCursoPlantilla(nombre).ifPresent(plantilla -> cursos
+					.add(ContraldorCursoProgreso.INSTANCE.getCursoEnProgreso(plantilla, null, user)));
+		}
 
-	    user.setCursos(cursos);
+		user.setCursos(cursos);
 	}
-	
+
 	public boolean addCursosEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {
-		CursoEnProgreso cursoProgreso = ControladorCurso.INSTANCE.getCursoEnProgreso(curso, aprendizajeSeleccionado);
-		boolean resultado=  user.addCursoEnProgreso(cursoProgreso);
-		if(resultado) {
+		CursoEnProgreso cursoProgreso = ControladorCurso.INSTANCE.getCursoEnProgreso(curso, aprendizajeSeleccionado,
+				user);
+		boolean resultado = user.addCursoEnProgreso(cursoProgreso);
+		if (resultado) {
 			RepositorioCurso.INSTANCE.agregarCursoEnProgreso(cursoProgreso);
 		}
 		return resultado;
 	}
-	
+
 	public boolean estaCursando(CursoPlantilla curso) {
 		return user.estaCursando(curso);
 	}
-	
+
 	public boolean addCursoPlantilla(String nombre, String objetivos, String descripcion) {
 		return true;
 	}
-	
 
-	
 	public Set<CursoEnProgreso> getCursosUsuarioActual() {
 		return user.getCursos();
 	}
-	
-	public List<CursoPlantilla> getCursosCreadosUsuarioActual(){
-		return user.getCursosCreados();
-	}
-	
+
 	public double getPorcentajeRespuestasCorrectas() {
 		return user.getPorcentajeAcierto();
 	}
@@ -124,7 +119,6 @@ public enum ControladorUsuario {
 	public int getNumMaxAccesos() {
 		return user.getNumMaxAccesos();
 	}
-		
 
 	// ----------------------------------------------
 	// Funciones imagenes
@@ -151,15 +145,15 @@ public enum ControladorUsuario {
 			return getScaledDefaultImage(dimensiones);
 		}
 	}
-	
+
 	public ImageIcon getScaledImage(BufferedImage bufferedImage, int dimensiones) {
 		return sevicioImagenes.getScaledImage(bufferedImage, dimensiones);
 	}
-	
+
 	public ImageIcon getScaledImage(ImageIcon image, int dimensiones) {
 		return sevicioImagenes.getScaledImage(image, dimensiones);
 	}
-	
+
 	public ImageIcon getScaledDefaultImage(int dimensiones) {
 		ImageIcon image = new ImageIcon(getClass().getResource("/persona.png"));
 		return sevicioImagenes.getScaledImage(image, dimensiones);
@@ -167,10 +161,7 @@ public enum ControladorUsuario {
 
 	public void borrarCurso(CursoEnProgreso curso) {
 		user.eliminarCurso(curso);
-		
+
 	}
-
-	
-
 
 }

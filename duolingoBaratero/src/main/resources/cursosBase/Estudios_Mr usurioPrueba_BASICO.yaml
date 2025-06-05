@@ -6,7 +6,7 @@ objetivos: "Técnicas y hábitos de estudio"
 nivel: "BASICO"
 imagen: null
 tipoPreguntas:
-- "OPCIONES"
+- "OPCION"
 contenidos:
 - preguntas:
   - !<OPCIONES>
@@ -14,7 +14,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cuál es una técnica efectiva de estudio?"
     respuestaCorrecta: "Mapas mentales"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mapas mentales"
     - "Mirar videos"
@@ -25,7 +25,7 @@ contenidos:
     numero: 1
     pregunta: "¿Por qué es importante el descanso en el estudio?"
     respuestaCorrecta: "Mejora la concentración y la memoria"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mejora la concentración y la memoria"
     - "Es una pérdida de tiempo"
@@ -36,7 +36,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué ayuda a mejorar la comprensión lectora?"
     respuestaCorrecta: "Hacer resúmenes"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Hacer resúmenes"
     - "Leer rápido"
@@ -47,7 +47,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cómo se puede mejorar la retención de información?"
     respuestaCorrecta: "Repasando periódicamente"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Repasando periódicamente"
     - "Solo leyendo una vez"
@@ -58,7 +58,7 @@ contenidos:
     numero: 4
     pregunta: "¿Qué técnica facilita recordar listas de palabras?"
     respuestaCorrecta: "Asociaciones y acrónimos"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Asociaciones y acrónimos"
     - "Leer en silencio"
@@ -69,7 +69,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cuál es el beneficio de tomar apuntes?"
     respuestaCorrecta: "Facilita la retención de información"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Facilita la retención de información"
     - "Consume tiempo"
@@ -80,7 +80,7 @@ contenidos:
     numero: 6
     pregunta: "¿Qué técnica ayuda a resumir información visualmente?"
     respuestaCorrecta: "Diagramas de flujo"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Diagramas de flujo"
     - "Lectura en voz alta"
@@ -91,7 +91,7 @@ contenidos:
     numero: 7
     pregunta: "¿Qué puede ayudar a mantener la motivación al estudiar?"
     respuestaCorrecta: "Establecer metas claras"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Establecer metas claras"
     - "Estudiar sin plan"
@@ -102,7 +102,7 @@ contenidos:
     numero: 8
     pregunta: "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?"
     respuestaCorrecta: "La técnica Pomodoro"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "La técnica Pomodoro"
     - "Leer sin pausas"
@@ -113,21 +113,21 @@ contenidos:
     numero: 9
     pregunta: "¿Qué es la mnemotecnia?"
     respuestaCorrecta: "Un método de memorización"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Un método de memorización"
     - "Un idioma antiguo"
     - "Una asignatura"
     - "Un deporte"
   tiposPreguntas:
-  - "OPCIONES"
+  - "OPCION"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 0
     pregunta: "¿Cuál es una técnica efectiva de estudio?"
     respuestaCorrecta: "Mapas mentales"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mapas mentales"
     - "Mirar videos"
@@ -138,7 +138,7 @@ contenidos:
     numero: 1
     pregunta: "¿Por qué es importante el descanso en el estudio?"
     respuestaCorrecta: "Mejora la concentración y la memoria"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mejora la concentración y la memoria"
     - "Es una pérdida de tiempo"
@@ -149,7 +149,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué ayuda a mejorar la comprensión lectora?"
     respuestaCorrecta: "Hacer resúmenes"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Hacer resúmenes"
     - "Leer rápido"
@@ -160,7 +160,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cómo se puede mejorar la retención de información?"
     respuestaCorrecta: "Repasando periódicamente"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Repasando periódicamente"
     - "Solo leyendo una vez"
@@ -171,7 +171,7 @@ contenidos:
     numero: 4
     pregunta: "¿Qué técnica facilita recordar listas de palabras?"
     respuestaCorrecta: "Asociaciones y acrónimos"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Asociaciones y acrónimos"
     - "Leer en silencio"
@@ -182,7 +182,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cuál es el beneficio de tomar apuntes?"
     respuestaCorrecta: "Facilita la retención de información"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Facilita la retención de información"
     - "Consume tiempo"
@@ -193,7 +193,7 @@ contenidos:
     numero: 6
     pregunta: "¿Qué técnica ayuda a resumir información visualmente?"
     respuestaCorrecta: "Diagramas de flujo"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Diagramas de flujo"
     - "Lectura en voz alta"
@@ -204,7 +204,7 @@ contenidos:
     numero: 7
     pregunta: "¿Qué puede ayudar a mantener la motivación al estudiar?"
     respuestaCorrecta: "Establecer metas claras"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Establecer metas claras"
     - "Estudiar sin plan"
@@ -215,7 +215,7 @@ contenidos:
     numero: 8
     pregunta: "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?"
     respuestaCorrecta: "La técnica Pomodoro"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "La técnica Pomodoro"
     - "Leer sin pausas"
@@ -226,7 +226,7 @@ contenidos:
     numero: 9
     pregunta: "¿Qué es la mnemotecnia?"
     respuestaCorrecta: "Un método de memorización"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Un método de memorización"
     - "Un idioma antiguo"
@@ -238,7 +238,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cuál es una técnica efectiva de estudio?"
     respuestaCorrecta: "Mapas mentales"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mapas mentales"
     - "Mirar videos"
@@ -249,7 +249,7 @@ contenidos:
     numero: 1
     pregunta: "¿Por qué es importante el descanso en el estudio?"
     respuestaCorrecta: "Mejora la concentración y la memoria"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mejora la concentración y la memoria"
     - "Es una pérdida de tiempo"
@@ -260,7 +260,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué ayuda a mejorar la comprensión lectora?"
     respuestaCorrecta: "Hacer resúmenes"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Hacer resúmenes"
     - "Leer rápido"
@@ -271,7 +271,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cómo se puede mejorar la retención de información?"
     respuestaCorrecta: "Repasando periódicamente"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Repasando periódicamente"
     - "Solo leyendo una vez"
@@ -282,7 +282,7 @@ contenidos:
     numero: 4
     pregunta: "¿Qué técnica facilita recordar listas de palabras?"
     respuestaCorrecta: "Asociaciones y acrónimos"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Asociaciones y acrónimos"
     - "Leer en silencio"
@@ -293,7 +293,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cuál es el beneficio de tomar apuntes?"
     respuestaCorrecta: "Facilita la retención de información"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Facilita la retención de información"
     - "Consume tiempo"
@@ -304,7 +304,7 @@ contenidos:
     numero: 6
     pregunta: "¿Qué técnica ayuda a resumir información visualmente?"
     respuestaCorrecta: "Diagramas de flujo"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Diagramas de flujo"
     - "Lectura en voz alta"
@@ -315,7 +315,7 @@ contenidos:
     numero: 7
     pregunta: "¿Qué puede ayudar a mantener la motivación al estudiar?"
     respuestaCorrecta: "Establecer metas claras"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Establecer metas claras"
     - "Estudiar sin plan"
@@ -326,7 +326,7 @@ contenidos:
     numero: 8
     pregunta: "¿Qué estrategia ayuda a gestionar mejor el tiempo de estudio?"
     respuestaCorrecta: "La técnica Pomodoro"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "La técnica Pomodoro"
     - "Leer sin pausas"
@@ -337,7 +337,7 @@ contenidos:
     numero: 9
     pregunta: "¿Qué es la mnemotecnia?"
     respuestaCorrecta: "Un método de memorización"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Un método de memorización"
     - "Un idioma antiguo"

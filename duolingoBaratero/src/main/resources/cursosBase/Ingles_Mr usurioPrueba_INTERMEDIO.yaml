@@ -6,7 +6,7 @@ objetivos: "Mejorar gramática y vocabulario"
 nivel: "INTERMEDIO"
 imagen: null
 tipoPreguntas:
-- "OPCIONES"
+- "OPCION"
 contenidos:
 - preguntas:
   - !<OPCIONES>
@@ -14,7 +14,7 @@ contenidos:
     numero: 0
     pregunta: "Completa la frase: 'She ___ studying'"
     respuestaCorrecta: "is"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "is"
     - "are"
@@ -25,7 +25,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el pasado de 'go'?"
     respuestaCorrecta: "went"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "gone"
     - "went"
@@ -36,7 +36,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué significa 'Table' en español?"
     respuestaCorrecta: "Mesa"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mesa"
     - "Silla"
@@ -47,21 +47,21 @@ contenidos:
     numero: 3
     pregunta: "¿Cómo se dice 'Amigo' en inglés?"
     respuestaCorrecta: "Friend"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Friend"
     - "Brother"
     - "Sister"
     - "Mother"
   tiposPreguntas:
-  - "OPCIONES"
+  - "OPCION"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
     pregunta: "Completa la frase: 'She ___ studying'"
     respuestaCorrecta: "is"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "is"
     - "are"
@@ -72,7 +72,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el pasado de 'go'?"
     respuestaCorrecta: "went"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "gone"
     - "went"
@@ -83,7 +83,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué significa 'Table' en español?"
     respuestaCorrecta: "Mesa"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mesa"
     - "Silla"
@@ -94,7 +94,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cómo se dice 'Amigo' en inglés?"
     respuestaCorrecta: "Friend"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Friend"
     - "Brother"
@@ -106,7 +106,7 @@ contenidos:
     numero: 0
     pregunta: "Completa la frase: 'She ___ studying'"
     respuestaCorrecta: "is"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "is"
     - "are"
@@ -117,7 +117,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el pasado de 'go'?"
     respuestaCorrecta: "went"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "gone"
     - "went"
@@ -128,7 +128,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué significa 'Table' en español?"
     respuestaCorrecta: "Mesa"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Mesa"
     - "Silla"
@@ -139,7 +139,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cómo se dice 'Amigo' en inglés?"
     respuestaCorrecta: "Friend"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Friend"
     - "Brother"
@@ -151,7 +151,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Ventana' en inglés?"
     respuestaCorrecta: "Window"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Window"
     - "Door"
@@ -162,7 +162,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el opuesto de 'cold'?"
     respuestaCorrecta: "hot"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "hot"
     - "warm"
@@ -173,7 +173,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué significa 'Chair' en español?"
     respuestaCorrecta: "Silla"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Silla"
     - "Mesa"
@@ -184,21 +184,21 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'I ___ going to school'"
     respuestaCorrecta: "am"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "am"
     - "is"
     - "are"
     - "be"
   tiposPreguntas:
-  - "OPCIONES"
+  - "OPCION"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
     pregunta: "¿Cómo se dice 'Ventana' en inglés?"
     respuestaCorrecta: "Window"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Window"
     - "Door"
@@ -209,7 +209,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el opuesto de 'cold'?"
     respuestaCorrecta: "hot"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "hot"
     - "warm"
@@ -220,7 +220,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué significa 'Chair' en español?"
     respuestaCorrecta: "Silla"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Silla"
     - "Mesa"
@@ -231,7 +231,7 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'I ___ going to school'"
     respuestaCorrecta: "am"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "am"
     - "is"
@@ -243,7 +243,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Ventana' en inglés?"
     respuestaCorrecta: "Window"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Window"
     - "Door"
@@ -254,7 +254,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el opuesto de 'cold'?"
     respuestaCorrecta: "hot"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "hot"
     - "warm"
@@ -265,7 +265,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué significa 'Chair' en español?"
     respuestaCorrecta: "Silla"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Silla"
     - "Mesa"
@@ -276,7 +276,7 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'I ___ going to school'"
     respuestaCorrecta: "am"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "am"
     - "is"
@@ -288,7 +288,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Sol' en inglés?"
     respuestaCorrecta: "Sun"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Sun"
     - "Star"
@@ -299,7 +299,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Fast' en español?"
     respuestaCorrecta: "Rápido"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Rápido"
     - "Lento"
@@ -310,7 +310,7 @@ contenidos:
     numero: 2
     pregunta: "Completa la frase: 'We ___ to the park'"
     respuestaCorrecta: "go"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "go"
     - "going"
@@ -321,21 +321,21 @@ contenidos:
     numero: 3
     pregunta: "¿Cuál es el plural de 'mouse'?"
     respuestaCorrecta: "mice"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "mice"
     - "mouses"
     - "mouse"
     - "mousses"
   tiposPreguntas:
-  - "OPCIONES"
+  - "OPCION"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "INTERMEDIO"
     numero: 0
     pregunta: "¿Cómo se dice 'Sol' en inglés?"
     respuestaCorrecta: "Sun"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Sun"
     - "Star"
@@ -346,7 +346,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Fast' en español?"
     respuestaCorrecta: "Rápido"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Rápido"
     - "Lento"
@@ -357,7 +357,7 @@ contenidos:
     numero: 2
     pregunta: "Completa la frase: 'We ___ to the park'"
     respuestaCorrecta: "go"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "go"
     - "going"
@@ -368,7 +368,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cuál es el plural de 'mouse'?"
     respuestaCorrecta: "mice"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "mice"
     - "mouses"
@@ -380,7 +380,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Sol' en inglés?"
     respuestaCorrecta: "Sun"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Sun"
     - "Star"
@@ -391,7 +391,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Fast' en español?"
     respuestaCorrecta: "Rápido"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Rápido"
     - "Lento"
@@ -402,7 +402,7 @@ contenidos:
     numero: 2
     pregunta: "Completa la frase: 'We ___ to the park'"
     respuestaCorrecta: "go"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "go"
     - "going"
@@ -413,7 +413,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cuál es el plural de 'mouse'?"
     respuestaCorrecta: "mice"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "mice"
     - "mouses"

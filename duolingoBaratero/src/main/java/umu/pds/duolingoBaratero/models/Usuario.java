@@ -42,6 +42,7 @@ public class Usuario {
 
 	@JsonIgnore
 	private List<CursoPlantilla> cursosCreados;   // Esto hay que sacarlod e auqi esta mal deberia ser recuperado dinamicamente
+	
 
 	@JsonIgnore
 	private Estadistica estadistica;

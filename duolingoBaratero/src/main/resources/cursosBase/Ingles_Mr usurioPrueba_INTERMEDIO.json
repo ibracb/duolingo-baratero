@@ -5,7 +5,7 @@
   "objetivos" : "Mejorar gramática y vocabulario",
   "nivel" : "INTERMEDIO",
   "imagen" : null,
-  "tipoPreguntas" : [ "OPCIONES" ],
+  "tipoPreguntas" : [ "OPCION" ],
   "contenidos" : [ {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -13,7 +13,7 @@
       "numero" : 0,
       "pregunta" : "Completa la frase: 'She ___ studying'",
       "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -21,7 +21,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el pasado de 'go'?",
       "respuestaCorrecta" : "went",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "gone", "went", "goed", "going" ]
     }, {
       "tipo" : "OPCIONES",
@@ -29,7 +29,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué significa 'Table' en español?",
       "respuestaCorrecta" : "Mesa",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Mesa", "Silla", "Cama", "Puerta" ]
     }, {
       "tipo" : "OPCIONES",
@@ -37,17 +37,17 @@
       "numero" : 3,
       "pregunta" : "¿Cómo se dice 'Amigo' en inglés?",
       "respuestaCorrecta" : "Friend",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Friend", "Brother", "Sister", "Mother" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
+    "tiposPreguntas" : [ "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "INTERMEDIO",
       "numero" : 0,
       "pregunta" : "Completa la frase: 'She ___ studying'",
       "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -55,7 +55,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el pasado de 'go'?",
       "respuestaCorrecta" : "went",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "gone", "went", "goed", "going" ]
     }, {
       "tipo" : "OPCIONES",
@@ -63,7 +63,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué significa 'Table' en español?",
       "respuestaCorrecta" : "Mesa",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Mesa", "Silla", "Cama", "Puerta" ]
     }, {
       "tipo" : "OPCIONES",
@@ -71,7 +71,7 @@
       "numero" : 3,
       "pregunta" : "¿Cómo se dice 'Amigo' en inglés?",
       "respuestaCorrecta" : "Friend",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Friend", "Brother", "Sister", "Mother" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -80,7 +80,7 @@
       "numero" : 0,
       "pregunta" : "Completa la frase: 'She ___ studying'",
       "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -88,7 +88,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el pasado de 'go'?",
       "respuestaCorrecta" : "went",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "gone", "went", "goed", "going" ]
     }, {
       "tipo" : "OPCIONES",
@@ -96,7 +96,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué significa 'Table' en español?",
       "respuestaCorrecta" : "Mesa",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Mesa", "Silla", "Cama", "Puerta" ]
     }, {
       "tipo" : "OPCIONES",
@@ -104,7 +104,7 @@
       "numero" : 3,
       "pregunta" : "¿Cómo se dice 'Amigo' en inglés?",
       "respuestaCorrecta" : "Friend",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Friend", "Brother", "Sister", "Mother" ]
     } ]
   }, {
@@ -114,7 +114,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Ventana' en inglés?",
       "respuestaCorrecta" : "Window",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Window", "Door", "Wall", "Floor" ]
     }, {
       "tipo" : "OPCIONES",
@@ -122,7 +122,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el opuesto de 'cold'?",
       "respuestaCorrecta" : "hot",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "hot", "warm", "cool", "freezing" ]
     }, {
       "tipo" : "OPCIONES",
@@ -130,7 +130,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué significa 'Chair' en español?",
       "respuestaCorrecta" : "Silla",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Silla", "Mesa", "Lámpara", "Pizarra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -138,17 +138,17 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'I ___ going to school'",
       "respuestaCorrecta" : "am",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "am", "is", "are", "be" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
+    "tiposPreguntas" : [ "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "INTERMEDIO",
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Ventana' en inglés?",
       "respuestaCorrecta" : "Window",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Window", "Door", "Wall", "Floor" ]
     }, {
       "tipo" : "OPCIONES",
@@ -156,7 +156,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el opuesto de 'cold'?",
       "respuestaCorrecta" : "hot",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "hot", "warm", "cool", "freezing" ]
     }, {
       "tipo" : "OPCIONES",
@@ -164,7 +164,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué significa 'Chair' en español?",
       "respuestaCorrecta" : "Silla",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Silla", "Mesa", "Lámpara", "Pizarra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -172,7 +172,7 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'I ___ going to school'",
       "respuestaCorrecta" : "am",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "am", "is", "are", "be" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -181,7 +181,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Ventana' en inglés?",
       "respuestaCorrecta" : "Window",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Window", "Door", "Wall", "Floor" ]
     }, {
       "tipo" : "OPCIONES",
@@ -189,7 +189,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el opuesto de 'cold'?",
       "respuestaCorrecta" : "hot",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "hot", "warm", "cool", "freezing" ]
     }, {
       "tipo" : "OPCIONES",
@@ -197,7 +197,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué significa 'Chair' en español?",
       "respuestaCorrecta" : "Silla",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Silla", "Mesa", "Lámpara", "Pizarra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -205,7 +205,7 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'I ___ going to school'",
       "respuestaCorrecta" : "am",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "am", "is", "are", "be" ]
     } ]
   }, {
@@ -215,7 +215,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Sol' en inglés?",
       "respuestaCorrecta" : "Sun",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Sun", "Star", "Moon", "Sky" ]
     }, {
       "tipo" : "OPCIONES",
@@ -223,7 +223,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Fast' en español?",
       "respuestaCorrecta" : "Rápido",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Rápido", "Lento", "Fuerte", "Débil" ]
     }, {
       "tipo" : "OPCIONES",
@@ -231,7 +231,7 @@
       "numero" : 2,
       "pregunta" : "Completa la frase: 'We ___ to the park'",
       "respuestaCorrecta" : "go",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "go", "going", "went", "gone" ]
     }, {
       "tipo" : "OPCIONES",
@@ -239,17 +239,17 @@
       "numero" : 3,
       "pregunta" : "¿Cuál es el plural de 'mouse'?",
       "respuestaCorrecta" : "mice",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "mice", "mouses", "mouse", "mousses" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
+    "tiposPreguntas" : [ "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "INTERMEDIO",
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Sol' en inglés?",
       "respuestaCorrecta" : "Sun",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Sun", "Star", "Moon", "Sky" ]
     }, {
       "tipo" : "OPCIONES",
@@ -257,7 +257,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Fast' en español?",
       "respuestaCorrecta" : "Rápido",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Rápido", "Lento", "Fuerte", "Débil" ]
     }, {
       "tipo" : "OPCIONES",
@@ -265,7 +265,7 @@
       "numero" : 2,
       "pregunta" : "Completa la frase: 'We ___ to the park'",
       "respuestaCorrecta" : "go",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "go", "going", "went", "gone" ]
     }, {
       "tipo" : "OPCIONES",
@@ -273,7 +273,7 @@
       "numero" : 3,
       "pregunta" : "¿Cuál es el plural de 'mouse'?",
       "respuestaCorrecta" : "mice",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "mice", "mouses", "mouse", "mousses" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -282,7 +282,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Sol' en inglés?",
       "respuestaCorrecta" : "Sun",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Sun", "Star", "Moon", "Sky" ]
     }, {
       "tipo" : "OPCIONES",
@@ -290,7 +290,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Fast' en español?",
       "respuestaCorrecta" : "Rápido",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Rápido", "Lento", "Fuerte", "Débil" ]
     }, {
       "tipo" : "OPCIONES",
@@ -298,7 +298,7 @@
       "numero" : 2,
       "pregunta" : "Completa la frase: 'We ___ to the park'",
       "respuestaCorrecta" : "go",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "go", "going", "went", "gone" ]
     }, {
       "tipo" : "OPCIONES",
@@ -306,7 +306,7 @@
       "numero" : 3,
       "pregunta" : "¿Cuál es el plural de 'mouse'?",
       "respuestaCorrecta" : "mice",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "mice", "mouses", "mouse", "mousses" ]
     } ]
   } ]

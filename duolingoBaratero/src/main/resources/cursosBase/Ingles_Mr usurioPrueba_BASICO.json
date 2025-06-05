@@ -5,7 +5,7 @@
   "objetivos" : "Aprender vocabulario básico",
   "nivel" : "BASICO",
   "imagen" : null,
-  "tipoPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCIONES" ],
+  "tipoPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCION" ],
   "contenidos" : [ {
     "preguntas" : [ {
       "tipo" : "FLASHCARD",
@@ -29,7 +29,7 @@
       "numero" : 2,
       "pregunta" : "¿Cómo se dice 'Hola' en inglés?",
       "respuestaCorrecta" : "Hello",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Hello", "Hi", "Bye", "Goodbye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -37,7 +37,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué significa 'Dog' en español?",
       "respuestaCorrecta" : "Perro",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
     }, {
       "tipo" : "OPCIONES",
@@ -45,7 +45,7 @@
       "numero" : 4,
       "pregunta" : "Completa la frase: 'I ___ a student'",
       "respuestaCorrecta" : "am",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "am", "is", "are", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -53,10 +53,10 @@
       "numero" : 5,
       "pregunta" : "¿Cuál es el plural de 'child'?",
       "respuestaCorrecta" : "children",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "childs", "childes", "children", "child" ]
     } ],
-    "tiposPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCIONES" ],
+    "tiposPreguntas" : [ "FLASHCARD", "IMAGEN", "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "FLASHCARD",
       "nivel" : "BASICO",
@@ -79,7 +79,7 @@
       "numero" : 2,
       "pregunta" : "¿Cómo se dice 'Hola' en inglés?",
       "respuestaCorrecta" : "Hello",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Hello", "Hi", "Bye", "Goodbye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -87,7 +87,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué significa 'Dog' en español?",
       "respuestaCorrecta" : "Perro",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
     }, {
       "tipo" : "OPCIONES",
@@ -95,7 +95,7 @@
       "numero" : 4,
       "pregunta" : "Completa la frase: 'I ___ a student'",
       "respuestaCorrecta" : "am",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "am", "is", "are", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -103,7 +103,7 @@
       "numero" : 5,
       "pregunta" : "¿Cuál es el plural de 'child'?",
       "respuestaCorrecta" : "children",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "childs", "childes", "children", "child" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -128,7 +128,7 @@
       "numero" : 2,
       "pregunta" : "¿Cómo se dice 'Hola' en inglés?",
       "respuestaCorrecta" : "Hello",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Hello", "Hi", "Bye", "Goodbye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -136,7 +136,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué significa 'Dog' en español?",
       "respuestaCorrecta" : "Perro",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Perro", "Gato", "Pájaro", "Pez" ]
     }, {
       "tipo" : "OPCIONES",
@@ -144,7 +144,7 @@
       "numero" : 4,
       "pregunta" : "Completa la frase: 'I ___ a student'",
       "respuestaCorrecta" : "am",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "am", "is", "are", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -152,7 +152,7 @@
       "numero" : 5,
       "pregunta" : "¿Cuál es el plural de 'child'?",
       "respuestaCorrecta" : "children",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "childs", "childes", "children", "child" ]
     } ]
   }, {
@@ -162,7 +162,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Libro' en inglés?",
       "respuestaCorrecta" : "Book",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Book", "Notebook", "Table", "Paper" ]
     }, {
       "tipo" : "OPCIONES",
@@ -170,7 +170,7 @@
       "numero" : 1,
       "pregunta" : "Completa la frase: 'She ___ a teacher'",
       "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -178,7 +178,7 @@
       "numero" : 2,
       "pregunta" : "¿Cómo se dice 'Gracias' en inglés?",
       "respuestaCorrecta" : "Thank you",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Thank you", "Thanks", "You're welcome", "Hello" ]
     }, {
       "tipo" : "OPCIONES",
@@ -186,17 +186,17 @@
       "numero" : 3,
       "pregunta" : "¿Qué significa 'Car' en español?",
       "respuestaCorrecta" : "Coche",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
+    "tiposPreguntas" : [ "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Libro' en inglés?",
       "respuestaCorrecta" : "Book",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Book", "Notebook", "Table", "Paper" ]
     }, {
       "tipo" : "OPCIONES",
@@ -204,7 +204,7 @@
       "numero" : 1,
       "pregunta" : "Completa la frase: 'She ___ a teacher'",
       "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -212,7 +212,7 @@
       "numero" : 2,
       "pregunta" : "¿Cómo se dice 'Gracias' en inglés?",
       "respuestaCorrecta" : "Thank you",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Thank you", "Thanks", "You're welcome", "Hello" ]
     }, {
       "tipo" : "OPCIONES",
@@ -220,7 +220,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué significa 'Car' en español?",
       "respuestaCorrecta" : "Coche",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -229,7 +229,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Libro' en inglés?",
       "respuestaCorrecta" : "Book",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Book", "Notebook", "Table", "Paper" ]
     }, {
       "tipo" : "OPCIONES",
@@ -237,7 +237,7 @@
       "numero" : 1,
       "pregunta" : "Completa la frase: 'She ___ a teacher'",
       "respuestaCorrecta" : "is",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "is", "are", "am", "be" ]
     }, {
       "tipo" : "OPCIONES",
@@ -245,7 +245,7 @@
       "numero" : 2,
       "pregunta" : "¿Cómo se dice 'Gracias' en inglés?",
       "respuestaCorrecta" : "Thank you",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Thank you", "Thanks", "You're welcome", "Hello" ]
     }, {
       "tipo" : "OPCIONES",
@@ -253,7 +253,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué significa 'Car' en español?",
       "respuestaCorrecta" : "Coche",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Coche", "Casa", "Camión", "Barco" ]
     } ]
   }, {
@@ -263,7 +263,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -271,7 +271,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -279,7 +279,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "start", "stop", "end", "pause" ]
     }, {
       "tipo" : "OPCIONES",
@@ -287,17 +287,17 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "are", "is", "am", "be" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
+    "tiposPreguntas" : [ "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -305,7 +305,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -313,7 +313,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "start", "stop", "end", "pause" ]
     }, {
       "tipo" : "OPCIONES",
@@ -321,7 +321,7 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "are", "is", "am", "be" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -330,7 +330,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -338,7 +338,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -346,7 +346,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "start", "stop", "end", "pause" ]
     }, {
       "tipo" : "OPCIONES",
@@ -354,7 +354,7 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "are", "is", "am", "be" ]
     } ]
   }, {
@@ -364,7 +364,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -372,7 +372,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -380,7 +380,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "start", "stop", "end", "pause" ]
     }, {
       "tipo" : "OPCIONES",
@@ -388,17 +388,17 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "are", "is", "am", "be" ]
     } ],
-    "tiposPreguntas" : [ "OPCIONES" ],
+    "tiposPreguntas" : [ "OPCION" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -406,7 +406,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -414,7 +414,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "start", "stop", "end", "pause" ]
     }, {
       "tipo" : "OPCIONES",
@@ -422,7 +422,7 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "are", "is", "am", "be" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -431,7 +431,7 @@
       "numero" : 0,
       "pregunta" : "¿Cómo se dice 'Buenos días' en inglés?",
       "respuestaCorrecta" : "Good morning",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Good morning", "Good night", "Hello", "Bye" ]
     }, {
       "tipo" : "OPCIONES",
@@ -439,7 +439,7 @@
       "numero" : 1,
       "pregunta" : "¿Qué significa 'Water' en español?",
       "respuestaCorrecta" : "Agua",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "Agua", "Fuego", "Aire", "Tierra" ]
     }, {
       "tipo" : "OPCIONES",
@@ -447,7 +447,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué verbo es sinónimo de 'begin'?",
       "respuestaCorrecta" : "start",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "start", "stop", "end", "pause" ]
     }, {
       "tipo" : "OPCIONES",
@@ -455,7 +455,7 @@
       "numero" : 3,
       "pregunta" : "Completa la frase: 'They ___ at home'",
       "respuestaCorrecta" : "are",
-      "tipo" : "OPCIONES",
+      "tipo" : "OPCION",
       "opciones" : [ "are", "is", "am", "be" ]
     } ]
   } ]

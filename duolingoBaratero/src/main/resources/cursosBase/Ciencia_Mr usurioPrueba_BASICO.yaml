@@ -6,7 +6,7 @@ objetivos: "Introducción a conceptos científicos"
 nivel: "BASICO"
 imagen: null
 tipoPreguntas:
-- "OPCIONES"
+- "OPCION"
 contenidos:
 - preguntas:
   - !<OPCIONES>
@@ -14,7 +14,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cuál es el metal más abundante en la corteza terrestre?"
     respuestaCorrecta: "Aluminio"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Aluminio"
     - "Hierro"
@@ -25,7 +25,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
     respuestaCorrecta: "Evaporación"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Evaporación"
     - "Condensación"
@@ -36,7 +36,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué partícula subatómica tiene carga negativa?"
     respuestaCorrecta: "Electrón"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Electrón"
     - "Protón"
@@ -47,7 +47,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué tipo de energía es producida por el sol?"
     respuestaCorrecta: "Energía solar"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Energía solar"
     - "Energía eólica"
@@ -59,7 +59,7 @@ contenidos:
     pregunta: "¿Cómo se llama el proceso mediante el cual las plantas producen su\
       \ alimento?"
     respuestaCorrecta: "Fotosíntesis"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Fotosíntesis"
     - "Respiración"
@@ -70,7 +70,7 @@ contenidos:
     numero: 5
     pregunta: "¿Qué estudia la biología?"
     respuestaCorrecta: "Los seres vivos"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Los seres vivos"
     - "Los planetas"
@@ -81,7 +81,7 @@ contenidos:
     numero: 6
     pregunta: "¿Cuál es la fórmula del agua?"
     respuestaCorrecta: "H2O"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "H2O"
     - "CO2"
@@ -92,7 +92,7 @@ contenidos:
     numero: 7
     pregunta: "¿Qué científico formuló la teoría de la relatividad?"
     respuestaCorrecta: "Albert Einstein"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Albert Einstein"
     - "Isaac Newton"
@@ -103,7 +103,7 @@ contenidos:
     numero: 8
     pregunta: "¿Qué gas es esencial para la respiración humana?"
     respuestaCorrecta: "Oxígeno"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Oxígeno"
     - "Nitrógeno"
@@ -114,21 +114,21 @@ contenidos:
     numero: 9
     pregunta: "¿Cuál es el planeta más grande del sistema solar?"
     respuestaCorrecta: "Júpiter"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Júpiter"
     - "Saturno"
     - "Neptuno"
     - "Tierra"
   tiposPreguntas:
-  - "OPCIONES"
+  - "OPCION"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 0
     pregunta: "¿Cuál es el metal más abundante en la corteza terrestre?"
     respuestaCorrecta: "Aluminio"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Aluminio"
     - "Hierro"
@@ -139,7 +139,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
     respuestaCorrecta: "Evaporación"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Evaporación"
     - "Condensación"
@@ -150,7 +150,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué partícula subatómica tiene carga negativa?"
     respuestaCorrecta: "Electrón"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Electrón"
     - "Protón"
@@ -161,7 +161,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué tipo de energía es producida por el sol?"
     respuestaCorrecta: "Energía solar"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Energía solar"
     - "Energía eólica"
@@ -173,7 +173,7 @@ contenidos:
     pregunta: "¿Cómo se llama el proceso mediante el cual las plantas producen su\
       \ alimento?"
     respuestaCorrecta: "Fotosíntesis"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Fotosíntesis"
     - "Respiración"
@@ -184,7 +184,7 @@ contenidos:
     numero: 5
     pregunta: "¿Qué estudia la biología?"
     respuestaCorrecta: "Los seres vivos"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Los seres vivos"
     - "Los planetas"
@@ -195,7 +195,7 @@ contenidos:
     numero: 6
     pregunta: "¿Cuál es la fórmula del agua?"
     respuestaCorrecta: "H2O"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "H2O"
     - "CO2"
@@ -206,7 +206,7 @@ contenidos:
     numero: 7
     pregunta: "¿Qué científico formuló la teoría de la relatividad?"
     respuestaCorrecta: "Albert Einstein"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Albert Einstein"
     - "Isaac Newton"
@@ -217,7 +217,7 @@ contenidos:
     numero: 8
     pregunta: "¿Qué gas es esencial para la respiración humana?"
     respuestaCorrecta: "Oxígeno"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Oxígeno"
     - "Nitrógeno"
@@ -228,7 +228,7 @@ contenidos:
     numero: 9
     pregunta: "¿Cuál es el planeta más grande del sistema solar?"
     respuestaCorrecta: "Júpiter"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Júpiter"
     - "Saturno"
@@ -240,7 +240,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cuál es el metal más abundante en la corteza terrestre?"
     respuestaCorrecta: "Aluminio"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Aluminio"
     - "Hierro"
@@ -251,7 +251,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál es el proceso por el cual el agua se convierte en vapor?"
     respuestaCorrecta: "Evaporación"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Evaporación"
     - "Condensación"
@@ -262,7 +262,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué partícula subatómica tiene carga negativa?"
     respuestaCorrecta: "Electrón"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Electrón"
     - "Protón"
@@ -273,7 +273,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué tipo de energía es producida por el sol?"
     respuestaCorrecta: "Energía solar"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Energía solar"
     - "Energía eólica"
@@ -285,7 +285,7 @@ contenidos:
     pregunta: "¿Cómo se llama el proceso mediante el cual las plantas producen su\
       \ alimento?"
     respuestaCorrecta: "Fotosíntesis"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Fotosíntesis"
     - "Respiración"
@@ -296,7 +296,7 @@ contenidos:
     numero: 5
     pregunta: "¿Qué estudia la biología?"
     respuestaCorrecta: "Los seres vivos"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Los seres vivos"
     - "Los planetas"
@@ -307,7 +307,7 @@ contenidos:
     numero: 6
     pregunta: "¿Cuál es la fórmula del agua?"
     respuestaCorrecta: "H2O"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "H2O"
     - "CO2"
@@ -318,7 +318,7 @@ contenidos:
     numero: 7
     pregunta: "¿Qué científico formuló la teoría de la relatividad?"
     respuestaCorrecta: "Albert Einstein"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Albert Einstein"
     - "Isaac Newton"
@@ -329,7 +329,7 @@ contenidos:
     numero: 8
     pregunta: "¿Qué gas es esencial para la respiración humana?"
     respuestaCorrecta: "Oxígeno"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Oxígeno"
     - "Nitrógeno"
@@ -340,7 +340,7 @@ contenidos:
     numero: 9
     pregunta: "¿Cuál es el planeta más grande del sistema solar?"
     respuestaCorrecta: "Júpiter"
-    tipo: "OPCIONES"
+    tipo: "OPCION"
     opciones:
     - "Júpiter"
     - "Saturno"
