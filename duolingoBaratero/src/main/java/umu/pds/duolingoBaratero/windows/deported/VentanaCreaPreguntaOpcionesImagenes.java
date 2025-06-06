@@ -43,7 +43,7 @@ public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements Venta
     private BarraInferiorPreguntas barraInferior;
     private VentanaCreaTuCurso v;
     private JButton btnPregunta1, btnPregunta2, btnPregunta3;
-    private URL url;
+    //private URL url;
     private File destinationFile;
     private int botonSeleccionado;
     private JLabel lblPregunta1, lblPregunta2, lblPregunta3;
@@ -177,10 +177,10 @@ public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements Venta
         panel_2.add(btnPregunta3, gbc_btnPregunta3);
 
         // ComboBox de opciones
-        String[] opciones = {"Respuesta 1", "Respuesta 2", "Respuesta 3"};        
+        //String[] opciones = {"Respuesta 1", "Respuesta 2", "Respuesta 3"};        
 
         // ComboBox de niveles
-        Nivel[] niveles = {Nivel.PRINCIPIANTE, Nivel.BASICO, Nivel.INTERMEDIO, Nivel.AVANZADO};
+        //Nivel[] niveles = {Nivel.PRINCIPIANTE, Nivel.BASICO, Nivel.INTERMEDIO, Nivel.AVANZADO};
         
         lblRespuestaCorrecta = new JLabel("Respuesta Correcta:");
         GridBagConstraints gbc_lblRespuestaCorrecta = new GridBagConstraints();
@@ -272,7 +272,7 @@ public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements Venta
 	@Override
 	public void setIcon(ImageIcon imageIcon, URL url) {
 		if (url != null) {
-			this.url = url;
+			//this.url = url;
 			imageIcon = new ImageIcon(url);
 		} else if (destinationFile != null) {
 			String path = destinationFile.getAbsolutePath();

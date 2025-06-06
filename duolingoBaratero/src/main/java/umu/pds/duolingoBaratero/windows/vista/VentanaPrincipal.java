@@ -3,7 +3,9 @@ package umu.pds.duolingoBaratero.windows.vista;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Set;
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
@@ -14,15 +16,23 @@ public class VentanaPrincipal extends JFrame {
 	private JList<CursoEnProgreso> listaCursos;
 	private DefaultListModel<CursoEnProgreso> modeloCursos;
 	private BarraSuperior panelSuperior;
-
-	public VentanaPrincipal() {
+	private final ControladorCursoPlantilla cPlantilla;
+	private final ControladorUsuario cUsuario;
+	private final ControladorCursoProgreso cProgreso;
+	private final ControladorPregunta cPregunta;
+	
+	public VentanaPrincipal(ControladorUsuario cUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta) {
+		this.cUsuario = cUsuario;
+		this.cPlantilla = cPlantilla;
+		this.cProgreso  = cProgreso;
+		this.cPregunta = cPregunta;
 		setTitle("Continúa tus cursos");
 		setSize(600, 450);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 
-		panelSuperior = new BarraSuperior(this);
+		panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
 		// Panel central con etiquetas y listas de cursos
@@ -34,7 +44,7 @@ public class VentanaPrincipal extends JFrame {
 		panelCursosEnProgreso.add(labelCursosEnProgreso, BorderLayout.NORTH);
 		modeloCursos = new DefaultListModel<>();
 		listaCursos = new JList<>(modeloCursos);
-		listaCursos.setCellRenderer(new CursoCellRenderer());
+		listaCursos.setCellRenderer(new CursoCellRenderer(cPlantilla));
 		listaCursos.addListSelectionListener(e -> manejarSeleccionCursosEmpezados(listaCursos.getSelectedValue()));
 		panelCursosEnProgreso.add(new JScrollPane(listaCursos), BorderLayout.CENTER);
 		panelCentral.add(panelCursosEnProgreso);
@@ -53,31 +63,31 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private Set<CursoEnProgreso> getCursosEnProgreso() {
-		return ControladorUsuario.INSTANCE.getCursosUsuarioActual();
+		return cUsuario.getCursosUsuarioActual();
 	}
 
 	private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
 	    // Aseguramos que solo un hilo acceda a este bloque a la vez.
 	    if (curso != null) {
-	        if (ControladorCurso.INSTANCE.isCursoFinalizado(curso)) {
+	        if (cProgreso.estaFinalizado(curso)) {
 	            Object[] opciones = { "Sí", "No" };
 	            int opcion = JOptionPane.showOptionDialog(this,
 	                    "Has finalizado este curso. ¿Quieres empezarlo de nuevo?", "Aviso", JOptionPane.YES_NO_OPTION,
 	                    JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[1]);
 
 	            if (opcion == JOptionPane.YES_OPTION) {
-	                ControladorCurso.INSTANCE.reiniciarCurso(curso);
+	                cProgreso.reiniciar(curso);
 	            } else {
 	                int index = listaCursos.getSelectedIndex(); // Obtener el índice seleccionado
 	                if (index != -1) { // Verificar que se haya seleccionado un curso
 	                    DefaultListModel<CursoEnProgreso> model = (DefaultListModel<CursoEnProgreso>) listaCursos.getModel();
 	                    model.remove(index);
 	                }
-	                ControladorUsuario.INSTANCE.borrarCurso(curso);
+	                cUsuario.borrarCurso(curso);
 	            }
 	        } else {
 	            // Si el curso no está finalizado, mostrar la ventana de preguntas
-	            VentanaPregunta ventanaPregunta = new VentanaPregunta(curso);
+	            VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta);
 	            ventanaPregunta.setVisible(true);
 	        }
 	    }
@@ -94,7 +104,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private void abrirVentanaElegirCurso() {
-		VentanaElegirCurso ventana = new VentanaElegirCurso(this);
+		VentanaElegirCurso ventana = new VentanaElegirCurso(this, cPlantilla, cUsuario, cProgreso, cPregunta);
 		ventana.setVisible(true);
 		this.setVisible(false);
 	}

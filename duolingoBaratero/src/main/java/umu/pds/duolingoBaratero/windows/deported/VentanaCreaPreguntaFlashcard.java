@@ -1,11 +1,19 @@
 package umu.pds.duolingoBaratero.windows.deported;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import umu.pds.duolingoBaratero.models.Flashcard;
 import umu.pds.duolingoBaratero.models.Nivel;
-import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.windows.components.BarraInferiorPreguntas;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;

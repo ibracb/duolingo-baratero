@@ -1,20 +1,31 @@
 package umu.pds.duolingoBaratero.windows.deported;
 
-import javax.swing.*;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.io.File;
+import java.net.URL;
+import java.util.LinkedList;
 
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
-import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.vista.VentanaCambiaImagenes;
 import umu.pds.duolingoBaratero.windows.vista.VentanaCambioImagen;
-
-import java.awt.*;
-import java.io.File;
-import java.net.URL;
-import java.util.LinkedList;
 
 public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes {
 
@@ -27,7 +38,7 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     private URL url;
     private JButton btnCambiarImagen;
     private JButton btnAceptar;
-    private JButton btnCancelar;
+    //private JButton btnCancelar;
     private JButton btnGuardar;
     private LinkedList<Pregunta> listaPreguntas;
 
@@ -174,7 +185,7 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     	nombre = textFieldNombre.getText();
     	descripcion = textAreaDescripcion.getText();
     	objetivos = textAreaObjetivos.getText();
-    	CursoPlantilla curso = ControladorCurso.INSTANCE.crearCurso(nombre, descripcion, objetivos);
+    	CursoPlantilla curso = ControladorCursoPlantilla.INSTANCE.crearCurso(nombre, descripcion, objetivos);
     	if (curso == null)
     		JOptionPane.showMessageDialog(this, "Algo ha salido mal prueba otra vez", "Error",
 					JOptionPane.ERROR_MESSAGE);
@@ -182,13 +193,13 @@ public class VentanaCreaTuCurso extends JFrame implements VentanaCambiaImagenes 
     		JOptionPane.showMessageDialog(this, "Curso creado con exito", "Conseguido",
 					JOptionPane.ERROR_MESSAGE);
     	if (destinationFile != null) {
-			ControladorCurso.INSTANCE.setImagenACurso(curso, destinationFile.getAbsolutePath());
+			ControladorCursoPlantilla.INSTANCE.setImagenACurso(curso, destinationFile.getAbsolutePath());
 		} else if (url != null) {
-			ControladorCurso.INSTANCE.setImagenACurso(curso, url.toString());
+			ControladorCursoPlantilla.INSTANCE.setImagenACurso(curso, url.toString());
 		}		
     	
     	if (listaPreguntas != null) {
-    		ControladorCurso.INSTANCE.guardarPreguntas(listaPreguntas, curso);
+    		ControladorCursoPlantilla.INSTANCE.guardarPreguntas(listaPreguntas, curso);
     	}
     	
     	

@@ -1,26 +1,21 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
-
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Toolkit;
 
 public class VentanaSeleccionEstrategica extends JFrame {
 
@@ -28,9 +23,11 @@ public class VentanaSeleccionEstrategica extends JFrame {
     private JPanel contentPane;
     private VentanaPrincipal v;
     private CursoPlantilla curso;
-    public VentanaSeleccionEstrategica(VentanaPrincipal v, CursoPlantilla curso) {
+    private ControladorUsuario cUsuario;
+    public VentanaSeleccionEstrategica(VentanaPrincipal v, CursoPlantilla curso, ControladorUsuario cUsuario) {
     	this.v = v;
     	this.curso = curso;
+    	this.cUsuario = cUsuario;
     	setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaSeleccionEstrategica.class.getResource("/com/jtattoo/plaf/icons/large/cup_24x24.png")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -85,7 +82,7 @@ public class VentanaSeleccionEstrategica extends JFrame {
     }
     
     private void setAprendizaje(AprendizajeSeleccionado aprendizajeSeleccionado) {
-    	if (ControladorUsuario.INSTANCE.addCursosEnProgreso(curso, aprendizajeSeleccionado)) {
+    	if (cUsuario.addCursosEnProgreso(curso, aprendizajeSeleccionado)) {
     		// Mensaje de exito
     		v.refreshCursos();
     		v.setVisible(true);

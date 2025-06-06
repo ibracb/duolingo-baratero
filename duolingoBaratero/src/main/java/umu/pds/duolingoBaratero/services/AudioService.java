@@ -1,6 +1,4 @@
 package umu.pds.duolingoBaratero.services;
-import javafx.embed.swing.JFXPanel;
-
 import java.io.File;
 
 import javafx.scene.media.Media;

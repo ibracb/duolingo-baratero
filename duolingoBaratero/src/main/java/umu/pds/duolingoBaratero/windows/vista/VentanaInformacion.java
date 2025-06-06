@@ -1,18 +1,29 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.util.stream.Collectors;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
-import umu.pds.duolingoBaratero.models.Nivel;
-import umu.pds.duolingoBaratero.models.TipoPregunta;
-import java.util.stream.Collectors;
-import javax.swing.*;
-import java.awt.*;
-import java.util.LinkedList;
 
 public class VentanaInformacion extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private VentanaCursos v;
-	public VentanaInformacion(CursoPlantilla curso, VentanaCursos v) {
+	private final ControladorUsuario controladorUsuario;
+	public VentanaInformacion(CursoPlantilla curso, VentanaCursos v, ControladorUsuario controladorUsuario) {
+		this.controladorUsuario = controladorUsuario;
 		this.v = v;
 		setTitle("📚 Aprende sobre " + curso.getNombre());
 		setSize(600, 400);
@@ -29,7 +40,7 @@ public class VentanaInformacion extends JFrame {
 
 		// Cargar la imagen del curso
 		ImageIcon iconoCurso = new ImageIcon(getClass().getResource("/"+ curso.getNombre() + ".png"));
-		iconoCurso = ControladorUsuario.INSTANCE.getScaledImage(iconoCurso, 100);
+		iconoCurso = controladorUsuario.getScaledImage(iconoCurso, 100);
 		JLabel lblImagen = new JLabel(iconoCurso);
 		panelSuperior.add(lblImagen, BorderLayout.CENTER);
 

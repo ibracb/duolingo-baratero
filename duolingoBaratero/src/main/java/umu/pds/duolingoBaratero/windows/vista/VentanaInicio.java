@@ -19,11 +19,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+
 public class VentanaInicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private final ControladorUsuario controladorUsuario;
+	private final ControladorCursoPlantilla cPlantilla;
+	private final ControladorCursoProgreso cProgreso;
+	private final ControladorPregunta cPregunta;
 
-	public VentanaInicio() {
+	public VentanaInicio(ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta) {
+		this.controladorUsuario = controladorUsuario;
+		this.cPlantilla = cPlantilla;
+		this.cProgreso = cProgreso;
+		this.cPregunta = cPregunta;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(650, 400);
 		setLocationRelativeTo(null);
@@ -148,13 +161,13 @@ public class VentanaInicio extends JFrame {
 	}
 
 	private void abrirTemasWindow() {
-		VentanaCursos themeWindow = new VentanaCursos(this);
+		VentanaCursos themeWindow = new VentanaCursos(this, cPlantilla, controladorUsuario, cProgreso, cPregunta);
 		themeWindow.setVisible(true);
 		this.setVisible(false);
 	}
 	
 	private void abrirVentanaLogin() {
-		VentanaLogin ventanaLogin = new VentanaLogin(this);
+		VentanaLogin ventanaLogin = new VentanaLogin(this, controladorUsuario, cPlantilla, cProgreso, cPregunta);
 		ventanaLogin.setVisible(true);
 		this.setVisible(false);
 	}

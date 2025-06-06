@@ -1,33 +1,31 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
-
-import java.awt.GridBagLayout;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 
 public class VentanaElegirCurso extends JFrame {
 
@@ -40,16 +38,24 @@ public class VentanaElegirCurso extends JFrame {
 	private JList<CursoPlantilla> listaCursosCreados;
 	private JComboBox<Nivel> comboBoxNiveles;
 	private VentanaPrincipal v;
+	private final ControladorCursoPlantilla cPlantilla;
+	private final ControladorUsuario cUsuario;
+	private final ControladorCursoProgreso cProgreso;
+	private final ControladorPregunta cPregunta;
 
-
-	public VentanaElegirCurso(VentanaPrincipal v) {
+	public VentanaElegirCurso(VentanaPrincipal v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso,
+			ControladorPregunta cPregunta) {
+		this.cPlantilla = cPlantilla;
+		this.cUsuario = cUsuario;
+		this.cPregunta = cPregunta;
+		this.cProgreso = cProgreso;
 		this.v = v;
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(600, 400); // Ajusta el tamaño de la ventana
 		this.setLocationRelativeTo(null); // Centra la ventana en la pantalla
 		this.setVisible(true); // Muestra la ventana
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		BarraSuperior panelSuperior = new BarraSuperior(this);
+		BarraSuperior panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
 		JPanel panelInferior = new JPanel();
@@ -123,11 +129,11 @@ public class VentanaElegirCurso extends JFrame {
 		panelCursosCreados.add(labelCursosCreados, BorderLayout.NORTH);
 
 		modeloCursosCreados = new DefaultListModel<>();
-		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos()) {
+		for (CursoPlantilla curso : cPlantilla.buscarCursos()) {
 			modeloCursosCreados.addElement(curso);
 		}
 		listaCursosCreados = new JList<>(modeloCursosCreados);
-		listaCursosCreados.setCellRenderer(new CursoCreadoCellRenderer());
+		listaCursosCreados.setCellRenderer(new CursoCreadoCellRenderer(cPlantilla));
 		listaCursosCreados.addListSelectionListener(e -> manejarSeleccionCurso(listaCursosCreados.getSelectedValue()));
 
 
@@ -152,7 +158,7 @@ public class VentanaElegirCurso extends JFrame {
 		propietario = isCompleted(textFieldCreador.getText());		
 		Nivel lvl = (Nivel) comboBoxNiveles.getSelectedItem();
 		modeloCursosCreados.clear();
-		for (CursoPlantilla curso : ControladorCurso.INSTANCE.buscarCursos(nombre, propietario, lvl)) {
+		for (CursoPlantilla curso : cPlantilla.buscarCursos(nombre, propietario, lvl)) {
 			modeloCursosCreados.addElement(curso);
 		}
 		listaCursosCreados.setModel(modeloCursosCreados);
@@ -165,7 +171,7 @@ public class VentanaElegirCurso extends JFrame {
 	 * @param curso
 	 */
 	private void manejarSeleccionCurso(CursoPlantilla curso) {
-		if (ControladorUsuario.INSTANCE.estaCursando(curso)) {
+		if (cUsuario.estaCursando(curso)) {
 			Constantes.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
 		}
 		else {
@@ -175,7 +181,7 @@ public class VentanaElegirCurso extends JFrame {
 	}
 	
 	private void openVentanaEstrategia(CursoPlantilla curso) {
-		VentanaSeleccionEstrategica ventana = new VentanaSeleccionEstrategica(v,curso);
+		VentanaSeleccionEstrategica ventana = new VentanaSeleccionEstrategica(v,curso, cUsuario);
 		ventana.setVisible(true);
 		this.dispose();
 	}

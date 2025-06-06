@@ -33,7 +33,11 @@ public abstract class Serializer {
 			return null;
 		}
 	}
-
+	
+	public String getExtension() {
+		return extension;
+	}
+	
 	public abstract boolean serialize(CursoPlantilla curso);
 	
 	public abstract boolean serializeCursoBase(CursoPlantilla curso);

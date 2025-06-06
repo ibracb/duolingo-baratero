@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
 public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<CursoPlantilla> {
@@ -20,10 +20,12 @@ public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<
 	private JLabel lblIcono = new JLabel();
     private JLabel lblNombre = new JLabel();
     private JLabel lblNivel = new JLabel();
-    private final JLabel lblPropietario = new JLabel();
+    //private final JLabel lblPropietario = new JLabel();
     private final JLabel lblNombrePropietario = new JLabel();
+    private final ControladorCursoPlantilla controladorPlantilla;
 
-    public CursoCreadoCellRenderer() {
+    public CursoCreadoCellRenderer(ControladorCursoPlantilla controladorPlantilla) {
+    	this.controladorPlantilla = controladorPlantilla;
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         setBackground(Color.LIGHT_GRAY);
@@ -41,8 +43,8 @@ public class CursoCreadoCellRenderer extends JPanel implements ListCellRenderer<
 	public Component getListCellRendererComponent(JList<? extends CursoPlantilla> list, CursoPlantilla curso, int index,
 			boolean isSelected, boolean cellHasFocus) {
     	ImageIcon image = new ImageIcon(getClass().getResource("/"+curso.getNombre()+".png"));
-    	image = ControladorCurso.INSTANCE.getScaledImage(image, 100);
-    	lblNombrePropietario.setText(ControladorCurso.INSTANCE.getNombrePropietario(curso));
+    	image = controladorPlantilla.getScaledImage(image, 100);
+    	lblNombrePropietario.setText(controladorPlantilla.getNombrePropietario(curso));
     	lblIcono.setIcon(image); // Imagen de ejemplo
         lblNombre.setText(curso.getNombre());
         lblNivel.setText("Nivel: " + curso.getNivel());

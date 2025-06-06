@@ -1,0 +1,44 @@
+package umu.pds.duolingoBaratero.controllers;
+
+import umu.pds.duolingoBaratero.models.CursoEnProgreso;
+import umu.pds.duolingoBaratero.models.CursoPlantilla;
+import umu.pds.duolingoBaratero.models.Usuario;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.services.ServicioCursoProgreso;
+
+public class ControladorCursoProgreso {
+
+	private final ServicioCursoProgreso servicio;
+
+	public ControladorCursoProgreso(ServicioCursoProgreso servicio) {
+		this.servicio = servicio;
+	}
+
+	public CursoEnProgreso crearCurso(CursoPlantilla curso, AprendizajeSeleccionado aprendizaje, Usuario usuario) {
+		return servicio.crearCursoEnProgreso(curso, aprendizaje, usuario);
+	}
+
+	public boolean esNuevo(CursoEnProgreso curso) {
+		return servicio.esCursoNuevo(curso);
+	}
+
+	public boolean estaEnMarcha(CursoEnProgreso curso) {
+		return servicio.esCursoEnMarcha(curso);
+	}
+
+	public boolean estaFinalizado(CursoEnProgreso curso) {
+		return servicio.esCursoFinalizado(curso);
+	}
+
+	public long obtenerUltimoBloque(CursoEnProgreso curso) {
+		return servicio.obtenerUltimoBloque(curso);
+	}
+
+	public void avanzar(CursoEnProgreso curso, boolean aprobado) {
+		servicio.avanzarBloque(curso, aprobado);
+	}
+
+	public void reiniciar(CursoEnProgreso curso) {
+		servicio.reiniciarCurso(curso);
+	}
+}
