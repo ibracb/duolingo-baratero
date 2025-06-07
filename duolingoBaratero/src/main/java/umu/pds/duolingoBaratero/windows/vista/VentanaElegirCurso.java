@@ -175,16 +175,18 @@ public class VentanaElegirCurso extends JFrame {
 			Constantes.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
 		}
 		else {
-			openVentanaEstrategia(curso);
+			if (cUsuario.addCursosEnProgreso(curso)) {
+	    		v.refreshCursos();
+	    		v.setVisible(true);
+	    		this.dispose();
+	    	}else {
+	    		System.err.println("Algo salio mal eligiendo el curso");
+	    	}
 		}
 		
 	}
 	
-	private void openVentanaEstrategia(CursoPlantilla curso) {
-		VentanaSeleccionEstrategica ventana = new VentanaSeleccionEstrategica(v,curso, cUsuario);
-		ventana.setVisible(true);
-		this.dispose();
-	}
+
 
 	private void closeWindow() {
 		this.dispose();

@@ -281,8 +281,7 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 			} else if (url != null) {
 				controladorUsuario.setImagen(url.toString());
 			}
-			//FIXME: Tenemos un problema 
-			controladorUsuario.setCursos(obtenerCursosSeleccionados(), FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.SECUENCIAL).getSeleccion());
+			controladorUsuario.setCursos(obtenerCursosSeleccionados());
 
 			JOptionPane.showMessageDialog(null, "Sus datos han sido guardados correctamente", "Conseguido",
 					JOptionPane.PLAIN_MESSAGE);

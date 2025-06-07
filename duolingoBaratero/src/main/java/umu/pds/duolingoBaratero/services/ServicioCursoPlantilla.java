@@ -131,7 +131,7 @@ public class ServicioCursoPlantilla {
         
         Optional<CursoPlantilla> cursoPlantilla = buscarCursoPorNombre(nombrePlantilla);
         if (cursoPlantilla.isPresent()) {
-            return new CursoEnProgreso(cursoPlantilla.get(), null, usuario);
+            return new CursoEnProgreso(cursoPlantilla.get(), usuario);
         }
         return null;
     }
@@ -140,7 +140,6 @@ public class ServicioCursoPlantilla {
      * Crea un curso en progreso con aprendizaje seleccionado
      */
     public CursoEnProgreso crearCursoEnProgreso(CursoPlantilla cursoPlantilla, 
-                                              AprendizajeSeleccionado aprendizajeSeleccionado, 
                                               Usuario usuario) {
         if (cursoPlantilla == null) {
             throw new IllegalArgumentException("El curso plantilla no puede ser nulo");
@@ -149,10 +148,11 @@ public class ServicioCursoPlantilla {
             throw new IllegalArgumentException("El usuario no puede ser nulo");
         }
         
-        CursoEnProgreso curso = new CursoEnProgreso(cursoPlantilla, aprendizajeSeleccionado, usuario);
+        CursoEnProgreso curso = new CursoEnProgreso(cursoPlantilla, usuario);
         dbCursoEnProgresoDAO.create(curso);
         return curso;
     }
+    
     
     /**
      * Actualiza la imagen de un curso

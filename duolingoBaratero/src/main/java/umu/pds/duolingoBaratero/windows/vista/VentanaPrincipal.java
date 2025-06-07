@@ -8,6 +8,7 @@ import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
+import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.components.CursoCellRenderer;
 
@@ -85,7 +86,11 @@ public class VentanaPrincipal extends JFrame {
 	                }
 	                cUsuario.borrarCurso(curso);
 	            }
-	        } else {
+	        }  else if  (curso.isNuevo()) {
+	        	openVentanaEstrategia(curso);
+	        }
+	        
+	        else {
 	            // Si el curso no está finalizado, mostrar la ventana de preguntas
 	            VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta);
 	            ventanaPregunta.setVisible(true);
@@ -107,6 +112,11 @@ public class VentanaPrincipal extends JFrame {
 		VentanaElegirCurso ventana = new VentanaElegirCurso(this, cPlantilla, cUsuario, cProgreso, cPregunta);
 		ventana.setVisible(true);
 		this.setVisible(false);
+	}
+	
+	private void openVentanaEstrategia(CursoEnProgreso curso) {
+		VentanaSeleccionEstrategica ventana = new VentanaSeleccionEstrategica(this,curso, cProgreso);
+		ventana.setVisible(true);
 	}
 
 }

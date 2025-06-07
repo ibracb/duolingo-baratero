@@ -14,9 +14,13 @@ public class ControladorCursoProgreso {
 		this.servicio = servicio;
 	}
 
-	public CursoEnProgreso crearCurso(CursoPlantilla curso, AprendizajeSeleccionado aprendizaje, Usuario usuario) {
-		return servicio.crearCursoEnProgreso(curso, aprendizaje, usuario);
+	public CursoEnProgreso crearCurso(CursoPlantilla curso, Usuario usuario) {
+		return servicio.crearCursoEnProgreso(curso, usuario);
 	}
+	
+    public boolean setAprendizajeSeleccionado(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
+    	return servicio.setAprendizaje(curso, aprendizaje);
+    }
 
 	public boolean esNuevo(CursoEnProgreso curso) {
 		return servicio.esCursoNuevo(curso);

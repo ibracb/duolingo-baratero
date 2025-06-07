@@ -50,12 +50,12 @@ public class ControladorUsuario {
 		servicioUsuario.setImagen(image);
 	}
 
-	public void setCursos(String[] nombresCursos, AprendizajeSeleccionado seleccion) {
-		servicioUsuario.setCursos(nombresCursos, seleccion);
+	public void setCursos(String[] nombresCursos) {
+		servicioUsuario.setCursos(nombresCursos);
 	}
 
-	public boolean addCursosEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {
-		return servicioUsuario.addCursosEnProgreso(curso, aprendizajeSeleccionado);
+	public boolean addCursosEnProgreso(CursoPlantilla curso) {
+		return servicioUsuario.addCursosEnProgreso(curso);
 	}
 
 	public boolean estaCursando(CursoPlantilla curso) {

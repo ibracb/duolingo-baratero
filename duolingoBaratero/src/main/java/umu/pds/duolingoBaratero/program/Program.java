@@ -40,7 +40,7 @@ public class Program {
 		ServicioCursoPlantilla servicioPlantilla = new ServicioCursoPlantilla(plantillaDAO, progresoDAO, bloqueDAO, preguntaDAO, SerializerFactory.INSTANCE);
 		ServicioUsuario servicioUsuario = new ServicioUsuario(usuarioDAO, servicioProgreso, servicioPlantilla);
 		ControladorUsuario controladorUsuario = new ControladorUsuario(servicioUsuario, servicioImagenes);
-		ControladorCursoPlantilla controladorPlantilla = new ControladorCursoPlantilla(servicioPlantilla, servicioImagenes, AudioService.INSTANCE, controladorUsuario);
+		ControladorCursoPlantilla controladorPlantilla = new ControladorCursoPlantilla(servicioPlantilla, servicioImagenes, AudioService.INSTANCE, servicioUsuario);
 		ServicioPregunta servicioPregunta = new ServicioPregunta();
 		ControladorPregunta controladorPregunta = new ControladorPregunta(servicioPregunta);
 		VentanaInicio loginWindow = new VentanaInicio(controladorUsuario, controladorPlantilla, controladorProgreso, controladorPregunta);

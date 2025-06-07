@@ -7,8 +7,16 @@ import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 
 public class ServicioCursoProgreso {
 
-	public CursoEnProgreso crearCursoEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizaje, Usuario usuario) {
-		return new CursoEnProgreso(curso, aprendizaje, usuario);
+	public CursoEnProgreso crearCursoEnProgreso(CursoPlantilla curso, Usuario usuario) {
+		return new CursoEnProgreso(curso, usuario);
+	}
+	
+	
+	// FIXME: Boolean true de prueba
+	
+	public boolean setAprendizaje(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
+		 curso.setAprendizaje(aprendizaje);
+		 return true;
 	}
 
 	public boolean esCursoNuevo(CursoEnProgreso curso) {
@@ -38,4 +46,6 @@ public class ServicioCursoProgreso {
 			curso.reiniciar();
 		}
 	}
+
+
 }

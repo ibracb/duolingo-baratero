@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 
@@ -22,12 +24,13 @@ public class VentanaSeleccionEstrategica extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private VentanaPrincipal v;
-    private CursoPlantilla curso;
-    private ControladorUsuario cUsuario;
-    public VentanaSeleccionEstrategica(VentanaPrincipal v, CursoPlantilla curso, ControladorUsuario cUsuario) {
+    private CursoEnProgreso curso;
+    private ControladorCursoProgreso cProgreso;
+    public VentanaSeleccionEstrategica(VentanaPrincipal v, CursoEnProgreso curso, ControladorCursoProgreso cProgreso
+    		) {
     	this.v = v;
     	this.curso = curso;
-    	this.cUsuario = cUsuario;
+    	this.cProgreso = cProgreso;
     	setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaSeleccionEstrategica.class.getResource("/com/jtattoo/plaf/icons/large/cup_24x24.png")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -82,7 +85,7 @@ public class VentanaSeleccionEstrategica extends JFrame {
     }
     
     private void setAprendizaje(AprendizajeSeleccionado aprendizajeSeleccionado) {
-    	if (cUsuario.addCursosEnProgreso(curso, aprendizajeSeleccionado)) {
+    	if (cProgreso.setAprendizajeSeleccionado(curso, aprendizajeSeleccionado)) {
     		// Mensaje de exito
     		v.refreshCursos();
     		v.setVisible(true);

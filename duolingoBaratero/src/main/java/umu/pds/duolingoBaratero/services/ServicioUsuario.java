@@ -66,22 +66,22 @@ public class ServicioUsuario {
 		}
 	}
 
-	public void setCursos(String[] nombresCursos, AprendizajeSeleccionado seleccion) {
+	public void setCursos(String[] nombresCursos ) {
 		if (user == null) return;
 
 		Set<CursoEnProgreso> cursos = new HashSet<>();
 		for (String nombre : nombresCursos) {
 			servicioCursoPlantilla.buscarCursoPorNombre(nombre).ifPresent(plantilla -> 
-				cursos.add(servicioCursoProgreso.crearCursoEnProgreso(plantilla, FactoriaAprendizaje.INSTANCE.getAprendizaje(seleccion).getSeleccion(), user))
+				cursos.add(servicioCursoProgreso.crearCursoEnProgreso(plantilla, user))
 			);
 		}
 		user.setCursos(cursos);
 	}
 
-	public boolean addCursosEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {
+	public boolean addCursosEnProgreso(CursoPlantilla curso) {
 		if (user == null) return false;
 
-		CursoEnProgreso cursoProgreso = servicioCursoPlantilla.crearCursoEnProgreso(curso, aprendizajeSeleccionado, user);
+		CursoEnProgreso cursoProgreso = servicioCursoPlantilla.crearCursoEnProgreso(curso, user);
 		boolean resultado = user.addCursoEnProgreso(cursoProgreso);
 		if (resultado) {
 			RepositorioCurso.INSTANCE.agregarCursoEnProgreso(cursoProgreso);
