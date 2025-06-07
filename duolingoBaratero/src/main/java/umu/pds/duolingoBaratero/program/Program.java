@@ -38,7 +38,7 @@ public class Program {
 		DBPreguntaDAO preguntaDAO = DBPreguntaDAO.getDBPreguntaDAOO();
 		ImageService servicioImagenes = new ImageService();
 		ServicioCursoPlantilla servicioPlantilla = new ServicioCursoPlantilla(plantillaDAO, progresoDAO, bloqueDAO, preguntaDAO, SerializerFactory.INSTANCE);
-		ServicioUsuario servicioUsuario = new ServicioUsuario(usuarioDAO, controladorProgreso, null);
+		ServicioUsuario servicioUsuario = new ServicioUsuario(usuarioDAO, servicioProgreso, servicioPlantilla);
 		ControladorUsuario controladorUsuario = new ControladorUsuario(servicioUsuario, servicioImagenes);
 		ControladorCursoPlantilla controladorPlantilla = new ControladorCursoPlantilla(servicioPlantilla, servicioImagenes, AudioService.INSTANCE, controladorUsuario);
 		ServicioPregunta servicioPregunta = new ServicioPregunta();

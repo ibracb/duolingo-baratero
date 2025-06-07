@@ -23,6 +23,7 @@ import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 
 import java.awt.GridBagConstraints;
@@ -280,7 +281,8 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 			} else if (url != null) {
 				controladorUsuario.setImagen(url.toString());
 			}
-			controladorUsuario.setCursos(obtenerCursosSeleccionados(), FactoriaAprendizaje.INSTANCE.getAprendizaje(null).getSeleccion());
+			//FIXME: Tenemos un problema 
+			controladorUsuario.setCursos(obtenerCursosSeleccionados(), FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.SECUENCIAL).getSeleccion());
 
 			JOptionPane.showMessageDialog(null, "Sus datos han sido guardados correctamente", "Conseguido",
 					JOptionPane.PLAIN_MESSAGE);

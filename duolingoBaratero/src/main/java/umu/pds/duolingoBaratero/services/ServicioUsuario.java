@@ -16,19 +16,19 @@ import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 public class ServicioUsuario {
 
 	private final DBUsuarioDAO dbUsuarioDAO;
-	private final ControladorCursoProgreso controladorCursoProgreso;
-	private final ControladorCursoPlantilla controladorCursoPlantilla;
+	private final ServicioCursoProgreso servicioCursoProgreso;
+	private final ServicioCursoPlantilla servicioCursoPlantilla;
 
 	private Usuario user;
 
 	public ServicioUsuario(
 		DBUsuarioDAO dbUsuarioDAO,
-		ControladorCursoProgreso controladorCursoProgreso,
-		ControladorCursoPlantilla controladorCursoPlantilla
+		ServicioCursoProgreso servicioCursoProgreso,
+		ServicioCursoPlantilla servicioCursoPlantilla
 	) {
 		this.dbUsuarioDAO = dbUsuarioDAO;
-		this.controladorCursoProgreso = controladorCursoProgreso;
-		this.controladorCursoPlantilla = controladorCursoPlantilla;
+		this.servicioCursoProgreso = servicioCursoProgreso;
+		this.servicioCursoPlantilla = servicioCursoPlantilla;
 	}
 
 	public boolean registrarUsuario(String nombre, String apellidos, String correo, String contrasena) {
@@ -71,8 +71,8 @@ public class ServicioUsuario {
 
 		Set<CursoEnProgreso> cursos = new HashSet<>();
 		for (String nombre : nombresCursos) {
-			controladorCursoPlantilla.getCursoPlantilla(nombre).ifPresent(plantilla -> 
-				cursos.add(controladorCursoProgreso.crearCurso(plantilla, FactoriaAprendizaje.INSTANCE.getAprendizaje(seleccion).getSeleccion(), user))
+			servicioCursoPlantilla.buscarCursoPorNombre(nombre).ifPresent(plantilla -> 
+				cursos.add(servicioCursoProgreso.crearCursoEnProgreso(plantilla, FactoriaAprendizaje.INSTANCE.getAprendizaje(seleccion).getSeleccion(), user))
 			);
 		}
 		user.setCursos(cursos);
@@ -81,7 +81,7 @@ public class ServicioUsuario {
 	public boolean addCursosEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {
 		if (user == null) return false;
 
-		CursoEnProgreso cursoProgreso = controladorCursoPlantilla.getCursoEnProgreso(curso, aprendizajeSeleccionado, user);
+		CursoEnProgreso cursoProgreso = servicioCursoPlantilla.crearCursoEnProgreso(curso, aprendizajeSeleccionado, user);
 		boolean resultado = user.addCursoEnProgreso(cursoProgreso);
 		if (resultado) {
 			RepositorioCurso.INSTANCE.agregarCursoEnProgreso(cursoProgreso);
