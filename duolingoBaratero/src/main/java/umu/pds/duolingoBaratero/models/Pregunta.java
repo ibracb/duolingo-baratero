@@ -126,7 +126,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 
 	@JsonIgnore
 	public boolean isImagen() {
-		return tipo.equals(TipoPregunta.IMAGEN);
+		return tipo.equals(TipoPregunta.IMAGENES);
 	}
 
 	public void setTipo(TipoPregunta tipo) {

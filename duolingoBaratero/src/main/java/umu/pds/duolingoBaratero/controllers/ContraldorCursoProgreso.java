@@ -39,6 +39,7 @@ public enum ContraldorCursoProgreso {
 
 	public void avanzarBloqueContenido(CursoEnProgreso curso, boolean aprobado) {
 		curso.avanzarBloqueActual(aprobado);
+
 	}
 
 	public void reiniciarCurso(CursoEnProgreso curso) {

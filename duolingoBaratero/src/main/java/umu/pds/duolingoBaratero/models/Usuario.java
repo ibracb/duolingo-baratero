@@ -182,25 +182,21 @@ public class Usuario {
 
 	@JsonIgnore
 	public double getPorcentajeAcierto() {
-		estadistica.setPorcentajeAciertos(80.0);
 		return estadistica.getPorcentajeAciertos();
 	}
 
 	@JsonIgnore
 	public double getTiempoUso() {
-		estadistica.setTiempoUso(6);
 		return estadistica.getTiempoUso();
 	}
 
 	@JsonIgnore
 	public int getRachaVictorias() {
-		estadistica.setRachaVictorias(8);
 		return estadistica.getRachaVictorias();
 	}
 
 	@JsonIgnore
 	public int getNumMaxAccesos() {
-		estadistica.setNumAccesos(4);
 		return estadistica.getNumAccesos();
 	}
 

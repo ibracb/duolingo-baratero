@@ -61,6 +61,10 @@ public enum ControladorUsuario {
 	public String getNombreUsuarioActual() {
 		return user.getNombre();
 	}
+	
+	public Usuario getUsuarioFromDB(Usuario usuario) {
+		return dbUsuarioDAO.get(usuario.getId());
+	}
 
 	public void logOut() {
 		user = null;

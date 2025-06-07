@@ -84,7 +84,7 @@ public class VentanaCursos extends JFrame {
 		botonCiencia.setPreferredSize(new Dimension(140, 60));
 		botonCiencia.setIcon(iconoCiencia);
 		botonCiencia.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Inglés")));
+				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Ciencia")));
 		panelCentral.add(botonCiencia);
 
 		ImageIcon iconoEstudioso = new ImageIcon(getClass().getResource("/Estudios.png"));

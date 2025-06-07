@@ -30,7 +30,7 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaCambioImagen;
 
 public class VentanaCreaPreguntaOpcionesImagenes extends JFrame implements VentanaCreaPregunta, VentanaCambiaImagenes {
     private static final long serialVersionUID = 1L;
-    private static final TipoPregunta TIPO_PREGUNTA = TipoPregunta.IMAGEN;
+    private static final TipoPregunta TIPO_PREGUNTA = TipoPregunta.IMAGENES;
     private static final int BOTON_RESPUESTA_1 = 1;
     private static final int BOTON_RESPUESTA_2 = 2;
     private static final int BOTON_RESPUESTA_3 = 3;

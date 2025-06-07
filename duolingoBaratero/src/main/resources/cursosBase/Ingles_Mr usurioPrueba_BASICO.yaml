@@ -7,8 +7,8 @@ nivel: "BASICO"
 imagen: null
 tipoPreguntas:
 - "FLASHCARD"
-- "IMAGEN"
-- "OPCION"
+- "IMAGENES"
+- "OPCIONES"
 contenidos:
 - preguntas:
   - !<FLASHCARD>
@@ -22,7 +22,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál cual de estos es leche?"
     respuestaCorrecta: "CursosPDS/src/main/resources/milk.png"
-    tipo: "IMAGEN"
+    tipo: "IMAGENES"
     opciones:
     - "tea.png"
     - "milk.png"
@@ -32,7 +32,7 @@ contenidos:
     numero: 2
     pregunta: "¿Cómo se dice 'Hola' en inglés?"
     respuestaCorrecta: "Hello"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Hello"
     - "Hi"
@@ -43,7 +43,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué significa 'Dog' en español?"
     respuestaCorrecta: "Perro"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Perro"
     - "Gato"
@@ -54,7 +54,7 @@ contenidos:
     numero: 4
     pregunta: "Completa la frase: 'I ___ a student'"
     respuestaCorrecta: "am"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "am"
     - "is"
@@ -65,7 +65,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cuál es el plural de 'child'?"
     respuestaCorrecta: "children"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "childs"
     - "childes"
@@ -73,8 +73,8 @@ contenidos:
     - "child"
   tiposPreguntas:
   - "FLASHCARD"
-  - "IMAGEN"
-  - "OPCION"
+  - "IMAGENES"
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<FLASHCARD>
     nivel: "BASICO"
@@ -87,7 +87,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál cual de estos es leche?"
     respuestaCorrecta: "CursosPDS/src/main/resources/milk.png"
-    tipo: "IMAGEN"
+    tipo: "IMAGENES"
     opciones:
     - "tea.png"
     - "milk.png"
@@ -97,7 +97,7 @@ contenidos:
     numero: 2
     pregunta: "¿Cómo se dice 'Hola' en inglés?"
     respuestaCorrecta: "Hello"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Hello"
     - "Hi"
@@ -108,7 +108,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué significa 'Dog' en español?"
     respuestaCorrecta: "Perro"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Perro"
     - "Gato"
@@ -119,7 +119,7 @@ contenidos:
     numero: 4
     pregunta: "Completa la frase: 'I ___ a student'"
     respuestaCorrecta: "am"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "am"
     - "is"
@@ -130,7 +130,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cuál es el plural de 'child'?"
     respuestaCorrecta: "children"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "childs"
     - "childes"
@@ -148,7 +148,7 @@ contenidos:
     numero: 1
     pregunta: "¿Cuál cual de estos es leche?"
     respuestaCorrecta: "CursosPDS/src/main/resources/milk.png"
-    tipo: "IMAGEN"
+    tipo: "IMAGENES"
     opciones:
     - "tea.png"
     - "milk.png"
@@ -158,7 +158,7 @@ contenidos:
     numero: 2
     pregunta: "¿Cómo se dice 'Hola' en inglés?"
     respuestaCorrecta: "Hello"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Hello"
     - "Hi"
@@ -169,7 +169,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué significa 'Dog' en español?"
     respuestaCorrecta: "Perro"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Perro"
     - "Gato"
@@ -180,7 +180,7 @@ contenidos:
     numero: 4
     pregunta: "Completa la frase: 'I ___ a student'"
     respuestaCorrecta: "am"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "am"
     - "is"
@@ -191,7 +191,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cuál es el plural de 'child'?"
     respuestaCorrecta: "children"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "childs"
     - "childes"
@@ -203,7 +203,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Libro' en inglés?"
     respuestaCorrecta: "Book"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Book"
     - "Notebook"
@@ -214,7 +214,7 @@ contenidos:
     numero: 1
     pregunta: "Completa la frase: 'She ___ a teacher'"
     respuestaCorrecta: "is"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "is"
     - "are"
@@ -225,7 +225,7 @@ contenidos:
     numero: 2
     pregunta: "¿Cómo se dice 'Gracias' en inglés?"
     respuestaCorrecta: "Thank you"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Thank you"
     - "Thanks"
@@ -236,21 +236,21 @@ contenidos:
     numero: 3
     pregunta: "¿Qué significa 'Car' en español?"
     respuestaCorrecta: "Coche"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Coche"
     - "Casa"
     - "Camión"
     - "Barco"
   tiposPreguntas:
-  - "OPCION"
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 0
     pregunta: "¿Cómo se dice 'Libro' en inglés?"
     respuestaCorrecta: "Book"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Book"
     - "Notebook"
@@ -261,7 +261,7 @@ contenidos:
     numero: 1
     pregunta: "Completa la frase: 'She ___ a teacher'"
     respuestaCorrecta: "is"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "is"
     - "are"
@@ -272,7 +272,7 @@ contenidos:
     numero: 2
     pregunta: "¿Cómo se dice 'Gracias' en inglés?"
     respuestaCorrecta: "Thank you"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Thank you"
     - "Thanks"
@@ -283,7 +283,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué significa 'Car' en español?"
     respuestaCorrecta: "Coche"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Coche"
     - "Casa"
@@ -295,7 +295,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Libro' en inglés?"
     respuestaCorrecta: "Book"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Book"
     - "Notebook"
@@ -306,7 +306,7 @@ contenidos:
     numero: 1
     pregunta: "Completa la frase: 'She ___ a teacher'"
     respuestaCorrecta: "is"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "is"
     - "are"
@@ -317,7 +317,7 @@ contenidos:
     numero: 2
     pregunta: "¿Cómo se dice 'Gracias' en inglés?"
     respuestaCorrecta: "Thank you"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Thank you"
     - "Thanks"
@@ -328,7 +328,7 @@ contenidos:
     numero: 3
     pregunta: "¿Qué significa 'Car' en español?"
     respuestaCorrecta: "Coche"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Coche"
     - "Casa"
@@ -340,7 +340,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Buenos días' en inglés?"
     respuestaCorrecta: "Good morning"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Good morning"
     - "Good night"
@@ -351,7 +351,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Water' en español?"
     respuestaCorrecta: "Agua"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Agua"
     - "Fuego"
@@ -362,7 +362,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué verbo es sinónimo de 'begin'?"
     respuestaCorrecta: "start"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "start"
     - "stop"
@@ -373,21 +373,21 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'They ___ at home'"
     respuestaCorrecta: "are"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "are"
     - "is"
     - "am"
     - "be"
   tiposPreguntas:
-  - "OPCION"
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 0
     pregunta: "¿Cómo se dice 'Buenos días' en inglés?"
     respuestaCorrecta: "Good morning"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Good morning"
     - "Good night"
@@ -398,7 +398,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Water' en español?"
     respuestaCorrecta: "Agua"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Agua"
     - "Fuego"
@@ -409,7 +409,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué verbo es sinónimo de 'begin'?"
     respuestaCorrecta: "start"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "start"
     - "stop"
@@ -420,7 +420,7 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'They ___ at home'"
     respuestaCorrecta: "are"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "are"
     - "is"
@@ -432,7 +432,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Buenos días' en inglés?"
     respuestaCorrecta: "Good morning"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Good morning"
     - "Good night"
@@ -443,7 +443,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Water' en español?"
     respuestaCorrecta: "Agua"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Agua"
     - "Fuego"
@@ -454,7 +454,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué verbo es sinónimo de 'begin'?"
     respuestaCorrecta: "start"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "start"
     - "stop"
@@ -465,7 +465,7 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'They ___ at home'"
     respuestaCorrecta: "are"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "are"
     - "is"
@@ -477,7 +477,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Buenos días' en inglés?"
     respuestaCorrecta: "Good morning"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Good morning"
     - "Good night"
@@ -488,7 +488,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Water' en español?"
     respuestaCorrecta: "Agua"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Agua"
     - "Fuego"
@@ -499,7 +499,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué verbo es sinónimo de 'begin'?"
     respuestaCorrecta: "start"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "start"
     - "stop"
@@ -510,21 +510,21 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'They ___ at home'"
     respuestaCorrecta: "are"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "are"
     - "is"
     - "am"
     - "be"
   tiposPreguntas:
-  - "OPCION"
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 0
     pregunta: "¿Cómo se dice 'Buenos días' en inglés?"
     respuestaCorrecta: "Good morning"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Good morning"
     - "Good night"
@@ -535,7 +535,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Water' en español?"
     respuestaCorrecta: "Agua"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Agua"
     - "Fuego"
@@ -546,7 +546,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué verbo es sinónimo de 'begin'?"
     respuestaCorrecta: "start"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "start"
     - "stop"
@@ -557,7 +557,7 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'They ___ at home'"
     respuestaCorrecta: "are"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "are"
     - "is"
@@ -569,7 +569,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cómo se dice 'Buenos días' en inglés?"
     respuestaCorrecta: "Good morning"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Good morning"
     - "Good night"
@@ -580,7 +580,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué significa 'Water' en español?"
     respuestaCorrecta: "Agua"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Agua"
     - "Fuego"
@@ -591,7 +591,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué verbo es sinónimo de 'begin'?"
     respuestaCorrecta: "start"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "start"
     - "stop"
@@ -602,7 +602,7 @@ contenidos:
     numero: 3
     pregunta: "Completa la frase: 'They ___ at home'"
     respuestaCorrecta: "are"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "are"
     - "is"

@@ -68,8 +68,9 @@ public enum ControladorCurso {
 
 		this.sevicioImagenes = new ImageService();
 		this.reproductor = AudioService.INSTANCE;
+		recuperarCursosBase();
 		this.cursosPrueba = dbCursoPlantillaDAO.getAll();
-		//recuperarCursosBase();
+
 	}
 
 	public boolean isCursoNuevo(CursoEnProgreso curso) {
@@ -133,6 +134,14 @@ public enum ControladorCurso {
 		return curso.getNumLastBloqueContenido();
 	}
 
+	
+	public CursoEnProgreso getCursoEnProgreso(String nombre, Usuario usuario) {
+		Optional<CursoPlantilla> cursoPlantilla = this.getCursoPlantilla(nombre);
+		if (cursoPlantilla.isPresent())
+			return new CursoEnProgreso(cursoPlantilla.get(), null, usuario);
+		return null;
+	}
+
 	public Optional<CursoPlantilla> getCursoPlantilla(String nombre) {
 		Optional<CursoPlantilla> optionalCurso = cursosPrueba.stream().filter(c -> c.getNombre().equals(nombre))
 				.findFirst();
@@ -143,12 +152,6 @@ public enum ControladorCurso {
 		return curso.getPropietario();
 	}
 
-	public CursoEnProgreso getCursoEnProgreso(String nombre, Usuario usuario) {
-		Optional<CursoPlantilla> cursoPlantilla = this.getCursoPlantilla(nombre);
-		if (cursoPlantilla.isPresent())
-			return new CursoEnProgreso(cursoPlantilla.get(), null, usuario);
-		return null;
-	}
 
 	public CursoEnProgreso getCursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado, Usuario usuario) {
 		CursoEnProgreso curso = new CursoEnProgreso(cursoPlantilla, aprendizajeSeleccionado, usuario);
@@ -260,7 +263,8 @@ public enum ControladorCurso {
 	}
 
 	public void avanzarBloqueContenido(CursoEnProgreso curso, boolean aprobado) {
-		curso.avanzarBloqueActual(aprobado);
+		curso.avanzarBloqueActual(true);
+		dbCursoEnProgresoDAO.update(curso);
 	}
 
 	public void reiniciarCurso(CursoEnProgreso curso) {

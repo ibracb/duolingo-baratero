@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -73,11 +75,13 @@ public class PanelPreguntaAudio extends JPanel implements IComprobador{
 		gbc.fill = GridBagConstraints.NONE; // Evita que los botones se expandan demasiado en altura
 		gbc.insets = new Insets(10, 20, 15, 20);
 
-		opciones = new JToggleButton[3];
+		List<String> opcionesLista = new ArrayList<>(pregunta.getOpciones());  // conviertes a ArrayList "real"
+
+		opciones = new JToggleButton[opcionesLista.size()];
 		ButtonGroup grupoOpciones = new ButtonGroup();
 
 		for (int i = 0; i < 3; i++) {
-//			opciones[i] = new JToggleButton(pregunta.getOpciones()[i]);
+			opciones[i] = new JToggleButton(opcionesLista.get(i));
 			opciones[i].setFont(new Font("Arial", Font.PLAIN, 16));
 
 			opciones[i].setMinimumSize(new Dimension(100, 50)); // Tamaño mínimo

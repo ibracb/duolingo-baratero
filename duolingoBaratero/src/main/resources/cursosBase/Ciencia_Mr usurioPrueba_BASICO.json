@@ -5,7 +5,7 @@
   "objetivos" : "Introducción a conceptos científicos",
   "nivel" : "BASICO",
   "imagen" : null,
-  "tipoPreguntas" : [ "OPCION" ],
+  "tipoPreguntas" : [ "OPCIONES" ],
   "contenidos" : [ {
     "preguntas" : [ {
       "tipo" : "OPCIONES",
@@ -13,7 +13,7 @@
       "numero" : 0,
       "pregunta" : "¿Cuál es el metal más abundante en la corteza terrestre?",
       "respuestaCorrecta" : "Aluminio",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Aluminio", "Hierro", "Cobre", "Oro" ]
     }, {
       "tipo" : "OPCIONES",
@@ -21,7 +21,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el proceso por el cual el agua se convierte en vapor?",
       "respuestaCorrecta" : "Evaporación",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Evaporación", "Condensación", "Sublimación", "Fusión" ]
     }, {
       "tipo" : "OPCIONES",
@@ -29,7 +29,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué partícula subatómica tiene carga negativa?",
       "respuestaCorrecta" : "Electrón",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Electrón", "Protón", "Neutrón", "Quark" ]
     }, {
       "tipo" : "OPCIONES",
@@ -37,7 +37,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué tipo de energía es producida por el sol?",
       "respuestaCorrecta" : "Energía solar",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Energía solar", "Energía eólica", "Energía térmica", "Energía química" ]
     }, {
       "tipo" : "OPCIONES",
@@ -45,7 +45,7 @@
       "numero" : 4,
       "pregunta" : "¿Cómo se llama el proceso mediante el cual las plantas producen su alimento?",
       "respuestaCorrecta" : "Fotosíntesis",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Fotosíntesis", "Respiración", "Fermentación", "Digestión" ]
     }, {
       "tipo" : "OPCIONES",
@@ -53,7 +53,7 @@
       "numero" : 5,
       "pregunta" : "¿Qué estudia la biología?",
       "respuestaCorrecta" : "Los seres vivos",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Los seres vivos", "Los planetas", "Los elementos químicos", "Las rocas" ]
     }, {
       "tipo" : "OPCIONES",
@@ -61,7 +61,7 @@
       "numero" : 6,
       "pregunta" : "¿Cuál es la fórmula del agua?",
       "respuestaCorrecta" : "H2O",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "H2O", "CO2", "O2", "H2SO4" ]
     }, {
       "tipo" : "OPCIONES",
@@ -69,7 +69,7 @@
       "numero" : 7,
       "pregunta" : "¿Qué científico formuló la teoría de la relatividad?",
       "respuestaCorrecta" : "Albert Einstein",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla" ]
     }, {
       "tipo" : "OPCIONES",
@@ -77,7 +77,7 @@
       "numero" : 8,
       "pregunta" : "¿Qué gas es esencial para la respiración humana?",
       "respuestaCorrecta" : "Oxígeno",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Oxígeno", "Nitrógeno", "Dióxido de carbono", "Helio" ]
     }, {
       "tipo" : "OPCIONES",
@@ -85,17 +85,17 @@
       "numero" : 9,
       "pregunta" : "¿Cuál es el planeta más grande del sistema solar?",
       "respuestaCorrecta" : "Júpiter",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Júpiter", "Saturno", "Neptuno", "Tierra" ]
     } ],
-    "tiposPreguntas" : [ "OPCION" ],
+    "tiposPreguntas" : [ "OPCIONES" ],
     "preguntasAleatoriamente" : [ {
       "tipo" : "OPCIONES",
       "nivel" : "BASICO",
       "numero" : 0,
       "pregunta" : "¿Cuál es el metal más abundante en la corteza terrestre?",
       "respuestaCorrecta" : "Aluminio",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Aluminio", "Hierro", "Cobre", "Oro" ]
     }, {
       "tipo" : "OPCIONES",
@@ -103,7 +103,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el proceso por el cual el agua se convierte en vapor?",
       "respuestaCorrecta" : "Evaporación",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Evaporación", "Condensación", "Sublimación", "Fusión" ]
     }, {
       "tipo" : "OPCIONES",
@@ -111,7 +111,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué partícula subatómica tiene carga negativa?",
       "respuestaCorrecta" : "Electrón",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Electrón", "Protón", "Neutrón", "Quark" ]
     }, {
       "tipo" : "OPCIONES",
@@ -119,7 +119,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué tipo de energía es producida por el sol?",
       "respuestaCorrecta" : "Energía solar",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Energía solar", "Energía eólica", "Energía térmica", "Energía química" ]
     }, {
       "tipo" : "OPCIONES",
@@ -127,7 +127,7 @@
       "numero" : 4,
       "pregunta" : "¿Cómo se llama el proceso mediante el cual las plantas producen su alimento?",
       "respuestaCorrecta" : "Fotosíntesis",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Fotosíntesis", "Respiración", "Fermentación", "Digestión" ]
     }, {
       "tipo" : "OPCIONES",
@@ -135,7 +135,7 @@
       "numero" : 5,
       "pregunta" : "¿Qué estudia la biología?",
       "respuestaCorrecta" : "Los seres vivos",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Los seres vivos", "Los planetas", "Los elementos químicos", "Las rocas" ]
     }, {
       "tipo" : "OPCIONES",
@@ -143,7 +143,7 @@
       "numero" : 6,
       "pregunta" : "¿Cuál es la fórmula del agua?",
       "respuestaCorrecta" : "H2O",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "H2O", "CO2", "O2", "H2SO4" ]
     }, {
       "tipo" : "OPCIONES",
@@ -151,7 +151,7 @@
       "numero" : 7,
       "pregunta" : "¿Qué científico formuló la teoría de la relatividad?",
       "respuestaCorrecta" : "Albert Einstein",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla" ]
     }, {
       "tipo" : "OPCIONES",
@@ -159,7 +159,7 @@
       "numero" : 8,
       "pregunta" : "¿Qué gas es esencial para la respiración humana?",
       "respuestaCorrecta" : "Oxígeno",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Oxígeno", "Nitrógeno", "Dióxido de carbono", "Helio" ]
     }, {
       "tipo" : "OPCIONES",
@@ -167,7 +167,7 @@
       "numero" : 9,
       "pregunta" : "¿Cuál es el planeta más grande del sistema solar?",
       "respuestaCorrecta" : "Júpiter",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Júpiter", "Saturno", "Neptuno", "Tierra" ]
     } ],
     "preguntasSecuencialmente" : [ {
@@ -176,7 +176,7 @@
       "numero" : 0,
       "pregunta" : "¿Cuál es el metal más abundante en la corteza terrestre?",
       "respuestaCorrecta" : "Aluminio",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Aluminio", "Hierro", "Cobre", "Oro" ]
     }, {
       "tipo" : "OPCIONES",
@@ -184,7 +184,7 @@
       "numero" : 1,
       "pregunta" : "¿Cuál es el proceso por el cual el agua se convierte en vapor?",
       "respuestaCorrecta" : "Evaporación",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Evaporación", "Condensación", "Sublimación", "Fusión" ]
     }, {
       "tipo" : "OPCIONES",
@@ -192,7 +192,7 @@
       "numero" : 2,
       "pregunta" : "¿Qué partícula subatómica tiene carga negativa?",
       "respuestaCorrecta" : "Electrón",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Electrón", "Protón", "Neutrón", "Quark" ]
     }, {
       "tipo" : "OPCIONES",
@@ -200,7 +200,7 @@
       "numero" : 3,
       "pregunta" : "¿Qué tipo de energía es producida por el sol?",
       "respuestaCorrecta" : "Energía solar",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Energía solar", "Energía eólica", "Energía térmica", "Energía química" ]
     }, {
       "tipo" : "OPCIONES",
@@ -208,7 +208,7 @@
       "numero" : 4,
       "pregunta" : "¿Cómo se llama el proceso mediante el cual las plantas producen su alimento?",
       "respuestaCorrecta" : "Fotosíntesis",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Fotosíntesis", "Respiración", "Fermentación", "Digestión" ]
     }, {
       "tipo" : "OPCIONES",
@@ -216,7 +216,7 @@
       "numero" : 5,
       "pregunta" : "¿Qué estudia la biología?",
       "respuestaCorrecta" : "Los seres vivos",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Los seres vivos", "Los planetas", "Los elementos químicos", "Las rocas" ]
     }, {
       "tipo" : "OPCIONES",
@@ -224,7 +224,7 @@
       "numero" : 6,
       "pregunta" : "¿Cuál es la fórmula del agua?",
       "respuestaCorrecta" : "H2O",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "H2O", "CO2", "O2", "H2SO4" ]
     }, {
       "tipo" : "OPCIONES",
@@ -232,7 +232,7 @@
       "numero" : 7,
       "pregunta" : "¿Qué científico formuló la teoría de la relatividad?",
       "respuestaCorrecta" : "Albert Einstein",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla" ]
     }, {
       "tipo" : "OPCIONES",
@@ -240,7 +240,7 @@
       "numero" : 8,
       "pregunta" : "¿Qué gas es esencial para la respiración humana?",
       "respuestaCorrecta" : "Oxígeno",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Oxígeno", "Nitrógeno", "Dióxido de carbono", "Helio" ]
     }, {
       "tipo" : "OPCIONES",
@@ -248,7 +248,7 @@
       "numero" : 9,
       "pregunta" : "¿Cuál es el planeta más grande del sistema solar?",
       "respuestaCorrecta" : "Júpiter",
-      "tipo" : "OPCION",
+      "tipo" : "OPCIONES",
       "opciones" : [ "Júpiter", "Saturno", "Neptuno", "Tierra" ]
     } ]
   } ]

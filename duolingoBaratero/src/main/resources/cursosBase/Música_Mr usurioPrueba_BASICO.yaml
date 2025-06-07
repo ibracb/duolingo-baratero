@@ -6,7 +6,7 @@ objetivos: "Aprender sobre notas y claves musicales"
 nivel: "BASICO"
 imagen: null
 tipoPreguntas:
-- "OPCION"
+- "OPCIONES"
 contenidos:
 - preguntas:
   - !<OPCIONES>
@@ -14,7 +14,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cuál es el tempo musical más rápido?"
     respuestaCorrecta: "Presto"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Presto"
     - "Andante"
@@ -25,7 +25,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué elemento define la intensidad del sonido en la música?"
     respuestaCorrecta: "Dinámica"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Dinámica"
     - "Tempo"
@@ -36,7 +36,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué instrumento tiene teclas blancas y negras?"
     respuestaCorrecta: "Piano"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Piano"
     - "Guitarra"
@@ -47,7 +47,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cuántas cuerdas tiene una guitarra clásica?"
     respuestaCorrecta: "Seis"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Seis"
     - "Cuatro"
@@ -59,7 +59,7 @@ contenidos:
     pregunta: "¿Cómo se llama el signo que representa la duración del sonido en una\
       \ partitura?"
     respuestaCorrecta: "Figura musical"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Figura musical"
     - "Clave"
@@ -70,7 +70,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cómo se llama la parte de la canción que se repite?"
     respuestaCorrecta: "Estribillo"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Estribillo"
     - "Verso"
@@ -81,7 +81,7 @@ contenidos:
     numero: 6
     pregunta: "¿Qué familia de instrumentos incluye la trompeta y el trombón?"
     respuestaCorrecta: "Viento-metal"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Viento-metal"
     - "Cuerda"
@@ -92,7 +92,7 @@ contenidos:
     numero: 7
     pregunta: "¿Cuál es la clave musical más usada en partituras?"
     respuestaCorrecta: "Clave de sol"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Clave de sol"
     - "Clave de fa"
@@ -103,7 +103,7 @@ contenidos:
     numero: 8
     pregunta: "¿Cuántas notas musicales existen?"
     respuestaCorrecta: "Siete"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Siete"
     - "Cinco"
@@ -114,21 +114,21 @@ contenidos:
     numero: 9
     pregunta: "¿Cuál es el nombre de la escala musical más común en la música occidental?"
     respuestaCorrecta: "Escala mayor"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Escala mayor"
     - "Escala menor"
     - "Escala cromática"
     - "Escala pentatónica"
   tiposPreguntas:
-  - "OPCION"
+  - "OPCIONES"
   preguntasAleatoriamente:
   - !<OPCIONES>
     nivel: "BASICO"
     numero: 0
     pregunta: "¿Cuál es el tempo musical más rápido?"
     respuestaCorrecta: "Presto"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Presto"
     - "Andante"
@@ -139,7 +139,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué elemento define la intensidad del sonido en la música?"
     respuestaCorrecta: "Dinámica"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Dinámica"
     - "Tempo"
@@ -150,7 +150,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué instrumento tiene teclas blancas y negras?"
     respuestaCorrecta: "Piano"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Piano"
     - "Guitarra"
@@ -161,7 +161,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cuántas cuerdas tiene una guitarra clásica?"
     respuestaCorrecta: "Seis"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Seis"
     - "Cuatro"
@@ -173,7 +173,7 @@ contenidos:
     pregunta: "¿Cómo se llama el signo que representa la duración del sonido en una\
       \ partitura?"
     respuestaCorrecta: "Figura musical"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Figura musical"
     - "Clave"
@@ -184,7 +184,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cómo se llama la parte de la canción que se repite?"
     respuestaCorrecta: "Estribillo"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Estribillo"
     - "Verso"
@@ -195,7 +195,7 @@ contenidos:
     numero: 6
     pregunta: "¿Qué familia de instrumentos incluye la trompeta y el trombón?"
     respuestaCorrecta: "Viento-metal"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Viento-metal"
     - "Cuerda"
@@ -206,7 +206,7 @@ contenidos:
     numero: 7
     pregunta: "¿Cuál es la clave musical más usada en partituras?"
     respuestaCorrecta: "Clave de sol"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Clave de sol"
     - "Clave de fa"
@@ -217,7 +217,7 @@ contenidos:
     numero: 8
     pregunta: "¿Cuántas notas musicales existen?"
     respuestaCorrecta: "Siete"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Siete"
     - "Cinco"
@@ -228,7 +228,7 @@ contenidos:
     numero: 9
     pregunta: "¿Cuál es el nombre de la escala musical más común en la música occidental?"
     respuestaCorrecta: "Escala mayor"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Escala mayor"
     - "Escala menor"
@@ -240,7 +240,7 @@ contenidos:
     numero: 0
     pregunta: "¿Cuál es el tempo musical más rápido?"
     respuestaCorrecta: "Presto"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Presto"
     - "Andante"
@@ -251,7 +251,7 @@ contenidos:
     numero: 1
     pregunta: "¿Qué elemento define la intensidad del sonido en la música?"
     respuestaCorrecta: "Dinámica"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Dinámica"
     - "Tempo"
@@ -262,7 +262,7 @@ contenidos:
     numero: 2
     pregunta: "¿Qué instrumento tiene teclas blancas y negras?"
     respuestaCorrecta: "Piano"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Piano"
     - "Guitarra"
@@ -273,7 +273,7 @@ contenidos:
     numero: 3
     pregunta: "¿Cuántas cuerdas tiene una guitarra clásica?"
     respuestaCorrecta: "Seis"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Seis"
     - "Cuatro"
@@ -285,7 +285,7 @@ contenidos:
     pregunta: "¿Cómo se llama el signo que representa la duración del sonido en una\
       \ partitura?"
     respuestaCorrecta: "Figura musical"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Figura musical"
     - "Clave"
@@ -296,7 +296,7 @@ contenidos:
     numero: 5
     pregunta: "¿Cómo se llama la parte de la canción que se repite?"
     respuestaCorrecta: "Estribillo"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Estribillo"
     - "Verso"
@@ -307,7 +307,7 @@ contenidos:
     numero: 6
     pregunta: "¿Qué familia de instrumentos incluye la trompeta y el trombón?"
     respuestaCorrecta: "Viento-metal"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Viento-metal"
     - "Cuerda"
@@ -318,7 +318,7 @@ contenidos:
     numero: 7
     pregunta: "¿Cuál es la clave musical más usada en partituras?"
     respuestaCorrecta: "Clave de sol"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Clave de sol"
     - "Clave de fa"
@@ -329,7 +329,7 @@ contenidos:
     numero: 8
     pregunta: "¿Cuántas notas musicales existen?"
     respuestaCorrecta: "Siete"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Siete"
     - "Cinco"
@@ -340,7 +340,7 @@ contenidos:
     numero: 9
     pregunta: "¿Cuál es el nombre de la escala musical más común en la música occidental?"
     respuestaCorrecta: "Escala mayor"
-    tipo: "OPCION"
+    tipo: "OPCIONES"
     opciones:
     - "Escala mayor"
     - "Escala menor"

@@ -1,5 +1,6 @@
 package umu.pds.duolingoBaratero.persistence;
 
+import jakarta.persistence.EntityManager;
 import umu.pds.duolingoBaratero.models.Usuario;
 
 public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
@@ -25,6 +26,7 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	}
 	
 	public boolean existeUsuario(long id) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
 
 	    try {
 	        Long count = em.createQuery(
@@ -36,10 +38,11 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return false;
-	    }
+	    } 
 	}
 	
 	public boolean existeUsuario(String correo) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
 
 	    try {
 	        Long count = em.createQuery(
@@ -55,6 +58,8 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	}
 	
 	public Usuario get(String correo) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
+
 	    try {
 	        return em.createQuery(
 	                "SELECT u FROM Usuario u WHERE u.correo = :correo", Usuario.class)
