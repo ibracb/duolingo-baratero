@@ -20,7 +20,7 @@ import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaImagenes;
 public class PreguntaImagenes extends Pregunta {
 
 	@ElementCollection
-	@CollectionTable(name = "pregunta_opciones_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
+	@CollectionTable(name = "pregunta_imagenes_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
 	@Column(name = "opciones")
 	private List<String> opciones;
 
