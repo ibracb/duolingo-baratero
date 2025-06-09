@@ -42,6 +42,7 @@ public class ControladorUsuario {
 		return servicioUsuario.getNombreUsuarioActual();
 	}
 
+
 	public void logOut() {
 		servicioUsuario.logOut();
 	}

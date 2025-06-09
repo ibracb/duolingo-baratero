@@ -20,43 +20,44 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 @Entity
 @Table(name = "cursos_en_progreso")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class CursoEnProgreso {
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+	public class CursoEnProgreso {
+	
+		@Transient
+		private final int BLOQUE_CONTENIDO_INICIAL = 0;
+	
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private long id;
+	
+		@ManyToOne
+		@JoinColumn(name = "curso_plantilla", nullable = false)
+		private CursoPlantilla cursoPlantilla;
+	
+		@Enumerated(EnumType.STRING)
+		@Column(name = "aprendizaje")
+		private AprendizajeSeleccionado aprendizaje;
+	
+		// TODO: REVISAR COMO HACER ESTO EN JPA
+		@Transient
+		private EstadoCursoEnProgreso estado;
+	
+		@Column(name = "bloque_actual")
+		private int bloqueActual;
+	
+		@ManyToOne
+		@JoinColumn(name = "usuario_id", nullable = false)
+		private Usuario usuario;
+		
+		public CursoEnProgreso() {
 
-	private final int BLOQUE_CONTENIDO_INICIAL = 0;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
-	@ManyToOne
-	@JoinColumn(name = "curso_plantilla", nullable = false)
-	private CursoPlantilla cursoPlantilla;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "aprendizaje")
-	private AprendizajeSeleccionado aprendizaje;
-
-	// TODO: REVISAR COMO HACER ESTO EN JPA
-	@Transient
-	private EstadoCursoEnProgreso estado;
-
-	@Column(name = "bloque_actual")
-	private int bloqueActual;
-
-	@ManyToOne
-	@JoinColumn(name = "usuario_id", nullable = false)
-	private Usuario usuario;
-
-	// Y aqui falta meter una relacion hacia el usuario para que un curos en
-	// progreso pertenezca a un usuario
+		}
 
 	public CursoEnProgreso(CursoPlantilla cursoPlantilla,
 			Usuario usuario) {
 		this.cursoPlantilla = cursoPlantilla;
 		this.usuario = usuario;
 		setEstado(new EstadoNuevo(this));
-		id = Constantes.getID();
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
 	}
 

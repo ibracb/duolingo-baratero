@@ -26,6 +26,7 @@ import jakarta.persistence.Table;
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
 @JsonSubTypes({ @JsonSubTypes.Type(value = PreguntaOpciones.class, name = "OPCIONES"),
+	@JsonSubTypes.Type(value = PreguntaImagenes.class, name = "IMAGENES"),
 		@JsonSubTypes.Type(value = PreguntaAudio.class, name = "AUDIO"),
 		@JsonSubTypes.Type(value = Flashcard.class, name = "FLASHCARD") })
 public abstract class Pregunta implements Comparable<Pregunta> {
@@ -126,7 +127,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 
 	@JsonIgnore
 	public boolean isImagen() {
-		return tipo.equals(TipoPregunta.IMAGEN);
+		return tipo.equals(TipoPregunta.IMAGENES);
 	}
 
 	public void setTipo(TipoPregunta tipo) {

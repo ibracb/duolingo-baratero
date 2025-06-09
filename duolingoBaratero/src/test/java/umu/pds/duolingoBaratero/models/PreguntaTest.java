@@ -35,7 +35,7 @@ public class PreguntaTest {
     @Test
     public void testIsImagen() {
         assertFalse(pregunta.isImagen()); // TipoPregunta.TEXTO
-        pregunta.setTipo(TipoPregunta.IMAGEN);
+        pregunta.setTipo(TipoPregunta.IMAGENES);
         assertTrue(pregunta.isImagen()); // TipoPregunta.IMAGEN
     }
 
@@ -59,8 +59,8 @@ public class PreguntaTest {
         pregunta.setNivel(Nivel.INTERMEDIO);
         assertEquals(Nivel.INTERMEDIO, pregunta.getNivel());
 
-        pregunta.setTipo(TipoPregunta.IMAGEN);
-        assertEquals(TipoPregunta.IMAGEN, pregunta.getTipo());
+        pregunta.setTipo(TipoPregunta.IMAGENES);
+        assertEquals(TipoPregunta.IMAGENES, pregunta.getTipo());
     }
 
     @Test

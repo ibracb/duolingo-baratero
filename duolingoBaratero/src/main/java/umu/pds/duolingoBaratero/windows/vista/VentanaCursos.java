@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows.vista;
+ package umu.pds.duolingoBaratero.windows.vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -95,7 +95,9 @@ public class VentanaCursos extends JFrame {
 		botonCiencia.setPreferredSize(new Dimension(140, 60));
 		botonCiencia.setIcon(iconoCiencia);
 		botonCiencia.addActionListener(
-				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Inglés")));
+
+				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Ciencia")));
+
 		panelCentral.add(botonCiencia);
 
 		ImageIcon iconoEstudioso = new ImageIcon(getClass().getResource("/Estudios.png"));

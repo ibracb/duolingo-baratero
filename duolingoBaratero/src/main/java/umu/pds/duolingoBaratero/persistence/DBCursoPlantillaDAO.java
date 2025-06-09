@@ -1,5 +1,8 @@
 package umu.pds.duolingoBaratero.persistence;
 
+
+
+import jakarta.persistence.EntityManager;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
 public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
@@ -21,6 +24,8 @@ public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 	}
 
 	public CursoPlantilla obtenerCursoConBloquesYPreguntas(Long cursoId) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
+
 		return em.createQuery(
 	        "SELECT c FROM CursoPlantilla c " +
 	        "LEFT JOIN FETCH c.bloques b " +
@@ -31,6 +36,7 @@ public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 	}
 	
 	public boolean existeCursoPlantilla(String nombre) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
 
 	    try {
 	        Long count = em.createQuery(
@@ -42,8 +48,10 @@ public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return false;
+	    } finally {
+	        em.close();
 	    }
-	}
+	}	
 
 	private DBCursoPlantillaDAO() {
 		super();

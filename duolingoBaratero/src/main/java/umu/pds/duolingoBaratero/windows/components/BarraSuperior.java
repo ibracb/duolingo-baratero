@@ -18,7 +18,6 @@ import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
-import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPregunta;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 
@@ -76,15 +75,15 @@ public class BarraSuperior extends JPanel {
 	}
 
 	private void openVentanaPrincipal() {
-		if (ventanaActual instanceof VentanaCreaPregunta) {
-			int respuesta = JOptionPane.showConfirmDialog(null,
-					"Si continúas, perderás todo sobre el curso. ¿Deseas continuar?", "Advertencia",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-
-			if (respuesta != JOptionPane.OK_OPTION) {
-				return; // Si el usuario cancela, no se abre la nueva ventana
-			}
-		}
+//		if (ventanaActual instanceof VentanaCreaPregunta) {
+//			int respuesta = JOptionPane.showConfirmDialog(null,
+//					"Si continúas, perderás todo sobre el curso. ¿Deseas continuar?", "Advertencia",
+//					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+//
+//			if (respuesta != JOptionPane.OK_OPTION) {
+//				return; // Si el usuario cancela, no se abre la nueva ventana
+//			}
+//		}
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaPrincipal)) {
@@ -98,14 +97,14 @@ public class BarraSuperior extends JPanel {
 	}
 
 	private void openVentanaEstadisticas() {
-		if (ventanaActual instanceof VentanaCreaPregunta) {
-			int respuesta = JOptionPane.showConfirmDialog(null,
-					"Si continúas, perderás la información sobre el curso. ¿Deseas continuar?", "Advertencia",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-			if (respuesta != JOptionPane.OK_OPTION) {
-				return; // Si el usuario cancela, no se abre la nueva ventana
-			}
-		}
+//		if (ventanaActual instanceof VentanaCreaPregunta) {
+//			int respuesta = JOptionPane.showConfirmDialog(null,
+//					"Si continúas, perderás la información sobre el curso. ¿Deseas continuar?", "Advertencia",
+//					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+//			if (respuesta != JOptionPane.OK_OPTION) {
+//				return; // Si el usuario cancela, no se abre la nueva ventana
+//			}
+//		}
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaEstadisticas)) {
