@@ -53,11 +53,10 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 		}
 
-	public CursoEnProgreso(CursoPlantilla cursoPlantilla, AprendizajeSeleccionado aprendizajeSeleccionado,
+	public CursoEnProgreso(CursoPlantilla cursoPlantilla,
 			Usuario usuario) {
 		this.cursoPlantilla = cursoPlantilla;
 		this.usuario = usuario;
-		setAprendizajeConEnum(aprendizajeSeleccionado);
 		setEstado(new EstadoNuevo(this));
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
 	}

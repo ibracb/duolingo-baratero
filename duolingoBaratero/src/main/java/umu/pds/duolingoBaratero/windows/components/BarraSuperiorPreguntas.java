@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BarraSuperiorPreguntas extends JPanel {
-    private final JButton btnSalir;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final JButton btnSalir;
     private final JButton btnInfo;
     private final JFrame ventanaPregunta;
 

@@ -11,9 +11,9 @@ import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,6 +24,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
 public class VentanaLogin extends JFrame {
@@ -32,8 +35,17 @@ public class VentanaLogin extends JFrame {
 	private JPasswordField passwordField;
 	private final VentanaInicio v;
 	private JTextField textField;
+	private final ControladorUsuario controladorUsuario;
+	private final ControladorCursoPlantilla cPlantilla;
+	private final ControladorCursoProgreso cProgreso;
+	private final ControladorPregunta cPregunta;
 	
-	public VentanaLogin(VentanaInicio v) {
+	public VentanaLogin(VentanaInicio v, ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso,
+			ControladorPregunta cPregunta) {
+		this.controladorUsuario = controladorUsuario;
+		this.cPlantilla = cPlantilla;
+		this.cProgreso = cProgreso;
+		this.cPregunta = cPregunta;
 		this.v = v;
 		this.setTitle("⚡ ¡Regístrate! 🚀¡Sé la diferencia! 🌟");
 		this.setBounds(300, 300, 450, 261);
@@ -160,9 +172,9 @@ public class VentanaLogin extends JFrame {
 		if (correo.isEmpty() || passwordString.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Los campos estan vacíos, por favor escribe tu nombre y telefono", "Error", JOptionPane.ERROR_MESSAGE);
 		} else {
-			if (ControladorUsuario.INSTANCE.comprobarUsuario(correo,passwordString)) {
+			if (controladorUsuario.comprobarUsuario(correo,passwordString)) {
 				this.dispose();
-				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controladorUsuario, cPlantilla, cProgreso, cPregunta);
 				ventanaPrincipal.setVisible(true);
 			}
 			else {

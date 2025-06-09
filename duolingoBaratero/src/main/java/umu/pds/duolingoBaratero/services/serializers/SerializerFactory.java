@@ -3,8 +3,6 @@ package umu.pds.duolingoBaratero.services.serializers;
 import java.util.List;
 import java.util.function.Supplier;
 
-import umu.pds.duolingoBaratero.models.CursoPlantilla;
-
 public enum SerializerFactory {
 	
 	INSTANCE;
@@ -15,12 +13,11 @@ public enum SerializerFactory {
 	);
 	
 	public Serializer getSerializer(String extension) {
-		if (extension.equals("yaml"))
-			return new YAMLSerializer();
-		else if (extension.equals("json"))
-			System.out.println("Si soy yo");
-			return new JSONSerializer();
-		
+		return serializers.stream()
+				.map(Supplier::get)
+				.filter(serializer -> serializer.getExtension().equals(extension))
+				.findFirst()
+				.get();
 	}
 	
 }

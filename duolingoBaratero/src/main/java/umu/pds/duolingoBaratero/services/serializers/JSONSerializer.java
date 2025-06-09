@@ -15,7 +15,7 @@ public class JSONSerializer extends Serializer {
 	
 		
 	}
-
+	
 	public boolean serialize(CursoPlantilla curso) {
 		try {
 			// Ruta base relativa al proyecto

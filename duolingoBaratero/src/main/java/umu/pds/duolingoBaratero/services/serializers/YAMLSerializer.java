@@ -6,7 +6,7 @@ import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
 public class YAMLSerializer extends Serializer {
 	
-	private static final String YAML_EXTENSION = ".yaml";
+	protected static final String YAML_EXTENSION = ".yaml";
 	
 	protected YAMLSerializer() {
 		super(new YAMLMapper(), YAML_EXTENSION);

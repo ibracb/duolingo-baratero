@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.controllers;
+package umu.pds.duolingoBaratero.services;
 
 import java.util.List;
 import java.util.Set;
@@ -8,33 +8,32 @@ import javax.swing.JPanel;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Pregunta;
-import umu.pds.duolingoBaratero.services.ServicioPregunta;
+import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 
-public class ControladorPregunta {
-
-	private final ServicioPregunta servicio;
-
-	public ControladorPregunta(ServicioPregunta servicio) {
-		this.servicio = servicio;
-	}
+public class ServicioPregunta {
 
 	public JPanel[] generarLeccion(long bloqueContenido) {
-		return servicio.generarLeccion(bloqueContenido);
+		// Implementación futura
+		return new JPanel[0];
 	}
 
 	public Set<Pregunta> obtenerPreguntasDelBloque(CursoEnProgreso curso) {
-		return servicio.obtenerPreguntasDelBloque(curso);
+		return curso.getPreguntasBloqueContenido();
 	}
 
 	public boolean procesarRespuesta(Pregunta pregunta, String respuestaUsuario) {
-		return servicio.procesarRespuesta(pregunta, respuestaUsuario);
+		boolean respuestaCorrecta = pregunta.esRespuestaCorrecta(respuestaUsuario);
+		// TODO: realizar acciones adicionales según resultado
+		return respuestaCorrecta;
 	}
 
 	public int obtenerNumPreguntas(long bloqueContenido) {
-		return servicio.obtenerNumPreguntas(bloqueContenido);
+		return RepositorioCurso.INSTANCE
+			.obtenerBloqueContenido(bloqueContenido)
+			.getNumPreguntas();
 	}
 
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
-		servicio.guardarPreguntas(preguntas, curso);
+		// TODO: implementación pendiente
 	}
 }

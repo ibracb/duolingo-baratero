@@ -19,7 +19,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -46,8 +51,17 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 	private URL url;
 	private int seleccionados;
 	private File destinationFile = IMAGEN_POR_DEFECTO;
+	private final ControladorUsuario controladorUsuario;
+	private final ControladorCursoPlantilla controladorPlantilla;
+	private final ControladorCursoProgreso controladorProgreso;
+	private final ControladorPregunta controladorPregunta;
 
-	public VentanaRegistro(VentanaCursos v) {
+	public VentanaRegistro(VentanaCursos v, ControladorUsuario controladorUsuario, ControladorCursoPlantilla controladorCursoPlantilla, ControladorCursoProgreso controladorCursoProgreso,
+			ControladorPregunta controladorPregunta) {
+		this.controladorUsuario = controladorUsuario;
+		this.controladorPlantilla = controladorCursoPlantilla;
+		this.controladorProgreso = controladorCursoProgreso;
+		this.controladorPregunta = controladorPregunta;
 		this.v = v;
 		setTitle("Registro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -257,21 +271,21 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 			return;
 		}
 
-		boolean result = ControladorUsuario.INSTANCE.registrarUsuario(nombre, nickname, correo, passwd1);
+		boolean result = controladorUsuario.registrarUsuario(nombre, nickname, correo, passwd1);
 		if (!result) {
 			JOptionPane.showMessageDialog(null, "Ya estas registrado o ha ocurrido un error", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else {
 			if (destinationFile != null) {
-				ControladorUsuario.INSTANCE.setImagen(destinationFile.getAbsolutePath());
+				controladorUsuario.setImagen(destinationFile.getAbsolutePath());
 			} else if (url != null) {
-				ControladorUsuario.INSTANCE.setImagen(url.toString());
+				controladorUsuario.setImagen(url.toString());
 			}
-			ControladorUsuario.INSTANCE.setCursos(obtenerCursosSeleccionados());
+			controladorUsuario.setCursos(obtenerCursosSeleccionados());
 
 			JOptionPane.showMessageDialog(null, "Sus datos han sido guardados correctamente", "Conseguido",
 					JOptionPane.PLAIN_MESSAGE);
-			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controladorUsuario, controladorPlantilla, controladorProgreso, controladorPregunta);
 			ventanaPrincipal.setVisible(true);
 			this.dispose();
 		}
@@ -312,7 +326,7 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 
 	public void setIcon() {
 		String path = destinationFile.getAbsolutePath();
-		lblPerfil.setIcon(ControladorUsuario.INSTANCE.getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
+		lblPerfil.setIcon(controladorUsuario.getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public void setIcon(ImageIcon imageIcon, URL url) {
@@ -323,7 +337,7 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 			String path = destinationFile.getAbsolutePath();
 			imageIcon = new ImageIcon(path);
 		}
-		lblPerfil.setIcon(ControladorUsuario.INSTANCE.getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
+		lblPerfil.setIcon(controladorUsuario.getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public String getName() {

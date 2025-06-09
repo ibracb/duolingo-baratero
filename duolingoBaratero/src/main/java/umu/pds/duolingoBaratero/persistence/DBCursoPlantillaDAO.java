@@ -1,7 +1,8 @@
 package umu.pds.duolingoBaratero.persistence;
 
+
+
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
 public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {

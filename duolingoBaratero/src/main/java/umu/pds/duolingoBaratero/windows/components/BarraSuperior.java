@@ -1,7 +1,7 @@
 package umu.pds.duolingoBaratero.windows.components;
 
-import java.awt.Color;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.io.File;
 
@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
-import umu.pds.duolingoBaratero.models.CursoPlantilla;
-import umu.pds.duolingoBaratero.windows.deported.VentanaCreaPregunta;
-import umu.pds.duolingoBaratero.windows.deported.VentanaCreaTuCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 
@@ -27,8 +27,17 @@ public class BarraSuperior extends JPanel {
 	private JButton btnHome, btnEstadisticas, btnModoNocturno, btnImportarCurso, btnExportarCurso;
 	private JFrame ventanaActual;
 	private boolean modoOscuroActivo = false;
+	private final ControladorUsuario cUsuario;
+	private final ControladorCursoPlantilla controladorPlantilla;
+	private final ControladorCursoProgreso cProgreso;
+	private final ControladorPregunta cPregunta;
 
-	public BarraSuperior(JFrame ventanaActual) {
+	public BarraSuperior(JFrame ventanaActual, ControladorUsuario cUsuario, ControladorCursoPlantilla controladorPlantilla, ControladorCursoProgreso cProgreso, 
+			ControladorPregunta cPregunta) {
+		this.cUsuario = cUsuario;
+		this.controladorPlantilla = controladorPlantilla;
+		this.cProgreso = cProgreso;
+		this.cPregunta = cPregunta;
 		setLayout(new BorderLayout());
 		this.ventanaActual = ventanaActual;
 
@@ -66,19 +75,19 @@ public class BarraSuperior extends JPanel {
 	}
 
 	private void openVentanaPrincipal() {
-		if (ventanaActual instanceof VentanaCreaPregunta) {
-			int respuesta = JOptionPane.showConfirmDialog(null,
-					"Si continúas, perderás todo sobre el curso. ¿Deseas continuar?", "Advertencia",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-
-			if (respuesta != JOptionPane.OK_OPTION) {
-				return; // Si el usuario cancela, no se abre la nueva ventana
-			}
-		}
+//		if (ventanaActual instanceof VentanaCreaPregunta) {
+//			int respuesta = JOptionPane.showConfirmDialog(null,
+//					"Si continúas, perderás todo sobre el curso. ¿Deseas continuar?", "Advertencia",
+//					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+//
+//			if (respuesta != JOptionPane.OK_OPTION) {
+//				return; // Si el usuario cancela, no se abre la nueva ventana
+//			}
+//		}
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaPrincipal)) {
-			VentanaPrincipal ventana = new VentanaPrincipal();
+			VentanaPrincipal ventana = new VentanaPrincipal(cUsuario, controladorPlantilla, cProgreso, cPregunta);
 			ventana.setVisible(true);
 			ventanaActual.dispose();
 		} else {
@@ -88,18 +97,18 @@ public class BarraSuperior extends JPanel {
 	}
 
 	private void openVentanaEstadisticas() {
-		if (ventanaActual instanceof VentanaCreaPregunta) {
-			int respuesta = JOptionPane.showConfirmDialog(null,
-					"Si continúas, perderás la información sobre el curso. ¿Deseas continuar?", "Advertencia",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-			if (respuesta != JOptionPane.OK_OPTION) {
-				return; // Si el usuario cancela, no se abre la nueva ventana
-			}
-		}
+//		if (ventanaActual instanceof VentanaCreaPregunta) {
+//			int respuesta = JOptionPane.showConfirmDialog(null,
+//					"Si continúas, perderás la información sobre el curso. ¿Deseas continuar?", "Advertencia",
+//					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+//			if (respuesta != JOptionPane.OK_OPTION) {
+//				return; // Si el usuario cancela, no se abre la nueva ventana
+//			}
+//		}
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaEstadisticas)) {
-			VentanaEstadisticas ventana = new VentanaEstadisticas();
+			VentanaEstadisticas ventana = new VentanaEstadisticas(cUsuario, controladorPlantilla, cProgreso, cPregunta);
 			ventana.setVisible(true);
 			ventanaActual.dispose();
 		} else {
@@ -119,8 +128,8 @@ public class BarraSuperior extends JPanel {
 				JOptionPane.PLAIN_MESSAGE);
 
 		if (resultado == JOptionPane.OK_OPTION) {
-			String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
-			ControladorCurso.INSTANCE.exportarCurso();
+			//String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
+			controladorPlantilla.exportarCurso();
 		}
 
 	}
@@ -150,7 +159,7 @@ public class BarraSuperior extends JPanel {
 					JOptionPane.showMessageDialog(null, "El archivo debe tener extensión " + extensionEsperada,
 							"Formato incorrecto", JOptionPane.ERROR_MESSAGE);
 				} else {
-					CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo, tipoSeleccionado);
+					//CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo, tipoSeleccionado);
 					
 					// Puedes mostrar algo aquí si quieres confirmar que se importó
 				}

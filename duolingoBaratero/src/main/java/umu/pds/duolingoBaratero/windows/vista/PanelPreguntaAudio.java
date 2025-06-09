@@ -20,7 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorAudio;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.services.IComprobador;
 
@@ -29,7 +30,7 @@ public class PanelPreguntaAudio extends JPanel implements IComprobador{
 	private static final long serialVersionUID = 1L;
 	private JLabel lblPregunta;
 	private JToggleButton[] opciones; // Botones de imagen
-	private JLabel lblAudio;
+	//private JLabel lblAudio;
 	private JButton btnReproducir;
 	private PreguntaAudio pregunta;
 	private String respuestaUsuario;
@@ -117,13 +118,13 @@ public class PanelPreguntaAudio extends JPanel implements IComprobador{
 		this.pregunta = pregunta;
 	}
 
-	private void ajustarTamañoFuentePregunta() {
+	/*private void ajustarTamañoFuentePregunta() {
 		int altura = lblPregunta.getHeight();
 		int tamañoFuente = Math.max(18, altura / 10); // Ajuste dinámico
 		lblPregunta.setFont(new Font("Arial", Font.BOLD, tamañoFuente));
-	}
+	}*/
 
 	private void reproducirAudio() {
-		ControladorCurso.INSTANCE.playAudio(pregunta.getRutaAudio());
+		ControladorAudio.INSTANCE.reproducir(pregunta.getRutaAudio());
 	}
 }

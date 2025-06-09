@@ -1,10 +1,12 @@
 package umu.pds.duolingoBaratero.windows.components;
 
-import javax.swing.*;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JPanel;
 
 public class BarraProgresoPanel extends JPanel {
 

@@ -4,10 +4,6 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
@@ -15,7 +11,6 @@ import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
-import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaImagenes;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
 
 /**

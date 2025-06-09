@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 
 public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoEnProgreso> {
@@ -20,9 +20,11 @@ public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoE
 	private JLabel lblIcono = new JLabel();
     private JLabel lblNombre = new JLabel();
     private JLabel lblNivel = new JLabel();
+    private final ControladorCursoPlantilla controladorPlantilla;
 
-    public CursoCellRenderer() {
-        setLayout(new BorderLayout());
+    public CursoCellRenderer(ControladorCursoPlantilla controladorPlantilla) {
+        this.controladorPlantilla = controladorPlantilla;
+    	setLayout(new BorderLayout());
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         setBackground(Color.LIGHT_GRAY);
 
@@ -44,7 +46,7 @@ public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoE
 			lblNivel.setText("Nivel: Sin curso, no hay nivel");
 		} else {
 			ImageIcon image = new ImageIcon(getClass().getResource("/" + curso.getNombre() +".png"));
-			image = ControladorCurso.INSTANCE.getScaledImage(image, 100);
+			image = controladorPlantilla.getScaledImage(image, 100);
 			lblIcono.setIcon(image); // Imagen de ejemplo
 			lblNombre.setText(curso.getNombre());
 			lblNivel.setText("Nivel: " + curso.getNivel());

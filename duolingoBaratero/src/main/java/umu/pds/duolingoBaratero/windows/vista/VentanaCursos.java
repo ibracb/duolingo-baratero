@@ -1,4 +1,4 @@
-package umu.pds.duolingoBaratero.windows.vista;
+ package umu.pds.duolingoBaratero.windows.vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,15 +15,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
 public class VentanaCursos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private final VentanaInicio v;
+	private final ControladorCursoPlantilla cPlantilla;
+	private final ControladorUsuario cUsuario;
+	private final ControladorCursoProgreso cProgreso;
+	private final ControladorPregunta cPregunta;
 
-	public VentanaCursos(VentanaInicio v) {
+	public VentanaCursos(VentanaInicio v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta) {
+		this.cPlantilla = cPlantilla;
+		this.cUsuario = cUsuario;
+		this.cProgreso = cProgreso;
+		this.cPregunta = cPregunta;
 		this.v = v;
 		setTitle("Temas Disponibles");
 		setSize(500, 400);
@@ -51,7 +62,7 @@ public class VentanaCursos extends JFrame {
 		botonIdiomas.setPreferredSize(new Dimension(140, 60));
 		botonIdiomas.setIcon(iconoLiteratura);
 		botonIdiomas.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Ingles")));
+				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Ingles")));
 		panelCentral.add(botonIdiomas);
 
 		ImageIcon iconoOrdenador = new ImageIcon(getClass().getResource("/Informatica.png"));
@@ -62,7 +73,7 @@ public class VentanaCursos extends JFrame {
 		botonProgramacion.setPreferredSize(new Dimension(140, 60));
 		botonProgramacion.setIcon(iconoOrdenador);
 		botonProgramacion.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Informatica")));
+				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Informatica")));
 		panelCentral.add(botonProgramacion);
 
 		ImageIcon iconoRadio = new ImageIcon(getClass().getResource("/Música.png"));
@@ -73,7 +84,7 @@ public class VentanaCursos extends JFrame {
 		botonMusica.setPreferredSize(new Dimension(140, 60));
 		botonMusica.setIcon(iconoRadio);
 		botonMusica.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Música")));
+				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Música")));
 		panelCentral.add(botonMusica);
 
 		ImageIcon iconoCiencia = new ImageIcon(getClass().getResource("/Ciencia.png"));
@@ -84,7 +95,9 @@ public class VentanaCursos extends JFrame {
 		botonCiencia.setPreferredSize(new Dimension(140, 60));
 		botonCiencia.setIcon(iconoCiencia);
 		botonCiencia.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Ciencia")));
+
+				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Ciencia")));
+
 		panelCentral.add(botonCiencia);
 
 		ImageIcon iconoEstudioso = new ImageIcon(getClass().getResource("/Estudios.png"));
@@ -95,7 +108,7 @@ public class VentanaCursos extends JFrame {
 		botonEstudios.setPreferredSize(new Dimension(140, 60));
 		botonEstudios.setIcon(iconoEstudioso);
 		botonEstudios.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Estudios")));
+				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Estudios")));
 		panelCentral.add(botonEstudios);
 
 		ImageIcon iconoDiseñar = new ImageIcon(getClass().getResource("/Diseño.png"));
@@ -106,7 +119,7 @@ public class VentanaCursos extends JFrame {
 		botonDiseña.setPreferredSize(new Dimension(140, 60));
 		botonDiseña.setIcon(iconoDiseñar);
 		botonDiseña.addActionListener(
-				e -> abrirVentanaInformacion(ControladorCurso.INSTANCE.getCursoPlantilla("Diseño")));
+				e -> abrirVentanaInformacion(cPlantilla.getCursoPlantilla("Diseño")));
 		panelCentral.add(botonDiseña);
 
 		getContentPane().add(panelCentral, BorderLayout.CENTER);
@@ -125,7 +138,7 @@ public class VentanaCursos extends JFrame {
 	}
 
 	private void abrirVentanaRegistro() {
-		VentanaRegistro ventanaNueva = new VentanaRegistro(this);
+		VentanaRegistro ventanaNueva = new VentanaRegistro(this, cUsuario, cPlantilla, cProgreso, cPregunta);
 		ventanaNueva.setLocationRelativeTo(null);
 		ventanaNueva.setVisible(true);
 		this.setVisible(false);
@@ -138,7 +151,7 @@ public class VentanaCursos extends JFrame {
 
 	private void abrirVentanaInformacion(Optional<CursoPlantilla> optional) {
 		if (optional.isPresent()) {
-			VentanaInformacion ventanaInformacion = new VentanaInformacion(optional.get(), this);
+			VentanaInformacion ventanaInformacion = new VentanaInformacion(optional.get(), this, cUsuario);
 			ventanaInformacion.setVisible(true);
 			this.setVisible(false);
 		}
