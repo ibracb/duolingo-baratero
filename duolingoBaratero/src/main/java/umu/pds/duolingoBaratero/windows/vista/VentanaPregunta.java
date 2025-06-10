@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.services.IComprobador;
@@ -44,10 +45,13 @@ public class VentanaPregunta extends JFrame {
 	private CursoEnProgreso curso;
 	private final ControladorCursoProgreso controladorCursoProgreso;
 	private final ControladorPregunta controladorPregunta;
+	private final ControladorUsuario  controladorUsuario;
+	
 
-	public VentanaPregunta(CursoEnProgreso curso, ControladorCursoProgreso controladorCursoprogreso, ControladorPregunta controladorPregunta) {
+	public VentanaPregunta(CursoEnProgreso curso, ControladorCursoProgreso controladorCursoprogreso, ControladorPregunta controladorPregunta, ControladorUsuario  controladorUsuario) {
 		this.controladorCursoProgreso = controladorCursoprogreso;
 		this.controladorPregunta = controladorPregunta;
+		this.controladorUsuario = controladorUsuario;
 		this.curso = curso;
 		currentPanel = PANEL_Y_PUNTUCAION_INICIAL;
 		puntuacion = PANEL_Y_PUNTUCAION_INICIAL;
@@ -70,7 +74,7 @@ public class VentanaPregunta extends JFrame {
 		setContentPane(contentPane);
 
 		// ------- barra superior-------
-		barraSuperior = new BarraSuperiorPreguntas(this);
+		barraSuperior = new BarraSuperiorPreguntas(this, controladorUsuario);
 		barraProgreso = new BarraProgresoPanel(paneles.size());
 
 		JPanel panelSuperior = new JPanel(new BorderLayout());
@@ -106,9 +110,15 @@ public class VentanaPregunta extends JFrame {
 					puntuacion++;
 					Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
 				} else {
+					
 					Constantes.mostrarMensaje(
 							"Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(),
 							JOptionPane.ERROR_MESSAGE);
+					
+					if (!barraSuperior.restarVida()) {
+						new DialogoFinal(this, puntuacion).setVisible(true);
+					}
+					
 				}
 				barraProgreso.avanzar(respuestaCorrecta);
 				avanzarPregunta();
@@ -167,7 +177,7 @@ public class VentanaPregunta extends JFrame {
 		private static final long serialVersionUID = 1L;
 
 		public DialogoFinal(JFrame ventanaPregunta, int puntuacion) {
-			super(ventanaPregunta, "Juego Completado", true); // Modal
+			super(ventanaPregunta, "Juego Terminado", true); // Modal
 			setSize(300, 150);
 			setLocationRelativeTo(ventanaPregunta); // Centrar sobre la ventana principal
 			setLayout(new BorderLayout());

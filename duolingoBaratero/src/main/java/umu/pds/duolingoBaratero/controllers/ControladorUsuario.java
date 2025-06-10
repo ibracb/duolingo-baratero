@@ -42,7 +42,6 @@ public class ControladorUsuario {
 		return servicioUsuario.getNombreUsuarioActual();
 	}
 
-
 	public void logOut() {
 		servicioUsuario.logOut();
 	}
@@ -87,6 +86,10 @@ public class ControladorUsuario {
 		return servicioUsuario.getNumMaxAccesos();
 	}
 
+	public int restarVidaUsuario() {
+		return servicioUsuario.quitarVida();
+	}
+
 	// ----------------------------------------------
 	// Funciones imagenes
 	// ----------------------------------------------
@@ -106,5 +109,13 @@ public class ControladorUsuario {
 
 	public void borrarCurso(CursoEnProgreso curso) {
 		servicioUsuario.borrarCurso(curso);
+	}
+
+	public int getVidasUsuario() {
+		return servicioUsuario.getVidasUsuario();
+	}
+
+	public boolean recuperarVida() {
+		return servicioUsuario.recuperarVida();
 	}
 }

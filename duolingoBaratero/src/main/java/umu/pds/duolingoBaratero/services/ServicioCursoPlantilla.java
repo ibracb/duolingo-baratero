@@ -232,41 +232,79 @@ public class ServicioCursoPlantilla {
     /**
      * Carga los cursos base desde los recursos
      */
+//    public void cargarCursosBase() {
+//        List<CursoPlantilla> cursos = new ArrayList<>();
+//        
+//        try {
+//            URL resource = getClass().getClassLoader().getResource("cursosBase");
+//            if (resource == null) {
+//                System.err.println("No se encontró la carpeta 'resources/cursosBase'.");
+//                return;
+//            }
+//            
+//            File carpeta = new File(resource.toURI());
+//            File[] archivos = carpeta.listFiles((dir, name) -> name.endsWith(".yaml"));
+//            
+//            if (archivos == null || archivos.length == 0) {
+//                System.out.println("No se encontraron archivos .yaml en cursosBase.");
+//                return;
+//            }
+//            
+//            for (File archivo : archivos) {
+//                try {
+//                    CursoPlantilla curso = importarCurso(archivo, ".yaml");
+//                    if (curso != null) {
+//                        cursos.add(curso);
+//                    }
+//                } catch (Exception e) {
+//                    System.err.println("Error al importar curso desde " + archivo.getName() + ": " + e.getMessage());
+//                }
+//            }
+//            
+//        } catch (Exception e) {
+//            System.err.println("Error al cargar cursos base: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
     public void cargarCursosBase() {
         List<CursoPlantilla> cursos = new ArrayList<>();
-        
+
         try {
+            // Obtener la ruta real de la carpeta recursos/cursosBase
             URL resource = getClass().getClassLoader().getResource("cursosBase");
             if (resource == null) {
                 System.err.println("No se encontró la carpeta 'resources/cursosBase'.");
-                return;
             }
-            
+
             File carpeta = new File(resource.toURI());
             File[] archivos = carpeta.listFiles((dir, name) -> name.endsWith(".yaml"));
-            
+
             if (archivos == null || archivos.length == 0) {
                 System.out.println("No se encontraron archivos .yaml en cursosBase.");
-                return;
             }
-            
+
             for (File archivo : archivos) {
-                try {
-                    CursoPlantilla curso = importarCurso(archivo, "yaml");
-                    if (curso != null) {
-                        cursos.add(curso);
-                    }
-                } catch (Exception e) {
-                    System.err.println("Error al importar curso desde " + archivo.getName() + ": " + e.getMessage());
+                CursoPlantilla curso = importarCurso(archivo, ".yaml");
+                if (curso != null) {
+                    cursos.add(curso);
                 }
             }
             
+            for (CursoPlantilla curso : cursos) {
+                dbCursoPlantillaDAO.create(curso);
+                for (BloqueContenido bloque : curso.getContenidos()) {
+                    bloque.setCurso(curso);
+                    dbBloqueContenidoDAO.create(bloque);
+                    for (Pregunta pregunta: bloque.getPreguntas()) {
+                        pregunta.setBloque(bloque);
+                        dbPreguntaDAO.create(pregunta);
+                    }
+                }
+            }
         } catch (Exception e) {
-            System.err.println("Error al cargar cursos base: " + e.getMessage());
             e.printStackTrace();
         }
     }
-    
     /**
      * Persiste un curso completo con todos sus bloques y preguntas
      */

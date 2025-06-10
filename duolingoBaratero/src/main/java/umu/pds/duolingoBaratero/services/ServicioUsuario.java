@@ -21,18 +21,16 @@ public class ServicioUsuario {
 
 	private Usuario user;
 
-	public ServicioUsuario(
-		DBUsuarioDAO dbUsuarioDAO,
-		ServicioCursoProgreso servicioCursoProgreso,
-		ServicioCursoPlantilla servicioCursoPlantilla
-	) {
+	public ServicioUsuario(DBUsuarioDAO dbUsuarioDAO, ServicioCursoProgreso servicioCursoProgreso,
+			ServicioCursoPlantilla servicioCursoPlantilla) {
 		this.dbUsuarioDAO = dbUsuarioDAO;
 		this.servicioCursoProgreso = servicioCursoProgreso;
 		this.servicioCursoPlantilla = servicioCursoPlantilla;
 	}
 
 	public boolean registrarUsuario(String nombre, String apellidos, String correo, String contrasena) {
-		if (dbUsuarioDAO.existeUsuario(correo)) return false;
+		if (dbUsuarioDAO.existeUsuario(correo))
+			return false;
 		Usuario usuario = new Usuario(nombre, apellidos, correo, contrasena);
 		dbUsuarioDAO.create(usuario);
 		this.user = usuario;
@@ -66,20 +64,21 @@ public class ServicioUsuario {
 		}
 	}
 
-	public void setCursos(String[] nombresCursos ) {
-		if (user == null) return;
+	public void setCursos(String[] nombresCursos) {
+		if (user == null)
+			return;
 
 		Set<CursoEnProgreso> cursos = new HashSet<>();
 		for (String nombre : nombresCursos) {
-			servicioCursoPlantilla.buscarCursoPorNombre(nombre).ifPresent(plantilla -> 
-				cursos.add(servicioCursoProgreso.crearCursoEnProgreso(plantilla, user))
-			);
+			servicioCursoPlantilla.buscarCursoPorNombre(nombre)
+					.ifPresent(plantilla -> cursos.add(servicioCursoProgreso.crearCursoEnProgreso(plantilla, user)));
 		}
 		user.setCursos(cursos);
 	}
 
 	public boolean addCursosEnProgreso(CursoPlantilla curso) {
-		if (user == null) return false;
+		if (user == null)
+			return false;
 
 		CursoEnProgreso cursoProgreso = servicioCursoPlantilla.crearCursoEnProgreso(curso, user);
 		boolean resultado = user.addCursoEnProgreso(cursoProgreso);
@@ -122,5 +121,17 @@ public class ServicioUsuario {
 		if (user != null) {
 			user.eliminarCurso(curso);
 		}
+	}
+
+	public int quitarVida() {
+		return user.perderVida();
+	}
+
+	public boolean recuperarVida() {
+		return user.recuperarVidas();
+	}
+
+	public int getVidasUsuario() {
+		return user.getVidas();
 	}
 }

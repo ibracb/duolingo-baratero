@@ -295,6 +295,8 @@ public class ControladorCursoPlantilla {
 			System.err.println("Error al recargar cursos base: " + e.getMessage());
 		}
 	}
+	
+	
 
 	/**
 	 * Obtiene el servicio de cursos para operaciones avanzadas (Solo para casos
