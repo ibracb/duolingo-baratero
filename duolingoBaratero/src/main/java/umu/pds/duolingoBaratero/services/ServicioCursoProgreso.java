@@ -10,13 +10,16 @@ public class ServicioCursoProgreso {
 	public CursoEnProgreso crearCursoEnProgreso(CursoPlantilla curso, Usuario usuario) {
 		return new CursoEnProgreso(curso, usuario);
 	}
-	
-	
+
 	// FIXME: Boolean true de prueba
-	
+
 	public boolean setAprendizaje(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
-		 curso.setAprendizaje(aprendizaje);
-		 return true;
+		curso.setAprendizaje(aprendizaje);
+		return true;
+	}
+
+	public void iniciarCurso(CursoEnProgreso curso) {
+		curso.iniciar();
 	}
 
 	public boolean esCursoNuevo(CursoEnProgreso curso) {
@@ -42,10 +45,7 @@ public class ServicioCursoProgreso {
 	}
 
 	public void reiniciarCurso(CursoEnProgreso curso) {
-		if (curso != null) {
 			curso.reiniciar();
-		}
 	}
-
 
 }

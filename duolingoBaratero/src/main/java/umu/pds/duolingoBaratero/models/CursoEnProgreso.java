@@ -39,7 +39,7 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 		private AprendizajeSeleccionado aprendizaje;
 	
 		// TODO: REVISAR COMO HACER ESTO EN JPA
-		@Transient
+		@Column(name="estado")
 		private EstadoCursoEnProgreso estado;
 	
 		@Column(name = "bloque_actual")
@@ -57,7 +57,7 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 			Usuario usuario) {
 		this.cursoPlantilla = cursoPlantilla;
 		this.usuario = usuario;
-		setEstado(new EstadoNuevo(this));
+		this.estado = EstadoCursoEnProgreso.NUEVO;
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
 	}
 
@@ -93,10 +93,6 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 		this.aprendizaje = aprendizaje;
 	}
 
-	public void setAprendizajeConEnum(AprendizajeSeleccionado aprendizajeSeleccionado) {
-		this.aprendizaje = aprendizajeSeleccionado;
-	}
-
 	public int getBloqueActual() {
 		return bloqueActual;
 	}
@@ -109,7 +105,7 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 		if (aprobado) {
 			bloqueActual++;
 			if (cursoPlantilla.isCursoFinalizado(bloqueActual)) {
-				estado.finalizar(this);
+				this.finalizar();
 			}
 		}
 	}
@@ -148,30 +144,44 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 	public void setEstado(EstadoCursoEnProgreso estado) {
 		this.estado = estado;
 	}
-
-	public void iniciar() {
-		estado.iniciar(this);
-	}
-
+	
 	public void reiniciar() {
-		estado.iniciar(this);
-		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
-	}
+        if (estado == EstadoCursoEnProgreso.FINALIZADO) {
+            estado = EstadoCursoEnProgreso.NUEVO;
+        } else {
+            throw new IllegalStateException("No se puede reiniciar desde el estado: " + estado);
+        }
+    }
 
-	public void finalizar() {
-		estado.finalizar(this);
-	}
+    public void iniciar() {
+        if (estado == EstadoCursoEnProgreso.NUEVO) {
+            estado = EstadoCursoEnProgreso.EN_MARCHA;
+        } else {
+            throw new IllegalStateException("No se puede iniciar desde el estado: " + estado);
+        }
+    }
+    
+    public void finalizar() {
+        if (estado == EstadoCursoEnProgreso.EN_MARCHA) {
+            estado = EstadoCursoEnProgreso.FINALIZADO;
+        } else {
+            throw new IllegalStateException("No se puede finalizar desde el estado: " + estado);
+        }
+    }
+
+
+
 
 	public boolean isNuevo() {
-		return estado instanceof EstadoNuevo;
+		return estado.equals(EstadoCursoEnProgreso.NUEVO);
 	}
 
 	public boolean isFinalizado() {
-		return estado instanceof EstadoFinalizado;
+		return estado.equals(EstadoCursoEnProgreso.FINALIZADO);
 	}
 
 	public boolean isEnMarcha() {
-		return estado instanceof EstadoEnMarcha;
+		return estado.equals(EstadoCursoEnProgreso.EN_MARCHA);
 	}
 
 	public long getNumLastBloqueContenido() {

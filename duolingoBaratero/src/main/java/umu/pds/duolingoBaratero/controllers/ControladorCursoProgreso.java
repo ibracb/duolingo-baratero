@@ -18,8 +18,10 @@ public class ControladorCursoProgreso {
 		return servicio.crearCursoEnProgreso(curso, usuario);
 	}
 	
-    public boolean setAprendizajeSeleccionado(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
+    public boolean configurarCursoProgreso(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
+    	servicio.iniciarCurso(curso);
     	return servicio.setAprendizaje(curso, aprendizaje);
+    	
     }
 
 	public boolean esNuevo(CursoEnProgreso curso) {
