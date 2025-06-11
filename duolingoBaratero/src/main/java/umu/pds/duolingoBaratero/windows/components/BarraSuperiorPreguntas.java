@@ -79,10 +79,8 @@ public class BarraSuperiorPreguntas extends JPanel {
 	private int getVidas() {
 		return cUsuario.getVidasUsuario();
 	}
-	public boolean restarVida() {
 
-		int vidas = cUsuario.restarVidaUsuario();
-		vidasUsuario.setText(Integer.toString(vidas));
-		return vidas > 0;
+	public void updateVidas() {
+		vidasUsuario.setText(Integer.toString(cUsuario.getVidasUsuario()));
 	}
 }
