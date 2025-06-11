@@ -24,6 +24,9 @@ import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.Pregunta;
+import umu.pds.duolingoBaratero.models.aprendizajes.Aprendizaje;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 import umu.pds.duolingoBaratero.services.IComprobador;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
@@ -115,6 +118,8 @@ public class VentanaPregunta extends JFrame {
 							"Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(),
 							JOptionPane.ERROR_MESSAGE);
 					
+					controladorPregunta.incrementarErrores(panel.getPregunta());
+					
 					if (!barraSuperior.restarVida()) {
 						new DialogoFinal(this, puntuacion).setVisible(true);
 					}
@@ -164,7 +169,10 @@ public class VentanaPregunta extends JFrame {
 
 	// -------- METODO DE PRUEBA --------------
 	private ArrayList<JPanel> getPaneles() {
-		Set<Pregunta> preguntas = controladorPregunta.obtenerPreguntasDelBloque(curso);
+		AprendizajeSeleccionado seleccion = curso.getAprendizaje(); // O de usuario si se guarda ahí
+		Aprendizaje aprendizaje = FactoriaAprendizaje.INSTANCE.getAprendizaje(seleccion);
+		Set<Pregunta> preguntas = aprendizaje.seleccionarPreguntas(controladorPregunta.obtenerPreguntasDelBloque(curso));
+		//Set<Pregunta> preguntas = controladorPregunta.obtenerPreguntasDelBloque(curso);
 		return preguntas.stream()
 			    .map(Pregunta::crearPanel)
 			    .collect(Collectors.toCollection(ArrayList::new));

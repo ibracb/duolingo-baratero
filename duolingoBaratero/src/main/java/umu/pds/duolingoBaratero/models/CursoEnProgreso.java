@@ -2,8 +2,10 @@ package umu.pds.duolingoBaratero.models;
 
 import java.util.Objects;
 import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,7 +18,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 @Entity
 @Table(name = "cursos_en_progreso")

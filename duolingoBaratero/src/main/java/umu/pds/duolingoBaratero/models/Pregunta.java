@@ -5,19 +5,20 @@ import javax.swing.JPanel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -55,7 +56,10 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo", insertable = false, updatable = false)
 	private TipoPregunta tipo;
-
+	
+	@Column(name = "errores")
+	private Integer errores;
+	
 	public Pregunta() {
 	}
 
@@ -65,6 +69,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 		this.pregunta = pregunta;
 		this.respuestaCorrecta = respuestaCorrecta;
 		this.tipo = tipo;
+		this.errores = 0;
 	}
 
 	public abstract JPanel crearPanel(); // Método abstracto para crear el panel
@@ -124,7 +129,18 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	public TipoPregunta getTipo() {
 		return tipo;
 	}
+	
+	public int getErrores() {
+	    return errores;
+	}
 
+	public void incrementarErrores() {
+		if (errores == null) {
+	        errores = 0;
+	    }
+	    errores = errores + 1;
+	}
+	
 	@JsonIgnore
 	public boolean isImagen() {
 		return tipo.equals(TipoPregunta.IMAGENES);
