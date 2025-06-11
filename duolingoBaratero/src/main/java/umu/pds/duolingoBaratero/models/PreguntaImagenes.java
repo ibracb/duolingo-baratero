@@ -39,7 +39,7 @@ public class PreguntaImagenes extends Pregunta {
 	}
 
 	public List<String> getOpciones() {
-		return (ArrayList<String>) opciones;
+		return new ArrayList<>(opciones);
 	}
 
 	public void setOpciones(List<String> opciones) {

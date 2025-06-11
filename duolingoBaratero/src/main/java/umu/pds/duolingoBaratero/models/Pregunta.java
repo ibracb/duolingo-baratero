@@ -58,7 +58,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	private TipoPregunta tipo;
 	
 	@Column(name = "errores")
-	private Integer errores;
+	private Integer errores = 0;
 	
 	public Pregunta() {
 	}
@@ -69,7 +69,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 		this.pregunta = pregunta;
 		this.respuestaCorrecta = respuestaCorrecta;
 		this.tipo = tipo;
-		this.errores = 0;
+		//this.errores = 0;
 	}
 
 	public abstract JPanel crearPanel(); // Método abstracto para crear el panel
@@ -131,7 +131,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	}
 	
 	public int getErrores() {
-	    return errores;
+		return errores != null ? errores : 0;
 	}
 
 	public void incrementarErrores() {
