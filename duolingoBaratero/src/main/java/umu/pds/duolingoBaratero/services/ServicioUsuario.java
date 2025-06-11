@@ -134,4 +134,10 @@ public class ServicioUsuario {
 	public int getVidasUsuario() {
 		return user.getVidas();
 	}
+
+	public void actualizarUsuario() {
+		dbUsuarioDAO.update(user);
+		
+		
+	}
 }

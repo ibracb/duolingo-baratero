@@ -4,8 +4,17 @@ import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.persistence.DBCursoEnProgresoDAO;
 
 public class ServicioCursoProgreso {
+
+	 private DBCursoEnProgresoDAO dbCursoEnProgresoDAO;
+	 
+	 
+	public ServicioCursoProgreso(DBCursoEnProgresoDAO dbCursoEnProgresoDAO) {
+		super();
+		this.dbCursoEnProgresoDAO = dbCursoEnProgresoDAO;
+	}
 
 	public CursoEnProgreso crearCursoEnProgreso(CursoPlantilla curso, Usuario usuario) {
 		return new CursoEnProgreso(curso, usuario);
@@ -47,5 +56,13 @@ public class ServicioCursoProgreso {
 	public void reiniciarCurso(CursoEnProgreso curso) {
 			curso.reiniciar();
 	}
+	
+    public boolean actualizarCurso(CursoEnProgreso curso) {
+        if (curso != null) {
+            dbCursoEnProgresoDAO.update(curso);
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -46,5 +46,18 @@ public class ControladorCursoProgreso {
 
 	public void reiniciar(CursoEnProgreso curso) {
 		servicio.reiniciarCurso(curso);
+		actualizarCurso(curso);
+	}
+	
+	/**
+	 * Actualiza un curso
+	 */
+	public boolean actualizarCurso(CursoEnProgreso curso) {
+		try {
+			return servicio.actualizarCurso(curso);
+		} catch (Exception e) {
+			System.err.println("Error al actualizar cursoProgreso: " + e.getMessage());
+			return false;
+		}
 	}
 }

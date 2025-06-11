@@ -86,10 +86,6 @@ public class ControladorUsuario {
 		return servicioUsuario.getNumMaxAccesos();
 	}
 
-	public int restarVidaUsuario() {
-		return servicioUsuario.quitarVida();
-	}
-
 	// ----------------------------------------------
 	// Funciones imagenes
 	// ----------------------------------------------
@@ -111,11 +107,28 @@ public class ControladorUsuario {
 		servicioUsuario.borrarCurso(curso);
 	}
 
+	public int restarVidaUsuario() {
+		int vidas = servicioUsuario.quitarVida();
+		actualizarUsuario(); // actualiza después del cambio
+		return vidas;
+	}
+
 	public int getVidasUsuario() {
 		return servicioUsuario.getVidasUsuario();
 	}
 
 	public boolean recuperarVida() {
-		return servicioUsuario.recuperarVida();
+		boolean resultado = servicioUsuario.recuperarVida();
+		actualizarUsuario(); // actualiza si recuperó vida
+		return resultado;
 	}
+
+	public void actualizarUsuario() {
+		try {
+			servicioUsuario.actualizarUsuario(); // debe hacer commit de los cambios
+		} catch (Exception e) {
+			System.err.println("Error al actualizar usuario: " + e.getMessage());
+		}
+	}
+
 }
