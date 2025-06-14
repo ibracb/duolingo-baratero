@@ -38,8 +38,4 @@ public class ControladorPregunta {
 		servicio.guardarPreguntas(preguntas, curso);
 	}
 	
-	public void incrementarErrores(Pregunta pregunta) {
-		servicio.incrementarErrores(pregunta);
-	}
-	
 }

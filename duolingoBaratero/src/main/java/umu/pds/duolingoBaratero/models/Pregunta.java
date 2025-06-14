@@ -57,9 +57,6 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	@Column(name = "tipo", insertable = false, updatable = false)
 	private TipoPregunta tipo;
 	
-	@Column(name = "errores")
-	private Integer errores = 0;
-	
 	public Pregunta() {
 	}
 
@@ -128,17 +125,6 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 
 	public TipoPregunta getTipo() {
 		return tipo;
-	}
-	
-	public int getErrores() {
-		return errores != null ? errores : 0;
-	}
-
-	public void incrementarErrores() {
-		if (errores == null) {
-	        errores = 0;
-	    }
-	    errores = errores + 1;
 	}
 	
 	@JsonIgnore

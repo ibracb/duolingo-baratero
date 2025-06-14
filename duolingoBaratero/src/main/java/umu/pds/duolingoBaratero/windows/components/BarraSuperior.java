@@ -1,7 +1,6 @@
 package umu.pds.duolingoBaratero.windows.components;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.io.File;
 

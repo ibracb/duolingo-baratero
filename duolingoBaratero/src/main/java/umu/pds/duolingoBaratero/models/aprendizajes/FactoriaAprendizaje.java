@@ -9,7 +9,7 @@ public enum FactoriaAprendizaje {
 	private static final Set<Supplier<Aprendizaje>> aprendizajes = Set.of(
 			AprendizajeAleatorio::new,
 			AprendizajeSecuencial::new,
-			AprendizajeRepeticionEspaciada::new
+			AprendizajeInvertido::new
 			);
 	
 	public Aprendizaje getAprendizaje(AprendizajeSeleccionado seleccion) {

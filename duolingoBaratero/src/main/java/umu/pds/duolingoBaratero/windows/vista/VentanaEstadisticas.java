@@ -14,8 +14,11 @@ public class VentanaEstadisticas extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private final ControladorUsuario cUsuario;
+	@SuppressWarnings("unused")
 	private final ControladorCursoPlantilla cPlantilla;
+	@SuppressWarnings("unused")
 	private final ControladorCursoProgreso cProgreso;
+	@SuppressWarnings("unused")
 	private ControladorPregunta cPregunta;
 	
 	public VentanaEstadisticas(ControladorUsuario cUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso,

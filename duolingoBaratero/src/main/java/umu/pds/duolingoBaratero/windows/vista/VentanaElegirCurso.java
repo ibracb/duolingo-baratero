@@ -40,7 +40,9 @@ public class VentanaElegirCurso extends JFrame {
 	private VentanaPrincipal v;
 	private final ControladorCursoPlantilla cPlantilla;
 	private final ControladorUsuario cUsuario;
+	@SuppressWarnings("unused")
 	private final ControladorCursoProgreso cProgreso;
+	@SuppressWarnings("unused")
 	private final ControladorPregunta cPregunta;
 
 	public VentanaElegirCurso(VentanaPrincipal v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso,

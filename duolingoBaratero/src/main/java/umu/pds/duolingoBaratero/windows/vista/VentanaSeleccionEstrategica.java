@@ -9,16 +9,12 @@ import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
-
-import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
-import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 
 public class VentanaSeleccionEstrategica extends JDialog  {
@@ -67,14 +63,14 @@ public class VentanaSeleccionEstrategica extends JDialog  {
         panelAbajo.add(btnEstrategia1, gbc_btnEstrategia1);
         btnEstrategia1.addActionListener(e -> setAprendizaje(AprendizajeSeleccionado.SECUENCIAL));
         
-        JButton btnEstrategia2 = new JButton("🔄Repetitivo");
+        JButton btnEstrategia2 = new JButton("🔄Invertido");
         btnEstrategia2.setPreferredSize(buttonSize);
         GridBagConstraints gbc_btnEstrategia2 = new GridBagConstraints();
         gbc_btnEstrategia2.insets = new Insets(5, 5, 5, 5);
         gbc_btnEstrategia2.gridx = 4;
         gbc_btnEstrategia2.gridy = 3;
         panelAbajo.add(btnEstrategia2, gbc_btnEstrategia2);
-        btnEstrategia2.addActionListener(e -> setAprendizaje(AprendizajeSeleccionado.REPETICION_ESPACIADA));
+        btnEstrategia2.addActionListener(e -> setAprendizaje(AprendizajeSeleccionado.INVERTIDO));
         
         JButton btnEstrategia3 = new JButton("🎲Aleatorio");
         btnEstrategia3.setPreferredSize(buttonSize);

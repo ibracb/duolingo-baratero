@@ -14,7 +14,10 @@ class UsuarioTest {
     private Usuario usuarioSinImagen;
     private Usuario usuarioConImagen;
     private CursoEnProgreso cursoEnProgresoMock;
-    private CursoPlantilla cursoPlantillaMock;
+    
+    @SuppressWarnings("unused")
+	private CursoPlantilla cursoPlantillaMock;
+    
     private Estadistica estadisticaMock;
 
     @BeforeEach

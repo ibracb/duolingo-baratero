@@ -12,7 +12,6 @@ public class PanelPreguntaOpciones extends JPanel implements IComprobador {
     private static final long serialVersionUID = 1L;
     private JLabel lblPregunta;
     private JToggleButton[] opciones; // Botones de imagen
-    private JLabel lblAudio;
     private PreguntaOpciones pregunta;
 	private String respuestaUsuario;
 
