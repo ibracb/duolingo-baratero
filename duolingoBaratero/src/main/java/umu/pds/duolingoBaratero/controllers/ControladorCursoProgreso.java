@@ -18,8 +18,10 @@ public class ControladorCursoProgreso {
 		return servicio.crearCursoEnProgreso(curso, usuario);
 	}
 	
-    public boolean setAprendizajeSeleccionado(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
+    public boolean configurarCursoProgreso(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
+    	servicio.iniciarCurso(curso);
     	return servicio.setAprendizaje(curso, aprendizaje);
+    	
     }
 
 	public boolean esNuevo(CursoEnProgreso curso) {
@@ -44,5 +46,18 @@ public class ControladorCursoProgreso {
 
 	public void reiniciar(CursoEnProgreso curso) {
 		servicio.reiniciarCurso(curso);
+		actualizarCurso(curso);
+	}
+	
+	/**
+	 * Actualiza un curso
+	 */
+	public boolean actualizarCurso(CursoEnProgreso curso) {
+		try {
+			return servicio.actualizarCurso(curso);
+		} catch (Exception e) {
+			System.err.println("Error al actualizar cursoProgreso: " + e.getMessage());
+			return false;
+		}
 	}
 }

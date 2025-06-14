@@ -185,11 +185,5 @@ public class VentanaElegirCurso extends JFrame {
 		}
 		
 	}
-	
-
-
-	private void closeWindow() {
-		this.dispose();
-	}
 
 }

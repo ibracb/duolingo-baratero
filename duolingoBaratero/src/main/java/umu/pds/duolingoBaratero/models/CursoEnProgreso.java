@@ -2,8 +2,10 @@ package umu.pds.duolingoBaratero.models;
 
 import java.util.Objects;
 import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,51 +15,50 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PostLoad;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 @Entity
 @Table(name = "cursos_en_progreso")
-	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-	public class CursoEnProgreso {
-	
-		@Transient
-		private final int BLOQUE_CONTENIDO_INICIAL = 0;
-	
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private long id;
-	
-		@ManyToOne
-		@JoinColumn(name = "curso_plantilla", nullable = false)
-		private CursoPlantilla cursoPlantilla;
-	
-		@Enumerated(EnumType.STRING)
-		@Column(name = "aprendizaje")
-		private AprendizajeSeleccionado aprendizaje;
-	
-		// TODO: REVISAR COMO HACER ESTO EN JPA
-		@Transient
-		private EstadoCursoEnProgreso estado;
-	
-		@Column(name = "bloque_actual")
-		private int bloqueActual;
-	
-		@ManyToOne
-		@JoinColumn(name = "usuario_id", nullable = false)
-		private Usuario usuario;
-		
-		public CursoEnProgreso() {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class CursoEnProgreso {
 
-		}
+	@Transient
+	private final int BLOQUE_CONTENIDO_INICIAL = 0;
 
-	public CursoEnProgreso(CursoPlantilla cursoPlantilla,
-			Usuario usuario) {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+	@ManyToOne
+	@JoinColumn(name = "curso_plantilla", nullable = false)
+	private CursoPlantilla cursoPlantilla;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "aprendizaje")
+	private AprendizajeSeleccionado aprendizaje;
+
+	// TODO: REVISAR COMO HACER ESTO EN JPA
+	@Column(name = "estado")
+	private EstadoCursoEnProgreso estado;
+
+	@Column(name = "bloque_actual")
+	private int bloqueActual;
+
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", nullable = false)
+	private Usuario usuario;
+
+	public CursoEnProgreso() {
+
+	}
+
+	public CursoEnProgreso(CursoPlantilla cursoPlantilla, Usuario usuario) {
 		this.cursoPlantilla = cursoPlantilla;
 		this.usuario = usuario;
-		setEstado(new EstadoNuevo(this));
+		this.estado = EstadoCursoEnProgreso.NUEVO;
 		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
 	}
 
@@ -93,10 +94,6 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 		this.aprendizaje = aprendizaje;
 	}
 
-	public void setAprendizajeConEnum(AprendizajeSeleccionado aprendizajeSeleccionado) {
-		this.aprendizaje = aprendizajeSeleccionado;
-	}
-
 	public int getBloqueActual() {
 		return bloqueActual;
 	}
@@ -109,7 +106,7 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 		if (aprobado) {
 			bloqueActual++;
 			if (cursoPlantilla.isCursoFinalizado(bloqueActual)) {
-				estado.finalizar(this);
+				this.finalizar();
 			}
 		}
 	}
@@ -149,35 +146,60 @@ import umu.pds.duolingoBaratero.windows.utility.Constantes;
 		this.estado = estado;
 	}
 
-	public void iniciar() {
-		estado.iniciar(this);
+	public void reiniciar() {
+		if (estado == EstadoCursoEnProgreso.FINALIZADO) {
+			estado = EstadoCursoEnProgreso.NUEVO;
+		} else {
+			throw new IllegalStateException("No se puede reiniciar desde el estado: " + estado);
+		}
 	}
 
-	public void reiniciar() {
-		estado.iniciar(this);
-		bloqueActual = BLOQUE_CONTENIDO_INICIAL;
+	public void iniciar() {
+		if (estado == EstadoCursoEnProgreso.NUEVO) {
+			estado = EstadoCursoEnProgreso.EN_MARCHA;
+		} else {
+			throw new IllegalStateException("No se puede iniciar desde el estado: " + estado);
+		}
 	}
 
 	public void finalizar() {
-		estado.finalizar(this);
+		if (estado == EstadoCursoEnProgreso.EN_MARCHA) {
+			estado = EstadoCursoEnProgreso.FINALIZADO;
+			bloqueActual = BLOQUE_CONTENIDO_INICIAL;
+		} else {
+			throw new IllegalStateException("No se puede finalizar desde el estado: " + estado);
+		}
 	}
 
 	public boolean isNuevo() {
-		return estado instanceof EstadoNuevo;
+		return estado.equals(EstadoCursoEnProgreso.NUEVO);
 	}
 
 	public boolean isFinalizado() {
-		return estado instanceof EstadoFinalizado;
+		return estado.equals(EstadoCursoEnProgreso.FINALIZADO);
 	}
 
 	public boolean isEnMarcha() {
-		return estado instanceof EstadoEnMarcha;
+		return estado.equals(EstadoCursoEnProgreso.EN_MARCHA);
 	}
 
 	public long getNumLastBloqueContenido() {
 		return (long) 69;
 	}
-
+	
+//	@PostLoad
+//	public void inicializarEstado() {
+//	    if (estado == null) {
+//	        if (cursoPlantilla.isCursoFinalizado(bloqueActual)) {
+//	            estado = new EstadoFinalizado(this);
+//	        } else if (bloqueActual == BLOQUE_CONTENIDO_INICIAL) {
+//	            estado = new EstadoNuevo(this);
+//	        } else {
+//	            estado = new EstadoEnMarcha(this);
+//	        }
+//	    }
+//	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

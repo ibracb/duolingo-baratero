@@ -21,16 +21,22 @@ import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.Pregunta;
+import umu.pds.duolingoBaratero.models.aprendizajes.Aprendizaje;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 import umu.pds.duolingoBaratero.services.IComprobador;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 public class VentanaPregunta extends JFrame {
-	private static final int PANEL_Y_PUNTUCAION_INICIAL = 0;
+	private static final int PANEL_INICIAL = 0;
 	private static final long serialVersionUID = 1L;
+	private final static boolean APROBADO = true;
+	private final static boolean SUSPENSO = false;
 	private JPanel contentPane;
 	private JPanel panelCentral;
 	private ArrayList<JPanel> paneles;
@@ -40,20 +46,21 @@ public class VentanaPregunta extends JFrame {
 	private JButton btnSiguiente, btnSaltar;
 	private Component horizontalGlue;
 	private int currentPanel;
-	private int puntuacion;
 	private CursoEnProgreso curso;
 	private final ControladorCursoProgreso controladorCursoProgreso;
 	private final ControladorPregunta controladorPregunta;
+	private final ControladorUsuario controladorUsuario;
 
-	public VentanaPregunta(CursoEnProgreso curso, ControladorCursoProgreso controladorCursoprogreso, ControladorPregunta controladorPregunta) {
+	public VentanaPregunta(CursoEnProgreso curso, ControladorCursoProgreso controladorCursoprogreso,
+			ControladorPregunta controladorPregunta, ControladorUsuario controladorUsuario) {
 		this.controladorCursoProgreso = controladorCursoprogreso;
 		this.controladorPregunta = controladorPregunta;
+		this.controladorUsuario = controladorUsuario;
 		this.curso = curso;
-		currentPanel = PANEL_Y_PUNTUCAION_INICIAL;
-		puntuacion = PANEL_Y_PUNTUCAION_INICIAL;
+		currentPanel = PANEL_INICIAL;
 		paneles = this.getPaneles();
 		inicializar();
-		
+
 	}
 
 	/**
@@ -70,7 +77,7 @@ public class VentanaPregunta extends JFrame {
 		setContentPane(contentPane);
 
 		// ------- barra superior-------
-		barraSuperior = new BarraSuperiorPreguntas(this);
+		barraSuperior = new BarraSuperiorPreguntas(this, controladorUsuario);
 		barraProgreso = new BarraProgresoPanel(paneles.size());
 
 		JPanel panelSuperior = new JPanel(new BorderLayout());
@@ -96,30 +103,7 @@ public class VentanaPregunta extends JFrame {
 		btnSiguiente.setBackground(new Color(0, 255, 0));
 		btnSiguiente.setPreferredSize(new Dimension(100, 30));
 
-		// FIXME: Esto deberia hacerlo un servicio no la clase
-		btnSiguiente.addActionListener(e -> {
-			IComprobador panel = (IComprobador) paneles.get(currentPanel);
-			if (panel.isOpcionElegida()) {
-				boolean respuestaCorrecta = controladorPregunta.procesarRespuesta(panel.getPregunta(),
-						panel.getRespuestaUsuario());
-				if (respuestaCorrecta) {
-					puntuacion++;
-					Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
-				} else {
-					Constantes.mostrarMensaje(
-							"Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(),
-							JOptionPane.ERROR_MESSAGE);
-				}
-				barraProgreso.avanzar(respuestaCorrecta);
-				avanzarPregunta();
-
-			} else {
-				JOptionPane.showMessageDialog(this, "Debe elegir una opción o saltar para ir a la siguiente pregunta.",
-						"Error", JOptionPane.ERROR_MESSAGE);
-
-			}
-
-		});
+		btnSiguiente.addActionListener(e -> procesarSiguiente());
 
 		contentPane.add(panelCentral, BorderLayout.CENTER); // **Agregarlo al centro**
 
@@ -142,22 +126,55 @@ public class VentanaPregunta extends JFrame {
 
 	}
 
+	private void procesarSiguiente() {
+		IComprobador panel = (IComprobador) paneles.get(currentPanel);
+
+		if (!panel.isOpcionElegida()) {
+			JOptionPane.showMessageDialog(this, "Debe elegir una opción o saltar para ir a la siguiente pregunta.",
+					"Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		boolean respuestaCorrecta = controladorPregunta.procesarRespuesta(panel.getPregunta(),
+				panel.getRespuestaUsuario());
+
+		if (respuestaCorrecta) {
+			Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			Constantes.mostrarMensaje(
+					"Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(),
+					JOptionPane.ERROR_MESSAGE);
+
+			if (controladorUsuario.restarVidaUsuario() <= 0) {
+				new DialogoFinal(this, SUSPENSO).setVisible(true);
+			}
+			barraSuperior.updateVidas();
+		}
+
+		barraProgreso.avanzar(respuestaCorrecta);
+		avanzarPregunta();
+	}
+
 	private void avanzarPregunta() {
 		if (currentPanel < paneles.size() - 1) {
 			currentPanel++;
 			cardLayout.show(panelCentral, "panel" + currentPanel);
 		} else {
-			new DialogoFinal(this, puntuacion).setVisible(true);
+			new DialogoFinal(this, APROBADO).setVisible(true);
 		}
 
 	}
 
 	// -------- METODO DE PRUEBA --------------
 	private ArrayList<JPanel> getPaneles() {
-		Set<Pregunta> preguntas = controladorPregunta.obtenerPreguntasDelBloque(curso);
-		return preguntas.stream()
-			    .map(Pregunta::crearPanel)
-			    .collect(Collectors.toCollection(ArrayList::new));
+
+		AprendizajeSeleccionado seleccion = curso.getAprendizaje(); // O de usuario si se guarda ahí
+		Aprendizaje aprendizaje = FactoriaAprendizaje.INSTANCE.getAprendizaje(seleccion);
+		Set<Pregunta> preguntas = aprendizaje
+				.seleccionarPreguntas(controladorPregunta.obtenerPreguntasDelBloque(curso));
+		// Set<Pregunta> preguntas =
+		// controladorPregunta.obtenerPreguntasDelBloque(curso);
+		return preguntas.stream().map(Pregunta::crearPanel).collect(Collectors.toCollection(ArrayList::new));
 	}
 
 	public class DialogoFinal extends JDialog {
@@ -166,18 +183,15 @@ public class VentanaPregunta extends JFrame {
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public DialogoFinal(JFrame ventanaPregunta, int puntuacion) {
-			super(ventanaPregunta, "Juego Completado", true); // Modal
+		public DialogoFinal(JFrame ventanaPregunta, boolean aprobado) {
+			super(ventanaPregunta, "Juego Terminado", true); // Modal
 			setSize(300, 150);
 			setLocationRelativeTo(ventanaPregunta); // Centrar sobre la ventana principal
 			setLayout(new BorderLayout());
 
-			boolean aprobado = (puntuacion / (double) paneles.size() >= 0.0); //FIXME: Para la entrega hay que ponerlo en 0.8
 			controladorCursoProgreso.avanzar(curso, aprobado);
 			String resultado = aprobado ? "Aprobado :)" : "Suspenso :(";
 			JLabel mensaje = new JLabel("¡Juego terminado! Resultado : " + resultado, JLabel.CENTER);
-
-			// Mensaje de resultado
 
 			add(mensaje, BorderLayout.CENTER);
 

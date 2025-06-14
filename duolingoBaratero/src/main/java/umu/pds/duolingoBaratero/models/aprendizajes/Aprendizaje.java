@@ -1,10 +1,12 @@
 package umu.pds.duolingoBaratero.models.aprendizajes;
 
-import umu.pds.duolingoBaratero.models.CursoEnProgreso;
+import java.util.Set;
+
+import umu.pds.duolingoBaratero.models.Pregunta;
 
 public interface Aprendizaje {
 	
-	public void setPreguntasByEstrategia(CursoEnProgreso progreso);
+	Set<Pregunta> seleccionarPreguntas(Set<Pregunta> disponibles);
 	
 	public AprendizajeSeleccionado getSeleccion();
 	

@@ -42,7 +42,6 @@ public class ControladorUsuario {
 		return servicioUsuario.getNombreUsuarioActual();
 	}
 
-
 	public void logOut() {
 		servicioUsuario.logOut();
 	}
@@ -107,4 +106,29 @@ public class ControladorUsuario {
 	public void borrarCurso(CursoEnProgreso curso) {
 		servicioUsuario.borrarCurso(curso);
 	}
+
+	public int restarVidaUsuario() {
+		int vidas = servicioUsuario.quitarVida();
+		actualizarUsuario(); // actualiza después del cambio
+		return vidas;
+	}
+
+	public int getVidasUsuario() {
+		return servicioUsuario.getVidasUsuario();
+	}
+
+	public boolean recuperarVida() {
+		boolean resultado = servicioUsuario.recuperarVida();
+		actualizarUsuario(); // actualiza si recuperó vida
+		return resultado;
+	}
+
+	public void actualizarUsuario() {
+		try {
+			servicioUsuario.actualizarUsuario(); // debe hacer commit de los cambios
+		} catch (Exception e) {
+			System.err.println("Error al actualizar usuario: " + e.getMessage());
+		}
+	}
+
 }

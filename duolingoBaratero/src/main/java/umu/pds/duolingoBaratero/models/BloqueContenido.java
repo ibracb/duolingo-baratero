@@ -15,6 +15,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 @Entity
@@ -65,21 +67,32 @@ public class BloqueContenido {
 	public Set<Pregunta> getPreguntas() {
 		return preguntas;
 	}
-
+	
+	public Set<Pregunta> getPreguntas(AprendizajeSeleccionado aprendizaje) {
+		return preguntas;
+	}
+	
 	public void setPreguntas(Set<Pregunta> preguntas) {
 		this.preguntas = preguntas;
 	}
 
 	public Set<Pregunta> getPreguntasSecuencialmente() {
-		return this.preguntas;
+		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.SECUENCIAL).seleccionarPreguntas(preguntas);
+		//return this.preguntas;
 	}
-
+	
+	public Set<Pregunta> getPreguntasRepeticionEspaciada() {
+		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.REPETICION_ESPACIADA).seleccionarPreguntas(preguntas);
+		//return this.preguntas;
+	}
+	
 	public Set<Pregunta> getPreguntasAleatoriamente() {
-		Set<Pregunta> preguntasAleatorias = new HashSet<>(preguntas);
+		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.ALEATORIO).seleccionarPreguntas(preguntas);
+		/*Set<Pregunta> preguntasAleatorias = new HashSet<>(preguntas);
 		// Collections.shuffle(preguntasAleatorias);
-		return preguntasAleatorias;
+		return preguntasAleatorias;*/
 	}
-
+	
 	public void addPregunta(Pregunta pregunta) {
 		preguntas.add(pregunta);
 	}

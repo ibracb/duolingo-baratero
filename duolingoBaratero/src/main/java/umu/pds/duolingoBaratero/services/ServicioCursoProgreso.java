@@ -4,19 +4,31 @@ import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.persistence.DBCursoEnProgresoDAO;
 
 public class ServicioCursoProgreso {
+
+	 private DBCursoEnProgresoDAO dbCursoEnProgresoDAO;
+	 
+	 
+	public ServicioCursoProgreso(DBCursoEnProgresoDAO dbCursoEnProgresoDAO) {
+		super();
+		this.dbCursoEnProgresoDAO = dbCursoEnProgresoDAO;
+	}
 
 	public CursoEnProgreso crearCursoEnProgreso(CursoPlantilla curso, Usuario usuario) {
 		return new CursoEnProgreso(curso, usuario);
 	}
-	
-	
+
 	// FIXME: Boolean true de prueba
-	
+
 	public boolean setAprendizaje(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
-		 curso.setAprendizaje(aprendizaje);
-		 return true;
+		curso.setAprendizaje(aprendizaje);
+		return true;
+	}
+
+	public void iniciarCurso(CursoEnProgreso curso) {
+		curso.iniciar();
 	}
 
 	public boolean esCursoNuevo(CursoEnProgreso curso) {
@@ -42,10 +54,15 @@ public class ServicioCursoProgreso {
 	}
 
 	public void reiniciarCurso(CursoEnProgreso curso) {
-		if (curso != null) {
 			curso.reiniciar();
-		}
 	}
-
+	
+    public boolean actualizarCurso(CursoEnProgreso curso) {
+        if (curso != null) {
+            dbCursoEnProgresoDAO.update(curso);
+            return true;
+        }
+        return false;
+    }
 
 }

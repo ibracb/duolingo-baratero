@@ -1,5 +1,7 @@
 package umu.pds.duolingoBaratero.models;
 
+import java.time.temporal.ChronoUnit;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,36 +21,39 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="usuarios")
+@Table(name = "usuarios")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Usuario {
+
+	private static final int VIDAS_MAXIMAS = 5;
+	private static final int MINUTOS_POR_VIDA = 5;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@Column(name="nombre")
+
+	@Column(name = "nombre")
 	private String nombre;
 
 	@JsonIgnore
-	@Column(name="nickname")
+	@Column(name = "nickname")
 	private String nickname;
 
 	@JsonIgnore
-	@Column(name="correo")
+	@Column(name = "correo")
 	private String correo;
 
 	@JsonIgnore
-	@Column(name="passwd")
+	@Column(name = "passwd")
 	private String passwd;
 
 	@JsonIgnore
-	@Column(name="imagen")
+	@Column(name = "imagen")
 	private String imagen;
 
 	@JsonIgnore
 	@OneToMany
-	@JoinColumn(name="usuario_id")
+	@JoinColumn(name = "usuario_id")
 	private Set<CursoEnProgreso> cursos;
 
 	@JsonIgnore
@@ -56,7 +61,12 @@ public class Usuario {
 	@JoinColumn(unique = true)
 	private Estadistica estadistica;
 
-	
+	@Column(name = "vidas")
+	private int vidas;
+
+	@Column(name = "ultimaRecuperacion")
+	private LocalDateTime ultimaRecuperacion;
+
 	public Usuario() {
 	}
 
@@ -68,6 +78,8 @@ public class Usuario {
 		this.cursos = new HashSet<>();
 		this.estadistica = new Estadistica(this);
 		this.imagen = "";
+		this.vidas = VIDAS_MAXIMAS;
+		this.ultimaRecuperacion = LocalDateTime.now();
 	}
 
 	public Usuario(String nombre, String nickname, String correo, String passwd, String imagen) {
@@ -77,6 +89,8 @@ public class Usuario {
 		this.correo = correo;
 		this.passwd = passwd;
 		this.imagen = imagen;
+		this.vidas = VIDAS_MAXIMAS;
+		this.ultimaRecuperacion = LocalDateTime.now();
 	}
 
 	public Set<CursoEnProgreso> getCursos() {
@@ -153,6 +167,18 @@ public class Usuario {
 		this.estadistica = estadistica;
 	}
 
+	public int getVidas() {
+		return vidas;
+	}
+
+	public void setVidas(int vidas) {
+		this.vidas = vidas;
+	}
+
+	public boolean hasVidas() {
+		return vidas > 0;
+	}
+
 	public boolean hasImage() {
 		return imagen != null;
 	}
@@ -199,5 +225,34 @@ public class Usuario {
 
 	public boolean estaCursando(CursoPlantilla curso) {
 		return cursos.stream().anyMatch(cursoProgreso -> cursoProgreso.getCursoPlantilla().equals(curso));
+	}
+
+	public int perderVida() {
+		if (vidas > 0) {
+			vidas--;
+		}
+
+		return vidas;
+	}
+
+	public boolean recuperarVidas() {
+		LocalDateTime ahora = LocalDateTime.now();
+
+		// Calcular minutos transcurridos desde la última recuperación
+		long minutosTranscurridos = ChronoUnit.MINUTES.between(ultimaRecuperacion, ahora);
+		int vidasARecuperar = (int) (minutosTranscurridos / MINUTOS_POR_VIDA);
+
+		if (vidasARecuperar > 0) {
+			vidas = Math.min(vidas + vidasARecuperar, VIDAS_MAXIMAS);
+
+			// Si no llegó al máximo, ajusta la marca de tiempo solo por las vidas
+			if (vidas < VIDAS_MAXIMAS) {
+				ultimaRecuperacion = ultimaRecuperacion.plusMinutes(vidasARecuperar * MINUTOS_POR_VIDA);
+			} else {
+				// Si llegó al máximo, la próxima recuperación será desde ahora
+				ultimaRecuperacion = ahora;
+			}
+		}
+		return vidas > 0;
 	}
 }

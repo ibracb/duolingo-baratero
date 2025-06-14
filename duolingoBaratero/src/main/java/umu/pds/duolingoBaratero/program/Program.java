@@ -29,13 +29,14 @@ public class Program {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		ServicioCursoProgreso servicioProgreso = new ServicioCursoProgreso();
-		ControladorCursoProgreso controladorProgreso = new ControladorCursoProgreso(servicioProgreso);
-		DBUsuarioDAO usuarioDAO = DBUsuarioDAO.getDBUsuarioDAO(); 
 		DBCursoPlantillaDAO plantillaDAO = DBCursoPlantillaDAO.getDBCursoPlantillaDAO();
 		DBCursoEnProgresoDAO progresoDAO = DBCursoEnProgresoDAO.getDBCursoEnProgresoDAO();
 		DBBloqueContenidoDAO bloqueDAO = DBBloqueContenidoDAO.getDBBloqueContenidoDAO();
 		DBPreguntaDAO preguntaDAO = DBPreguntaDAO.getDBPreguntaDAOO();
+		ServicioCursoProgreso servicioProgreso = new ServicioCursoProgreso(progresoDAO);
+		ControladorCursoProgreso controladorProgreso = new ControladorCursoProgreso(servicioProgreso);
+		DBUsuarioDAO usuarioDAO = DBUsuarioDAO.getDBUsuarioDAO(); 
+
 		ImageService servicioImagenes = new ImageService();
 		ServicioCursoPlantilla servicioPlantilla = new ServicioCursoPlantilla(plantillaDAO, progresoDAO, bloqueDAO, preguntaDAO, SerializerFactory.INSTANCE);
 		ServicioUsuario servicioUsuario = new ServicioUsuario(usuarioDAO, servicioProgreso, servicioPlantilla);
