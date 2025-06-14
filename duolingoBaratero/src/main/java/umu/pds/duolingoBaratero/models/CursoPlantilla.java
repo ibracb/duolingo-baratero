@@ -69,7 +69,6 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 		this.descripcion = descripcion;
 		this.objetivos = objetivos;
 		this.contenidos = new ArrayList<>();
-		id = Constantes.getID();
 	}
 
 	public CursoPlantilla(String nombre, String propietario, String descripcion, String objetivos, Nivel nivel,

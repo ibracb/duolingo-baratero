@@ -58,10 +58,10 @@ public class VentanaPrincipal extends JFrame {
 		listaCursos = new JList<>(modeloCursos);
 		listaCursos.setCellRenderer(new CursoCellRenderer(cPlantilla));
 		listaCursos.addListSelectionListener(e -> {
-		    if (!e.getValueIsAdjusting()) {  // Evita múltiples llamadas
-		        if (userHasVidas())
-		            manejarSeleccionCursosEmpezados(listaCursos.getSelectedValue());
-		    }
+			if (!e.getValueIsAdjusting()) { // Evita múltiples llamadas
+				if (userHasVidas())
+					manejarSeleccionCursosEmpezados(listaCursos.getSelectedValue());
+			}
 		});
 		panelCursosEnProgreso.add(new JScrollPane(listaCursos), BorderLayout.CENTER);
 		panelCentral.add(panelCursosEnProgreso);
@@ -83,8 +83,9 @@ public class VentanaPrincipal extends JFrame {
 		if (cUsuario.recuperarVida()) {
 			return true;
 		}
-		JOptionPane.showMessageDialog(this, "No te quedan vidas para practicar, tienes que esperar a recuperar almenos una vida",
-				"Atención", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this,
+				"No te quedan vidas para practicar, tienes que esperar a recuperar almenos una vida", "Atención",
+				JOptionPane.WARNING_MESSAGE);
 		return false;
 	}
 
@@ -92,58 +93,52 @@ public class VentanaPrincipal extends JFrame {
 		return cUsuario.getCursosUsuarioActual();
 	}
 
-	private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
-	    if (curso == null) return;
+s	private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
+		if (curso == null)
+			return;
 
-	    if (cProgreso.estaFinalizado(curso)) {
-	        manejarCursoFinalizado(curso);
-	    } else {
-	        manejarCursoNoFinalizado(curso);
-	    }
+		if (cProgreso.estaFinalizado(curso)) {
+			manejarCursoFinalizado(curso);
+		} else {
+			manejarCursoNoFinalizado(curso);
+		}
 
-	    listaCursos.clearSelection();
+		listaCursos.clearSelection();
 	}
 
 	private void manejarCursoFinalizado(CursoEnProgreso curso) {
-	    int opcion = mostrarDialogoReinicioCurso();
+		int opcion = mostrarDialogoReinicioCurso();
 
-	    if (opcion == JOptionPane.YES_OPTION) {
-	        cProgreso.reiniciar(curso);
-	    } else {
-	        eliminarCursoSeleccionado(curso);
-	    }
+		if (opcion == JOptionPane.YES_OPTION) {
+			cProgreso.reiniciar(curso);
+		} else {
+			eliminarCursoSeleccionado(curso);
+		}
 	}
 
 	private int mostrarDialogoReinicioCurso() {
-	    Object[] opciones = { "Sí", "No" };
-	    return JOptionPane.showOptionDialog(this,
-	            "Has finalizado este curso. ¿Quieres empezarlo de nuevo?", 
-	            "Aviso", 
-	            JOptionPane.YES_NO_OPTION,
-	            JOptionPane.INFORMATION_MESSAGE, 
-	            null, 
-	            opciones, 
-	            opciones[1]);
+		Object[] opciones = { "Sí", "No" };
+		return JOptionPane.showOptionDialog(this, "Has finalizado este curso. ¿Quieres empezarlo de nuevo?", "Aviso",
+				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[1]);
 	}
 
 	private void eliminarCursoSeleccionado(CursoEnProgreso curso) {
-	    int index = listaCursos.getSelectedIndex();
-	    if (index != -1) {
-	        DefaultListModel<CursoEnProgreso> model = (DefaultListModel<CursoEnProgreso>) listaCursos.getModel();
-	        model.remove(index);
-	    }
-	    cUsuario.borrarCurso(curso);
+		int index = listaCursos.getSelectedIndex();
+		if (index != -1) {
+			DefaultListModel<CursoEnProgreso> model = (DefaultListModel<CursoEnProgreso>) listaCursos.getModel();
+			model.remove(index);
+		}
+		cUsuario.borrarCurso(curso);
 	}
 
 	private void manejarCursoNoFinalizado(CursoEnProgreso curso) {
-	    if (curso.isNuevo()) {
-	        openVentanaEstrategia(curso);
-	        
-	    }
-	    VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta, cUsuario);
-	    ventanaPregunta.setVisible(true);
-	}
+		if (curso.isNuevo()) {
+			openVentanaEstrategia(curso);
 
+		}
+		VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta, cUsuario);
+		ventanaPregunta.setVisible(true);
+	}
 
 	public void refreshCursos() {
 		modeloCursos.clear();

@@ -6,34 +6,34 @@
 
 01. El usuario no debe estar registrado previamente.  
   
-**Pasos:**  
-1.  El usuario accede a la [ventana de inicio](../Ventanas/VentanaInicio.png).
-2.  El usuario pulsa el botón Empiezo Ahora.
-3.  El usuario accede a la [ventana de cursos principal](../Ventanas/VentanaCursos.png)
-4.  El usuario pulsa el botón registrate y accede a la [ventana de registro](../Ventanas/VentanaRegistro.png)
-5.  El usuario ingresa su nombre, correo electrónico, contraseña.
-6.  El sistema comprueba que el correo no esté registrado.
-7.  El sistema comprueba que las contraseñas coincidan.
-8.  El sistema agrega al usuario en la base de datos.
-9.  El usuario accede a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioEstudiante.png) vacia
+**Pasos:**
+1. El usuario solicita iniciar el proceso de registro.
+2. El sistema solicita los siguientes datos al usuario: nombre, correo electrónico y contraseña (y su confirmación).
+3. El usuario proporciona la información solicitada.
+4. El sistema verifica si el correo electrónico ya está registrado.
+5. El sistema verifica que las contraseñas coincidan.
+6. El sistema registra al usuario en la base de datos.
+7. El sistema inicia sesión para el nuevo usuario.
+8. El sistema devuelve al usuario un estado inicial sin cursos asignados.
 
 **Flujos alternativos:**  
-03a. El usuario se interesa por un curso y pulsa en un curso.  
-04a. El usuario accede a la [ventana de información del curso](../Ventanas/VentanaInformacion.png)  
-05a. El usuario pulsa el boton volver.  
-06a. El usuario accede a la [ventana de cursos principal](../Ventanas/VentanaCursos.png)  
-07a. El usuario pulsa el botón registrate y accede a la [ventana de registro](../Ventanas/VentanaRegistro.png)  
-08a. El usuario ingresa su nombre, correo electrónico, contraseña y 3 hasta 3 cursos que le hayan sido de interes.  
-09a. (Vuelve al paso 6)  
-10a. El usuario accede a la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioEstudiante.png) con los cursos que ha seleccionado.  
+Flujo Alternativo 1 – Registro después de interés en cursos:  
+1a. El usuario solicita información sobre uno o más cursos.  
+2a. El sistema le proporciona detalles de los cursos.  
+3a. El usuario decide registrarse e incluye hasta 3 cursos de interés durante el proceso.  
+4a. (Reanuda desde el paso 4 del escenario principal).  
+5a. El sistema registra al usuario con la lista de cursos seleccionados.  
+6a. El sistema devuelve al usuario un estado inicial con los cursos seleccionados.
 
-06b. El sistema comprueba que tiene registrado el correo electrónico introducido e informa al usuario.  
-07b. El sistema vacía el formulario de registro.  
-08b. (Vuelve al paso 4)  
+Flujo Alternativo 2 – Correo ya registrado:  
+4b. El sistema detecta que el correo electrónico ya está registrado.  
+5b. El sistema informa del error y descarta los datos ingresados.  
+6b. El usuario debe reiniciar el proceso desde el inicio.
 
-07c. El sistema verifica que las contraseñas no coinciden e informa al usuario.  
-08c. El sistema vacía el formulario de registro.  
-09c. (Vuelve al paso 4)  
+Flujo Alternativo 3 – Contraseñas no coinciden:  
+5c. El sistema detecta que las contraseñas no coinciden.  
+6c. El sistema informa del error y descarta los datos ingresados.  
+7c. El usuario debe reiniciar el proceso desde el inicio.  
 
 **Postcondiciones:**  
 01. El usuario queda registrado.  
