@@ -1,12 +1,38 @@
 package umu.pds.duolingoBaratero.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="estadisticas")
 public class Estadistica {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@OneToOne(mappedBy="estadistica")
 	private Usuario usuario;
+	
+	@Column(name="tiempo_uso")
 	private double tiempoUso;
+	
+	@Column(name="num_accesos")
 	private int numAccesos;
+	
+	@Column(name="racha_victorias")
 	private int rachaVictorias;
+	
+	@Column(name="porcentaje_aciertos")
 	private double porcentajeAciertos;
+	
+	public Estadistica() {
+	}
 
 	public Estadistica(Usuario usuario) {
 		this.usuario = usuario;

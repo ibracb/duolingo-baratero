@@ -1,52 +1,33 @@
 package umu.pds.duolingoBaratero.controllers;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Usuario;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
-import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
 import umu.pds.duolingoBaratero.services.ImageService;
+import umu.pds.duolingoBaratero.services.ServicioUsuario;
 
-public enum ControladorUsuario {
-	INSTANCE;
+public class ControladorUsuario {
 
-	private Usuario user;
-	private ImageService sevicioImagenes;
+	private final ServicioUsuario servicioUsuario;
+	private final ImageService servicioImagenes;
 
-	private ControladorUsuario() {
-		this.sevicioImagenes = new ImageService();
+	public ControladorUsuario(ServicioUsuario servicioUsuario, ImageService servicioImagenes) {
+		this.servicioUsuario = servicioUsuario;
+		this.servicioImagenes = servicioImagenes;
 	}
 
-	public boolean registrarUsuario(String nombre, String apellidos, String telefono, String contrasena) {
-		Usuario usuario = new Usuario(nombre, apellidos, telefono, contrasena);
-		this.user = usuario;
-//		if (usuario.isPresent()) {
-//			Usuario u = usuario.get();
-//			this.user = u;
-//		}
-//		return usuario.isPresent();
-		return true;
+	public boolean registrarUsuario(String nombre, String apellidos, String correo, String contrasena) {
+		return servicioUsuario.registrarUsuario(nombre, apellidos, correo, contrasena);
 	}
 
 	public boolean comprobarUsuario(String correo, String passwd) {
-		Usuario usuario = new Usuario("a", "a", "a", "A");
-		boolean result = usuario != null;
-		if (result) {
-			this.user = usuario;
-		}
-		return result;
+		return servicioUsuario.comprobarUsuario(correo, passwd);
 	}
 
 	// ----------------------------------------------
@@ -54,114 +35,76 @@ public enum ControladorUsuario {
 	// ----------------------------------------------
 
 	public Usuario getUsuarioActual() {
-		return this.user;
+		return servicioUsuario.getUsuarioActual();
 	}
 
 	public String getNombreUsuarioActual() {
-		return user.getNombre();
+		return servicioUsuario.getNombreUsuarioActual();
 	}
 
+
 	public void logOut() {
-		user = null;
+		servicioUsuario.logOut();
 	}
 
 	public void setImagen(String image) {
-		if (user != null) {
-			user.setImagen(image);
-		}
+		servicioUsuario.setImagen(image);
 	}
 
 	public void setCursos(String[] nombresCursos) {
-		Set<CursoEnProgreso> cursos = new HashSet<>();
-
-		for (String nombre : nombresCursos) {
-			ControladorCurso.INSTANCE.getCursoPlantilla(nombre).ifPresent(plantilla -> cursos
-					.add(ContraldorCursoProgreso.INSTANCE.getCursoEnProgreso(plantilla, null, user)));
-		}
-
-		user.setCursos(cursos);
+		servicioUsuario.setCursos(nombresCursos);
 	}
 
-	public boolean addCursosEnProgreso(CursoPlantilla curso, AprendizajeSeleccionado aprendizajeSeleccionado) {
-		CursoEnProgreso cursoProgreso = ControladorCurso.INSTANCE.getCursoEnProgreso(curso, aprendizajeSeleccionado,
-				user);
-		boolean resultado = user.addCursoEnProgreso(cursoProgreso);
-		if (resultado) {
-			RepositorioCurso.INSTANCE.agregarCursoEnProgreso(cursoProgreso);
-		}
-		return resultado;
+	public boolean addCursosEnProgreso(CursoPlantilla curso) {
+		return servicioUsuario.addCursosEnProgreso(curso);
 	}
 
 	public boolean estaCursando(CursoPlantilla curso) {
-		return user.estaCursando(curso);
+		return servicioUsuario.estaCursando(curso);
 	}
 
 	public boolean addCursoPlantilla(String nombre, String objetivos, String descripcion) {
-		return true;
+		return servicioUsuario.addCursoPlantilla(nombre, objetivos, descripcion);
 	}
 
 	public Set<CursoEnProgreso> getCursosUsuarioActual() {
-		return user.getCursos();
+		return servicioUsuario.getCursosUsuarioActual();
 	}
 
 	public double getPorcentajeRespuestasCorrectas() {
-		return user.getPorcentajeAcierto();
+		return servicioUsuario.getPorcentajeRespuestasCorrectas();
 	}
 
 	public double getTiempoUso() {
-		return user.getTiempoUso();
+		return servicioUsuario.getTiempoUso();
 	}
 
 	public int getRachaVictorias() {
-		return user.getRachaVictorias();
+		return servicioUsuario.getRachaVictorias();
 	}
 
 	public int getNumMaxAccesos() {
-		return user.getNumMaxAccesos();
+		return servicioUsuario.getNumMaxAccesos();
 	}
 
 	// ----------------------------------------------
 	// Funciones imagenes
 	// ----------------------------------------------
 
-	private ImageIcon whichImage(Usuario usuario, int dimensiones) throws IOException {
-		BufferedImage image = null;
-		String imagen = null;
-
-		if (usuario.hasImage())
-			imagen = usuario.getImagen();
-
-		if (imagen != null) {
-			if (sevicioImagenes.isURL(imagen)) {
-				image = ImageIO.read(new URL(imagen));
-			} else if (Files.exists(Paths.get(imagen))) {
-				image = ImageIO.read(Paths.get(imagen).toFile());
-			}
-		}
-
-		if (image != null) {
-			return getScaledImage(image, dimensiones);
-		} else {
-			return getScaledDefaultImage(dimensiones);
-		}
-	}
-
 	public ImageIcon getScaledImage(BufferedImage bufferedImage, int dimensiones) {
-		return sevicioImagenes.getScaledImage(bufferedImage, dimensiones);
+		return servicioImagenes.getScaledImage(bufferedImage, dimensiones);
 	}
 
 	public ImageIcon getScaledImage(ImageIcon image, int dimensiones) {
-		return sevicioImagenes.getScaledImage(image, dimensiones);
+		return servicioImagenes.getScaledImage(image, dimensiones);
 	}
 
 	public ImageIcon getScaledDefaultImage(int dimensiones) {
 		ImageIcon image = new ImageIcon(getClass().getResource("/persona.png"));
-		return sevicioImagenes.getScaledImage(image, dimensiones);
+		return servicioImagenes.getScaledImage(image, dimensiones);
 	}
 
 	public void borrarCurso(CursoEnProgreso curso) {
-		user.eliminarCurso(curso);
-
+		servicioUsuario.borrarCurso(curso);
 	}
-
 }

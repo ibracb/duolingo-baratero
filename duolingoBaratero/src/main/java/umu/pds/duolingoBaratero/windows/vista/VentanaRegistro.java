@@ -2,11 +2,8 @@ package umu.pds.duolingoBaratero.windows.vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.GridBagLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
 
@@ -14,7 +11,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -22,225 +18,230 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.filechooser.FileFilter;
 
-import umu.pds.duolingoBaratero.controllers.ControladorDuolingoBaratero;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import java.awt.Component;
 import javax.swing.SwingConstants;
-import javax.swing.Box;
-import java.awt.Dimension;
 
 public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	private static final File IMAGEN_POR_DEFECTO = null;
 	private static final int DEFAUL_HEIGHT_AND_WIDTH = 75;
 
-    private JPanel contentPane;
-    private JLabel lblPerfil;
-    private JPasswordField passwordFieldContraseñaOk;
-    private JPasswordField passwordFieldContraseña;
-    private JTextField textFieldNickName;
-    private JTextField textFieldCorreo;
-    private JTextField textFieldNombre;
-    private JCheckBoxMenuItem[] cursos;
-    private VentanaCursos v;
-    private JLabel lblCorreo;
+	private JPanel contentPane;
+	private JLabel lblPerfil;
+	private JPasswordField passwordFieldContraseñaOk;
+	private JPasswordField passwordFieldContraseña;
+	private JTextField textFieldNickName;
+	private JTextField textFieldCorreo;
+	private JTextField textFieldNombre;
+	private JCheckBoxMenuItem[] cursos;
+	private VentanaCursos v;
+	private JLabel lblCorreo;
 	private URL url;
 	private int seleccionados;
 	private File destinationFile = IMAGEN_POR_DEFECTO;
+	private final ControladorUsuario controladorUsuario;
+	private final ControladorCursoPlantilla controladorPlantilla;
+	private final ControladorCursoProgreso controladorProgreso;
+	private final ControladorPregunta controladorPregunta;
 
+	public VentanaRegistro(VentanaCursos v, ControladorUsuario controladorUsuario, ControladorCursoPlantilla controladorCursoPlantilla, ControladorCursoProgreso controladorCursoProgreso,
+			ControladorPregunta controladorPregunta) {
+		this.controladorUsuario = controladorUsuario;
+		this.controladorPlantilla = controladorCursoPlantilla;
+		this.controladorProgreso = controladorCursoProgreso;
+		this.controladorPregunta = controladorPregunta;
+		this.v = v;
+		setTitle("Registro");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		setSize(450, 325);
+		setLocationRelativeTo(null);
 
-    public VentanaRegistro(VentanaCursos v) {
-    	this.v = v;
-        setTitle("Registro");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
-        setSize(450, 325);
-        setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 
-        setContentPane(contentPane);
-        contentPane.setLayout(new BorderLayout(0, 0));
+		JPanel panelArriba = new JPanel();
+		panelArriba.setBackground(new Color(200, 220, 255));
+		contentPane.add(panelArriba, BorderLayout.NORTH);
 
-        JPanel panelArriba = new JPanel();
-        panelArriba.setBackground(new Color(200, 220, 255));
-        contentPane.add(panelArriba, BorderLayout.NORTH);
+		JLabel lblTexto = new JLabel("⚡ ¡Regístrate! 🚀¡Sé la diferencia!⭐️");
+		panelArriba.add(lblTexto);
 
-        JLabel lblTexto = new JLabel("⚡ ¡Regístrate! 🚀¡Sé la diferencia!⭐️");
-        panelArriba.add(lblTexto);
+		JPanel panelAbajo = new JPanel();
+		contentPane.add(panelAbajo, BorderLayout.SOUTH);
 
-        JPanel panelAbajo = new JPanel();
-        contentPane.add(panelAbajo, BorderLayout.SOUTH);
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(e -> closeWindow());
+		panelAbajo.add(btnCancelar);
 
-        JButton btnCancelar = new JButton("Cancelar");
-        btnCancelar.addActionListener(e -> closeWindow());
-        panelAbajo.add(btnCancelar);
+		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar.addActionListener(e -> manejarRegistro());
+		panelAbajo.add(btnRegistrar);
 
-        JButton btnRegistrar = new JButton("Registrar");
-        btnRegistrar.addActionListener(e -> manejarRegistro());
-        panelAbajo.add(btnRegistrar);
+		JPanel panelMedio = new JPanel();
+		contentPane.add(panelMedio, BorderLayout.CENTER);
+		panelMedio.setLayout(new BoxLayout(panelMedio, BoxLayout.Y_AXIS));
 
-        JPanel panelMedio = new JPanel();
-        contentPane.add(panelMedio, BorderLayout.CENTER);
-        panelMedio.setLayout(new BoxLayout(panelMedio, BoxLayout.Y_AXIS));
+		JPanel panelDatos = new JPanel();
+		panelMedio.add(panelDatos);
+		GridBagLayout gbl_panelDatos = new GridBagLayout();
+		gbl_panelDatos.columnWidths = new int[] { 20, 0, 0, 20, 0 };
+		gbl_panelDatos.rowHeights = new int[] { 10, 0, 0, 0, 0, 0, 0 };
+		gbl_panelDatos.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panelDatos.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		panelDatos.setLayout(gbl_panelDatos);
 
-        JPanel panelDatos = new JPanel();
-        panelMedio.add(panelDatos);
-        GridBagLayout gbl_panelDatos = new GridBagLayout();
-        gbl_panelDatos.columnWidths = new int[]{20, 0, 0, 20, 0};
-        gbl_panelDatos.rowHeights = new int[]{10, 0, 0, 0, 0, 0, 0};
-        gbl_panelDatos.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-        gbl_panelDatos.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        panelDatos.setLayout(gbl_panelDatos);
-        
-        JLabel lblNombre = new JLabel("Nombre:");
-        GridBagConstraints gbc_lblNombre = new GridBagConstraints();
-        gbc_lblNombre.anchor = GridBagConstraints.EAST;
-        gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNombre.gridx = 1;
-        gbc_lblNombre.gridy = 1;
-        panelDatos.add(lblNombre, gbc_lblNombre);
-        
-        textFieldNombre = new JTextField();
-        GridBagConstraints gbc_textFieldNombre = new GridBagConstraints();
-        gbc_textFieldNombre.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldNombre.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldNombre.gridx = 2;
-        gbc_textFieldNombre.gridy = 1;
-        panelDatos.add(textFieldNombre, gbc_textFieldNombre);
-        textFieldNombre.setColumns(10);
-        
-        lblCorreo = new JLabel("Correo:");
-        GridBagConstraints gbc_lblCorreo = new GridBagConstraints();
-        gbc_lblCorreo.anchor = GridBagConstraints.EAST;
-        gbc_lblCorreo.insets = new Insets(0, 0, 5, 5);
-        gbc_lblCorreo.gridx = 1;
-        gbc_lblCorreo.gridy = 2;
-        panelDatos.add(lblCorreo, gbc_lblCorreo);
-        
-        textFieldCorreo = new JTextField();
-        GridBagConstraints gbc_textFieldCorreo = new GridBagConstraints();
-        gbc_textFieldCorreo.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldCorreo.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldCorreo.gridx = 2;
-        gbc_textFieldCorreo.gridy = 2;
-        panelDatos.add(textFieldCorreo, gbc_textFieldCorreo);
-        textFieldCorreo.setColumns(10);
-        
-        JLabel lblNickName = new JLabel("NickName:");
-        GridBagConstraints gbc_lblNickName = new GridBagConstraints();
-        gbc_lblNickName.anchor = GridBagConstraints.EAST;
-        gbc_lblNickName.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNickName.gridx = 1;
-        gbc_lblNickName.gridy = 3;
-        panelDatos.add(lblNickName, gbc_lblNickName);
-        
-        textFieldNickName = new JTextField();
-        GridBagConstraints gbc_textFieldNickName = new GridBagConstraints();
-        gbc_textFieldNickName.insets = new Insets(0, 0, 5, 5);
-        gbc_textFieldNickName.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFieldNickName.gridx = 2;
-        gbc_textFieldNickName.gridy = 3;
-        panelDatos.add(textFieldNickName, gbc_textFieldNickName);
-        textFieldNickName.setColumns(10);
-        
-        JLabel lblContraseña = new JLabel("Contraseña:");
-        GridBagConstraints gbc_lblContraseña = new GridBagConstraints();
-        gbc_lblContraseña.anchor = GridBagConstraints.EAST;
-        gbc_lblContraseña.insets = new Insets(0, 0, 5, 5);
-        gbc_lblContraseña.gridx = 1;
-        gbc_lblContraseña.gridy = 4;
-        panelDatos.add(lblContraseña, gbc_lblContraseña);
-        
-        passwordFieldContraseña = new JPasswordField();
-        GridBagConstraints gbc_passwordFieldContraseña = new GridBagConstraints();
-        gbc_passwordFieldContraseña.insets = new Insets(0, 0, 5, 5);
-        gbc_passwordFieldContraseña.fill = GridBagConstraints.HORIZONTAL;
-        gbc_passwordFieldContraseña.gridx = 2;
-        gbc_passwordFieldContraseña.gridy = 4;
-        panelDatos.add(passwordFieldContraseña, gbc_passwordFieldContraseña);
-        
-        JLabel lblContraseñaOk = new JLabel("Contraseña:");
-        GridBagConstraints gbc_lblContraseñaOk = new GridBagConstraints();
-        gbc_lblContraseñaOk.anchor = GridBagConstraints.EAST;
-        gbc_lblContraseñaOk.insets = new Insets(0, 0, 0, 5);
-        gbc_lblContraseñaOk.gridx = 1;
-        gbc_lblContraseñaOk.gridy = 5;
-        panelDatos.add(lblContraseñaOk, gbc_lblContraseñaOk);
-        
-        passwordFieldContraseñaOk = new JPasswordField();
-        GridBagConstraints gbc_passwordFieldContraseñaOk = new GridBagConstraints();
-        gbc_passwordFieldContraseñaOk.insets = new Insets(0, 0, 0, 5);
-        gbc_passwordFieldContraseñaOk.fill = GridBagConstraints.HORIZONTAL;
-        gbc_passwordFieldContraseñaOk.gridx = 2;
-        gbc_passwordFieldContraseñaOk.gridy = 5;
-        panelDatos.add(passwordFieldContraseñaOk, gbc_passwordFieldContraseñaOk);
+		JLabel lblNombre = new JLabel("Nombre:");
+		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+		gbc_lblNombre.anchor = GridBagConstraints.EAST;
+		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNombre.gridx = 1;
+		gbc_lblNombre.gridy = 1;
+		panelDatos.add(lblNombre, gbc_lblNombre);
 
-        // Aquí viene el resto de tu código de la ventana
+		textFieldNombre = new JTextField();
+		GridBagConstraints gbc_textFieldNombre = new GridBagConstraints();
+		gbc_textFieldNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldNombre.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldNombre.gridx = 2;
+		gbc_textFieldNombre.gridy = 1;
+		panelDatos.add(textFieldNombre, gbc_textFieldNombre);
+		textFieldNombre.setColumns(10);
 
-        JPanel panelCosas = new JPanel();
-        panelMedio.add(panelCosas);
+		lblCorreo = new JLabel("Correo:");
+		GridBagConstraints gbc_lblCorreo = new GridBagConstraints();
+		gbc_lblCorreo.anchor = GridBagConstraints.EAST;
+		gbc_lblCorreo.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCorreo.gridx = 1;
+		gbc_lblCorreo.gridy = 2;
+		panelDatos.add(lblCorreo, gbc_lblCorreo);
 
-        // Crear un ImageIcon para el perfil predeterminado
-        ImageIcon iconPerfil = new ImageIcon(getClass().getResource("/profile.png"));
-        Image imageIcon = iconPerfil.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
-        iconPerfil = new ImageIcon(imageIcon);
+		textFieldCorreo = new JTextField();
+		GridBagConstraints gbc_textFieldCorreo = new GridBagConstraints();
+		gbc_textFieldCorreo.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldCorreo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldCorreo.gridx = 2;
+		gbc_textFieldCorreo.gridy = 2;
+		panelDatos.add(textFieldCorreo, gbc_textFieldCorreo);
+		textFieldCorreo.setColumns(10);
 
-        // Crear un botón para seleccionar la foto
-        JButton btnPerfil = new JButton("Elige una foto:");
-        btnPerfil.setHorizontalTextPosition(SwingConstants.LEFT);
-        btnPerfil.setHorizontalAlignment(SwingConstants.TRAILING);
-        btnPerfil.addActionListener(e -> abrirVentanaCambioImagen());
-        panelCosas.add(btnPerfil);
+		JLabel lblNickName = new JLabel("NickName:");
+		GridBagConstraints gbc_lblNickName = new GridBagConstraints();
+		gbc_lblNickName.anchor = GridBagConstraints.EAST;
+		gbc_lblNickName.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNickName.gridx = 1;
+		gbc_lblNickName.gridy = 3;
+		panelDatos.add(lblNickName, gbc_lblNickName);
 
-        // Inicializar lblPerfil
-        lblPerfil = new JLabel(iconPerfil);
-        panelCosas.add(lblPerfil);
+		textFieldNickName = new JTextField();
+		GridBagConstraints gbc_textFieldNickName = new GridBagConstraints();
+		gbc_textFieldNickName.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldNickName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldNickName.gridx = 2;
+		gbc_textFieldNickName.gridy = 3;
+		panelDatos.add(textFieldNickName, gbc_textFieldNickName);
+		textFieldNickName.setColumns(10);
 
-        JMenuBar menuBar = new JMenuBar();
-        panelCosas.add(menuBar);
+		JLabel lblContraseña = new JLabel("Contraseña:");
+		GridBagConstraints gbc_lblContraseña = new GridBagConstraints();
+		gbc_lblContraseña.anchor = GridBagConstraints.EAST;
+		gbc_lblContraseña.insets = new Insets(0, 0, 5, 5);
+		gbc_lblContraseña.gridx = 1;
+		gbc_lblContraseña.gridy = 4;
+		panelDatos.add(lblContraseña, gbc_lblContraseña);
 
-        JMenu mnSelectCursos = new JMenu("Cursos de Interés");
-        menuBar.add(mnSelectCursos);
+		passwordFieldContraseña = new JPasswordField();
+		GridBagConstraints gbc_passwordFieldContraseña = new GridBagConstraints();
+		gbc_passwordFieldContraseña.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordFieldContraseña.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordFieldContraseña.gridx = 2;
+		gbc_passwordFieldContraseña.gridy = 4;
+		panelDatos.add(passwordFieldContraseña, gbc_passwordFieldContraseña);
 
-        // Array de cursos
-        JCheckBoxMenuItem[] cursos = {
-            new JCheckBoxMenuItem("🗣️ Idiomas"),
-            new JCheckBoxMenuItem("💻 Programación"),
-            new JCheckBoxMenuItem("🎶 Música"),
-            new JCheckBoxMenuItem("🔬 Ciencia"),
-            new JCheckBoxMenuItem("🎓 Estudios académicos")
-        };
-        this.cursos = cursos;
+		JLabel lblContraseñaOk = new JLabel("Contraseña:");
+		GridBagConstraints gbc_lblContraseñaOk = new GridBagConstraints();
+		gbc_lblContraseñaOk.anchor = GridBagConstraints.EAST;
+		gbc_lblContraseñaOk.insets = new Insets(0, 0, 0, 5);
+		gbc_lblContraseñaOk.gridx = 1;
+		gbc_lblContraseñaOk.gridy = 5;
+		panelDatos.add(lblContraseñaOk, gbc_lblContraseñaOk);
 
-        seleccionados = 0;
+		passwordFieldContraseñaOk = new JPasswordField();
+		GridBagConstraints gbc_passwordFieldContraseñaOk = new GridBagConstraints();
+		gbc_passwordFieldContraseñaOk.insets = new Insets(0, 0, 0, 5);
+		gbc_passwordFieldContraseñaOk.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordFieldContraseñaOk.gridx = 2;
+		gbc_passwordFieldContraseñaOk.gridy = 5;
+		panelDatos.add(passwordFieldContraseñaOk, gbc_passwordFieldContraseñaOk);
 
-        for (JCheckBoxMenuItem curso : cursos) {
-            mnSelectCursos.add(curso);
-            curso.addItemListener(e -> {
-                if (curso.isSelected()) {
-                    if (seleccionados >= 3) {
-                        curso.setSelected(false);
-                    } else {
-                        seleccionados++;
-                    }
-                } else {
-                    seleccionados--;
-                }
-            });
-        };
-    }
-    
-    private void manejarRegistro() {
+		// Aquí viene el resto de tu código de la ventana
+
+		JPanel panelCosas = new JPanel();
+		panelMedio.add(panelCosas);
+
+		// Crear un ImageIcon para el perfil predeterminado
+		ImageIcon iconPerfil = new ImageIcon(getClass().getResource("/profile.png"));
+		Image imageIcon = iconPerfil.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+		iconPerfil = new ImageIcon(imageIcon);
+
+		// Crear un botón para seleccionar la foto
+		JButton btnPerfil = new JButton("Elige una foto:");
+		btnPerfil.setHorizontalTextPosition(SwingConstants.LEFT);
+		btnPerfil.setHorizontalAlignment(SwingConstants.TRAILING);
+		btnPerfil.addActionListener(e -> abrirVentanaCambioImagen());
+		panelCosas.add(btnPerfil);
+
+		// Inicializar lblPerfil
+		lblPerfil = new JLabel(iconPerfil);
+		panelCosas.add(lblPerfil);
+
+		JMenuBar menuBar = new JMenuBar();
+		panelCosas.add(menuBar);
+
+		JMenu mnSelectCursos = new JMenu("Cursos de Interés");
+		menuBar.add(mnSelectCursos);
+
+		// Array de cursos
+		JCheckBoxMenuItem[] cursos = { new JCheckBoxMenuItem("🗣️ Idiomas"), new JCheckBoxMenuItem("💻 Programación"),
+				new JCheckBoxMenuItem("🎶 Música"), new JCheckBoxMenuItem("🔬 Ciencia"),
+				new JCheckBoxMenuItem("🎓 Estudios académicos") };
+		this.cursos = cursos;
+
+		seleccionados = 0;
+
+		for (JCheckBoxMenuItem curso : cursos) {
+			mnSelectCursos.add(curso);
+			curso.addItemListener(e -> {
+				if (curso.isSelected()) {
+					if (seleccionados >= 3) {
+						curso.setSelected(false);
+					} else {
+						seleccionados++;
+					}
+				} else {
+					seleccionados--;
+				}
+			});
+		}
+		;
+	}
+
+	private void manejarRegistro() {
 		String nombre, nickname, correo, passwd1, passwd2;
 		nombre = textFieldNombre.getText();
 		nickname = textFieldNickName.getText();
@@ -248,7 +249,6 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 		passwd1 = new String(passwordFieldContraseña.getPassword());
 		passwd2 = new String(passwordFieldContraseñaOk.getPassword());
 
-	
 		if (hasRequiredFields(nombre, nickname, correo, passwd1, passwd2)) {
 			JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
 			return;
@@ -259,7 +259,8 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		if (!correo.matches("[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|yahoo|protonmail|icloud)\\.(com|net|org|edu|gov)")) {
+		if (!correo
+				.matches("[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|yahoo|protonmail|icloud)\\.(com|net|org|edu|gov)")) {
 			JOptionPane.showMessageDialog(null, "El dominio de correo no esta permitido.", "Error",
 					JOptionPane.ERROR_MESSAGE);
 			return;
@@ -270,47 +271,46 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 			return;
 		}
 
-		boolean result = ControladorUsuario.INSTANCE.registrarUsuario(nombre, nickname, correo, passwd1);
+		boolean result = controladorUsuario.registrarUsuario(nombre, nickname, correo, passwd1);
 		if (!result) {
 			JOptionPane.showMessageDialog(null, "Ya estas registrado o ha ocurrido un error", "Error",
 					JOptionPane.ERROR_MESSAGE);
 		} else {
 			if (destinationFile != null) {
-				ControladorUsuario.INSTANCE.setImagen(destinationFile.getAbsolutePath());
+				controladorUsuario.setImagen(destinationFile.getAbsolutePath());
 			} else if (url != null) {
-				ControladorUsuario.INSTANCE.setImagen(url.toString());
-			}		
-			 ControladorUsuario.INSTANCE.setCursos(obtenerCursosSeleccionados());
+				controladorUsuario.setImagen(url.toString());
+			}
+			controladorUsuario.setCursos(obtenerCursosSeleccionados());
 
 			JOptionPane.showMessageDialog(null, "Sus datos han sido guardados correctamente", "Conseguido",
 					JOptionPane.PLAIN_MESSAGE);
-			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controladorUsuario, controladorPlantilla, controladorProgreso, controladorPregunta);
 			ventanaPrincipal.setVisible(true);
 			this.dispose();
 		}
 
 	}
-    
-    private String[] obtenerCursosSeleccionados() {
-        StringBuilder seleccionadosText = new StringBuilder("Cursos seleccionados:\n");
-        for (JCheckBoxMenuItem curso : cursos) {
-            if (curso.isSelected()) {
-                seleccionadosText.append(curso.getText()).append("\n");
-            }
-        }
-        return seleccionadosText.toString().split("\n");
-    }
-    
+
+	private String[] obtenerCursosSeleccionados() {
+		StringBuilder seleccionadosText = new StringBuilder("Cursos seleccionados:\n");
+		for (JCheckBoxMenuItem curso : cursos) {
+			if (curso.isSelected()) {
+				seleccionadosText.append(curso.getText()).append("\n");
+			}
+		}
+		return seleccionadosText.toString().split("\n");
+	}
+
 	private boolean hasRequiredFields(String nombre, String nickname, String correo, String passwd1, String passwd2) {
 		return nombre.isEmpty() || nickname.isEmpty() || correo.isEmpty() || passwd1.isEmpty() || passwd2.isEmpty();
 	}
 
-    
-    private void closeWindow() {
-        v.setVisible(true);
-        this.dispose();
-    }
-    
+	private void closeWindow() {
+		v.setVisible(true);
+		this.dispose();
+	}
+
 	private void abrirVentanaCambioImagen() {
 		String correo = textFieldCorreo.getText();
 
@@ -326,8 +326,7 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 
 	public void setIcon() {
 		String path = destinationFile.getAbsolutePath();
-        lblPerfil.setIcon(
-        		ControladorUsuario.INSTANCE.getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
+		lblPerfil.setIcon(controladorUsuario.getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public void setIcon(ImageIcon imageIcon, URL url) {
@@ -338,16 +337,15 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 			String path = destinationFile.getAbsolutePath();
 			imageIcon = new ImageIcon(path);
 		}
-        lblPerfil.setIcon(ControladorUsuario.INSTANCE.getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
+		lblPerfil.setIcon(controladorUsuario.getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
 	public String getName() {
 		return lblCorreo.getText();
 	}
-	
+
 	public void setDestinationFile(File d) {
 		destinationFile = d;
 	}
-
 
 }

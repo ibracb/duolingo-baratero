@@ -4,16 +4,15 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 
-public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
-	
-	private EntityManager em;
+public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 
-	public PDSEntidadDAO() {
-		em = JPAUtils.emf.createEntityManager();
+
+	protected DBEntityDAO() {
 	}
-	
+
 	@Override
 	public void create(T entidad) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
 		try {
 			em.getTransaction().begin();
 			em.persist(entidad);
@@ -21,12 +20,14 @@ public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
 		} catch (Exception e) {
 			manejarExcepcion(e, getCreateExceptionMessage());
 		} finally {
-			em.close();
-		}
+	        em.close();
+	    }
 	}
 
 	@Override
 	public void update(T entidad) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
+
 		try {
 			em.getTransaction().begin();
 			em.merge(entidad);
@@ -34,12 +35,14 @@ public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
 		} catch (Exception e) {
 			manejarExcepcion(e, getUpdateExceptionMessage());
 		} finally {
-			em.close();
-		}
+	        em.close();
+	    }
 	}
 
 	@Override
 	public void delete(long id) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
+
 		try {
 			em.getTransaction().begin();
 			T entidad = em.find(getEntityClass(), id);
@@ -50,44 +53,52 @@ public abstract class PDSEntidadDAO<T> implements EntidadDAO<T> {
 		} catch (Exception e) {
 			manejarExcepcion(e, getDeleteExceptionMessage());
 		} finally {
-			em.close();
-		}
+	        em.close();
+	    }
 	}
 
 	@Override
 	public T get(long id) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
+
 		try {
 			return em.find(getEntityClass(), id);
 		} catch (Exception e) {
 			throw new DAOException(getGetExceptionMessage(), e);
-		} finally {
-			em.close();
-		}
+		} 
 	}
 
 	@Override
 	public List<T> getAll() {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
+
 		try {
 			return em.createQuery(getAllQuery(), getEntityClass()).getResultList();
 		} catch (Exception e) {
 			throw new DAOException(getGetAllExceptionMessage(), e);
-		} finally {
-			em.close();
-		}
+		} 
 	}
-	
-	protected abstract Class<T> getEntityClass();
-	protected abstract String getCreateExceptionMessage();
-	protected abstract String getUpdateExceptionMessage();
-	protected abstract String getDeleteExceptionMessage();
-	protected abstract String getGetExceptionMessage();
-	protected abstract String getGetAllExceptionMessage();
-	protected abstract String getAllQuery();
 
 	private void manejarExcepcion(Exception e, String message) {
+	    EntityManager em = EntityManagerHelper.getEntityManager();
+
 		if (em.getTransaction().isActive()) {
 			em.getTransaction().rollback();
 		}
 		throw new DAOException(message, e);
 	}
+
+	protected abstract Class<T> getEntityClass();
+
+	protected abstract String getCreateExceptionMessage();
+
+	protected abstract String getUpdateExceptionMessage();
+
+	protected abstract String getDeleteExceptionMessage();
+
+	protected abstract String getGetExceptionMessage();
+
+	protected abstract String getGetAllExceptionMessage();
+
+	protected abstract String getAllQuery();
 }

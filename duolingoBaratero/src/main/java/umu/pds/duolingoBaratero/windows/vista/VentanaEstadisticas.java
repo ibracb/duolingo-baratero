@@ -3,23 +3,36 @@ package umu.pds.duolingoBaratero.windows.vista;
 import javax.swing.*;
 import java.awt.*;
 
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 
 public class VentanaEstadisticas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
-	public VentanaEstadisticas() {
+	
+	private final ControladorUsuario cUsuario;
+	private final ControladorCursoPlantilla cPlantilla;
+	private final ControladorCursoProgreso cProgreso;
+	private ControladorPregunta cPregunta;
+	
+	public VentanaEstadisticas(ControladorUsuario cUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso,
+			ControladorPregunta cPregunta) {
         // Configuración de la ventana
-        setTitle("Estadísticas de Uso");
+        this.cUsuario = cUsuario;
+        this.cPlantilla = cPlantilla;
+        this.cProgreso = cProgreso;
+        this.cPregunta = cPregunta;
+		setTitle("Estadísticas de Uso");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
         // Barra superior con botones
-        BarraSuperior barraSuperior = new BarraSuperior(this);
+        BarraSuperior barraSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta);
         add(barraSuperior, BorderLayout.NORTH);
 
         // Panel central con título
@@ -92,18 +105,18 @@ public class VentanaEstadisticas extends JFrame {
     }
 	
 	private String getPorcentajeAciertos() {
-		return ControladorUsuario.INSTANCE.getPorcentajeRespuestasCorrectas() + "%";
+		return cUsuario.getPorcentajeRespuestasCorrectas() + "%";
 	}
 	
 	private String getMaxNumAccesos() {
-		return String.valueOf(ControladorUsuario.INSTANCE.getNumMaxAccesos());
+		return String.valueOf(cUsuario.getNumMaxAccesos());
 	}
 	
 	private String getMaxVictorias() {
-		return String.valueOf(ControladorUsuario.INSTANCE.getRachaVictorias());
+		return String.valueOf(cUsuario.getRachaVictorias());
 	}
 	
 	private String getTiempoUso() {
-		return String.valueOf(ControladorUsuario.INSTANCE.getTiempoUso()) + "horas";
+		return String.valueOf(cUsuario.getTiempoUso()) + "horas";
 	}
 }

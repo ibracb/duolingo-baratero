@@ -1,13 +1,17 @@
 package umu.pds.duolingoBaratero.windows.components;
 
-import javax.swing.*;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 public class BarraProgresoPanel extends JPanel {
-    private static final int VALOR_INICIAL_PROGRESO = 0;
+
+	private static final long serialVersionUID = 1L;
+	private static final int VALOR_INICIAL_PROGRESO = 0;
     private static final int LIMITE_PROGRESO = 100;
     private double progreso;
     private final double avance;

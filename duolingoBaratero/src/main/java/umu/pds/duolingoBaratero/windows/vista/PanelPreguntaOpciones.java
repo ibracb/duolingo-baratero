@@ -1,12 +1,11 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
 import javax.swing.*;
-
-import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.PreguntaOpciones;
 import umu.pds.duolingoBaratero.services.IComprobador;
-
 import java.awt.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class PanelPreguntaOpciones extends JPanel implements IComprobador {
 
@@ -53,12 +52,13 @@ public class PanelPreguntaOpciones extends JPanel implements IComprobador {
 		gbc.gridy = GridBagConstraints.RELATIVE;
 		gbc.fill = GridBagConstraints.NONE; // Evita que los botones se expandan demasiado en altura
 		gbc.insets = new Insets(10, 20, 15, 20);
+		List<String> opcionesLista = new ArrayList<>(pregunta.getOpciones());  // conviertes a ArrayList "real"
 
-		opciones = new JToggleButton[3];
+		opciones = new JToggleButton[opcionesLista.size()];
 		ButtonGroup grupoOpciones = new ButtonGroup();
 
 		for (int i = 0; i < 3; i++) {
-			opciones[i] = new JToggleButton(pregunta.getOpciones()[i]);
+			opciones[i] = new JToggleButton(opcionesLista.get(i));
 			opciones[i].setFont(new Font("Arial", Font.PLAIN, 15));
 
 			opciones[i].setMinimumSize(new Dimension(300, 75)); // Tamaño mínimo

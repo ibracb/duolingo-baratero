@@ -1,28 +1,28 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.stream.Collectors;
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Set;
-
-import umu.pds.duolingoBaratero.controllers.ControladorCurso;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
-import umu.pds.duolingoBaratero.models.Flashcard;
-import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Pregunta;
-import umu.pds.duolingoBaratero.models.PreguntaAudio;
-import umu.pds.duolingoBaratero.models.PreguntaOpciones;
-import umu.pds.duolingoBaratero.models.TipoPregunta;
 import umu.pds.duolingoBaratero.services.IComprobador;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
@@ -42,8 +42,12 @@ public class VentanaPregunta extends JFrame {
 	private int currentPanel;
 	private int puntuacion;
 	private CursoEnProgreso curso;
+	private final ControladorCursoProgreso controladorCursoProgreso;
+	private final ControladorPregunta controladorPregunta;
 
-	public VentanaPregunta(CursoEnProgreso curso) {
+	public VentanaPregunta(CursoEnProgreso curso, ControladorCursoProgreso controladorCursoprogreso, ControladorPregunta controladorPregunta) {
+		this.controladorCursoProgreso = controladorCursoprogreso;
+		this.controladorPregunta = controladorPregunta;
 		this.curso = curso;
 		currentPanel = PANEL_Y_PUNTUCAION_INICIAL;
 		puntuacion = PANEL_Y_PUNTUCAION_INICIAL;
@@ -96,7 +100,7 @@ public class VentanaPregunta extends JFrame {
 		btnSiguiente.addActionListener(e -> {
 			IComprobador panel = (IComprobador) paneles.get(currentPanel);
 			if (panel.isOpcionElegida()) {
-				boolean respuestaCorrecta = ControladorCurso.INSTANCE.procesarRespuesta(panel.getPregunta(),
+				boolean respuestaCorrecta = controladorPregunta.procesarRespuesta(panel.getPregunta(),
 						panel.getRespuestaUsuario());
 				if (respuestaCorrecta) {
 					puntuacion++;
@@ -150,13 +154,18 @@ public class VentanaPregunta extends JFrame {
 
 	// -------- METODO DE PRUEBA --------------
 	private ArrayList<JPanel> getPaneles() {
-		Set<Pregunta> preguntas = ControladorCurso.INSTANCE.getPreguntasDeBloqueContenido(curso);
+		Set<Pregunta> preguntas = controladorPregunta.obtenerPreguntasDelBloque(curso);
 		return preguntas.stream()
 			    .map(Pregunta::crearPanel)
 			    .collect(Collectors.toCollection(ArrayList::new));
 	}
 
 	public class DialogoFinal extends JDialog {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public DialogoFinal(JFrame ventanaPregunta, int puntuacion) {
 			super(ventanaPregunta, "Juego Completado", true); // Modal
 			setSize(300, 150);
@@ -164,7 +173,7 @@ public class VentanaPregunta extends JFrame {
 			setLayout(new BorderLayout());
 
 			boolean aprobado = (puntuacion / (double) paneles.size() >= 0.0); //FIXME: Para la entrega hay que ponerlo en 0.8
-			ControladorCurso.INSTANCE.avanzarBloqueContenido(curso, aprobado);
+			controladorCursoProgreso.avanzar(curso, aprobado);
 			String resultado = aprobado ? "Aprobado :)" : "Suspenso :(";
 			JLabel mensaje = new JLabel("¡Juego terminado! Resultado : " + resultado, JLabel.CENTER);
 

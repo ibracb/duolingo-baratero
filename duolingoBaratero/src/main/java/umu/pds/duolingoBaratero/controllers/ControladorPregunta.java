@@ -8,40 +8,33 @@ import javax.swing.JPanel;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Pregunta;
-import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
+import umu.pds.duolingoBaratero.services.ServicioPregunta;
 
-public enum ControladorPregunta {
-	INSTANCE;
-	
-	// ------RENDERIZACION PREGUNTAS--------
+public class ControladorPregunta {
+
+	private final ServicioPregunta servicio;
+
+	public ControladorPregunta(ServicioPregunta servicio) {
+		this.servicio = servicio;
+	}
 
 	public JPanel[] generarLeccion(long bloqueContenido) {
-		return new JPanel[0];
+		return servicio.generarLeccion(bloqueContenido);
 	}
 
-	public Set<Pregunta> getPreguntasDeBloqueContenido(CursoEnProgreso curso) {
-		return curso.getPreguntasBloqueContenido();
+	public Set<Pregunta> obtenerPreguntasDelBloque(CursoEnProgreso curso) {
+		return servicio.obtenerPreguntasDelBloque(curso);
 	}
-	
-	// ------Procesamiento preguntas y respuestas----------
 
 	public boolean procesarRespuesta(Pregunta pregunta, String respuestaUsuario) {
-		// TODO Si la respuesta es correcta
-		// Hacer algo si es falsa hacer algo
-		boolean respuestaCorrecta = pregunta.esRespuestaCorrecta(respuestaUsuario);
-		if (respuestaCorrecta) {
-
-		}
-		return respuestaCorrecta;
+		return servicio.procesarRespuesta(pregunta, respuestaUsuario);
 	}
 
-	public int getNumPreguntas(long bloqueContenido) {
-		return RepositorioCurso.INSTANCE.obtenerBloqueContenido(bloqueContenido).getNumPreguntas();
+	public int obtenerNumPreguntas(long bloqueContenido) {
+		return servicio.obtenerNumPreguntas(bloqueContenido);
 	}
-	
+
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
-
+		servicio.guardarPreguntas(preguntas, curso);
 	}
-
-
 }

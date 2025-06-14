@@ -1,31 +1,42 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
-import javax.swing.JFrame;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JLabel;
-import java.awt.SystemColor;
-import javax.swing.SwingConstants;
-
+import java.awt.Color;
 import java.awt.Component;
-import javax.swing.Box;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.SystemColor;
+
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
+import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
 public class VentanaInicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private final ControladorUsuario controladorUsuario;
+	private final ControladorCursoPlantilla cPlantilla;
+	private final ControladorCursoProgreso cProgreso;
+	private final ControladorPregunta cPregunta;
 
-	public VentanaInicio() {
+	public VentanaInicio(ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta) {
+		this.controladorUsuario = controladorUsuario;
+		this.cPlantilla = cPlantilla;
+		this.cProgreso = cProgreso;
+		this.cPregunta = cPregunta;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(650, 400);
 		setLocationRelativeTo(null);
@@ -150,13 +161,13 @@ public class VentanaInicio extends JFrame {
 	}
 
 	private void abrirTemasWindow() {
-		VentanaCursos themeWindow = new VentanaCursos(this);
+		VentanaCursos themeWindow = new VentanaCursos(this, cPlantilla, controladorUsuario, cProgreso, cPregunta);
 		themeWindow.setVisible(true);
 		this.setVisible(false);
 	}
 	
 	private void abrirVentanaLogin() {
-		VentanaLogin ventanaLogin = new VentanaLogin(this);
+		VentanaLogin ventanaLogin = new VentanaLogin(this, controladorUsuario, cPlantilla, cProgreso, cPregunta);
 		ventanaLogin.setVisible(true);
 		this.setVisible(false);
 	}

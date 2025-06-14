@@ -5,42 +5,90 @@ import javax.swing.JPanel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.Table;
 
-@JsonTypeInfo(
-  use = JsonTypeInfo.Id.NAME,
-  include = JsonTypeInfo.As.PROPERTY,
-  property = "tipo"
-)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = PreguntaOpciones.class, name = "OPCIONES"),
-  @JsonSubTypes.Type(value = PreguntaAudio.class, name = "AUDIO"),
-  @JsonSubTypes.Type(value = Flashcard.class, name = "FLASHCARD")
-})
-
+@Entity
+@Table(name = "preguntas")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
+@JsonSubTypes({ @JsonSubTypes.Type(value = PreguntaOpciones.class, name = "OPCIONES"),
+	@JsonSubTypes.Type(value = PreguntaImagenes.class, name = "IMAGENES"),
+		@JsonSubTypes.Type(value = PreguntaAudio.class, name = "AUDIO"),
+		@JsonSubTypes.Type(value = Flashcard.class, name = "FLASHCARD") })
 public abstract class Pregunta implements Comparable<Pregunta> {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name = "bloque_de_contenido_id")
+	private BloqueContenido bloque;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "nivel")
 	private Nivel nivel;
+
+	@Column(name = "numero")
 	private int numero;
+
+	@Column(name = "pregunta")
 	private String pregunta;
+
+	@Column(name = "respuesta_correcta")
 	private String respuestaCorrecta;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "tipo", insertable = false, updatable = false)
 	private TipoPregunta tipo;
 
 	public Pregunta() {
 	}
-	
-	public Pregunta(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
+
+	protected Pregunta(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
 		this.nivel = nivel;
 		this.numero = numero;
 		this.pregunta = pregunta;
 		this.respuestaCorrecta = respuestaCorrecta;
 		this.tipo = tipo;
 	}
-	
-	public abstract JPanel crearPanel();  // Método abstracto para crear el panel
-	
+
+	public abstract JPanel crearPanel(); // Método abstracto para crear el panel
+
 	public boolean esRespuestaCorrecta(String respuestaUsuario) {
 		return respuestaCorrecta.equals(respuestaUsuario);
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public BloqueContenido getBloque() {
+		return bloque;
+	}
+
+	public void setBloque(BloqueContenido bloque) {
+		this.bloque = bloque;
+	}
+
 	public Nivel getNivel() {
 		return nivel;
 	}
@@ -76,12 +124,12 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	public TipoPregunta getTipo() {
 		return tipo;
 	}
-	
+
 	@JsonIgnore
 	public boolean isImagen() {
-		return tipo.equals(TipoPregunta.IMAGEN);
+		return tipo.equals(TipoPregunta.IMAGENES);
 	}
-	
+
 	public void setTipo(TipoPregunta tipo) {
 		this.tipo = tipo;
 	}
