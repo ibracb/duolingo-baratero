@@ -24,9 +24,8 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btnHome, btnEstadisticas, btnModoNocturno, btnImportarCurso, btnExportarCurso;
+	private JButton btnHome, btnEstadisticas, btnImportarCurso, btnExportarCurso;
 	private JFrame ventanaActual;
-	private boolean modoOscuroActivo = false;
 	private final ControladorUsuario cUsuario;
 	private final ControladorCursoPlantilla controladorPlantilla;
 	private final ControladorCursoProgreso cProgreso;
@@ -53,8 +52,7 @@ public class BarraSuperior extends JPanel {
 		btnHome.addActionListener(e -> openVentanaPrincipal());
 		btnEstadisticas = new JButton("Estadísticas 📊");
 		btnEstadisticas.addActionListener(e -> openVentanaEstadisticas());
-		btnModoNocturno = new JButton("Modo Nocturno 🌙");
-		btnModoNocturno.addActionListener(e -> toggleModoOscuro()); // Activar/desactivar modo nocturno
+// Activar/desactivar modo nocturno
 		btnImportarCurso = new JButton("Importar Curso");
 		btnImportarCurso.addActionListener(e -> importarCurso());
 		btnExportarCurso = new JButton("Exportar Curso");
@@ -63,7 +61,6 @@ public class BarraSuperior extends JPanel {
 		// Agregar botones al panel central
 		panelCentral.add(btnHome);
 		panelCentral.add(btnEstadisticas);
-		panelCentral.add(btnModoNocturno);
 		panelCentral.add(btnImportarCurso);
 		panelCentral.add(btnExportarCurso);
 
@@ -75,15 +72,6 @@ public class BarraSuperior extends JPanel {
 	}
 
 	private void openVentanaPrincipal() {
-//		if (ventanaActual instanceof VentanaCreaPregunta) {
-//			int respuesta = JOptionPane.showConfirmDialog(null,
-//					"Si continúas, perderás todo sobre el curso. ¿Deseas continuar?", "Advertencia",
-//					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-//
-//			if (respuesta != JOptionPane.OK_OPTION) {
-//				return; // Si el usuario cancela, no se abre la nueva ventana
-//			}
-//		}
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaPrincipal)) {
@@ -97,14 +85,6 @@ public class BarraSuperior extends JPanel {
 	}
 
 	private void openVentanaEstadisticas() {
-//		if (ventanaActual instanceof VentanaCreaPregunta) {
-//			int respuesta = JOptionPane.showConfirmDialog(null,
-//					"Si continúas, perderás la información sobre el curso. ¿Deseas continuar?", "Advertencia",
-//					JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-//			if (respuesta != JOptionPane.OK_OPTION) {
-//				return; // Si el usuario cancela, no se abre la nueva ventana
-//			}
-//		}
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaEstadisticas)) {
@@ -167,49 +147,5 @@ public class BarraSuperior extends JPanel {
 		}
 	}
 
-	private void toggleModoOscuro() {
-		modoOscuroActivo = !modoOscuroActivo;
-		// Aplicar los colores de modo oscuro o modo claro
-		if (modoOscuroActivo) {
-			setModoOscuro();
-		} else {
-			setModoClaro();
-		}
-	}
 
-	private void setModoOscuro() {
-		// Cambiar el fondo y los colores del texto a colores oscuros
-		setBackground(Color.BLACK);
-		setForeground(Color.WHITE);
-
-		btnHome.setBackground(Color.DARK_GRAY);
-		btnHome.setForeground(Color.WHITE);
-
-		btnEstadisticas.setBackground(Color.DARK_GRAY);
-		btnEstadisticas.setForeground(Color.WHITE);
-
-		btnModoNocturno.setBackground(Color.DARK_GRAY);
-		btnModoNocturno.setForeground(Color.WHITE);
-
-		btnImportarCurso.setBackground(Color.DARK_GRAY);
-		btnImportarCurso.setForeground(Color.WHITE);
-	}
-
-	private void setModoClaro() {
-		// Cambiar el fondo y los colores del texto a colores claros
-		setBackground(Color.WHITE);
-		setForeground(Color.BLACK);
-
-		btnHome.setBackground(Color.LIGHT_GRAY);
-		btnHome.setForeground(Color.BLACK);
-
-		btnEstadisticas.setBackground(Color.LIGHT_GRAY);
-		btnEstadisticas.setForeground(Color.BLACK);
-
-		btnModoNocturno.setBackground(Color.LIGHT_GRAY);
-		btnModoNocturno.setForeground(Color.BLACK);
-
-		btnImportarCurso.setBackground(Color.LIGHT_GRAY);
-		btnImportarCurso.setForeground(Color.BLACK);
-	}
 }
