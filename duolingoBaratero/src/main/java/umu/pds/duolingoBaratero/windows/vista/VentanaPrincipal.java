@@ -67,37 +67,38 @@ public class VentanaPrincipal extends JFrame {
 		return cUsuario.getCursosUsuarioActual();
 	}
 
-	private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
-	    // Aseguramos que solo un hilo acceda a este bloque a la vez.
-	    if (curso != null) {
-	        if (cProgreso.estaFinalizado(curso)) {
-	            Object[] opciones = { "Sí", "No" };
-	            int opcion = JOptionPane.showOptionDialog(this,
-	                    "Has finalizado este curso. ¿Quieres empezarlo de nuevo?", "Aviso", JOptionPane.YES_NO_OPTION,
-	                    JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[1]);
+    private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
+        // Aseguramos que solo un hilo acceda a este bloque a la vez.
+        if (curso != null) {
+            if (cProgreso.estaFinalizado(curso)) {
+                Object[] opciones = { "Sí", "No" };
+                int opcion = JOptionPane.showOptionDialog(this,
+                        "Has finalizado este curso. ¿Quieres empezarlo de nuevo?", "Aviso", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[1]);
 
-	            if (opcion == JOptionPane.YES_OPTION) {
-	                cProgreso.reiniciar(curso);
-	            } else {
-	                int index = listaCursos.getSelectedIndex(); // Obtener el índice seleccionado
-	                if (index != -1) { // Verificar que se haya seleccionado un curso
-	                    DefaultListModel<CursoEnProgreso> model = (DefaultListModel<CursoEnProgreso>) listaCursos.getModel();
-	                    model.remove(index);
-	                }
-	                cUsuario.borrarCurso(curso);
-	            }
-	        }  else if  (curso.isNuevo()) {
-	        	openVentanaEstrategia(curso);
-	        }
-	        
-	        else {
-	            // Si el curso no está finalizado, mostrar la ventana de preguntas
-	            VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta);
-	            ventanaPregunta.setVisible(true);
-	        }
-	    }
-	    listaCursos.clearSelection(); // Limpiar la selección
-	}
+                if (opcion == JOptionPane.YES_OPTION) {
+                    cProgreso.reiniciar(curso);
+                } else {
+                    int index = listaCursos.getSelectedIndex(); // Obtener el índice seleccionado
+                    if (index != -1) { // Verificar que se haya seleccionado un curso
+                        DefaultListModel<CursoEnProgreso> model = (DefaultListModel<CursoEnProgreso>) listaCursos.getModel();
+                        model.remove(index);
+                    }
+                    cUsuario.borrarCurso(curso);
+                }
+            }  
+            
+            else {
+                if  (curso.isNuevo()) {
+                    openVentanaEstrategia(curso);
+                }
+                // Si el curso no está finalizado, mostrar la ventana de preguntas
+                VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta);
+                ventanaPregunta.setVisible(true);
+            }
+        }
+        listaCursos.clearSelection(); // Limpiar la selección
+    }
 
 
 	public void refreshCursos() {

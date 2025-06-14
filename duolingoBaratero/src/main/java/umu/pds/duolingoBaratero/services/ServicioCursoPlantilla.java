@@ -37,6 +37,7 @@ import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 public class ServicioCursoPlantilla {
     
     private final static String VALOR_DEFAULT_FILTROS = "";
+    private final static String EXTENSION_YAML = ".yaml";
     
     private final DBCursoPlantillaDAO dbCursoPlantillaDAO;
     private final DBCursoEnProgresoDAO dbCursoEnProgresoDAO;
@@ -55,6 +56,8 @@ public class ServicioCursoPlantilla {
         this.dbBloqueContenidoDAO = dbBloqueContenidoDAO;
         this.dbPreguntaDAO = dbPreguntaDAO;
         this.serializerFactory = serializerFactory;
+        System.out.println("Paso pora qui");
+        cargarCursosBase();
     }
     
     /**
@@ -229,30 +232,27 @@ public class ServicioCursoPlantilla {
         }
     }
     
-    /**
-     * Carga los cursos base desde los recursos
-     */
     public void cargarCursosBase() {
         List<CursoPlantilla> cursos = new ArrayList<>();
-        
         try {
             URL resource = getClass().getClassLoader().getResource("cursosBase");
             if (resource == null) {
                 System.err.println("No se encontró la carpeta 'resources/cursosBase'.");
                 return;
             }
-            
+
             File carpeta = new File(resource.toURI());
-            File[] archivos = carpeta.listFiles((dir, name) -> name.endsWith(".yaml"));
-            
+            File[] archivos = carpeta.listFiles((dir, name) -> name.endsWith(EXTENSION_YAML));
+
             if (archivos == null || archivos.length == 0) {
                 System.out.println("No se encontraron archivos .yaml en cursosBase.");
                 return;
             }
-            
+
             for (File archivo : archivos) {
                 try {
-                    CursoPlantilla curso = importarCurso(archivo, "yaml");
+                    Serializer serializer = serializerFactory.getSerializer(EXTENSION_YAML);
+                    CursoPlantilla curso = serializer.deserialize(archivo.getAbsolutePath());
                     if (curso != null) {
                         cursos.add(curso);
                     }
@@ -260,13 +260,36 @@ public class ServicioCursoPlantilla {
                     System.err.println("Error al importar curso desde " + archivo.getName() + ": " + e.getMessage());
                 }
             }
-            
+
+            // Solo persistir si no están ya en la DB
+            compararCursosConDB(cursos);
+
         } catch (Exception e) {
             System.err.println("Error al cargar cursos base: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
+    private void compararCursosConDB(List<CursoPlantilla> cursos) {
+        List<CursoPlantilla> cursosFromDB = dbCursoPlantillaDAO.getAll();
+        
+        if (cursosFromDB == null || cursosFromDB.isEmpty()) {
+            cursos.forEach(this::persistirCursoCompleto);
+            return;
+        }
+
+        // Persistimos solo los que no estén ya en la DB
+        for (CursoPlantilla curso : cursos) {
+            Long yaExiste = dbCursoPlantillaDAO.existeCursoPlantilla(curso.getNombre(), curso.getPropietario(), curso.getNivel().toString());
+            if (yaExiste == null || yaExiste < 1) {
+                persistirCursoCompleto(curso);
+            }
+        }
+    }
+
     
+
+
     /**
      * Persiste un curso completo con todos sus bloques y preguntas
      */

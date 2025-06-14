@@ -1,9 +1,8 @@
 package umu.pds.duolingoBaratero.persistence;
 
-
-
 import jakarta.persistence.EntityManager;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
+import umu.pds.duolingoBaratero.models.Nivel;
 
 public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 
@@ -24,34 +23,31 @@ public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 	}
 
 	public CursoPlantilla obtenerCursoConBloquesYPreguntas(Long cursoId) {
-	    EntityManager em = EntityManagerHelper.getEntityManager();
+		EntityManager em = EntityManagerHelper.getEntityManager();
 
-		return em.createQuery(
-	        "SELECT c FROM CursoPlantilla c " +
-	        "LEFT JOIN FETCH c.bloques b " +
-	        "LEFT JOIN FETCH b.preguntas " +
-	        "WHERE c.id = :id", CursoPlantilla.class)		
-	        .setParameter("id", cursoId)
-	        .getSingleResult();
+		return em
+				.createQuery("SELECT c FROM CursoPlantilla c " + "LEFT JOIN FETCH c.bloques b "
+						+ "LEFT JOIN FETCH b.preguntas " + "WHERE c.id = :id", CursoPlantilla.class)
+				.setParameter("id", cursoId).getSingleResult();
 	}
-	
-	public boolean existeCursoPlantilla(String nombre) {
+
+	public Long existeCursoPlantilla(String nombre, String propietario, String nivel) {
 	    EntityManager em = EntityManagerHelper.getEntityManager();
-
 	    try {
-	        Long count = em.createQuery(
-	                "SELECT COUNT(u) FROM CursoPlantilla u WHERE u.nombre = :nombre", Long.class)
+	        return em
+	            .createQuery("SELECT u.id FROM CursoPlantilla u WHERE u.nombre = :nombre AND u.propietario = :propietario AND u.nivel = :nivel", Long.class)
 	            .setParameter("nombre", nombre)
+	            .setParameter("propietario", propietario)
+	            .setParameter("nivel", nivel) // el nombre del parámetro debe coincidir con el de la query
 	            .getSingleResult();
-
-	        return count != null && count > 0;
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        return false;
+	        return null;
 	    } finally {
 	        em.close();
 	    }
-	}	
+	}
+
 
 	private DBCursoPlantillaDAO() {
 		super();
