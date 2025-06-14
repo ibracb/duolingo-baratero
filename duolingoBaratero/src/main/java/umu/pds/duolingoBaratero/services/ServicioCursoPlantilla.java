@@ -280,7 +280,7 @@ public class ServicioCursoPlantilla {
 
         // Persistimos solo los que no estén ya en la DB
         for (CursoPlantilla curso : cursos) {
-            Long yaExiste = dbCursoPlantillaDAO.existeCursoPlantilla(curso.getNombre(), curso.getPropietario(), curso.getNivel().toString());
+            Long yaExiste = dbCursoPlantillaDAO.existeCursoPlantilla(curso.getNombre(), curso.getPropietario(), curso.getNivel());
             if (yaExiste == null || yaExiste < 1) {
                 persistirCursoCompleto(curso);
             }

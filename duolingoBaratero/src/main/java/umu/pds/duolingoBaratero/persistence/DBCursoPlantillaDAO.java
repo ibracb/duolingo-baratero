@@ -1,6 +1,7 @@
 package umu.pds.duolingoBaratero.persistence;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 
@@ -31,15 +32,17 @@ public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 				.setParameter("id", cursoId).getSingleResult();
 	}
 
-	public Long existeCursoPlantilla(String nombre, String propietario, String nivel) {
+	public Long existeCursoPlantilla(String nombre, String propietario, Nivel nivel) {
 	    EntityManager em = EntityManagerHelper.getEntityManager();
 	    try {
-	        return em
-	            .createQuery("SELECT u.id FROM CursoPlantilla u WHERE u.nombre = :nombre AND u.propietario = :propietario AND u.nivel = :nivel", Long.class)
+	        return  (Long) em.createQuery(
+	                "SELECT id FROM CursoPlantilla WHERE nombre = :nombre AND propietario = :propietario AND nivel = :nivel")
 	            .setParameter("nombre", nombre)
 	            .setParameter("propietario", propietario)
-	            .setParameter("nivel", nivel) // el nombre del parámetro debe coincidir con el de la query
+	            .setParameter("nivel", nivel) 
 	            .getSingleResult();
+	    } catch (NoResultException e) {
+	        return null; // no encontrado
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return null;

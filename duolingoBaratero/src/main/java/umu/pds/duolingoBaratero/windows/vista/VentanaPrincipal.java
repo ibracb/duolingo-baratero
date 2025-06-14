@@ -93,7 +93,7 @@ public class VentanaPrincipal extends JFrame {
 		return cUsuario.getCursosUsuarioActual();
 	}
 
-s	private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
+	private synchronized void manejarSeleccionCursosEmpezados(CursoEnProgreso curso) {
 		if (curso == null)
 			return;
 
