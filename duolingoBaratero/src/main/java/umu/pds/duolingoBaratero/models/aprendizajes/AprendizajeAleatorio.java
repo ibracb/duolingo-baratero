@@ -1,21 +1,21 @@
 package umu.pds.duolingoBaratero.models.aprendizajes;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
-import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.Pregunta;
 
 public class AprendizajeAleatorio implements Aprendizaje {
 
 	@Override
-	public void setPreguntasByEstrategia(CursoEnProgreso progreso) {
-	    progreso.getCursoPlantilla().getContenidos().forEach(bloque -> {
-	        // Aquí estás obteniendo el Set de preguntas aleatorias
-	        Set<Pregunta> preguntasAleatorias = bloque.getPreguntasAleatoriamente();
-	        // Estableces el Set aleatorio en el bloque
-	        bloque.setPreguntas(preguntasAleatorias);
-	    });
-	}
+	public Set<Pregunta> seleccionarPreguntas(Set<Pregunta> disponibles) {
+        List<Pregunta> lista = new ArrayList<>(disponibles);
+        Collections.shuffle(lista);
+        return new LinkedHashSet<>(lista);
+    }
 
 	@Override
 	public AprendizajeSeleccionado getSeleccion() {

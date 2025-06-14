@@ -8,7 +8,8 @@ public enum FactoriaAprendizaje {
 	
 	private static final Set<Supplier<Aprendizaje>> aprendizajes = Set.of(
 			AprendizajeAleatorio::new,
-			AprendizajeSecuencial::new
+			AprendizajeSecuencial::new,
+			AprendizajeRepeticionEspaciada::new
 			);
 	
 	public Aprendizaje getAprendizaje(AprendizajeSeleccionado seleccion) {
@@ -16,7 +17,7 @@ public enum FactoriaAprendizaje {
 				.map(Supplier::get)
 				.filter(aprendizaje -> aprendizaje.getSeleccion().equals(seleccion))
 				.findFirst()
-				.get();
+				.orElse(new AprendizajeSecuencial());
 	}
 	
 	

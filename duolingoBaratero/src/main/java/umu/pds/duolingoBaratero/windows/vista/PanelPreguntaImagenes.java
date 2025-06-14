@@ -1,14 +1,23 @@
 package umu.pds.duolingoBaratero.windows.vista;
 
-import javax.swing.*;
-
-import umu.pds.duolingoBaratero.models.PreguntaImagenes;
-import umu.pds.duolingoBaratero.models.PreguntaOpciones;
-import umu.pds.duolingoBaratero.services.IComprobador;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
+
+import umu.pds.duolingoBaratero.models.PreguntaImagenes;
+import umu.pds.duolingoBaratero.services.IComprobador;
 
 public class PanelPreguntaImagenes extends JPanel implements IComprobador {
 

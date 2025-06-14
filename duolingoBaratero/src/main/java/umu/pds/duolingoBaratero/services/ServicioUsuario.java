@@ -6,12 +6,8 @@ import java.util.Set;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Usuario;
-import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
-import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 import umu.pds.duolingoBaratero.persistence.DBUsuarioDAO;
 import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
-import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
-import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 
 public class ServicioUsuario {
 

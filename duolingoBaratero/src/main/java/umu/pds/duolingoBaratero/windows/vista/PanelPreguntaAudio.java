@@ -21,7 +21,6 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
 import umu.pds.duolingoBaratero.controllers.ControladorAudio;
-import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.services.IComprobador;
 

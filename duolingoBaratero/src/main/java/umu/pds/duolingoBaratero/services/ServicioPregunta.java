@@ -32,7 +32,11 @@ public class ServicioPregunta {
 			.obtenerBloqueContenido(bloqueContenido)
 			.getNumPreguntas();
 	}
-
+	
+	public void incrementarErrores(Pregunta pregunta) {
+		pregunta.incrementarErrores();
+	}
+	
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
 		// TODO: implementación pendiente
 	}

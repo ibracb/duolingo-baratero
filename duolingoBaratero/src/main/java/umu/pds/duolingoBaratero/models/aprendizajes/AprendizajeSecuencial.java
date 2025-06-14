@@ -1,15 +1,17 @@
 package umu.pds.duolingoBaratero.models.aprendizajes;
 
-import umu.pds.duolingoBaratero.models.CursoEnProgreso;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+import umu.pds.duolingoBaratero.models.Pregunta;
 
 public class AprendizajeSecuencial implements Aprendizaje {
 
 	@Override
-	public void setPreguntasByEstrategia(CursoEnProgreso progreso) {
-		progreso.getCursoPlantilla().getContenidos().forEach(bloque -> {
-			bloque.setPreguntas(bloque.getPreguntasSecuencialmente());
-		});
-	}
+	public Set<Pregunta> seleccionarPreguntas(Set<Pregunta> disponibles) {
+        return new LinkedHashSet<>(new TreeSet<>(disponibles));
+    }
 
 	@Override
 	public AprendizajeSeleccionado getSeleccion() {

@@ -37,4 +37,9 @@ public class ControladorPregunta {
 	public void guardarPreguntas(List<Pregunta> preguntas, CursoPlantilla curso) {
 		servicio.guardarPreguntas(preguntas, curso);
 	}
+	
+	public void incrementarErrores(Pregunta pregunta) {
+		servicio.incrementarErrores(pregunta);
+	}
+	
 }
