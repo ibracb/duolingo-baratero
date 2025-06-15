@@ -20,7 +20,7 @@
 
 **Flujos alternativos:**  
 Flujo alternativo 1 - El sistema encuentra un error al generar el archivo:  
-6. El sistema informa de un error en la serialización del curso.
+6. El sistema informa de un error en la serialización del curso.  
 
 **Postcondiciones:**
 
