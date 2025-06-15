@@ -1,6 +1,6 @@
 # Compartir un curso
 
-**Actor principal:** Usuario
+**Actor principal:** Usuario resgistrado 
 **Objetivo:** Permitir que otros usuarios accedan a cursos creados por la comunidad.  
 
 **Precondiciones:**  
@@ -19,7 +19,7 @@
 7. El usuario elige la carpeta en la que quiere guardar el archivo.
 
 **Flujos alternativos:**  
-Flujo alternativo 1 - El sistema encuentra un error al generar el archivo.
+Flujo alternativo 1 - El sistema encuentra un error al generar el archivo:  
 6. El sistema informa de un error en la serialización del curso.
 
 **Postcondiciones:**

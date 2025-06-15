@@ -1,6 +1,6 @@
 # Consultar estadísticas
 
-**Actor principal:** Usuario estudiante
+**Actor principal:** Usuario registrado
 **Objetivo:** Mostrar el tiempo de uso, la mejor racha y otros indicadores de progreso.  
 **Precondiciones:**  
 

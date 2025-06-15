@@ -1,6 +1,6 @@
 # Importar un curso
 
-**Actor principal:** Usuario creador  
+**Actor principal:** Usuario resgistrado  
 **Objetivo:** Permitir a los usuarios crear sus propios cursos.
 **Precondiciones:**
 
@@ -18,7 +18,7 @@
 7. El usuario [inicia el curso](03-CDU-inciar-curso.md).
 
 **Flujos alternativos:**  
-Flujo alternativo 1 - El archivo no es de la misma extensión que el usuario había dicho o contiene fallos:
+Flujo alternativo 1 - El archivo no es de la misma extensión que el usuario había dicho o contiene fallos:  
 5. El sistema procesa el archivo y da fallos.
 6. El sistema manda un mensaje de error indicando que el archivo no es válido.
 

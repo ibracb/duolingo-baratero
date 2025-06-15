@@ -1,6 +1,6 @@
 # Elegir un curso
 
-**Actor principal:** Usuario estudiante
+**Actor principal:** Usuario resgistrado 
 **Objetivo:** Permitir que el usuario seleccione un curso de la biblioteca.  
 **Precondiciones:**
 
@@ -14,8 +14,8 @@
 4. El usuario selecciona el curso que quiere hacer aplicando los filtros que necesite.
 5. El usuario pulsa en el nuevo curso para [iniciarlo](03-CDU-inciar-curso.md).
 
-**Flujos alternativos:**
-Flujo alternativo 1 - El usuario no elige ningún curso:
+**Flujos alternativos:**  
+Flujo alternativo 1 - El usuario no elige ningún curso:  
 4. El usuario vuelve porque no esta interesado en ningun curso.
 
 **Postcondiciones:**
