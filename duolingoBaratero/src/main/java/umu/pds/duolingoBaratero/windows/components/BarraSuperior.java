@@ -17,6 +17,7 @@ import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
+import umu.pds.duolingoBaratero.windows.vista.VentanaElegirCurso;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 
@@ -29,6 +30,8 @@ public class BarraSuperior extends JPanel {
 	private final ControladorCursoPlantilla controladorPlantilla;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
+	private final String[] opciones = { "YAML", "JSON" };
+
 
 	public BarraSuperior(JFrame ventanaActual, ControladorUsuario cUsuario, ControladorCursoPlantilla controladorPlantilla, ControladorCursoProgreso cProgreso, 
 			ControladorPregunta cPregunta) {
@@ -97,7 +100,6 @@ public class BarraSuperior extends JPanel {
 	}
 
 	public void exportarCurso() {
-		String[] opciones = { "YAML", "JSON" };
 		JComboBox<String> comboBox = new JComboBox<>(opciones);
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Selecciona el tipo de archivo:"));
@@ -107,15 +109,18 @@ public class BarraSuperior extends JPanel {
 				JOptionPane.PLAIN_MESSAGE);
 
 		if (resultado == JOptionPane.OK_OPTION) {
-			//String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
-			controladorPlantilla.exportarCurso();
+			String tipoSeleccionado = "." + comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
+			VentanaElegirCurso ventana = new VentanaElegirCurso(null, controladorPlantilla, cUsuario, cProgreso, cPregunta);
+			ventana.setVisible(true);
+			ventana.setEsParaExportar(true);
+			ventana.setExtension(tipoSeleccionado);
+			ventanaActual.dispose();
 		}
 
 	}
 
 	public void importarCurso() {
 		// Crear ComboBox dentro de un JPanel para pasarlo a JOptionPane
-		String[] opciones = { "YAML", "JSON" };
 		JComboBox<String> comboBox = new JComboBox<>(opciones);
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("Selecciona el tipo de archivo:"));

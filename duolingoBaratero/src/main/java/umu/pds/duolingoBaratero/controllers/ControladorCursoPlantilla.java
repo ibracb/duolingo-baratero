@@ -179,17 +179,6 @@ public class ControladorCursoPlantilla {
 		}
 	}
 
-	/**
-	 * Exporta todos los cursos
-	 */
-	public boolean exportarCurso() {
-		try {
-			return servicioCursoPlantilla.exportarTodosLosCursos();
-		} catch (Exception e) {
-			System.err.println("Error al exportar todos los cursos: " + e.getMessage());
-			return false;
-		}
-	}
 
 	/**
 	 * Elimina un curso

@@ -38,6 +38,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	
 	@ManyToOne
 	@JoinColumn(name = "bloque_de_contenido_id")
+	@JsonIgnore
 	private BloqueContenido bloque;
 
 	@Enumerated(EnumType.STRING)
