@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
@@ -31,20 +32,22 @@ public class VentanaPrincipal extends JFrame {
 	private final ControladorUsuario cUsuario;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
+	private final ControladorEstadistica cEstadistica;
 
 	public VentanaPrincipal(ControladorUsuario cUsuario, ControladorCursoPlantilla cPlantilla,
-			ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta) {
+			ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.cUsuario = cUsuario;
 		this.cPlantilla = cPlantilla;
 		this.cProgreso = cProgreso;
 		this.cPregunta = cPregunta;
+		this.cEstadistica = cEstadistica;
 		setTitle("Continúa tus cursos");
 		setSize(600, 450);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(cerrarSesion());
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 
-		panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta);
+		panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
 		// Panel central con etiquetas y listas de cursos
@@ -149,7 +152,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	private void abrirVentanaElegirCurso() {
-		VentanaElegirCurso ventana = new VentanaElegirCurso(this, cPlantilla, cUsuario, cProgreso, cPregunta);
+		VentanaElegirCurso ventana = new VentanaElegirCurso(this, cPlantilla, cUsuario, cProgreso, cPregunta, cEstadistica);
 		ventana.setVisible(true);
 		this.setVisible(false);
 	}
@@ -157,6 +160,11 @@ public class VentanaPrincipal extends JFrame {
 	private void openVentanaEstrategia(CursoEnProgreso curso) {
 		VentanaSeleccionEstrategica ventana = new VentanaSeleccionEstrategica(this, curso, cProgreso);
 		ventana.setVisible(true);
+	}
+	
+	private int cerrarSesion() {
+		cEstadistica.cerrarSesion();
+		return JFrame.EXIT_ON_CLOSE;
 	}
 
 }

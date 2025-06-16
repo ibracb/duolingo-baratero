@@ -20,6 +20,7 @@ import javax.swing.Timer;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
@@ -36,15 +37,17 @@ public class BarraSuperior extends JPanel {
 	private final ControladorCursoPlantilla controladorPlantilla;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
+	private final ControladorEstadistica cEstadistica;
 	private JLabel labelTemporizador;
 
 	public BarraSuperior(JFrame ventanaActual, ControladorUsuario cUsuario,
 			ControladorCursoPlantilla controladorPlantilla, ControladorCursoProgreso cProgreso,
-			ControladorPregunta cPregunta) {
+			ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.cUsuario = cUsuario;
 		this.controladorPlantilla = controladorPlantilla;
 		this.cProgreso = cProgreso;
 		this.cPregunta = cPregunta;
+		this.cEstadistica = cEstadistica;
 		setLayout(new BorderLayout());
 		this.ventanaActual = ventanaActual;
 
@@ -89,7 +92,7 @@ public class BarraSuperior extends JPanel {
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaPrincipal)) {
-			VentanaPrincipal ventana = new VentanaPrincipal(cUsuario, controladorPlantilla, cProgreso, cPregunta);
+			VentanaPrincipal ventana = new VentanaPrincipal(cUsuario, controladorPlantilla, cProgreso, cPregunta, cEstadistica);
 			ventana.setVisible(true);
 			ventanaActual.dispose();
 		} else {
@@ -102,7 +105,7 @@ public class BarraSuperior extends JPanel {
 
 		// Evitar cast incorrecto
 		if (!(ventanaActual instanceof VentanaEstadisticas)) {
-			VentanaEstadisticas ventana = new VentanaEstadisticas(cUsuario, controladorPlantilla, cProgreso, cPregunta);
+			VentanaEstadisticas ventana = new VentanaEstadisticas(cUsuario, controladorPlantilla, cProgreso, cPregunta, cEstadistica);
 			ventana.setVisible(true);
 			ventanaActual.dispose();
 		} else {

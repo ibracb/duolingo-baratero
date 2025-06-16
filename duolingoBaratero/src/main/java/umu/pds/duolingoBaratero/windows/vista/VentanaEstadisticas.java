@@ -5,6 +5,7 @@ import java.awt.*;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
@@ -17,14 +18,16 @@ public class VentanaEstadisticas extends JFrame {
 	private final ControladorCursoPlantilla cPlantilla;
 	private final ControladorCursoProgreso cProgreso;
 	private ControladorPregunta cPregunta;
+	private final ControladorEstadistica cEstadistica;
 	
 	public VentanaEstadisticas(ControladorUsuario cUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso,
-			ControladorPregunta cPregunta) {
+			ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
         // Configuración de la ventana
         this.cUsuario = cUsuario;
         this.cPlantilla = cPlantilla;
         this.cProgreso = cProgreso;
         this.cPregunta = cPregunta;
+        this.cEstadistica = cEstadistica;
 		setTitle("Estadísticas de Uso");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -32,7 +35,7 @@ public class VentanaEstadisticas extends JFrame {
         setLayout(new BorderLayout());
 
         // Barra superior con botones
-        BarraSuperior barraSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta);
+        BarraSuperior barraSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
         add(barraSuperior, BorderLayout.NORTH);
 
         // Panel central con título
@@ -77,7 +80,7 @@ public class VentanaEstadisticas extends JFrame {
         panelRachaAccesos.setBackground(panelColor);
         JLabel lblRachaAccesos = new JLabel("🔑 Racha de accesos:", SwingConstants.CENTER);
         lblRachaAccesos.setFont(font);
-        JLabel lblValorRachaAccesos = new JLabel(getMaxNumAccesos(), SwingConstants.CENTER);
+        JLabel lblValorRachaAccesos = new JLabel(getRachaAcceso(), SwingConstants.CENTER);
         lblValorRachaAccesos.setFont(new Font("Arial", Font.BOLD, 14));
         panelRachaAccesos.add(lblRachaAccesos);
         panelRachaAccesos.add(lblValorRachaAccesos);
@@ -105,18 +108,19 @@ public class VentanaEstadisticas extends JFrame {
     }
 	
 	private String getPorcentajeAciertos() {
-		return cUsuario.getPorcentajeRespuestasCorrectas() + "%";
+		return "0";
+		//		return cEstadistica.getPorcentajeRespuestasCorrectas() + "%";
 	}
 	
-	private String getMaxNumAccesos() {
-		return String.valueOf(cUsuario.getNumMaxAccesos());
+	private String getRachaAcceso() {
+		return String.valueOf(cEstadistica.getRachaAcceso());
 	}
 	
 	private String getMaxVictorias() {
-		return String.valueOf(cUsuario.getRachaVictorias());
+		return String.valueOf(cEstadistica.getRachaVictorias());
 	}
 	
 	private String getTiempoUso() {
-		return String.valueOf(cUsuario.getTiempoUso()) + "horas";
+		return String.valueOf(cEstadistica.getTiempoUso()) + "minutos";
 	}
 }

@@ -183,46 +183,6 @@ public class Usuario {
 		return imagen != null;
 	}
 
-	@JsonIgnore
-	public void setRachaVictorias(int racha) {
-		this.estadistica.setRachaVictorias(racha);
-	}
-
-	@JsonIgnore
-	public void setTiempoUso(double tiempo) {
-		this.estadistica.setTiempoUso(tiempo);
-	}
-
-	@JsonIgnore
-	public void setPorcentajeAcierto(double porcentaje) {
-		this.estadistica.setPorcentajeAciertos(porcentaje);
-	}
-
-	@JsonIgnore
-	public void setNumMaxAccesos(int accesos) {
-		this.estadistica.setNumAccesos(accesos);
-	}
-
-	@JsonIgnore
-	public double getPorcentajeAcierto() {
-		return estadistica.getPorcentajeAciertos();
-	}
-
-	@JsonIgnore
-	public double getTiempoUso() {
-		return estadistica.getTiempoUso();
-	}
-
-	@JsonIgnore
-	public int getRachaVictorias() {
-		return estadistica.getRachaVictorias();
-	}
-
-	@JsonIgnore
-	public int getNumMaxAccesos() {
-		return estadistica.getNumAccesos();
-	}
-
 	public LocalDateTime getUltimaRecuperacion() {
 		return ultimaRecuperacion;
 	}

@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -42,20 +43,22 @@ public class VentanaElegirCurso extends JFrame {
 	private final ControladorUsuario cUsuario;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
+	private final ControladorEstadistica cEstadistica;
 
 	public VentanaElegirCurso(VentanaPrincipal v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso,
-			ControladorPregunta cPregunta) {
+			ControladorPregunta cPregunta,ControladorEstadistica cEstadistica) {
 		this.cPlantilla = cPlantilla;
 		this.cUsuario = cUsuario;
 		this.cPregunta = cPregunta;
 		this.cProgreso = cProgreso;
+		this.cEstadistica = cEstadistica;
 		this.v = v;
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(600, 400); // Ajusta el tamaño de la ventana
 		this.setLocationRelativeTo(null); // Centra la ventana en la pantalla
 		this.setVisible(true); // Muestra la ventana
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		BarraSuperior panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta);
+		BarraSuperior panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
 		JPanel panelInferior = new JPanel();

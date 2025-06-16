@@ -105,6 +105,7 @@ public class CursoEnProgreso {
 	public void avanzarBloqueActual(boolean aprobado) {
 		if (aprobado) {
 			bloqueActual++;
+			
 			if (cursoPlantilla.isCursoFinalizado(bloqueActual)) {
 				this.finalizar();
 			}

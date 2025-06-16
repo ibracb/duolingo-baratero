@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
@@ -55,13 +56,15 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 	private final ControladorCursoPlantilla controladorPlantilla;
 	private final ControladorCursoProgreso controladorProgreso;
 	private final ControladorPregunta controladorPregunta;
+	private final ControladorEstadistica cEstadistica;
 
 	public VentanaRegistro(VentanaCursos v, ControladorUsuario controladorUsuario, ControladorCursoPlantilla controladorCursoPlantilla, ControladorCursoProgreso controladorCursoProgreso,
-			ControladorPregunta controladorPregunta) {
+			ControladorPregunta controladorPregunta, ControladorEstadistica cEstadistica) {
 		this.controladorUsuario = controladorUsuario;
 		this.controladorPlantilla = controladorCursoPlantilla;
 		this.controladorProgreso = controladorCursoProgreso;
 		this.controladorPregunta = controladorPregunta;
+		this.cEstadistica = cEstadistica;
 		this.v = v;
 		setTitle("Registro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -285,7 +288,7 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 
 			JOptionPane.showMessageDialog(null, "Sus datos han sido guardados correctamente", "Conseguido",
 					JOptionPane.PLAIN_MESSAGE);
-			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controladorUsuario, controladorPlantilla, controladorProgreso, controladorPregunta);
+			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controladorUsuario, controladorPlantilla, controladorProgreso, controladorPregunta, cEstadistica);
 			ventanaPrincipal.setVisible(true);
 			this.dispose();
 		}

@@ -71,22 +71,6 @@ public class ControladorUsuario {
 		return servicioUsuario.getCursosUsuarioActual();
 	}
 
-	public double getPorcentajeRespuestasCorrectas() {
-		return servicioUsuario.getPorcentajeRespuestasCorrectas();
-	}
-
-	public double getTiempoUso() {
-		return servicioUsuario.getTiempoUso();
-	}
-
-	public int getRachaVictorias() {
-		return servicioUsuario.getRachaVictorias();
-	}
-
-	public int getNumMaxAccesos() {
-		return servicioUsuario.getNumMaxAccesos();
-	}
-
 	// ----------------------------------------------
 	// Funciones imagenes
 	// ----------------------------------------------
