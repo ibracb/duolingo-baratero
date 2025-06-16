@@ -1,6 +1,7 @@
 package umu.pds.duolingoBaratero.controllers;
 
 import java.awt.image.BufferedImage;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
@@ -116,11 +117,16 @@ public class ControladorUsuario {
 	public int getVidasUsuario() {
 		return servicioUsuario.getVidasUsuario();
 	}
+	
 
 	public boolean recuperarVida() {
 		boolean resultado = servicioUsuario.recuperarVida();
 		actualizarUsuario(); // actualiza si recuperó vida
 		return resultado;
+	}
+	
+	public LocalDateTime getUltimaRecuperacion() {
+		return servicioUsuario.getUltimaRecuperacion();
 	}
 
 	public void actualizarUsuario() {

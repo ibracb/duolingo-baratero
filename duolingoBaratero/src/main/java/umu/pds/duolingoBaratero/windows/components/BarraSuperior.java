@@ -3,8 +3,11 @@ package umu.pds.duolingoBaratero.windows.components;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.io.File;
+import java.time.ZoneId;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -13,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
+import javax.swing.Timer;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
@@ -24,14 +28,18 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private final long DURACION = 1 * 60 * 1000; // 1 minuto
+
 	private JButton btnHome, btnEstadisticas, btnImportarCurso, btnExportarCurso;
 	private JFrame ventanaActual;
 	private final ControladorUsuario cUsuario;
 	private final ControladorCursoPlantilla controladorPlantilla;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
+	private JLabel labelTemporizador;
 
-	public BarraSuperior(JFrame ventanaActual, ControladorUsuario cUsuario, ControladorCursoPlantilla controladorPlantilla, ControladorCursoProgreso cProgreso, 
+	public BarraSuperior(JFrame ventanaActual, ControladorUsuario cUsuario,
+			ControladorCursoPlantilla controladorPlantilla, ControladorCursoProgreso cProgreso,
 			ControladorPregunta cPregunta) {
 		this.cUsuario = cUsuario;
 		this.controladorPlantilla = controladorPlantilla;
@@ -58,11 +66,17 @@ public class BarraSuperior extends JPanel {
 		btnExportarCurso = new JButton("Exportar Curso");
 		btnExportarCurso.addActionListener(e -> exportarCurso());
 
+		labelTemporizador = new JLabel();
+		labelTemporizador.setFont(new Font("Verdana", Font.BOLD, 14));
+		labelTemporizador.setIcon(new ImageIcon(getClass().getResource("/corazon2.png")));
+		inicializarTemporizador();
+
 		// Agregar botones al panel central
 		panelCentral.add(btnHome);
 		panelCentral.add(btnEstadisticas);
 		panelCentral.add(btnImportarCurso);
 		panelCentral.add(btnExportarCurso);
+		panelCentral.add(labelTemporizador);
 
 		// Agregar el panel central dentro de la barra de herramientas
 		barra.add(panelCentral);
@@ -108,7 +122,8 @@ public class BarraSuperior extends JPanel {
 				JOptionPane.PLAIN_MESSAGE);
 
 		if (resultado == JOptionPane.OK_OPTION) {
-			//String tipoSeleccionado = comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
+			// String tipoSeleccionado =
+			// comboBox.getSelectedItem().toString().toLowerCase(); // "yaml" o "json"
 			controladorPlantilla.exportarCurso();
 		}
 
@@ -139,13 +154,38 @@ public class BarraSuperior extends JPanel {
 					JOptionPane.showMessageDialog(null, "El archivo debe tener extensión " + extensionEsperada,
 							"Formato incorrecto", JOptionPane.ERROR_MESSAGE);
 				} else {
-					//CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo, tipoSeleccionado);
-					
+					// CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo,
+					// tipoSeleccionado);
+
 					// Puedes mostrar algo aquí si quieres confirmar que se importó
 				}
 			}
 		}
 	}
 
+	private void inicializarTemporizador() {
+		Timer timer = new Timer(1000, null);
+		timer.addActionListener(e -> {
+			int vidas = cUsuario.getVidasUsuario();
+			if (vidas >= 1) {
+				labelTemporizador.setText("" + vidas);
+			} else {
+				long siguiente = cUsuario.getUsuarioActual().getUltimaRecuperacion().atZone(ZoneId.systemDefault())
+						.toInstant().toEpochMilli() + DURACION;
+
+				long restante = siguiente - System.currentTimeMillis();
+				if (restante > 0) {
+					long m = (restante / 1000) / 60;
+					long s = (restante / 1000) % 60;
+					labelTemporizador.setText(m + ":" + String.format("%02d", s));
+				} else {
+					vidas = cUsuario.getVidasUsuario();
+					labelTemporizador.setText("" + vidas);
+				}
+				
+			}
+		});
+		timer.start();
+	}
 
 }

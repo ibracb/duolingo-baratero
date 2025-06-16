@@ -26,7 +26,7 @@ import jakarta.persistence.Table;
 public class Usuario {
 
 	private static final int VIDAS_MAXIMAS = 5;
-	private static final int MINUTOS_POR_VIDA = 5;
+	private static final int MINUTOS_POR_VIDA = 1;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -223,11 +223,22 @@ public class Usuario {
 		return estadistica.getNumAccesos();
 	}
 
+	public LocalDateTime getUltimaRecuperacion() {
+		return ultimaRecuperacion;
+	}
+
+	public void setUltimaRecuperacion(LocalDateTime ultimaRecuperacion) {
+		this.ultimaRecuperacion = ultimaRecuperacion;
+	}
+
 	public boolean estaCursando(CursoPlantilla curso) {
 		return cursos.stream().anyMatch(cursoProgreso -> cursoProgreso.getCursoPlantilla().equals(curso));
 	}
 
 	public int perderVida() {
+		if (vidas == VIDAS_MAXIMAS) {
+			ultimaRecuperacion = LocalDateTime.now();
+		}
 		if (vidas > 0) {
 			vidas--;
 		}

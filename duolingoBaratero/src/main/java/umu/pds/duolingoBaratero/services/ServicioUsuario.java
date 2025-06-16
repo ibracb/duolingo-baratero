@@ -1,5 +1,6 @@
 package umu.pds.duolingoBaratero.services;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -128,12 +129,19 @@ public class ServicioUsuario {
 	}
 
 	public int getVidasUsuario() {
+		this.recuperarVida();
 		return user.getVidas();
 	}
 
+	public LocalDateTime getUltimaRecuperacion() {
+		return user.getUltimaRecuperacion();
+	}
+	
 	public void actualizarUsuario() {
 		dbUsuarioDAO.update(user);
 		
 		
 	}
+
+
 }
