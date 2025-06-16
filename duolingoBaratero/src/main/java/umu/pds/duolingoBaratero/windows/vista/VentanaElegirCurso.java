@@ -24,8 +24,8 @@ import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
+import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 public class VentanaElegirCurso extends JFrame {
 
@@ -172,7 +172,7 @@ public class VentanaElegirCurso extends JFrame {
 	 */
 	private void manejarSeleccionCurso(CursoPlantilla curso) {
 		if (cUsuario.estaCursando(curso)) {
-			Constantes.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
+			MensajeTemporal.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
 		}
 		else {
 			if (cUsuario.addCursosEnProgreso(curso)) {

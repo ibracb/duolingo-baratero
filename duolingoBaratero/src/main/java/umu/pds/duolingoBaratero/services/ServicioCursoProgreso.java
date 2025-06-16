@@ -8,9 +8,8 @@ import umu.pds.duolingoBaratero.persistence.DBCursoEnProgresoDAO;
 
 public class ServicioCursoProgreso {
 
-	 private DBCursoEnProgresoDAO dbCursoEnProgresoDAO;
-	 
-	 
+	private DBCursoEnProgresoDAO dbCursoEnProgresoDAO;
+
 	public ServicioCursoProgreso(DBCursoEnProgresoDAO dbCursoEnProgresoDAO) {
 		super();
 		this.dbCursoEnProgresoDAO = dbCursoEnProgresoDAO;
@@ -43,10 +42,6 @@ public class ServicioCursoProgreso {
 		return curso != null && curso.isFinalizado();
 	}
 
-	public long obtenerUltimoBloque(CursoEnProgreso curso) {
-		return curso != null ? curso.getNumLastBloqueContenido() : -1;
-	}
-
 	public void avanzarBloque(CursoEnProgreso curso, boolean aprobado) {
 		if (curso != null) {
 			curso.avanzarBloqueActual(aprobado);
@@ -54,15 +49,15 @@ public class ServicioCursoProgreso {
 	}
 
 	public void reiniciarCurso(CursoEnProgreso curso) {
-			curso.reiniciar();
+		curso.reiniciar();
 	}
-	
-    public boolean actualizarCurso(CursoEnProgreso curso) {
-        if (curso != null) {
-            dbCursoEnProgresoDAO.update(curso);
-            return true;
-        }
-        return false;
-    }
+
+	public boolean actualizarCurso(CursoEnProgreso curso) {
+		if (curso != null) {
+			dbCursoEnProgresoDAO.update(curso);
+			return true;
+		}
+		return false;
+	}
 
 }

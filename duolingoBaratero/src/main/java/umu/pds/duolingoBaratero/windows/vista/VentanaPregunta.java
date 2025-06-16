@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -30,7 +32,7 @@ import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 import umu.pds.duolingoBaratero.services.IComprobador;
 import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
+import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 
 public class VentanaPregunta extends JFrame {
 	private static final int PANEL_INICIAL = 0;
@@ -139,9 +141,9 @@ public class VentanaPregunta extends JFrame {
 				panel.getRespuestaUsuario());
 
 		if (respuestaCorrecta) {
-			Constantes.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
+			MensajeTemporal.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
 		} else {
-			Constantes.mostrarMensaje(
+			MensajeTemporal.mostrarMensaje(
 					"Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(),
 					JOptionPane.ERROR_MESSAGE);
 
@@ -178,35 +180,49 @@ public class VentanaPregunta extends JFrame {
 	}
 
 	public class DialogoFinal extends JDialog {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
 
-		public DialogoFinal(JFrame ventanaPregunta, boolean aprobado) {
-			super(ventanaPregunta, "Juego Terminado", true); // Modal
-			setSize(300, 150);
-			setLocationRelativeTo(ventanaPregunta); // Centrar sobre la ventana principal
-			setLayout(new BorderLayout());
+	    private static final long serialVersionUID = 1L;
 
-			controladorCursoProgreso.avanzar(curso, aprobado);
-			String resultado = aprobado ? "Aprobado :)" : "Suspenso :(";
-			JLabel mensaje = new JLabel("¡Juego terminado! Resultado : " + resultado, JLabel.CENTER);
+	    public DialogoFinal(JFrame ventanaPregunta, boolean aprobado) {
+	        super(ventanaPregunta, "Juego Terminado", true);
+	        setSize(500, 220); // más ancho para que quepa el texto
+	        setLocationRelativeTo(ventanaPregunta);
+	        setLayout(new BorderLayout());
+	        getContentPane().setBackground(new Color(245, 245, 245)); // blanco suave
 
-			add(mensaje, BorderLayout.CENTER);
+	        controladorCursoProgreso.avanzar(curso, aprobado);
+	        String resultado = aprobado 
+	            ? "¡Vamos guerrero! No hace falta que te cambies de carrera."
+	            : "Es el fin... Toca cambiarse a psicología, no has aprobado.";
 
-			// Botones
-			JPanel panelBotones = new JPanel();
-			JButton btnSalir = new JButton("Salir");
+	        JLabel mensaje = new JLabel("<html><div style='text-align: center;'>" + resultado + "</div></html>", JLabel.CENTER);
+	        mensaje.setForeground(new Color(33, 37, 41)); // gris oscuro
+	        mensaje.setFont(new Font("Arial", Font.BOLD, 20));
+	        mensaje.setBorder(new EmptyBorder(30, 30, 30, 30));
 
-			// Acción para salir
-			btnSalir.addActionListener(e -> {
-				dispose();
-				ventanaPregunta.dispose();
-			});
+	        add(mensaje, BorderLayout.CENTER);
 
-			panelBotones.add(btnSalir);
-			add(panelBotones, BorderLayout.SOUTH);
-		}
+	        JPanel panelBotones = new JPanel();
+	        panelBotones.setBackground(new Color(245, 245, 245));
+	        panelBotones.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+	        JButton btnSalir = new JButton("Salir");
+	        btnSalir.setBackground(new Color(52, 152, 219)); // azul suave
+	        btnSalir.setForeground(Color.WHITE);
+	        btnSalir.setFont(new Font("Arial", Font.BOLD, 16));
+	        btnSalir.setFocusPainted(false);
+	        btnSalir.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	        btnSalir.setPreferredSize(new Dimension(100, 40));
+
+	        btnSalir.addActionListener(e -> {
+	            dispose();
+	            ventanaPregunta.dispose();
+	        });
+
+	        panelBotones.add(btnSalir);
+	        add(panelBotones, BorderLayout.SOUTH);
+	    }
 	}
-}
+
+
+} 
