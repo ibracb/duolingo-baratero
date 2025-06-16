@@ -206,30 +206,6 @@ public class ServicioCursoPlantilla {
         return serializer.serialize(curso);
     }
     
-    /**
-     * Exporta todos los cursos en múltiples formatos
-     */
-    public boolean exportarTodosLosCursos() {
-        try {
-            Serializer serializerYAML = serializerFactory.getSerializer("yaml");
-            Serializer serializerJSON = serializerFactory.getSerializer("json");
-            
-            List<CursoPlantilla> cursos = obtenerTodosLosCursos();
-            
-            for (CursoPlantilla curso : cursos) {
-                if (!serializerYAML.serializeCursoBase(curso) || 
-                    !serializerJSON.serializeCursoBase(curso)) {
-                    return false;
-                }
-            }
-            
-            return true;
-        } catch (Exception e) {
-            System.err.println("Error al exportar cursos: " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-    }
     
     public void cargarCursosBase() {
         List<CursoPlantilla> cursos = new ArrayList<>();

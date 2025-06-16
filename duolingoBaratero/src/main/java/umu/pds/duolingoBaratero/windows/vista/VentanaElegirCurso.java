@@ -44,6 +44,8 @@ public class VentanaElegirCurso extends JFrame {
 	private final ControladorCursoProgreso cProgreso;
 	@SuppressWarnings("unused")
 	private final ControladorPregunta cPregunta;
+	private boolean esParaExportar;
+	private String extension;
 
 	public VentanaElegirCurso(VentanaPrincipal v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso,
 			ControladorPregunta cPregunta) {
@@ -168,12 +170,29 @@ public class VentanaElegirCurso extends JFrame {
 	
 	/**
 	 * Si el curso Progreso elegido ya lo esta realizando el usuario no se añade
-	 * TODO: Falta ver pq dos cursos progreso que se creand en diferente vez no tienen el mismo id 
-	 * Preguntar a Jorge en caso de duda.
 	 * @param curso
 	 */
 	private void manejarSeleccionCurso(CursoPlantilla curso) {
-		if (cUsuario.estaCursando(curso)) {
+		if (esParaExportar) {
+			boolean exportado = cPlantilla.exportarCurso(curso, extension);
+
+			if (exportado) {
+			    JOptionPane.showMessageDialog(this,
+			        "El curso se ha exportado correctamente en la carpeta 'cursos' del programa.",
+			        "Exportación correcta",
+			        JOptionPane.INFORMATION_MESSAGE);
+			} else {
+			    JOptionPane.showMessageDialog(this,
+			        "No se pudo exportar el curso.",
+			        "Error de exportación",
+			        JOptionPane.ERROR_MESSAGE);
+			}
+			VentanaPrincipal ventana = new VentanaPrincipal(cUsuario, cPlantilla, cProgreso, cPregunta);
+			ventana.setVisible(true);
+			this.dispose();
+
+		}
+		else if (cUsuario.estaCursando(curso)) {
 			Constantes.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
 		}
 		else {
@@ -187,5 +206,15 @@ public class VentanaElegirCurso extends JFrame {
 		}
 		
 	}
+
+	public void setEsParaExportar(boolean esParaExportar) {
+		this.esParaExportar = esParaExportar;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+	
+	
 
 }

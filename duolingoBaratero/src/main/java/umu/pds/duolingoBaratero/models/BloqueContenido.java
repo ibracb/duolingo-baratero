@@ -31,6 +31,7 @@ public class BloqueContenido {
 
 	@ManyToOne
 	@JoinColumn(name = "curso_id")
+	@JsonIgnore
 	private CursoPlantilla curso;
 	
 	@OneToMany
