@@ -1,119 +1,69 @@
 @startuml
 
-enum Aprendizaje {
-    SECUENCIAL
-    REPETICION_ESPACIADA
-    ALEATORIO
-}
-
-enum TipoPregunta {
-    FLASHCARD
-    AUDIO
-    OPCIONES
-    IMAGEN
-}
-
-enum Rol {
-    ESTUDIANTE
-    CREADOR
-    ADMINISTRADOR
-}
-
-enum Nivel {
-    PRINCIPIANTE
-    INTERMEDIO
-    AVANZADO
-}
-
-enum EstadoPregunta {
-    ACIERTO
-    FALLO
-    PENDIENTE
-}
-
-enum EstadoBloqueContenido {
-    INICIO
-    EN_MARCHA
-    FIN
-}
-
-interface EstadoCursoEnProgreso {
-    +iniciar(CursoEnProgreso curso)
-    +finalizar(CursoEnProgreso curso)
-}
-
 class Usuario {
 }
 
-class Estadistica {
+class Estadística {
 }
 
-class CursoPlantilla {
+enum Nivel {
+  Basico
+  Principiante
+  Intermedio
+  Avanzado
 }
 
 class CursoEnProgreso {
 }
 
-class BloqueContenido {
+class CursoPlantilla {
 }
 
-class BloqueContenidoProgreso {
+class BloqueContenido {
 }
 
 class Pregunta {
 }
 
-class PreguntaOpciones extends Pregunta {
+class Flashcard {
 }
 
-class PreguntaAudio extends Pregunta {
+class Opción {
 }
 
-class Flashcard extends Pregunta {
+class Audio {
 }
 
-class PreguntaProgreso {
+class Imagen {
 }
 
-class EstadoNuevo implements EstadoCursoEnProgreso {
+class Estado {
 }
 
-class EstadoFinalizado implements EstadoCursoEnProgreso {
+
+
+Usuario "1" -- "*" CursoEnProgreso : estudia
+Usuario "1" -- "1" Estadística : tieneEstadísticas
+
+CursoEnProgreso "*" -- "1" CursoPlantilla : correspondeA
+CursoEnProgreso "*" -- "*" Estado : está 
+
+CursoPlantilla "*" -- "1" Nivel : nivelRecomendado
+CursoPlantilla "*" -- "*" BloqueContenido : contieneBloques
+
+BloqueContenido "*" -- "*" Pregunta : incluyePreguntas
+
+Pregunta <|-- Flashcard
+Pregunta <|-- Opción
+Pregunta <|-- Audio
+Pregunta <|-- Imagen
+
+
+
+enum Estado {
+  Nuevo
+  EnMarcha
+  Finalizado
 }
-
-class EstadoEnMarcha implements EstadoCursoEnProgreso {
-}
-
-Usuario 1 --  CursoEnProgreso
-Usuario 1 --  CursoPlantilla
-Usuario 1 -- 1 Estadistica
-Usuario 1 --  Rol
-
-CursoEnProgreso 1 -- 1 CursoPlantilla
-CursoEnProgreso 1 --  BloqueContenidoProgreso
-CursoEnProgreso 1 -- 1 EstadoCursoEnProgreso
-CursoEnProgreso 1 -- 1 Aprendizaje
-
-CursoPlantilla 1 -- 1 Nivel
-
-BloqueContenidoProgreso 1 -- 1 BloqueContenido
-BloqueContenidoProgreso 1 --  PreguntaProgreso
-BloqueContenidoProgreso 1 -- 1 EstadoBloqueContenido
-
-BloqueContenido 1 --  Pregunta
-
-PreguntaProgreso 1 -- 1 Pregunta
-PreguntaProgreso 1 -- 1 EstadoPregunta
-
-Pregunta 1 -- 1 TipoPregunta
-Pregunta 1 -- 1 Nivel
-
-Pregunta -- Flashcard
-Pregunta -- PreguntaOpciones
-Pregunta -- PreguntaAudio
-
-EstadoCursoEnProgreso -- EstadoNuevo
-EstadoCursoEnProgreso -- EstadoFinalizado
-EstadoCursoEnProgreso -- EstadoEnMarcha
 
 @enduml
