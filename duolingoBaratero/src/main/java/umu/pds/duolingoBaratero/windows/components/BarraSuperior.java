@@ -29,7 +29,7 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 public class BarraSuperior extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private final long DURACION = 1 * 60 * 1000; // 1 minuto
+	private final long DURACION = 5 * 60 * 1000; // 1 minuto
 
 	private JButton btnHome, btnEstadisticas, btnImportarCurso, btnExportarCurso;
 	private JFrame ventanaActual;

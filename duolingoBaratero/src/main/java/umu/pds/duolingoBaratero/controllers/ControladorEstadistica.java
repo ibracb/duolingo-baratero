@@ -31,4 +31,12 @@ public class ControladorEstadistica {
 		return servicio.getRachaAcceso();
 	}
 
+	public void actualizarAciertos(boolean respuestaCorrecta) {
+		servicio.actualizarAciertos(respuestaCorrecta);
+	}
+
+	public String getPorcentajeAciertos() {
+		return servicio.getPorcentajeAciertos();
+	}
+
 }

@@ -78,7 +78,7 @@ public class VentanaEstadisticas extends JFrame {
         JPanel panelRachaAccesos = new JPanel(new GridLayout(2, 1));
         panelRachaAccesos.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1, true));
         panelRachaAccesos.setBackground(panelColor);
-        JLabel lblRachaAccesos = new JLabel("🔑 Racha de accesos:", SwingConstants.CENTER);
+        JLabel lblRachaAccesos = new JLabel("🔑 Número de accesos:", SwingConstants.CENTER);
         lblRachaAccesos.setFont(font);
         JLabel lblValorRachaAccesos = new JLabel(getRachaAcceso(), SwingConstants.CENTER);
         lblValorRachaAccesos.setFont(new Font("Arial", Font.BOLD, 14));
@@ -108,8 +108,7 @@ public class VentanaEstadisticas extends JFrame {
     }
 	
 	private String getPorcentajeAciertos() {
-		return "0";
-		//		return cEstadistica.getPorcentajeRespuestasCorrectas() + "%";
+				return cEstadistica.getPorcentajeAciertos() + "%";
 	}
 	
 	private String getRachaAcceso() {
@@ -121,6 +120,6 @@ public class VentanaEstadisticas extends JFrame {
 	}
 	
 	private String getTiempoUso() {
-		return String.valueOf(cEstadistica.getTiempoUso()) + "minutos";
+		return String.valueOf(cEstadistica.getTiempoUso()) + " minutos";
 	}
 }

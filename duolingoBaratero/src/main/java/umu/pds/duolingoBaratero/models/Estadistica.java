@@ -20,8 +20,6 @@ public class Estadistica {
 
 	@Transient
 	private static final int VALOR_INICIAL = 0;
-	@Transient
-	private static final int RACHA_ACCESOS_INICIAL = 1;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -41,9 +39,11 @@ public class Estadistica {
 	@Column(name = "racha_victorias")
 	private int rachaVictorias;
 
-	@Column(name = "porcentaje_aciertos")
-	private double porcentajeAciertos;
-
+	@Column(name = "total_aciertos")
+	private int totalAciertos;
+	
+	@Column(name="total_respuestas")
+	private int totalRespuestas;
 	@Transient
 	private LocalDateTime inicioSesionActual;
 
@@ -54,8 +54,9 @@ public class Estadistica {
 		this.usuario = usuario;
 		this.tiempoUso = VALOR_INICIAL;
 		this.rachaVictorias = VALOR_INICIAL;
-		this.porcentajeAciertos = 0.0;
-		this.iniciarSesion();
+		this.totalAciertos = VALOR_INICIAL;
+		this.totalRespuestas = VALOR_INICIAL;
+		this.rachaAcceso = VALOR_INICIAL;
 	}
 
 	public Usuario getUsuario() {
@@ -87,11 +88,19 @@ public class Estadistica {
 	}
 
 	public double getPorcentajeAciertos() {
-		return porcentajeAciertos;
+		if (totalRespuestas > VALOR_INICIAL) {
+			double porcentaje = (double) totalAciertos / totalRespuestas * 100;
+			return Math.round(porcentaje * 100.0) / 100.0;
+		}
+		return 0.0;
 	}
 
-	public void setPorcentajeAciertos(double porcentajeAciertos) {
-		this.porcentajeAciertos = porcentajeAciertos;
+	
+	public void actualizarAciertos(boolean acierto) {
+		if (acierto) {
+			totalAciertos++;
+		}
+		totalRespuestas++;
 	}
 
 	public void incrementarRachaVictorias() {

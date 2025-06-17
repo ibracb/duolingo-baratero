@@ -26,7 +26,7 @@ import jakarta.persistence.Table;
 public class Usuario {
 
 	private static final int VIDAS_MAXIMAS = 5;
-	private static final int MINUTOS_POR_VIDA = 1;
+	private static final int MINUTOS_POR_VIDA = 5;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

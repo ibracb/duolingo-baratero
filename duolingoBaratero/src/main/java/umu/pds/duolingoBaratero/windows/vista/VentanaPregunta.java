@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
@@ -52,13 +53,15 @@ public class VentanaPregunta extends JFrame {
 	private final ControladorCursoProgreso controladorCursoProgreso;
 	private final ControladorPregunta controladorPregunta;
 	private final ControladorUsuario controladorUsuario;
+	private final ControladorEstadistica controladorEstadistica;
 
 	public VentanaPregunta(CursoEnProgreso curso, ControladorCursoProgreso controladorCursoprogreso,
-			ControladorPregunta controladorPregunta, ControladorUsuario controladorUsuario) {
+			ControladorPregunta controladorPregunta, ControladorUsuario controladorUsuario, ControladorEstadistica controladorEstadistica) {
 		this.controladorCursoProgreso = controladorCursoprogreso;
 		this.controladorPregunta = controladorPregunta;
 		this.controladorUsuario = controladorUsuario;
 		this.curso = curso;
+		this.controladorEstadistica = controladorEstadistica;
 		currentPanel = PANEL_INICIAL;
 		paneles = this.getPaneles();
 		inicializar();
@@ -139,6 +142,8 @@ public class VentanaPregunta extends JFrame {
 
 		boolean respuestaCorrecta = controladorPregunta.procesarRespuesta(panel.getPregunta(),
 				panel.getRespuestaUsuario());
+		
+		controladorEstadistica.actualizarAciertos(respuestaCorrecta);
 
 		if (respuestaCorrecta) {
 			MensajeTemporal.mostrarMensaje("¡Correcto!", JOptionPane.INFORMATION_MESSAGE);
@@ -147,10 +152,13 @@ public class VentanaPregunta extends JFrame {
 					"Fallaste, la respuesta correcta era: " + panel.getPregunta().getRespuestaCorrecta(),
 					JOptionPane.ERROR_MESSAGE);
 
-			if (controladorUsuario.restarVidaUsuario() <= 0) {
+			
+			int vidas = controladorUsuario.restarVidaUsuario();
+			barraSuperior.updateVidas();
+			if (vidas <= 0) {
 				new DialogoFinal(this, SUSPENSO).setVisible(true);
 			}
-			barraSuperior.updateVidas();
+			
 		}
 
 		barraProgreso.avanzar(respuestaCorrecta);

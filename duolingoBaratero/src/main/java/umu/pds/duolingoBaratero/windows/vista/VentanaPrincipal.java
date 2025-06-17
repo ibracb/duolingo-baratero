@@ -139,7 +139,7 @@ public class VentanaPrincipal extends JFrame {
 			openVentanaEstrategia(curso);
 
 		}
-		VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta, cUsuario);
+		VentanaPregunta ventanaPregunta = new VentanaPregunta(curso, cProgreso, cPregunta, cUsuario, cEstadistica);
 		ventanaPregunta.setVisible(true);
 	}
 

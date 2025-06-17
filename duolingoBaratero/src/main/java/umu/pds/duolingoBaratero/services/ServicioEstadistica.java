@@ -40,4 +40,12 @@ public class ServicioEstadistica {
 		dbEstadisticaDAO.update(estadistica);
 	}
 
+	public void actualizarAciertos(boolean respuestaCorrecta) {
+		estadistica.actualizarAciertos(respuestaCorrecta);
+	}
+
+	public String getPorcentajeAciertos() {
+		return String.valueOf(estadistica.getPorcentajeAciertos());
+	}
+
 }
