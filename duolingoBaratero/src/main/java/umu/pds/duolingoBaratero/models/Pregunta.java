@@ -38,6 +38,7 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	
 	@ManyToOne
 	@JoinColumn(name = "bloque_de_contenido_id")
+	@JsonIgnore
 	private BloqueContenido bloque;
 
 	@Enumerated(EnumType.STRING)
@@ -56,9 +57,6 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo", insertable = false, updatable = false)
 	private TipoPregunta tipo;
-	
-	@Column(name = "errores")
-	private Integer errores = 0;
 	
 	public Pregunta() {
 	}
@@ -128,17 +126,6 @@ public abstract class Pregunta implements Comparable<Pregunta> {
 
 	public TipoPregunta getTipo() {
 		return tipo;
-	}
-	
-	public int getErrores() {
-		return errores != null ? errores : 0;
-	}
-
-	public void incrementarErrores() {
-		if (errores == null) {
-	        errores = 0;
-	    }
-	    errores = errores + 1;
 	}
 	
 	@JsonIgnore

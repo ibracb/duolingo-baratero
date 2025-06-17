@@ -21,7 +21,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
+
 
 @Entity
 @Table(name = "cursos_plantilla")

@@ -1,17 +1,19 @@
 package umu.pds.duolingoBaratero.models;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.swing.JPanel;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaAudio;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaImagenes;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
-import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
 
 class PreguntasTest {
 
@@ -19,7 +21,8 @@ class PreguntasTest {
     private PreguntaAudio preguntaAudio;
     private Flashcard flashcard;
 
-    @BeforeEach
+    @SuppressWarnings("unused")
+	@BeforeEach
     void setUp() {
         String[] opciones = {"Opción A", "Opción B", "Opción C"};
 
@@ -56,7 +59,8 @@ class PreguntasTest {
         assertFalse(flashcard.esRespuestaCorrecta("fallo"));
     }
 
-    @Test
+    @SuppressWarnings("unused")
+	@Test
     void testPreguntaOpciones_GettersSetters() {
         String[] nuevasOpciones = {"Nueva A", "Nueva B", "Nueva C"};
 //        preguntaOpciones.setOpciones(nuevasOpciones);

@@ -11,7 +11,6 @@ import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Usuario;
-import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.services.AudioService;
 import umu.pds.duolingoBaratero.services.ImageService;
 import umu.pds.duolingoBaratero.services.ServicioCursoPlantilla;
@@ -179,17 +178,6 @@ public class ControladorCursoPlantilla {
 		}
 	}
 
-	/**
-	 * Exporta todos los cursos
-	 */
-	public boolean exportarCurso() {
-		try {
-			return servicioCursoPlantilla.exportarTodosLosCursos();
-		} catch (Exception e) {
-			System.err.println("Error al exportar todos los cursos: " + e.getMessage());
-			return false;
-		}
-	}
 
 	/**
 	 * Elimina un curso

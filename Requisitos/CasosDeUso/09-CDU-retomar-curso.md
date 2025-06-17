@@ -10,15 +10,17 @@ Permitir que un usuario retome un curso por un punto donde lo ha dejado.
 1. El usuario debe haber empezado el curso.
 
 **Pasos:**
-1. El usuario se loguea en la aplicación, [desde la ventana de inicio de sesión](../Ventanas/VentanaLogin.png).
-2. El usuario indica el curso que ya tenía empezado de la lista de cursos empezados, en la [ventana principal](../Ventanas/VentanaPrincipal-UsuarioEstudiante.png).
-3. El sistema reanuda el curso por la última pregunta que contestó el usuario, desde la [ventana de preguntas](../Ventanas/VentanaPreguntaTest.png).
-4. El usuario continua con la realización del curso.
 
-**Flujos alternativos:**    
-4a. El usuario desea salir de Duolingo Baratero.
-- El sistema cierra la aplicación.
-- El usuario sale de Duolingo Baratero.
+1. El usuario inicia sesión.
+2. El usuario selecciona el curso que quiere continuar.
+6. El usuario responde a las preguntas o estudia las tarjetas.
+7. El sistema verifica las respuestas.
+8. El usuario aprueba el bloque.
+9. El sistema guarda el progreso.
+10. El sistema prepara las preguntas siguiente bloque (Vuelve al paso 6).
+
+**Flujos alternativos:**
+[Mismos flujos alternativos que]
 
 **Postcondiciones:**
 Las preguntas contestadas en el último acceso al cerrar, no se guardan.  

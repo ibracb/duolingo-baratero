@@ -21,6 +21,7 @@ import umu.pds.duolingoBaratero.models.CursoPlantilla;
 public class VentanaInformacion extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private VentanaCursos v;
+	@SuppressWarnings("unused")
 	private final ControladorUsuario controladorUsuario;
 	public VentanaInformacion(CursoPlantilla curso, VentanaCursos v, ControladorUsuario controladorUsuario) {
 		this.controladorUsuario = controladorUsuario;

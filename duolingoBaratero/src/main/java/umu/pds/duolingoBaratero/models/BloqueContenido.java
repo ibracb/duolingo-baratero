@@ -31,6 +31,7 @@ public class BloqueContenido {
 
 	@ManyToOne
 	@JoinColumn(name = "curso_id")
+	@JsonIgnore
 	private CursoPlantilla curso;
 	
 	@OneToMany
@@ -80,8 +81,8 @@ public class BloqueContenido {
 		//return this.preguntas;
 	}
 	
-	public Set<Pregunta> getPreguntasRepeticionEspaciada() {
-		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.REPETICION_ESPACIADA).seleccionarPreguntas(preguntas);
+	public Set<Pregunta> getPreguntasInvertidas() {
+		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.INVERTIDO).seleccionarPreguntas(preguntas);
 		//return this.preguntas;
 	}
 	

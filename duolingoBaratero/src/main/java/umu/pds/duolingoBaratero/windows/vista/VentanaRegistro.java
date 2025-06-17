@@ -2,8 +2,10 @@ package umu.pds.duolingoBaratero.windows.vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.awt.Insets;
 import java.io.File;
 import java.net.URL;
 
@@ -17,6 +19,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
@@ -24,14 +29,6 @@ import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
-import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
-import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 

@@ -12,7 +12,6 @@ import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.models.Pregunta;
 import umu.pds.duolingoBaratero.models.Usuario;
-import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.persistence.DBBloqueContenidoDAO;
 import umu.pds.duolingoBaratero.persistence.DBCursoEnProgresoDAO;
 import umu.pds.duolingoBaratero.persistence.DBCursoPlantillaDAO;
@@ -51,7 +50,6 @@ public class ServicioCursoPlantilla {
 		this.dbBloqueContenidoDAO = dbBloqueContenidoDAO;
 		this.dbPreguntaDAO = dbPreguntaDAO;
 		this.serializerFactory = serializerFactory;
-		System.out.println("Paso pora qui");
 		cargarCursosBase();
 	}
 

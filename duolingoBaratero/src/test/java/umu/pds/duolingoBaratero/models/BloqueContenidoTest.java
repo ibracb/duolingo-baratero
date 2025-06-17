@@ -47,7 +47,8 @@ public class BloqueContenidoTest {
         assertEquals(200L, bloqueContenido.getId());
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     void testGetPreguntas() {
         List<Pregunta> preguntas = (List<Pregunta>) bloqueContenido.getPreguntas();
         assertEquals(2, preguntas.size());
@@ -68,7 +69,8 @@ public class BloqueContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings({ "unused", "unchecked" })
+	@Test
     void testSetPreguntas() {
         List<Pregunta> nuevasPreguntas = Arrays.asList(preguntaMock3);
         //bloqueContenido.setPreguntas(nuevasPreguntas);
