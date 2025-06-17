@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
@@ -31,12 +32,13 @@ public class VentanaInicio extends JFrame {
 	private final ControladorCursoPlantilla cPlantilla;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
-
-	public VentanaInicio(ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta) {
+	private final ControladorEstadistica cEstadistica;
+	public VentanaInicio(ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.controladorUsuario = controladorUsuario;
 		this.cPlantilla = cPlantilla;
 		this.cProgreso = cProgreso;
 		this.cPregunta = cPregunta;
+		this.cEstadistica = cEstadistica;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(650, 400);
 		setLocationRelativeTo(null);
@@ -161,13 +163,13 @@ public class VentanaInicio extends JFrame {
 	}
 
 	private void abrirTemasWindow() {
-		VentanaCursos themeWindow = new VentanaCursos(this, cPlantilla, controladorUsuario, cProgreso, cPregunta);
+		VentanaCursos themeWindow = new VentanaCursos(this, cPlantilla, controladorUsuario, cProgreso, cPregunta, cEstadistica);
 		themeWindow.setVisible(true);
 		this.setVisible(false);
 	}
 	
 	private void abrirVentanaLogin() {
-		VentanaLogin ventanaLogin = new VentanaLogin(this, controladorUsuario, cPlantilla, cProgreso, cPregunta);
+		VentanaLogin ventanaLogin = new VentanaLogin(this, controladorUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 		ventanaLogin.setVisible(true);
 		this.setVisible(false);
 	}

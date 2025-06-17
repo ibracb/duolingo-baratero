@@ -17,7 +17,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
+import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 
 @Entity
 @Table(name = "bloques_contenido")
@@ -46,7 +46,6 @@ public class BloqueContenido {
 		this.preguntas = new HashSet<>();
 		Collections.addAll(this.preguntas, preguntas);
 		setNumPreguntas();
-		id = Constantes.getID();
 	}
 
 	public long getId() {

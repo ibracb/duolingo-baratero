@@ -17,6 +17,7 @@ import javax.swing.border.LineBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
@@ -29,12 +30,14 @@ public class VentanaCursos extends JFrame {
 	private final ControladorUsuario cUsuario;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
+	private final ControladorEstadistica cEstadistica;
 
-	public VentanaCursos(VentanaInicio v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta) {
+	public VentanaCursos(VentanaInicio v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.cPlantilla = cPlantilla;
 		this.cUsuario = cUsuario;
 		this.cProgreso = cProgreso;
 		this.cPregunta = cPregunta;
+		this.cEstadistica = cEstadistica;
 		this.v = v;
 		setTitle("Temas Disponibles");
 		setSize(500, 400);
@@ -138,7 +141,7 @@ public class VentanaCursos extends JFrame {
 	}
 
 	private void abrirVentanaRegistro() {
-		VentanaRegistro ventanaNueva = new VentanaRegistro(this, cUsuario, cPlantilla, cProgreso, cPregunta);
+		VentanaRegistro ventanaNueva = new VentanaRegistro(this, cUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 		ventanaNueva.setLocationRelativeTo(null);
 		ventanaNueva.setVisible(true);
 		this.setVisible(false);

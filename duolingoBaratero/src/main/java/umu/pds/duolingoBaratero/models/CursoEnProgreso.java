@@ -104,6 +104,7 @@ public class CursoEnProgreso {
 	public void avanzarBloqueActual(boolean aprobado) {
 		if (aprobado) {
 			bloqueActual++;
+			
 			if (cursoPlantilla.isCursoFinalizado(bloqueActual)) {
 				this.finalizar();
 			}
@@ -182,10 +183,6 @@ public class CursoEnProgreso {
 		return estado.equals(EstadoCursoEnProgreso.EN_MARCHA);
 	}
 
-	public long getNumLastBloqueContenido() {
-		return (long) 69;
-	}
-	
 //	@PostLoad
 //	public void inicializarEstado() {
 //	    if (estado == null) {
@@ -198,7 +195,7 @@ public class CursoEnProgreso {
 //	        }
 //	    }
 //	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

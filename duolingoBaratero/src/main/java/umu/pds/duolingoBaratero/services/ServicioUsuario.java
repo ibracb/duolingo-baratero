@@ -1,5 +1,6 @@
 package umu.pds.duolingoBaratero.services;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,14 +15,16 @@ public class ServicioUsuario {
 	private final DBUsuarioDAO dbUsuarioDAO;
 	private final ServicioCursoProgreso servicioCursoProgreso;
 	private final ServicioCursoPlantilla servicioCursoPlantilla;
+	private final ServicioEstadistica servicioEstadistica;
 
 	private Usuario user;
 
 	public ServicioUsuario(DBUsuarioDAO dbUsuarioDAO, ServicioCursoProgreso servicioCursoProgreso,
-			ServicioCursoPlantilla servicioCursoPlantilla) {
+			ServicioCursoPlantilla servicioCursoPlantilla, ServicioEstadistica servicioEstadistica) {
 		this.dbUsuarioDAO = dbUsuarioDAO;
 		this.servicioCursoProgreso = servicioCursoProgreso;
 		this.servicioCursoPlantilla = servicioCursoPlantilla;
+		this.servicioEstadistica = servicioEstadistica;
 	}
 
 	public boolean registrarUsuario(String nombre, String apellidos, String correo, String contrasena) {
@@ -30,6 +33,7 @@ public class ServicioUsuario {
 		Usuario usuario = new Usuario(nombre, apellidos, correo, contrasena);
 		dbUsuarioDAO.create(usuario);
 		this.user = usuario;
+		servicioEstadistica.inicializarEstadistica(user.getEstadistica());
 		return true;
 	}
 
@@ -37,6 +41,7 @@ public class ServicioUsuario {
 		Usuario usuario = dbUsuarioDAO.get(correo);
 		if (usuario != null) {
 			this.user = usuario;
+			servicioEstadistica.inicializarEstadistica(user.getEstadistica());
 			return true;
 		}
 		return false;
@@ -97,21 +102,6 @@ public class ServicioUsuario {
 		return user != null ? user.getCursos() : null;
 	}
 
-	public double getPorcentajeRespuestasCorrectas() {
-		return user != null ? user.getPorcentajeAcierto() : 0;
-	}
-
-	public double getTiempoUso() {
-		return user != null ? user.getTiempoUso() : 0;
-	}
-
-	public int getRachaVictorias() {
-		return user != null ? user.getRachaVictorias() : 0;
-	}
-
-	public int getNumMaxAccesos() {
-		return user != null ? user.getNumMaxAccesos() : 0;
-	}
 
 	public void borrarCurso(CursoEnProgreso curso) {
 		if (user != null) {
@@ -128,12 +118,19 @@ public class ServicioUsuario {
 	}
 
 	public int getVidasUsuario() {
+		this.recuperarVida();
 		return user.getVidas();
 	}
 
+	public LocalDateTime getUltimaRecuperacion() {
+		return user.getUltimaRecuperacion();
+	}
+	
 	public void actualizarUsuario() {
 		dbUsuarioDAO.update(user);
 		
 		
 	}
+
+
 }

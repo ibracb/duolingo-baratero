@@ -19,13 +19,14 @@ import javax.swing.SwingConstants;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
+import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
-import umu.pds.duolingoBaratero.windows.utility.Constantes;
 
 public class VentanaElegirCurso extends JFrame {
 
@@ -44,22 +45,24 @@ public class VentanaElegirCurso extends JFrame {
 	private final ControladorCursoProgreso cProgreso;
 	@SuppressWarnings("unused")
 	private final ControladorPregunta cPregunta;
+	private final ControladorEstadistica cEstadistica;
 	private boolean esParaExportar;
 	private String extension;
 
 	public VentanaElegirCurso(VentanaPrincipal v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso,
-			ControladorPregunta cPregunta) {
+			ControladorPregunta cPregunta,ControladorEstadistica cEstadistica) {
 		this.cPlantilla = cPlantilla;
 		this.cUsuario = cUsuario;
 		this.cPregunta = cPregunta;
 		this.cProgreso = cProgreso;
+		this.cEstadistica = cEstadistica;
 		this.v = v;
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(600, 400); // Ajusta el tamaño de la ventana
 		this.setLocationRelativeTo(null); // Centra la ventana en la pantalla
 		this.setVisible(true); // Muestra la ventana
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		BarraSuperior panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta);
+		BarraSuperior panelSuperior = new BarraSuperior(this, cUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 
 		JPanel panelInferior = new JPanel();
@@ -173,6 +176,7 @@ public class VentanaElegirCurso extends JFrame {
 	 * @param curso
 	 */
 	private void manejarSeleccionCurso(CursoPlantilla curso) {
+
 		if (esParaExportar) {
 			boolean exportado = cPlantilla.exportarCurso(curso, extension);
 
@@ -187,13 +191,14 @@ public class VentanaElegirCurso extends JFrame {
 			        "Error de exportación",
 			        JOptionPane.ERROR_MESSAGE);
 			}
-			VentanaPrincipal ventana = new VentanaPrincipal(cUsuario, cPlantilla, cProgreso, cPregunta);
+			VentanaPrincipal ventana = new VentanaPrincipal(cUsuario, cPlantilla, cProgreso, cPregunta,cEstadistica);
 			ventana.setVisible(true);
 			this.dispose();
 
 		}
 		else if (cUsuario.estaCursando(curso)) {
-			Constantes.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
+			MensajeTemporal.mostrarMensaje("Ya estas realizando este curso, elige otro por favor", JOptionPane.WARNING_MESSAGE);
+
 		}
 		else {
 			if (cUsuario.addCursosEnProgreso(curso)) {

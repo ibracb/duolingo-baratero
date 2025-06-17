@@ -183,44 +183,12 @@ public class Usuario {
 		return imagen != null;
 	}
 
-	@JsonIgnore
-	public void setRachaVictorias(int racha) {
-		this.estadistica.setRachaVictorias(racha);
+	public LocalDateTime getUltimaRecuperacion() {
+		return ultimaRecuperacion;
 	}
 
-	@JsonIgnore
-	public void setTiempoUso(double tiempo) {
-		this.estadistica.setTiempoUso(tiempo);
-	}
-
-	@JsonIgnore
-	public void setPorcentajeAcierto(double porcentaje) {
-		this.estadistica.setPorcentajeAciertos(porcentaje);
-	}
-
-	@JsonIgnore
-	public void setNumMaxAccesos(int accesos) {
-		this.estadistica.setNumAccesos(accesos);
-	}
-
-	@JsonIgnore
-	public double getPorcentajeAcierto() {
-		return estadistica.getPorcentajeAciertos();
-	}
-
-	@JsonIgnore
-	public double getTiempoUso() {
-		return estadistica.getTiempoUso();
-	}
-
-	@JsonIgnore
-	public int getRachaVictorias() {
-		return estadistica.getRachaVictorias();
-	}
-
-	@JsonIgnore
-	public int getNumMaxAccesos() {
-		return estadistica.getNumAccesos();
+	public void setUltimaRecuperacion(LocalDateTime ultimaRecuperacion) {
+		this.ultimaRecuperacion = ultimaRecuperacion;
 	}
 
 	public boolean estaCursando(CursoPlantilla curso) {
@@ -228,6 +196,9 @@ public class Usuario {
 	}
 
 	public int perderVida() {
+		if (vidas == VIDAS_MAXIMAS) {
+			ultimaRecuperacion = LocalDateTime.now();
+		}
 		if (vidas > 0) {
 			vidas--;
 		}

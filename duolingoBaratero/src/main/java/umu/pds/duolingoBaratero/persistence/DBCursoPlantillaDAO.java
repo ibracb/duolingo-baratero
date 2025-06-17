@@ -32,23 +32,24 @@ public class DBCursoPlantillaDAO extends DBEntityDAO<CursoPlantilla> {
 				.setParameter("id", cursoId).getSingleResult();
 	}
 
-	public Long existeCursoPlantilla(String nombre, String propietario, Nivel nivel) {
-	    EntityManager em = EntityManagerHelper.getEntityManager();
-	    try {
-	        return  (Long) em.createQuery(
-	                "SELECT id FROM CursoPlantilla WHERE nombre = :nombre AND propietario = :propietario AND nivel = :nivel")
-	            .setParameter("nombre", nombre)
-	            .setParameter("propietario", propietario)
-	            .setParameter("nivel", nivel) 
-	            .getSingleResult();
-	    } catch (NoResultException e) {
-	        return null; // no encontrado
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return null;
-	    } finally {
-	        em.close();
-	    }
+	public boolean existeCursoPlantilla(String nombre, String propietario, Nivel nivel) {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		try {
+			Long count = em.createQuery(
+					"SELECT COUNT(c) FROM CursoPlantilla c WHERE c.nombre = :nombre AND c.propietario = :propietario AND c.nivel = :nivel",
+					Long.class)
+				.setParameter("nombre", nombre)
+				.setParameter("propietario", propietario)
+				.setParameter("nivel", nivel)
+				.getSingleResult();
+
+			return count != null && count > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false; // en caso de error, asumimos que no existe
+		} finally {
+			em.close();
+		}
 	}
 
 

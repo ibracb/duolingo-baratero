@@ -17,12 +17,12 @@ public class ControladorCursoProgreso {
 	public CursoEnProgreso crearCurso(CursoPlantilla curso, Usuario usuario) {
 		return servicio.crearCursoEnProgreso(curso, usuario);
 	}
-	
-    public boolean configurarCursoProgreso(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
-    	servicio.iniciarCurso(curso);
-    	return servicio.setAprendizaje(curso, aprendizaje);
-    	
-    }
+
+	public boolean configurarCursoProgreso(CursoEnProgreso curso, AprendizajeSeleccionado aprendizaje) {
+		servicio.iniciarCurso(curso);
+		return servicio.setAprendizaje(curso, aprendizaje);
+
+	}
 
 	public boolean esNuevo(CursoEnProgreso curso) {
 		return servicio.esCursoNuevo(curso);
@@ -36,10 +36,6 @@ public class ControladorCursoProgreso {
 		return servicio.esCursoFinalizado(curso);
 	}
 
-	public long obtenerUltimoBloque(CursoEnProgreso curso) {
-		return servicio.obtenerUltimoBloque(curso);
-	}
-
 	public void avanzar(CursoEnProgreso curso, boolean aprobado) {
 		servicio.avanzarBloque(curso, aprobado);
 	}
@@ -48,7 +44,7 @@ public class ControladorCursoProgreso {
 		servicio.reiniciarCurso(curso);
 		actualizarCurso(curso);
 	}
-	
+
 	/**
 	 * Actualiza un curso
 	 */

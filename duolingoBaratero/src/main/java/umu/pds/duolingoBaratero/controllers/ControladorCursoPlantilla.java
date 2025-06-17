@@ -38,20 +38,19 @@ public class ControladorCursoPlantilla {
 		this.servicioUsuario = servicioUsuario;
 
 		// Inicializar cursos base al arrancar el sistema
-		inicializarSistema();
 	}
 
 	/**
 	 * Inicializa el sistema cargando cursos base
-	 */
-	private void inicializarSistema() {
-		try {
-			servicioCursoPlantilla.cargarCursosBase();
-		} catch (Exception e) {
-			System.err.println("Error al inicializar cursos base: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
+//	 */
+//	private void inicializarSistema() {
+//		try {
+//			servicioCursoPlantilla.cargarCursosBase();
+//		} catch (Exception e) {
+//			System.err.println("Error al inicializar cursos base: " + e.getMessage());
+//			e.printStackTrace();
+//		}
+//	}
 
 	// ============================================
 	// MÉTODOS DE COORDINACIÓN CON EL SERVICIO

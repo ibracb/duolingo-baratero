@@ -26,6 +26,7 @@ import javax.swing.border.EtchedBorder;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
+import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
@@ -39,13 +40,15 @@ public class VentanaLogin extends JFrame {
 	private final ControladorCursoPlantilla cPlantilla;
 	private final ControladorCursoProgreso cProgreso;
 	private final ControladorPregunta cPregunta;
+	private final ControladorEstadistica cEstadistica;
 	
 	public VentanaLogin(VentanaInicio v, ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso,
-			ControladorPregunta cPregunta) {
+			ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.controladorUsuario = controladorUsuario;
 		this.cPlantilla = cPlantilla;
 		this.cProgreso = cProgreso;
 		this.cPregunta = cPregunta;
+		this.cEstadistica = cEstadistica;
 		this.v = v;
 		this.setTitle("⚡ ¡Regístrate! 🚀¡Sé la diferencia! 🌟");
 		this.setBounds(300, 300, 450, 261);
@@ -174,7 +177,7 @@ public class VentanaLogin extends JFrame {
 		} else {
 			if (controladorUsuario.comprobarUsuario(correo,passwordString)) {
 				this.dispose();
-				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controladorUsuario, cPlantilla, cProgreso, cPregunta);
+				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(controladorUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 				ventanaPrincipal.setVisible(true);
 			}
 			else {
