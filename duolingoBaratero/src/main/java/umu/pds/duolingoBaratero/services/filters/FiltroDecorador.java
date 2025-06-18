@@ -3,6 +3,10 @@ package umu.pds.duolingoBaratero.services.filters;
 import java.util.List;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
+
+/**
+ * Implementación base que actúa como decorador para filtros.
+ */
 public class FiltroDecorador implements Filtro {
 	protected Filtro filtro;
 

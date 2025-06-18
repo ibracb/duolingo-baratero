@@ -1,79 +1,90 @@
 package umu.pds.duolingoBaratero.services.serializers;
 
-
 import java.io.File;
 
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
+/**
+ * Implementación concreta de {@link Serializer} para la serialización y
+ * deserialización en formato JSON usando {@link JsonMapper}.
+ */
 public class JSONSerializer extends Serializer {
-	
-	private static final String JSON_EXTENSION = ".json";
-	
-	public JSONSerializer() {
-		super(new JsonMapper(), JSON_EXTENSION);
-	
-		
-	}
-	
-	public boolean serialize(CursoPlantilla curso) {
-		try {
-			// Ruta base relativa al proyecto
-			String basePath = "src/main/resources/cursos/";
-			File carpeta = new File(basePath);
-			
-			// Crear carpeta si no existe
-			if (!carpeta.exists()) {
-				carpeta.mkdirs();
-			}
 
-			// Construir nombre del archivo
-			String fileName = curso.getNombre() + "_" +
-							  curso.getPropietario() + "_" +
-							  curso.getNivel().toString() + extension;
+    /** Extensión de archivo usada para archivos JSON. */
+    private static final String JSON_EXTENSION = ".json";
 
-			// Unir path completo
-			String fullPath = basePath + fileName;
+    /**
+     * Constructor que inicializa el serializador JSON con un {@link JsonMapper}
+     * y la extensión ".json".
+     */
+    public JSONSerializer() {
+        super(new JsonMapper(), JSON_EXTENSION);
+    }
 
-			// Serializar
-			mapper.writeValue(new File(fullPath), curso);
-			return true;
+    /**
+     * Serializa un objeto {@link CursoPlantilla} completo en formato JSON
+     * dentro de la carpeta `src/main/resources/cursos/`.
+     *
+     * El nombre del archivo se construye a partir del nombre, propietario y nivel del curso.
+     *
+     * @param curso el objeto a serializar
+     * @return true si la serialización fue exitosa, false si ocurrió un error
+     */
+    @Override
+    public boolean serialize(CursoPlantilla curso) {
+        try {
+            String basePath = "src/main/resources/cursos/";
+            File carpeta = new File(basePath);
+            if (!carpeta.exists()) {
+                carpeta.mkdirs();
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	@Override
-	public boolean serializeCursoBase(CursoPlantilla curso) {
+            String fileName = curso.getNombre() + "_" +
+                              curso.getPropietario() + "_" +
+                              curso.getNivel().toString() + extension;
+
+            String fullPath = basePath + fileName;
+
+            mapper.writeValue(new File(fullPath), curso);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Serializa solo la parte base del objeto {@link CursoPlantilla} en formato JSON
+     * dentro de la carpeta `src/main/resources/cursosBase/`.
+     *
+     * @param curso el objeto a serializar
+     * @return true si la serialización fue exitosa, false si ocurrió un error
+     */
+    @Override
+    public boolean serializeCursoBase(CursoPlantilla curso) {
         this.mapper.configure(com.fasterxml.jackson.databind.SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 
-		try {
-			// Ruta base relativa al proyecto
-			String basePath = "src/main/resources/cursosBase/";
-			File carpeta = new File(basePath);
-			
-			// Crear carpeta si no existe
-			if (!carpeta.exists()) {
-				carpeta.mkdirs();
-			}
+        try {
+            String basePath = "src/main/resources/cursosBase/";
+            File carpeta = new File(basePath);
+            if (!carpeta.exists()) {
+                carpeta.mkdirs();
+            }
 
-			// Construir nombre del archivo
-			String fileName = curso.getNombre() + "_" +
-							  curso.getPropietario() + "_" +
-							  curso.getNivel().toString() + extension;
+            String fileName = curso.getNombre() + "_" +
+                              curso.getPropietario() + "_" +
+                              curso.getNivel().toString() + extension;
 
-			// Unir path completo
-			String fullPath = basePath + fileName;
+            String fullPath = basePath + fileName;
 
-			// Serializar
-			mapper.writeValue(new File(fullPath), curso);
-			return true;
+            mapper.writeValue(new File(fullPath), curso);
+            return true;
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

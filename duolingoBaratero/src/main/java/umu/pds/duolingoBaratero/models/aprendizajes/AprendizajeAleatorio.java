@@ -8,18 +8,31 @@ import java.util.Set;
 
 import umu.pds.duolingoBaratero.models.Pregunta;
 
+/**
+ * Implementación de {@link Aprendizaje} que selecciona preguntas en orden aleatorio.
+ */
 public class AprendizajeAleatorio implements Aprendizaje {
 
-	@Override
-	public Set<Pregunta> seleccionarPreguntas(Set<Pregunta> disponibles) {
+    /**
+     * Selecciona preguntas mezclándolas aleatoriamente.
+     *
+     * @param disponibles conjunto de preguntas disponibles
+     * @return conjunto de preguntas en orden aleatorio
+     */
+    @Override
+    public Set<Pregunta> seleccionarPreguntas(Set<Pregunta> disponibles) {
         List<Pregunta> lista = new ArrayList<>(disponibles);
         Collections.shuffle(lista);
         return new LinkedHashSet<>(lista);
     }
 
-	@Override
-	public AprendizajeSeleccionado getSeleccion() {
-		return AprendizajeSeleccionado.ALEATORIO;
-	}
-
+    /**
+     * Retorna el tipo de aprendizaje representado.
+     *
+     * @return {@code AprendizajeSeleccionado.ALEATORIO}
+     */
+    @Override
+    public AprendizajeSeleccionado getSeleccion() {
+        return AprendizajeSeleccionado.ALEATORIO;
+    }
 }

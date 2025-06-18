@@ -58,6 +58,8 @@ public class ControladorCursoPlantilla {
 
 	/**
 	 * Obtiene un curso plantilla por nombre
+	 * 
+	 * @param nombre		nombre del curso plantilla
 	 */
 	public Optional<CursoPlantilla> getCursoPlantilla(String nombre) {
 		try {
@@ -70,6 +72,8 @@ public class ControladorCursoPlantilla {
 
 	/**
 	 * Obtiene el nombre del propietario de un curso
+	 * 
+	 * @param curso el curso del que se quiere obtener el propietario
 	 */
 	public String getNombrePropietario(CursoPlantilla curso) {
 		if (curso == null) {
