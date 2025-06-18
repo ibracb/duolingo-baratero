@@ -41,8 +41,8 @@ public class Estadistica {
 
 	@Column(name = "total_aciertos")
 	private int totalAciertos;
-	
-	@Column(name="total_respuestas")
+
+	@Column(name = "total_respuestas")
 	private int totalRespuestas;
 	@Transient
 	private LocalDateTime inicioSesionActual;
@@ -95,7 +95,6 @@ public class Estadistica {
 		return 0.0;
 	}
 
-	
 	public void actualizarAciertos(boolean acierto) {
 		if (acierto) {
 			totalAciertos++;
@@ -110,23 +109,6 @@ public class Estadistica {
 	public void resetRachaVictorias() {
 		rachaVictorias = VALOR_INICIAL;
 	}
-
-//	public void actualizarRachaAcceso() {
-//		LocalDate hoy = LocalDate.now();
-//		if (ultimoAcceso == null) {
-//			rachaAcceso = RACHA_ACCESOS_INICIAL;
-//		} else {
-//			long diasDiferencia = ChronoUnit.DAYS.between(ultimoAcceso, hoy);
-//			if (diasDiferencia == 1) {
-//				// día siguiente, incrementa racha
-//				rachaAcceso++;
-//			} else if (diasDiferencia > 1) {
-//				// más de un día sin entrar, resetea racha
-//				rachaAcceso = 1;
-//			}
-//		}
-//		ultimoAcceso = hoy;
-//	}
 
 	public void iniciarSesion() {
 		inicioSesionActual = LocalDateTime.now();

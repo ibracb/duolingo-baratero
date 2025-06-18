@@ -18,14 +18,11 @@ class UsuarioTest {
     @SuppressWarnings("unused")
 	private CursoPlantilla cursoPlantillaMock;
     
-    private Estadistica estadisticaMock;
-
     @BeforeEach
     void setUp() {
         // Mock de objetos relacionados
         cursoEnProgresoMock = Mockito.mock(CursoEnProgreso.class);
         cursoPlantillaMock = Mockito.mock(CursoPlantilla.class);
-        estadisticaMock = Mockito.mock(Estadistica.class);
 
         // Creación de usuarios
         usuarioSinImagen = new Usuario("Juan Pérez", "juan123", "juan@mail.com", "password123");
@@ -60,27 +57,6 @@ class UsuarioTest {
     void testUsuario_AddCursoEnProgreso() {
         assertTrue(usuarioSinImagen.addCursoEnProgreso(cursoEnProgresoMock));
         assertTrue(usuarioSinImagen.getCursos().contains(cursoEnProgresoMock));
-    }
-
-    @Test
-    void testUsuario_AddCursoPlantilla() {
-//        usuarioSinImagen.addCursoPlantilla(cursoPlantillaMock);
-//        assertTrue(usuarioSinImagen.getCursosCreados().contains(cursoPlantillaMock));
-    }
-
-    @Test
-    void testUsuario_Estadisticas() {
-        usuarioSinImagen.setEstadistica(estadisticaMock);
-
-        Mockito.when(estadisticaMock.getPorcentajeAciertos()).thenReturn(85.5);
-        Mockito.when(estadisticaMock.getTiempoUso()).thenReturn(12.3);
-        Mockito.when(estadisticaMock.getRachaVictorias()).thenReturn(5);
-        Mockito.when(estadisticaMock.getNumAccesos()).thenReturn(10);
-
-        assertEquals(85.5, usuarioSinImagen.getPorcentajeAcierto());
-        assertEquals(12.3, usuarioSinImagen.getTiempoUso());
-        assertEquals(5, usuarioSinImagen.getRachaVictorias());
-        assertEquals(10, usuarioSinImagen.getNumMaxAccesos());
     }
 
     @Test

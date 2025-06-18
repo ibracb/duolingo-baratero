@@ -19,102 +19,171 @@ import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
 import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 
+/**
+ * Representa un bloque de contenido dentro de un curso de plantilla.
+ * Contiene un conjunto de preguntas y métodos para manipularlas y obtenerlas
+ * en diferentes formas según el tipo de aprendizaje.
+ */
 @Entity
 @Table(name = "bloques_contenido")
-//@JsonIdentityInfo( generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
 public class BloqueContenido {
 
-	@JsonIgnore
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+    /**
+     * Identificador único del bloque de contenido.
+     */
+    @JsonIgnore
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	@ManyToOne
-	@JoinColumn(name = "curso_id")
-	@JsonIgnore
-	private CursoPlantilla curso;
-	
-	@OneToMany
-	@JoinColumn(name = "bloque_de_contenido_id")
-	private Set<Pregunta> preguntas;
+    /**
+     * Curso al que pertenece este bloque de contenido.
+     */
+    @ManyToOne
+    @JoinColumn(name = "curso_id")
+    @JsonIgnore
+    private CursoPlantilla curso;
 
-	public BloqueContenido() {
+    /**
+     * Conjunto de preguntas asociadas a este bloque de contenido.
+     */
+    @OneToMany
+    @JoinColumn(name = "bloque_de_contenido_id")
+    private Set<Pregunta> preguntas;
 
-	}
+    /**
+     * Constructor por defecto requerido por JPA.
+     */
+    public BloqueContenido() {
+    }
 
-	public BloqueContenido(long id, Pregunta... preguntas) {
-		this.preguntas = new HashSet<>();
-		Collections.addAll(this.preguntas, preguntas);
-		setNumPreguntas();
-	}
+    /**
+     * Constructor que inicializa el bloque con un ID y una lista de preguntas.
+     *
+     * @param id        Identificador del bloque.
+     * @param preguntas Preguntas que se agregarán al bloque.
+     */
+    public BloqueContenido(long id, Pregunta... preguntas) {
+        this.preguntas = new HashSet<>();
+        Collections.addAll(this.preguntas, preguntas);
+        setNumPreguntas();
+    }
 
-	public long getId() {
-		return id;
-	}
+    /** @return el ID del bloque. */
+    public long getId() {
+        return id;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	public CursoPlantilla getCurso() {
-		return curso;
-	}
+    /** @param id nuevo valor para el ID del bloque. */
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setCurso(CursoPlantilla curso) {
-		this.curso = curso;
-	}
+    /** @return el curso al que pertenece este bloque. */
+    public CursoPlantilla getCurso() {
+        return curso;
+    }
 
-	public Set<Pregunta> getPreguntas() {
-		return preguntas;
-	}
-	
-	public Set<Pregunta> getPreguntas(AprendizajeSeleccionado aprendizaje) {
-		return preguntas;
-	}
-	
-	public void setPreguntas(Set<Pregunta> preguntas) {
-		this.preguntas = preguntas;
-	}
+    /** @param curso curso al que pertenece este bloque. */
+    public void setCurso(CursoPlantilla curso) {
+        this.curso = curso;
+    }
 
-	public Set<Pregunta> getPreguntasSecuencialmente() {
-		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.SECUENCIAL).seleccionarPreguntas(preguntas);
-		//return this.preguntas;
-	}
-	
-	public Set<Pregunta> getPreguntasInvertidas() {
-		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.INVERTIDO).seleccionarPreguntas(preguntas);
-		//return this.preguntas;
-	}
-	
-	public Set<Pregunta> getPreguntasAleatoriamente() {
-		return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.ALEATORIO).seleccionarPreguntas(preguntas);
-		/*Set<Pregunta> preguntasAleatorias = new HashSet<>(preguntas);
-		// Collections.shuffle(preguntasAleatorias);
-		return preguntasAleatorias;*/
-	}
-	
-	public void addPregunta(Pregunta pregunta) {
-		preguntas.add(pregunta);
-	}
+    /** @return conjunto de preguntas del bloque. */
+    public Set<Pregunta> getPreguntas() {
+        return preguntas;
+    }
 
-	public void removePregunta(Pregunta pregunta) {
-		preguntas.remove(pregunta);
-	}
+    /**
+     * Devuelve las preguntas según el tipo de aprendizaje dado.
+     * (Actualmente retorna todas sin aplicar lógica de filtrado).
+     *
+     * @param aprendizaje tipo de aprendizaje seleccionado.
+     * @return conjunto de preguntas.
+     */
+    public Set<Pregunta> getPreguntas(AprendizajeSeleccionado aprendizaje) {
+        return preguntas;
+    }
 
-	public Set<TipoPregunta> getTiposPreguntas() {
-		return preguntas.stream().map(Pregunta::getTipo).collect(Collectors.toSet());
-	}
+    /** @param preguntas conjunto de preguntas a asignar al bloque. */
+    public void setPreguntas(Set<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    }
 
-	@JsonIgnore
-	public int getNumPreguntas() {
-		return preguntas.size();
-	}
+    /**
+     * Devuelve las preguntas en orden secuencial.
+     *
+     * @return conjunto de preguntas ordenadas secuencialmente.
+     */
+    public Set<Pregunta> getPreguntasSecuencialmente() {
+        return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.SECUENCIAL)
+                .seleccionarPreguntas(preguntas);
+    }
 
-	public void setNumPreguntas() {
-		int i = 0;
-		for (Pregunta p : preguntas) {
-			p.setNumero(i++);
-		}
-	}
+    /**
+     * Devuelve las preguntas en orden invertido.
+     *
+     * @return conjunto de preguntas ordenadas en reversa.
+     */
+    public Set<Pregunta> getPreguntasInvertidas() {
+        return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.INVERTIDO)
+                .seleccionarPreguntas(preguntas);
+    }
 
+    /**
+     * Devuelve las preguntas en orden aleatorio.
+     *
+     * @return conjunto de preguntas aleatorias.
+     */
+    public Set<Pregunta> getPreguntasAleatoriamente() {
+        return FactoriaAprendizaje.INSTANCE.getAprendizaje(AprendizajeSeleccionado.ALEATORIO)
+                .seleccionarPreguntas(preguntas);
+    }
+
+    /**
+     * Agrega una pregunta al conjunto de preguntas del bloque.
+     *
+     * @param pregunta pregunta a agregar.
+     */
+    public void addPregunta(Pregunta pregunta) {
+        preguntas.add(pregunta);
+    }
+
+    /**
+     * Elimina una pregunta del conjunto de preguntas del bloque.
+     *
+     * @param pregunta pregunta a eliminar.
+     */
+    public void removePregunta(Pregunta pregunta) {
+        preguntas.remove(pregunta);
+    }
+
+    /**
+     * Devuelve el conjunto de tipos de preguntas presentes en el bloque.
+     *
+     * @return conjunto de tipos de preguntas.
+     */
+    public Set<TipoPregunta> getTiposPreguntas() {
+        return preguntas.stream().map(Pregunta::getTipo).collect(Collectors.toSet());
+    }
+
+    /**
+     * Devuelve el número total de preguntas en el bloque.
+     *
+     * @return cantidad de preguntas.
+     */
+    @JsonIgnore
+    public int getNumPreguntas() {
+        return preguntas.size();
+    }
+
+    /**
+     * Asigna un número secuencial a cada pregunta del bloque.
+     */
+    public void setNumPreguntas() {
+        int i = 0;
+        for (Pregunta p : preguntas) {
+            p.setNumero(i++);
+        }
+    }
 }

@@ -21,125 +21,154 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Clase abstracta que representa una pregunta genérica del curso.
+ * Usa herencia para distinguir tipos de pregunta (opciones, imágenes, audio, flashcard).
+ */
 @Entity
 @Table(name = "preguntas")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
-@JsonSubTypes({ @JsonSubTypes.Type(value = PreguntaOpciones.class, name = "OPCIONES"),
-	@JsonSubTypes.Type(value = PreguntaImagenes.class, name = "IMAGENES"),
-		@JsonSubTypes.Type(value = PreguntaAudio.class, name = "AUDIO"),
-		@JsonSubTypes.Type(value = Flashcard.class, name = "FLASHCARD") })
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = PreguntaOpciones.class, name = "OPCIONES"),
+    @JsonSubTypes.Type(value = PreguntaImagenes.class, name = "IMAGENES"),
+    @JsonSubTypes.Type(value = PreguntaAudio.class, name = "AUDIO"),
+    @JsonSubTypes.Type(value = Flashcard.class, name = "FLASHCARD")
+})
 public abstract class Pregunta implements Comparable<Pregunta> {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
-	
-	@ManyToOne
-	@JoinColumn(name = "bloque_de_contenido_id")
-	@JsonIgnore
-	private BloqueContenido bloque;
+    /** ID único generado por la base de datos. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "nivel")
-	private Nivel nivel;
+    /** Bloque de contenido al que pertenece la pregunta. */
+    @ManyToOne
+    @JoinColumn(name = "bloque_de_contenido_id")
+    @JsonIgnore
+    private BloqueContenido bloque;
 
-	@Column(name = "numero")
-	private int numero;
+    /** Nivel de dificultad de la pregunta. */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "nivel")
+    private Nivel nivel;
 
-	@Column(name = "pregunta")
-	private String pregunta;
+    /** Número de orden de la pregunta dentro del bloque. */
+    @Column(name = "numero")
+    private int numero;
 
-	@Column(name = "respuesta_correcta")
-	private String respuestaCorrecta;
+    /** Enunciado de la pregunta. */
+    @Column(name = "pregunta")
+    private String pregunta;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "tipo", insertable = false, updatable = false)
-	private TipoPregunta tipo;
-	
-	public Pregunta() {
-	}
+    /** Respuesta correcta esperada. */
+    @Column(name = "respuesta_correcta")
+    private String respuestaCorrecta;
 
-	protected Pregunta(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
-		this.nivel = nivel;
-		this.numero = numero;
-		this.pregunta = pregunta;
-		this.respuestaCorrecta = respuestaCorrecta;
-		this.tipo = tipo;
-		//this.errores = 0;
-	}
+    /** Tipo de pregunta según la subclase. */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo", insertable = false, updatable = false)
+    private TipoPregunta tipo;
 
-	public abstract JPanel crearPanel(); // Método abstracto para crear el panel
+    /** Constructor vacío requerido por JPA. */
+    public Pregunta() {
+    }
 
-	public boolean esRespuestaCorrecta(String respuestaUsuario) {
-		return respuestaCorrecta.equals(respuestaUsuario);
-	}
+    /**
+     * Constructor protegido para subclases.
+     */
+    protected Pregunta(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
+        this.nivel = nivel;
+        this.numero = numero;
+        this.pregunta = pregunta;
+        this.respuestaCorrecta = respuestaCorrecta;
+        this.tipo = tipo;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    /**
+     * Método abstracto que obliga a las subclases a definir su representación en Swing.
+     */
+    public abstract JPanel crearPanel();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public BloqueContenido getBloque() {
-		return bloque;
-	}
+    /**
+     * Verifica si la respuesta del usuario es correcta.
+     */
+    public boolean esRespuestaCorrecta(String respuestaUsuario) {
+        return respuestaCorrecta.equals(respuestaUsuario);
+    }
 
-	public void setBloque(BloqueContenido bloque) {
-		this.bloque = bloque;
-	}
+    // Getters y setters
 
-	public Nivel getNivel() {
-		return nivel;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setNivel(Nivel nivel) {
-		this.nivel = nivel;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public int getNumero() {
-		return numero;
-	}
+    public BloqueContenido getBloque() {
+        return bloque;
+    }
 
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
+    public void setBloque(BloqueContenido bloque) {
+        this.bloque = bloque;
+    }
 
-	public String getPregunta() {
-		return pregunta;
-	}
+    public Nivel getNivel() {
+        return nivel;
+    }
 
-	public void setPregunta(String pregunta) {
-		this.pregunta = pregunta;
-	}
+    public void setNivel(Nivel nivel) {
+        this.nivel = nivel;
+    }
 
-	public String getRespuestaCorrecta() {
-		return respuestaCorrecta;
-	}
+    public int getNumero() {
+        return numero;
+    }
 
-	public void setRespuestaCorrecta(String respuestaCorrecta) {
-		this.respuestaCorrecta = respuestaCorrecta;
-	}
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 
-	public TipoPregunta getTipo() {
-		return tipo;
-	}
-	
-	@JsonIgnore
-	public boolean isImagen() {
-		return tipo.equals(TipoPregunta.IMAGENES);
-	}
+    public String getPregunta() {
+        return pregunta;
+    }
 
-	public void setTipo(TipoPregunta tipo) {
-		this.tipo = tipo;
-	}
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
 
-	@Override
-	public int compareTo(Pregunta o) {
-		return Integer.compare(this.numero, o.numero);
-	}
+    public String getRespuestaCorrecta() {
+        return respuestaCorrecta;
+    }
 
+    public void setRespuestaCorrecta(String respuestaCorrecta) {
+        this.respuestaCorrecta = respuestaCorrecta;
+    }
+
+    public TipoPregunta getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPregunta tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * Indica si el tipo de pregunta es de tipo imagen.
+     */
+    @JsonIgnore
+    public boolean isImagen() {
+        return tipo.equals(TipoPregunta.IMAGENES);
+    }
+
+    /**
+     * Ordena preguntas por su número dentro del bloque.
+     */
+    @Override
+    public int compareTo(Pregunta o) {
+        return Integer.compare(this.numero, o.numero);
+    }
 }

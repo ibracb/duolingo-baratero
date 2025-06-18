@@ -14,47 +14,85 @@ import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
 
 /**
- * Esta clase almacena tanto preguntasOpciones como preguntaImagenes; Se puede
- * diferenciar con el atributo "tipo" de la clase "Pregunta"
- * 
+ * Representa una pregunta con opciones basadas en opciones.
+ * Extiende la clase abstracta Pregunta.
+ * Contiene una lista de opciones.
+ * Implementa la creación del panel gráfico específico para preguntas con opcioens.
  */
 @Entity
 @Table(name = "pregunta_opciones")
 @DiscriminatorValue("OPCIONES")
 public class PreguntaOpciones extends Pregunta {
 
-	@ElementCollection
-	@CollectionTable(name = "pregunta_opciones_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
-	@Column(name = "opciones")
-	private List<String> opciones;
+    /**
+     * Lista de opciones posibles para responder la pregunta.
+     */
+    @ElementCollection
+    @CollectionTable(name = "pregunta_opciones_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
+    @Column(name = "opciones")
+    private List<String> opciones;
 
-	public PreguntaOpciones() {
-		super();
+    /**
+     * Constructor por defecto requerido por JPA.
+     */
+    public PreguntaOpciones() {
+        super();
+    }
 
-	}
+    /**
+     * Constructor con parámetros para inicializar la pregunta sin opciones.
+     * 
+     * @param nivel Nivel de dificultad de la pregunta
+     * @param numero Número identificativo de la pregunta
+     * @param pregunta Texto de la pregunta
+     * @param respuestaCorrecta Respuesta correcta esperada
+     * @param tipo Tipo de pregunta (debe ser OPCIONES)
+     */
+    public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
+        super(nivel, numero, pregunta, respuestaCorrecta, tipo);
+    }
 
-	public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo) {
-		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
-	}
+    /**
+     * Constructor con opciones.
+     * 
+     * @param nivel Nivel de dificultad
+     * @param numero Número de pregunta
+     * @param pregunta Texto de la pregunta
+     * @param respuestaCorrecta Respuesta correcta
+     * @param tipo Tipo de pregunta
+     * @param opciones Lista de opciones posibles
+     */
+    public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo,
+                           List<String> opciones) {
+        super(nivel, numero, pregunta, respuestaCorrecta, tipo);
+        this.opciones = opciones;
+    }
 
-	public PreguntaOpciones(Nivel nivel, int numero, String pregunta, String respuestaCorrecta, TipoPregunta tipo,
-			List<String> opciones) {
-		super(nivel, numero, pregunta, respuestaCorrecta, tipo);
-		this.opciones = opciones;
-	}
+    /**
+     * Crea el panel Swing específico para mostrar esta pregunta de opciones.
+     * 
+     * @return JPanel con la interfaz gráfica para la pregunta
+     */
+    @Override
+    public JPanel crearPanel() {
+        return new PanelPreguntaOpciones(this);
+    }
 
+    /**
+     * Obtiene la lista de opciones.
+     * 
+     * @return Lista de opciones de respuesta
+     */
+    public List<String> getOpciones() {
+        return opciones;
+    }
 
-	@Override
-	public JPanel crearPanel() {
-		return new PanelPreguntaOpciones(this);
-	}
-
-	public List<String> getOpciones() {
-		return opciones;
-	}
-
-	public void setOpciones(List<String> opciones) {
-		this.opciones = opciones;
-	}
-
+    /**
+     * Establece la lista de opciones.
+     * 
+     * @param opciones Lista de opciones a asignar
+     */
+    public void setOpciones(List<String> opciones) {
+        this.opciones = opciones;
+    }
 }

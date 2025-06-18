@@ -20,6 +20,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Representa un usuario del sistema con atributos básicos, manejo de vidas para
+ * el juego y relación con cursos en progreso y estadísticas.
+ */
 @Entity
 @Table(name = "usuarios")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -70,6 +74,10 @@ public class Usuario {
 	public Usuario() {
 	}
 
+	/**
+	 * Constructor básico para usuario con datos esenciales. Inicializa con vidas
+	 * máximas y fecha actual para última recuperación.
+	 */
 	public Usuario(String nombre, String nickname, String correo, String passwd) {
 		this.nombre = nombre;
 		this.nickname = nickname;
@@ -82,15 +90,12 @@ public class Usuario {
 		this.ultimaRecuperacion = LocalDateTime.now();
 	}
 
+	/**
+	 * Constructor con imagen opcional.
+	 */
 	public Usuario(String nombre, String nickname, String correo, String passwd, String imagen) {
 		this(nombre, nickname, correo, passwd);
-		this.nombre = nombre;
-		this.nickname = nickname;
-		this.correo = correo;
-		this.passwd = passwd;
 		this.imagen = imagen;
-		this.vidas = VIDAS_MAXIMAS;
-		this.ultimaRecuperacion = LocalDateTime.now();
 	}
 
 	public Set<CursoEnProgreso> getCursos() {
@@ -101,10 +106,19 @@ public class Usuario {
 		this.cursos = cursos;
 	}
 
+	/**
+	 * Añade un curso en progreso al usuario.
+	 * 
+	 * @param curso Curso a añadir
+	 * @return true si se añadió correctamente
+	 */
 	public boolean addCursoEnProgreso(CursoEnProgreso curso) {
 		return cursos.add(curso);
 	}
 
+	/**
+	 * Elimina un curso en progreso del usuario.
+	 */
 	public void eliminarCurso(CursoEnProgreso curso) {
 		cursos.remove(curso);
 	}
@@ -175,12 +189,18 @@ public class Usuario {
 		this.vidas = vidas;
 	}
 
+	/**
+	 * Indica si el usuario tiene vidas disponibles.
+	 */
 	public boolean hasVidas() {
 		return vidas > 0;
 	}
 
+	/**
+	 * Indica si el usuario tiene imagen asignada.
+	 */
 	public boolean hasImage() {
-		return imagen != null;
+		return imagen != null && !imagen.isEmpty();
 	}
 
 	public LocalDateTime getUltimaRecuperacion() {
@@ -191,10 +211,19 @@ public class Usuario {
 		this.ultimaRecuperacion = ultimaRecuperacion;
 	}
 
+	/**
+	 * Comprueba si el usuario está cursando el curso dado.
+	 */
 	public boolean estaCursando(CursoPlantilla curso) {
-		return cursos.stream().anyMatch(cursoProgreso -> cursoProgreso.getCursoPlantilla().equals(curso));
+		return cursos.stream().anyMatch(c -> c.getCursoPlantilla().equals(curso));
 	}
 
+	/**
+	 * Reduce una vida del usuario y actualiza la última recuperación si es
+	 * necesario.
+	 * 
+	 * @return número de vidas restantes
+	 */
 	public int perderVida() {
 		if (vidas == VIDAS_MAXIMAS) {
 			ultimaRecuperacion = LocalDateTime.now();
@@ -202,25 +231,26 @@ public class Usuario {
 		if (vidas > 0) {
 			vidas--;
 		}
-
 		return vidas;
 	}
 
+	/**
+	 * Recupera vidas según el tiempo transcurrido desde la última recuperación.
+	 * Recupera 1 vida por cada MINUTOS_POR_VIDA minutos. Actualiza la ultimarecuperacin.
+	 * 
+	 * @return true si el usuario tiene alguna vida tras la recuperación
+	 */
 	public boolean recuperarVidas() {
 		LocalDateTime ahora = LocalDateTime.now();
-
-		// Calcular minutos transcurridos desde la última recuperación
 		long minutosTranscurridos = ChronoUnit.MINUTES.between(ultimaRecuperacion, ahora);
 		int vidasARecuperar = (int) (minutosTranscurridos / MINUTOS_POR_VIDA);
 
 		if (vidasARecuperar > 0) {
 			vidas = Math.min(vidas + vidasARecuperar, VIDAS_MAXIMAS);
 
-			// Si no llegó al máximo, ajusta la marca de tiempo solo por las vidas
 			if (vidas < VIDAS_MAXIMAS) {
 				ultimaRecuperacion = ultimaRecuperacion.plusMinutes(vidasARecuperar * MINUTOS_POR_VIDA);
 			} else {
-				// Si llegó al máximo, la próxima recuperación será desde ahora
 				ultimaRecuperacion = ahora;
 			}
 		}

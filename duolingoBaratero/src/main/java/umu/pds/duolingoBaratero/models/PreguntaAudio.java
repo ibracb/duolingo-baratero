@@ -14,6 +14,11 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaAudio;
 
+/**
+ * Subclase de Pregunta para preguntas con componente de audio. Contiene lista
+ * de opciones y ruta del archivo de audio asociado. Implementa crearPanel para
+ * devolver su panel Swing específico.
+ */
 @Entity
 @Table(name = "pregunta_audio")
 @DiscriminatorValue("AUDIO")
@@ -23,9 +28,9 @@ public class PreguntaAudio extends Pregunta {
 	@CollectionTable(name = "pregunta_audio_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
 	@Column(name = "opciones")
 	private List<String> opciones;
-	
+
 	@Lob
-	@Column(name="ruta_audio")
+	@Column(name = "ruta_audio")
 	private String rutaAudio;
 
 	public PreguntaAudio() {
