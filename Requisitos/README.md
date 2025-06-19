@@ -15,10 +15,6 @@ En la carpeta [de los casos de uso](CasosDeUso/) os encontrareis con los archivo
 | 5  | Usuario resgistrado  | Importar un curso      | [05-CDU-importar-curso](CasosDeUso/05-CDU-importar-curso.md)         |
 | 6  | Usuario resgistrado | Compartir un curso     | [06-CDU-compartir-curso](CasosDeUso/06-CDU-compartir-curso.md)       |
 
-## MODELADO DE DOMINIO
-
-En la carpeta de [modelado](ModeloDeDominio/) está una foto del diagrama de clases, con su código en formato txt, y también un fichero md en el que se explican las clases de manera algo mas concisa y escrita.
-
 ## VENTANAS
 
 En la carpeta de las [ventanas](Ventanas/) se encuentra una foto de cada una de als ventanas que se han desarrollado con una foto de las primeras concepciones de estas.
