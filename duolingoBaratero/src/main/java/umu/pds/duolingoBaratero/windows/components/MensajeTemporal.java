@@ -7,9 +7,25 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
+/**
+ * Clase que muestra un mensaje temporal en un JOptionPane.
+ * El mensaje se cierra automáticamente después de 2 segundos.
+ */
 public class MensajeTemporal {
+	
+	/**
+	 * Tiempo en milisegundos que se mostrará el mensaje.
+	 * 2000 ms = 2 segundos.
+	 */
 	private final static int SEGUNDOS_MOSTRADOS = 2000;
-
+	
+	/**
+	 * Muestra un mensaje temporal en un JOptionPane.
+	 * 
+	 * @param mensaje El mensaje a mostrar.
+	 * @param tipoMensaje El tipo de mensaje (JOptionPane.INFORMATION_MESSAGE, 
+	 *                    JOptionPane.WARNING_MESSAGE, etc.).
+	 */
 	public static void mostrarMensaje(String mensaje, int tipoMensaje) {
 		// Mostrar el JOptionPane
 		JOptionPane optionPane = new JOptionPane(mensaje, tipoMensaje);

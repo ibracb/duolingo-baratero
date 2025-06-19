@@ -26,23 +26,88 @@ import umu.pds.duolingoBaratero.windows.vista.VentanaElegirCurso;
 import umu.pds.duolingoBaratero.windows.vista.VentanaEstadisticas;
 import umu.pds.duolingoBaratero.windows.vista.VentanaPrincipal;
 
+/**
+ * Barra superior que contiene botones para navegar entre diferentes ventanas
+ * y un temporizador que muestra las vidas del usuario.
+ */
 public class BarraSuperior extends JPanel {
-
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Duración en milisegundos para la recuperación de vidas del usuario.
+	 */
 	private final long DURACION = 5 * 60 * 1000; // 1 minuto
 
-	private JButton btnHome, btnEstadisticas, btnImportarCurso, btnExportarCurso;
+	/**
+	 * Botón para volver a la ventana principal.
+	 */
+	private JButton btnHome;
+	
+	/**
+	 * Botón para abrir la ventana de estadísticas.
+	 */
+	private JButton btnEstadisticas;
+	
+	/**
+	 * Botón para importar un curso.
+	 */
+	private JButton btnImportarCurso;
+	
+	/**
+	 * Botón para exportar un curso.
+	 */
+	private JButton btnExportarCurso;
+	
+	/**
+	 * Ventana actual donde se muestra la barra superior.
+	 */
 	private JFrame ventanaActual;
+	
+	/**
+	 * Controlador de usuario que maneja las operaciones relacionadas con el usuario.
+	 */
 	private final ControladorUsuario cUsuario;
+	
+	/**
+	 * Controlador de curso plantilla que maneja las operaciones relacionadas con los cursos plantilla.
+	 */
 	private final ControladorCursoPlantilla controladorPlantilla;
+	
+	/**
+	 * Controlador de progreso del curso que maneja las operaciones relacionadas con el progreso del curso.
+	 */
 	private final ControladorCursoProgreso cProgreso;
+	
+	/**
+	 * Controlador de preguntas que maneja las operaciones relacionadas con las preguntas del curso.
+	 */
 	private final ControladorPregunta cPregunta;
+	
+	/**
+	 * Controlador de estadísticas que maneja las operaciones relacionadas con las estadísticas del usuario.
+	 */
 	private final ControladorEstadistica cEstadistica;
+	
+	/**
+	 * Etiqueta que muestra el temporizador de vidas del usuario.
+	 */
 	private JLabel labelTemporizador;
+	
+	/**
+	 * Opciones disponibles para importar/exportar cursos.
+	 */
 	private final String[] opciones = { "YAML", "JSON" };
-
-
-
+	
+	/**
+	 * Constructor de la barra superior.
+	 * 
+	 * @param ventanaActual La ventana actual donde se muestra la barra superior.
+	 * @param cUsuario Controlador de usuario.
+	 * @param controladorPlantilla Controlador de curso plantilla.
+	 * @param cProgreso Controlador de progreso del curso.
+	 * @param cPregunta Controlador de preguntas.
+	 * @param cEstadistica Controlador de estadísticas.
+	 */
 	public BarraSuperior(JFrame ventanaActual, ControladorUsuario cUsuario,
 			ControladorCursoPlantilla controladorPlantilla, ControladorCursoProgreso cProgreso,
 			ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
@@ -90,7 +155,11 @@ public class BarraSuperior extends JPanel {
 		// Agregar la barra de herramientas a la parte superior del panel
 		add(barra, BorderLayout.NORTH);
 	}
-
+	
+	/**
+	 * Método para abrir la ventana principal.
+	 * Si ya se está en la ventana principal, muestra un mensaje de error.
+	 */
 	private void openVentanaPrincipal() {
 
 		// Evitar cast incorrecto
@@ -103,7 +172,11 @@ public class BarraSuperior extends JPanel {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	
+	/**
+	 * Método para abrir la ventana de estadísticas.
+	 * Si ya se está en la ventana de estadísticas, muestra un mensaje de error.
+	 */
 	private void openVentanaEstadisticas() {
 
 		// Evitar cast incorrecto
@@ -116,7 +189,11 @@ public class BarraSuperior extends JPanel {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	
+	/**
+	 * Método para exportar un curso.
+	 * Muestra un diálogo para seleccionar el tipo de archivo y luego abre una ventana para elegir el curso a exportar.
+	 */
 	public void exportarCurso() {
 		JComboBox<String> comboBox = new JComboBox<>(opciones);
 		JPanel panel = new JPanel();
@@ -137,7 +214,11 @@ public class BarraSuperior extends JPanel {
 		}
 
 	}
-
+	
+	/**
+	 * Método para importar un curso.
+	 * Muestra un diálogo para seleccionar el tipo de archivo y luego permite al usuario elegir un archivo para importar.
+	 */
 	public void importarCurso() {
 		// Crear ComboBox dentro de un JPanel para pasarlo a JOptionPane
 		JComboBox<String> comboBox = new JComboBox<>(opciones);
@@ -170,7 +251,11 @@ public class BarraSuperior extends JPanel {
 			}
 		}
 	}
-
+	
+	/**
+	 * Método para inicializar el temporizador que muestra las vidas del usuario.
+	 * Actualiza la etiqueta cada segundo con el número de vidas restantes o el tiempo de recuperación.
+	 */
 	private void inicializarTemporizador() {
 		Timer timer = new Timer(1000, null);
 		timer.addActionListener(e -> {
