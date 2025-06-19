@@ -14,14 +14,38 @@ import javax.swing.ListCellRenderer;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 
+/**
+ * Clase que implementa un renderizador de celdas para mostrar información de cursos en progreso.
+ * Muestra el icono del curso, su nombre y nivel.
+ */
 public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoEnProgreso> {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Etiqueta que muestra el icono del curso.
+	 */
 	private JLabel lblIcono = new JLabel();
-    private JLabel lblNombre = new JLabel();
-    private JLabel lblNivel = new JLabel();
-    private final ControladorCursoPlantilla controladorPlantilla;
-
+    
+	/**
+	 * Etiqueta que muestra el nombre del curso.
+	 */
+	private JLabel lblNombre = new JLabel();
+    
+	/**
+	 * Etiqueta que muestra el nivel del curso.
+	 */
+	private JLabel lblNivel = new JLabel();
+    
+	/**
+	 * Controlador de curso plantilla, utilizado para obtener imágenes escaladas.
+	 */
+	private final ControladorCursoPlantilla controladorPlantilla;
+	
+	/**
+	 * Constructor de la clase CursoCellRenderer.
+	 * @param controladorPlantilla
+	 */
     public CursoCellRenderer(ControladorCursoPlantilla controladorPlantilla) {
         this.controladorPlantilla = controladorPlantilla;
     	setLayout(new BorderLayout());
