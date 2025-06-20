@@ -52,4 +52,4 @@ Un curso puede estar en uno de estos estados:
 
 A continuación se muestra el diagrama que representa la estructura general del sistema:
 
-![Diagrama del Modelo](modelo_dominio.png)
+![Diagrama del Modelo](DiagramaClases.png)
