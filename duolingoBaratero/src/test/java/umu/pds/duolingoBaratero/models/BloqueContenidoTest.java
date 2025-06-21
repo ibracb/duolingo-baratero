@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
@@ -50,7 +51,7 @@ public class BloqueContenidoTest {
     @SuppressWarnings("unchecked")
 	@Test
     void testGetPreguntas() {
-        List<Pregunta> preguntas = (List<Pregunta>) bloqueContenido.getPreguntas();
+        Set<Pregunta> preguntas =  bloqueContenido.getPreguntas();
         assertEquals(2, preguntas.size());
         assertTrue(preguntas.contains(preguntaMock1));
         assertTrue(preguntas.contains(preguntaMock2));
@@ -73,17 +74,8 @@ public class BloqueContenidoTest {
 	@Test
     void testSetPreguntas() {
         List<Pregunta> nuevasPreguntas = Arrays.asList(preguntaMock3);
-        //bloqueContenido.setPreguntas(nuevasPreguntas);
+        bloqueContenido.setPreguntas(new HashSet<Pregunta>(nuevasPreguntas));
         assertEquals(1, bloqueContenido.getPreguntas().size());
-        assertEquals(preguntaMock3, ((List<Pregunta>) bloqueContenido.getPreguntas()).get(0));
-    }
-
-    @Test
-    void testGetPreguntasAleatoriamente() {
-        //List<Pregunta> preguntasAleatorias = bloqueContenido.getPreguntasAleatoriamente();
-//        assertEquals(2, preguntasAleatorias.size());
-//        assertTrue(preguntasAleatorias.contains(preguntaMock1));
-//        assertTrue(preguntasAleatorias.contains(preguntaMock2));
     }
 
     @Test
@@ -120,4 +112,21 @@ public class BloqueContenidoTest {
         bloqueContenido.addPregunta(preguntaMock3);
         assertEquals(3, bloqueContenido.getNumPreguntas());
     }
+    
+    @Test
+    void testGetPreguntasInvertidas() {
+        Set<Pregunta> invertidas = bloqueContenido.getPreguntasInvertidas();
+        assertEquals(bloqueContenido.getPreguntas().size(), invertidas.size());
+        assertTrue(invertidas.containsAll(bloqueContenido.getPreguntas()));
+        // No se puede garantizar orden en Set, salvo que FactoriaAprendizaje lo implemente
+    }
+
+    @Test
+    void testGetPreguntasAleatoriamente() {
+        Set<Pregunta> aleatorias = bloqueContenido.getPreguntasAleatoriamente();
+        assertEquals(bloqueContenido.getPreguntas().size(), aleatorias.size());
+        assertTrue(aleatorias.containsAll(bloqueContenido.getPreguntas()));
+        // No se puede garantizar orden porque es aleatorio, pero deben contener las mismas preguntas
+    }
 }
+

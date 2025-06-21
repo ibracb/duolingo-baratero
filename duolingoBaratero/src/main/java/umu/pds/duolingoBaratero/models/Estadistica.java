@@ -114,6 +114,10 @@ public class Estadistica {
 		inicioSesionActual = LocalDateTime.now();
 		rachaAcceso++;
 	}
+	
+	public void setInicioSesion(LocalDateTime inicio) {
+		this.inicioSesionActual = inicio;
+	}
 
 	public void cerrarSesion() {
 		Duration duracion = Duration.between(inicioSesionActual, LocalDateTime.now());

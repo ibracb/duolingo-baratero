@@ -5,6 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 import javax.swing.JPanel;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -27,8 +33,8 @@ class PreguntasTest {
         String[] opciones = {"Opción A", "Opción B", "Opción C"};
 
         // Creación de preguntas de diferentes tipos
-//        preguntaOpciones = new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es la capital de Francia?", "París", TipoPregunta.OPCION, opciones);
-//        preguntaAudio = new PreguntaAudio(Nivel.INTERMEDIO, 2, "Escucha y elige la respuesta correcta", "Bonjour", opciones, "/ruta/audio.mp3");
+      preguntaOpciones = new PreguntaOpciones(Nivel.BASICO, 1, "¿Cuál es la capital de Francia?", "París", TipoPregunta.OPCIONES, Arrays.asList(opciones));
+        preguntaAudio = new PreguntaAudio(Nivel.INTERMEDIO, 2, "Escucha y elige la respuesta correcta", "Bonjour",  Arrays.asList(opciones), "/ruta/audio.mp3");
         flashcard = new Flashcard(Nivel.AVANZADO, 3, "Flashcard", "acierto", TipoPregunta.FLASHCARD);
     }
 
@@ -36,7 +42,7 @@ class PreguntasTest {
     void testPreguntaOpciones_CrearPanel() {
         JPanel panel = preguntaOpciones.crearPanel();
         assertNotNull(panel);
-        assertTrue(panel instanceof PanelPreguntaOpciones || panel instanceof PanelPreguntaImagenes);
+        assertTrue(panel instanceof PanelPreguntaOpciones);
     }
 
     @Test
@@ -74,8 +80,4 @@ class PreguntasTest {
         assertEquals(nuevaRuta, preguntaAudio.getRutaAudio());
     }
 
-    @Test
-    void testFlashcard_GettersSetters() {
-//        assertEquals(15, flashcard.getTiempoLimite());
-    }
 }

@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -75,5 +77,87 @@ class UsuarioTest {
 
         usuarioSinImagen.setImagen("newImage.png");
         assertEquals("newImage.png", usuarioSinImagen.getImagen());
+    }
+    
+    @Test
+    void testHasVidas_CuandoTieneVidas() {
+        usuarioConImagen.setVidas(3);
+        assertTrue(usuarioConImagen.hasVidas());
+    }
+
+    @Test
+    void testHasVidas_CuandoNoTieneVidas() {
+        usuarioConImagen.setVidas(0);
+        assertFalse(usuarioConImagen.hasVidas());
+    }
+
+    @Test
+    void testPerderVida_RestaUnaVida() {
+        usuarioConImagen.setVidas(3);
+        int vidasRestantes = usuarioConImagen.perderVida();
+        assertEquals(2, vidasRestantes);
+        assertEquals(2, usuarioConImagen.getVidas());
+    }
+
+    @Test
+    void testPerderVida_ConVidasMaximas_ActualizaUltimaRecuperacion() {
+        usuarioConImagen.setVidas(5);
+        LocalDateTime antes = usuarioConImagen.getUltimaRecuperacion();
+        usuarioConImagen.perderVida();
+        LocalDateTime despues = usuarioConImagen.getUltimaRecuperacion();
+        assertTrue(despues.isAfter(antes) || despues.isEqual(antes));
+        assertEquals(4, usuarioConImagen.getVidas());
+    }
+
+    @Test
+    void testPerderVida_Con0Vidas_NoBaja() {
+        usuarioConImagen.setVidas(0);
+        int vidasRestantes = usuarioConImagen.perderVida();
+        assertEquals(0, vidasRestantes);
+        assertEquals(0, usuarioConImagen.getVidas());
+    }
+
+    @Test
+    void testRecuperarVidas_NoRecuperaSiNoHaPasadoTiempo() {
+        usuarioConImagen.setVidas(3);
+        usuarioConImagen.setUltimaRecuperacion(LocalDateTime.now());
+        boolean tieneVidas = usuarioConImagen.recuperarVidas();
+        assertTrue(tieneVidas);
+        assertEquals(3, usuarioConImagen.getVidas());
+    }
+
+    @Test
+    void testRecuperarVidas_RecuperaVidasSegunTiempoPasado() {
+        usuarioConImagen.setVidas(3);
+        usuarioConImagen.setUltimaRecuperacion(LocalDateTime.now().minusMinutes(15)); // 15 min -> 3 vidas
+
+        boolean tieneVidas = usuarioConImagen.recuperarVidas();
+        assertTrue(tieneVidas);
+        assertEquals(5, usuarioConImagen.getVidas()); // Máximo 5 vidas
+    }
+
+    @Test
+    void testRecuperarVidas_ActualizaUltimaRecuperacionCorrectamente() {
+        usuarioConImagen.setVidas(2);
+        LocalDateTime ultima = LocalDateTime.now().minusMinutes(10); // 10 min -> 2 vidas a recuperar
+        usuarioConImagen.setUltimaRecuperacion(ultima);
+
+        usuarioConImagen.recuperarVidas();
+
+        LocalDateTime expected = ultima.plusMinutes(2 * 5); // 2 vidas * 5 min
+        assertEquals(expected, usuarioConImagen.getUltimaRecuperacion());
+    }
+
+    @Test
+    void testRecuperarVidas_LlegaAVidasMaxYActualizaAAhora() {
+        usuarioConImagen.setVidas(4);
+        LocalDateTime ultima = LocalDateTime.now().minusMinutes(10); // 10 min -> 2 vidas a recuperar
+        usuarioConImagen.setUltimaRecuperacion(ultima);
+
+        usuarioConImagen.recuperarVidas();
+
+        assertEquals(5, usuarioConImagen.getVidas());
+        // últimaRecuperacion debe actualizarse a "ahora" porque llegó al máximo
+        assertTrue(usuarioConImagen.getUltimaRecuperacion().isAfter(ultima));
     }
 }

@@ -6,6 +6,8 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
+
 /**
  * Test unitarios para la clase {@link Estadistica}
  */
@@ -82,13 +84,13 @@ public class EstadisticaTest {
 
     /**
      * Verifica que al cerrar sesión se incremente el tiempo de uso
+     * Simulamos que iniciamos sesion hace 2 minutos
      */
     @Test
     void testCerrarSesionAumentaTiempoUso() throws InterruptedException {
-        estadistica.iniciarSesion();
-        Thread.sleep(50); // pequeña pausa simulada
+        estadistica.setInicioSesion(LocalDateTime.now().minusMinutes(2));
         estadistica.cerrarSesion();
-        assertTrue(estadistica.getTiempoUsoTotalActual() > 0);
+        assertTrue(estadistica.getTiempoUsoTotalActual() >= 2);
     }
 
     /**
@@ -96,10 +98,9 @@ public class EstadisticaTest {
      */
     @Test
     void testGetTiempoUsoTotalActualIncluyeSesion() throws InterruptedException {
-        estadistica.iniciarSesion();
-        Thread.sleep(50);
+    	estadistica.setInicioSesion(LocalDateTime.now().minusMinutes(2));
         long tiempo = estadistica.getTiempoUsoTotalActual();
-        assertTrue(tiempo > 0);
+        assertTrue(tiempo >= 2);
     }
 
     /**
