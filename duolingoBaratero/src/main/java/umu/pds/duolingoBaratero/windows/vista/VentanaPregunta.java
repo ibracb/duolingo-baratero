@@ -242,6 +242,7 @@ public class VentanaPregunta extends JFrame {
 			barraSuperior.updateVidas();
 			if (vidas <= 0) {
 				new DialogoFinal(this, SUSPENSO).setVisible(true);
+				return;
 			}
 			
 		}
