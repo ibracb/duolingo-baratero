@@ -180,11 +180,15 @@ public class CursoEnProgreso {
         this.estado = estado;
     }
     
- 
+    /** @return usuario que realiza el curso. */
     public Usuario getUsuario() {
 		return usuario;
 	}
 
+    /**
+     * Establece el usuario que realiza el curso.
+     * @param usuario
+     */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}

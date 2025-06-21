@@ -207,6 +207,10 @@ public class Estadistica {
 		rachaAcceso++;
 	}
 	
+	/**
+	 * Establece el inicio de sesión actual del usuario.
+	 * @param inicio
+	 */
 	public void setInicioSesion(LocalDateTime inicio) {
 		this.inicioSesionActual = inicio;
 	}
