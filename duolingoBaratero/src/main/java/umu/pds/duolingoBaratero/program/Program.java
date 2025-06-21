@@ -9,8 +9,20 @@ import umu.pds.duolingoBaratero.services.*;
 import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 import umu.pds.duolingoBaratero.windows.vista.VentanaInicio;
 
+/**
+ * Clase principal que inicia la aplicación Duolingo Baratero.
+ * Configura el aspecto visual, inicializa los DAOs, servicios y controladores,
+ * y muestra la ventana de inicio.
+ */
 public class Program {
-
+	
+	/**
+	 * Método principal que se ejecuta al iniciar la aplicación.
+	 * Configura el aspecto visual, inicializa los DAOs, servicios y controladores,
+	 * y muestra la ventana de inicio.
+	 *
+	 * @param args Argumentos de línea de comandos (no utilizados).
+	 */
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(new FastLookAndFeel());

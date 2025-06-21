@@ -24,21 +24,54 @@ import umu.pds.duolingoBaratero.controllers.ControladorAudio;
 import umu.pds.duolingoBaratero.models.PreguntaAudio;
 import umu.pds.duolingoBaratero.services.IComprobador;
 
+/**
+ * Panel que muestra una pregunta de tipo audio con opciones de respuesta.
+ * Permite al usuario escuchar un audio y seleccionar la respuesta correcta.
+ */
 public class PanelPreguntaAudio extends JPanel implements IComprobador{
-
+	
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Etiqueta que muestra la pregunta.
+	 */
 	private JLabel lblPregunta;
+	
+	/**
+	 * Botones de opción para las respuestas.
+	 * Se utilizan JToggleButton para permitir la selección de una sola opción.
+	 */
 	private JToggleButton[] opciones; // Botones de imagen
-	//private JLabel lblAudio;
+	
+	/**
+	 * Botón para reproducir el audio de la pregunta.
+	 */
 	private JButton btnReproducir;
+	
+	/**
+	 * La pregunta de tipo audio que contiene el texto y las opciones.
+	 */
 	private PreguntaAudio pregunta;
+	
+	/**
+	 * Respuesta seleccionada por el usuario.
+	 * Se almacena como texto de la opción elegida.
+	 */
 	private String respuestaUsuario;
-
+	
+	/**
+	 * Constructor que inicializa el panel con una pregunta de tipo audio.
+	 * @param pregunta La pregunta de tipo audio que se mostrará en el panel.
+	 */
 	public PanelPreguntaAudio(PreguntaAudio pregunta) {
 		this.pregunta = pregunta;
 		inicializar();
 	}
-
+	
+	/**
+	 * Método que inicializa el panel y sus componentes.
+	 * Configura el diseño, crea los botones de opción y el botón de reproducción de audio.
+	 */
 	private void inicializar() {
 		setLayout(new BorderLayout()); // Usamos BorderLayout para mejor distribución
 
@@ -122,7 +155,11 @@ public class PanelPreguntaAudio extends JPanel implements IComprobador{
 		int tamañoFuente = Math.max(18, altura / 10); // Ajuste dinámico
 		lblPregunta.setFont(new Font("Arial", Font.BOLD, tamañoFuente));
 	}*/
-
+	
+	/**
+	 * Método que reproduce el audio asociado a la pregunta.
+	 * Utiliza el controlador de audio para reproducir el archivo de audio.
+	 */
 	private void reproducirAudio() {
 		ControladorAudio.INSTANCE.reproducir(pregunta.getRutaAudio());
 	}

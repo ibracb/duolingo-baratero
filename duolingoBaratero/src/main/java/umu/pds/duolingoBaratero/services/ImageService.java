@@ -7,19 +7,43 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 import javax.swing.ImageIcon;
 
+/**
+ * Servicio para gestionar imágenes, incluyendo escalado y conversión a circular.
+ */
 public class ImageService {
 	
+	/**
+	 * Escala una imagen a un tamaño específico y la convierte a circular.
+	 * 
+	 * @param bufferedImage Imagen original.
+	 * @param dimensiones   Tamaño deseado para la imagen escalada.
+	 * @return ImageIcon con la imagen escalada y circular.
+	 */
 	public ImageIcon getScaledImage(BufferedImage bufferedImage, int dimensiones) {
 		BufferedImage scaledImage = scaleAndMakeCircular(bufferedImage, dimensiones);
 		return new ImageIcon(scaledImage);
 	}
-
+	
+	/**
+	 * Escala una imagen a un tamaño específico y la convierte a circular.
+	 * 
+	 * @param image   Imagen original como ImageIcon.
+	 * @param dimensiones Tamaño deseado para la imagen escalada.
+	 * @return ImageIcon con la imagen escalada y circular.
+	 */
 	public ImageIcon getScaledImage(ImageIcon image, int dimensiones) {
 		BufferedImage bufferedImage = iconToBufferedImage(image);
 		BufferedImage scaledImage = scaleImage(bufferedImage, dimensiones, dimensiones);
 		return new ImageIcon(scaledImage);
 	}
-
+	
+	/**
+	 * Escala una imagen a un tamaño específico y la convierte a circular.
+	 * 
+	 * @param imageURL URL de la imagen original.
+	 * @param dimensiones Tamaño deseado para la imagen escalada.
+	 * @return ImageIcon con la imagen escalada y circular.
+	 */
 	private BufferedImage scaleAndMakeCircular(BufferedImage originalImage, int targetSize) {
 		BufferedImage scaledImage = scaleImage(originalImage, targetSize, targetSize);
 		BufferedImage circularImage = new BufferedImage(targetSize, targetSize, BufferedImage.TYPE_INT_ARGB);
@@ -31,7 +55,15 @@ public class ImageService {
 		g2d.dispose();
 		return circularImage;
 	}
-
+	
+	/**
+	 * Escala una imagen a un tamaño específico.
+	 * 
+	 * @param originalImage Imagen original.
+	 * @param targetWidth   Ancho deseado para la imagen escalada.
+	 * @param targetHeight  Alto deseado para la imagen escalada.
+	 * @return BufferedImage con la imagen escalada.
+	 */
 	private BufferedImage scaleImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
 		BufferedImage scaledImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = scaledImage.createGraphics();
@@ -42,7 +74,13 @@ public class ImageService {
 		g2d.dispose();
 		return scaledImage;
 	}
-
+	
+	/**
+	 * Convierte un ImageIcon a BufferedImage.
+	 * 
+	 * @param icon ImageIcon a convertir.
+	 * @return BufferedImage resultante.
+	 */
 	private BufferedImage iconToBufferedImage(ImageIcon icon) {
 		Image image = icon.getImage();
 		BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null),
@@ -52,7 +90,13 @@ public class ImageService {
 		g2d.dispose();
 		return bufferedImage;
 	}
-
+	
+	/**
+	 * Verifica si una cadena es una URL válida.
+	 * 
+	 * @param string Cadena a verificar.
+	 * @return true si es una URL válida, false en caso contrario.
+	 */
 	public boolean isURL(String string) {
 		try {
 			new URL(string.toString()).toURI();

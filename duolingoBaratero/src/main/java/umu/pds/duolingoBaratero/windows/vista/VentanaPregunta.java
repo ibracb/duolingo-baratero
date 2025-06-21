@@ -35,26 +35,108 @@ import umu.pds.duolingoBaratero.windows.components.BarraProgresoPanel;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperiorPreguntas;
 import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 
+/**
+ * Ventana que muestra las preguntas del curso en progreso.
+ * Permite al usuario responder preguntas y avanzar a la siguiente.
+ */
 public class VentanaPregunta extends JFrame {
+	
+	/**
+	 * Valor del panel inicial.
+	 */
 	private static final int PANEL_INICIAL = 0;
+	
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Constante de si aprobó.
+	 */
 	private final static boolean APROBADO = true;
+	
+	/**
+	 * Constante de si suspendió.
+	 */
 	private final static boolean SUSPENSO = false;
+	
+	/**
+	 * Panel que contiene todos los componentes de la ventana.
+	 */
 	private JPanel contentPane;
+	
+	/**
+	 * Panel central que contiene las preguntas.
+	 */
 	private JPanel panelCentral;
+	
+	/**
+	 * Lista de paneles que contienen las preguntas.
+	 */
 	private ArrayList<JPanel> paneles;
+	
+	/**
+	 * Layout que permite cambiar entre los paneles de preguntas.
+	 */
 	private CardLayout cardLayout;
+	
+	/**
+	 * Barra de progreso que muestra el avance del usuario.
+	 */
 	private BarraProgresoPanel barraProgreso;
+	
+	/**
+	 * Barra superior que muestra información del usuario y del curso.
+	 */
 	private BarraSuperiorPreguntas barraSuperior;
+	
+	/**
+	 * Botones para navegar entre las preguntas.
+	 */
 	private JButton btnSiguiente, btnSaltar;
+	
+	/**
+	 * Componente para alinear los botones a la derecha.
+	 */
 	private Component horizontalGlue;
+	
+	/**
+	 * Panel actual que se está mostrando.
+	 */
 	private int currentPanel;
+	
+	/**
+	 * Curso en progreso que contiene las preguntas.
+	 */
 	private CursoEnProgreso curso;
+	
+	/**
+	 * Controladores necesarios para manejar la lógica de la aplicación.
+	 */
 	private final ControladorCursoProgreso controladorCursoProgreso;
+	
+	/**
+	 * Controlador para manejar las preguntas.
+	 */
 	private final ControladorPregunta controladorPregunta;
+	
+	/**
+	 * Controlador para manejar la información del usuario.
+	 */
 	private final ControladorUsuario controladorUsuario;
+	
+	/**
+	 * Controlador para manejar las estadísticas del usuario.
+	 */
 	private final ControladorEstadistica controladorEstadistica;
 
+	/**
+	 * Constructor de la ventana de preguntas.
+	 * 
+	 * @param curso Curso en progreso que contiene las preguntas.
+	 * @param controladorCursoprogreso Controlador para manejar el progreso del curso.
+	 * @param controladorPregunta Controlador para manejar las preguntas.
+	 * @param controladorUsuario Controlador para manejar la información del usuario.
+	 * @param controladorEstadistica Controlador para manejar las estadísticas del usuario.
+	 */
 	public VentanaPregunta(CursoEnProgreso curso, ControladorCursoProgreso controladorCursoprogreso,
 			ControladorPregunta controladorPregunta, ControladorUsuario controladorUsuario, ControladorEstadistica controladorEstadistica) {
 		this.controladorCursoProgreso = controladorCursoprogreso;
@@ -131,6 +213,9 @@ public class VentanaPregunta extends JFrame {
 
 	}
 
+	/**
+	 * Procesa la siguiente pregunta.
+	 */
 	private void procesarSiguiente() {
 		IComprobador panel = (IComprobador) paneles.get(currentPanel);
 
@@ -165,6 +250,10 @@ public class VentanaPregunta extends JFrame {
 		avanzarPregunta();
 	}
 
+	/**
+	 * Avanza a la siguiente pregunta.
+	 * Si es la última pregunta, muestra un diálogo final.
+	 */
 	private void avanzarPregunta() {
 		if (currentPanel < paneles.size() - 1) {
 			currentPanel++;
@@ -174,8 +263,12 @@ public class VentanaPregunta extends JFrame {
 		}
 
 	}
-
-	// -------- METODO DE PRUEBA --------------
+	
+	/**
+	 * Obtiene los paneles de preguntas del curso en progreso.
+	 * 
+	 * @return Lista de paneles que contienen las preguntas.
+	 */
 	private ArrayList<JPanel> getPaneles() {
 
 		AprendizajeSeleccionado seleccion = curso.getAprendizaje(); // O de usuario si se guarda ahí
@@ -187,10 +280,20 @@ public class VentanaPregunta extends JFrame {
 		return preguntas.stream().map(Pregunta::crearPanel).collect(Collectors.toCollection(ArrayList::new));
 	}
 
+	/**
+	 * Clase interna que representa el diálogo final que se muestra al terminar el juego.
+	 * Muestra un mensaje dependiendo de si el usuario aprobó o no.
+	 */
 	public class DialogoFinal extends JDialog {
 
 	    private static final long serialVersionUID = 1L;
 
+	    /**
+	     * Constructor del diálogo final.
+	     * 
+	     * @param ventanaPregunta Ventana principal de preguntas.
+	     * @param aprobado Indica si el usuario aprobó o no.
+	     */
 	    public DialogoFinal(JFrame ventanaPregunta, boolean aprobado) {
 	        super(ventanaPregunta, "Juego Terminado", true);
 	        setSize(500, 220); // más ancho para que quepa el texto

@@ -30,31 +30,125 @@ import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
+/**
+ * VentanaRegistro es una ventana que permite a los usuarios registrarse en la aplicación.
+ * Incluye campos para ingresar nombre, correo, nickname y contraseña, así como opciones para seleccionar cursos de interés.
+ * También permite al usuario elegir una imagen de perfil.
+ */
 public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Ruta por defecto de la imagen de perfil.
+	 */
 	private static final File IMAGEN_POR_DEFECTO = null;
+	
+	/**
+	 * Altura y anchura por defecto de la imagen de perfil.
+	 */
 	private static final int DEFAUL_HEIGHT_AND_WIDTH = 75;
 
+	/**
+	 * Content pane de la ventana.
+	 */
 	private JPanel contentPane;
+	
+	/**
+	 * Etiqueta que muestra la imagen de perfil.
+	 */
 	private JLabel lblPerfil;
+	
+	/**
+	 * Campos de texto para ingresar los datos del usuario.
+	 */
 	private JPasswordField passwordFieldContraseñaOk;
+	
+	/**
+	 * Campo de texto para ingresar la contraseña del usuario.
+	 */
 	private JPasswordField passwordFieldContraseña;
+	
+	/**
+	 * Campo de texto para ingresar el nickname del usuario.
+	 */
 	private JTextField textFieldNickName;
+	
+	/**
+	 * Campo de texto para ingresar el correo del usuario.
+	 */
 	private JTextField textFieldCorreo;
+	
+	/**
+	 * Campo de texto para ingresar el nombre del usuario.
+	 */
 	private JTextField textFieldNombre;
+	
+	/**
+	 * Array de JCheckBoxMenuItem que permite seleccionar los cursos de interés.
+	 */
 	private JCheckBoxMenuItem[] cursos;
+	
+	/**
+	 * Ventana principal de cursos.
+	 */
 	private VentanaCursos v;
+	
+	/**
+	 * Etiqueta que muestra el correo del usuario.
+	 */
 	private JLabel lblCorreo;
+	
+	/**
+	 * URL de la imagen de perfil seleccionada.
+	 */
 	private URL url;
+	
+	/**
+	 * Número de cursos seleccionados.
+	 */
 	private int seleccionados;
+	
+	/**
+	 * Archivo de destino para la imagen de perfil.
+	 */
 	private File destinationFile = IMAGEN_POR_DEFECTO;
+	
+	/**
+	 * Controladores necesarios para la funcionalidad de la ventana.
+	 */
 	private final ControladorUsuario controladorUsuario;
+	
+	/**
+	 * Controlador de curso plantilla.
+	 */
 	private final ControladorCursoPlantilla controladorPlantilla;
+	
+	/**
+	 * Controlador de progreso del curso.
+	 */
 	private final ControladorCursoProgreso controladorProgreso;
+	
+	/**
+	 * Controlador de preguntas.
+	 */
 	private final ControladorPregunta controladorPregunta;
+	
+	/**
+	 * Controlador de estadísticas.
+	 */
 	private final ControladorEstadistica cEstadistica;
 
+	/**
+	 * Constructor de la ventana de registro.
+	 * 
+	 * @param v Ventana principal de cursos.
+	 * @param controladorUsuario Controlador de usuario.
+	 * @param controladorCursoPlantilla Controlador de curso plantilla.
+	 * @param controladorCursoProgreso Controlador de progreso del curso.
+	 * @param controladorPregunta Controlador de preguntas.
+	 * @param cEstadistica Controlador de estadísticas.
+	 */
 	public VentanaRegistro(VentanaCursos v, ControladorUsuario controladorUsuario, ControladorCursoPlantilla controladorCursoPlantilla, ControladorCursoProgreso controladorCursoProgreso,
 			ControladorPregunta controladorPregunta, ControladorEstadistica cEstadistica) {
 		this.controladorUsuario = controladorUsuario;
@@ -241,6 +335,10 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 		;
 	}
 
+	/**
+	 * Maneja el registro del usuario.
+	 * Valida los campos ingresados y registra al usuario si todo es correcto.
+	 */
 	private void manejarRegistro() {
 		String nombre, nickname, correo, passwd1, passwd2;
 		nombre = textFieldNombre.getText();
@@ -292,6 +390,11 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 
 	}
 
+	/**
+	 * Obtiene los cursos seleccionados por el usuario.
+	 * 
+	 * @return Un array de Strings con los cursos seleccionados.
+	 */
 	private String[] obtenerCursosSeleccionados() {
 		StringBuilder seleccionadosText = new StringBuilder("Cursos seleccionados:\n");
 		for (JCheckBoxMenuItem curso : cursos) {
@@ -302,15 +405,32 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 		return seleccionadosText.toString().split("\n");
 	}
 
+	/**
+	 * Verifica si los campos obligatorios están completos.
+	 * 
+	 * @param nombre Nombre del usuario.
+	 * @param nickname Nickname del usuario.
+	 * @param correo Correo del usuario.
+	 * @param passwd1 Contraseña del usuario.
+	 * @param passwd2 Confirmación de la contraseña del usuario.
+	 * @return true si algún campo está vacío, false en caso contrario.
+	 */
 	private boolean hasRequiredFields(String nombre, String nickname, String correo, String passwd1, String passwd2) {
 		return nombre.isEmpty() || nickname.isEmpty() || correo.isEmpty() || passwd1.isEmpty() || passwd2.isEmpty();
 	}
 
+	/**
+	 * Cierra la ventana de registro y vuelve a la ventana principal de cursos.
+	 */
 	private void closeWindow() {
 		v.setVisible(true);
 		this.dispose();
 	}
 
+	/**
+	 * Abre una ventana para cambiar la imagen de perfil del usuario.
+	 * Valida que el correo no esté vacío antes de abrir la ventana.
+	 */
 	private void abrirVentanaCambioImagen() {
 		String correo = textFieldCorreo.getText();
 
@@ -324,11 +444,22 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 		vci.setVisible(true);
 	}
 
+	/**
+	 * Establece el icono de la imagen de perfil en la etiqueta lblPerfil.
+	 * Si destinationFile es null, se utiliza la imagen por defecto.
+	 */
 	public void setIcon() {
 		String path = destinationFile.getAbsolutePath();
 		lblPerfil.setIcon(controladorUsuario.getScaledImage(new ImageIcon(path), DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
+	/**
+	 * Establece el icono de la imagen de perfil en la etiqueta lblPerfil.
+	 * Si la URL es null, se utiliza el archivo de destino.
+	 * 
+	 * @param imageIcon Icono de la imagen.
+	 * @param url URL de la imagen.
+	 */
 	public void setIcon(ImageIcon imageIcon, URL url) {
 		if (url != null) {
 			this.url = url;
@@ -340,10 +471,20 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 		lblPerfil.setIcon(controladorUsuario.getScaledImage(imageIcon, DEFAUL_HEIGHT_AND_WIDTH));
 	}
 
+	/**
+	 * Obtiene el nombre del usuario ingresado en el campo de texto.
+	 * 
+	 * @return El nombre del usuario.
+	 */
 	public String getName() {
 		return lblCorreo.getText();
 	}
 
+	/**
+	 * Establece el archivo de destino para la imagen de perfil.
+	 * 
+	 * @param d Archivo de destino.
+	 */
 	public void setDestinationFile(File d) {
 		destinationFile = d;
 	}

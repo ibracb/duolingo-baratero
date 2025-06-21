@@ -22,16 +22,52 @@ import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
+/**
+ * Ventana que muestra los cursos disponibles para el usuario.
+ * Permite al usuario seleccionar un curso y ver su información.
+ */
 public class VentanaCursos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Referencia a la ventana de inicio para poder volver a ella.
+	 */
 	private final VentanaInicio v;
+	
+	/**
+	 * Controlador de curso plantilla.
+	 * Permite acceder a los cursos disponibles y sus detalles.
+	 */
 	private final ControladorCursoPlantilla cPlantilla;
+	
+	/**
+	 * Controladores de usuario.
+	 */
 	private final ControladorUsuario cUsuario;
+	
+	/**
+	 * Controlador de progreso del curso.
+	 */
 	private final ControladorCursoProgreso cProgreso;
+	
+	/**
+	 * Controlador de preguntas.
+	 */
 	private final ControladorPregunta cPregunta;
 	private final ControladorEstadistica cEstadistica;
-
+	
+	/**
+	 * Constructor de la ventana de cursos.
+	 * Inicializa la ventana y sus componentes.
+	 *
+	 * @param v Ventana de inicio para poder volver a ella.
+	 * @param cPlantilla Controlador de curso plantilla.
+	 * @param cUsuario Controlador de usuario.
+	 * @param cProgreso Controlador de progreso del curso.
+	 * @param cPregunta Controlador de preguntas.
+	 * @param cEstadistica Controlador de estadísticas.
+	 */
 	public VentanaCursos(VentanaInicio v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.cPlantilla = cPlantilla;
 		this.cUsuario = cUsuario;
@@ -140,6 +176,10 @@ public class VentanaCursos extends JFrame {
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Abre una ventana de registro para el usuario.
+	 * Permite al usuario registrarse si aún no lo ha hecho.
+	 */
 	private void abrirVentanaRegistro() {
 		VentanaRegistro ventanaNueva = new VentanaRegistro(this, cUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 		ventanaNueva.setLocationRelativeTo(null);
@@ -147,11 +187,20 @@ public class VentanaCursos extends JFrame {
 		this.setVisible(false);
 	}
 
+	/**
+	 * Cierra la ventana actual y vuelve a la ventana de inicio.
+	 */
 	private void closeWindow() {
 		v.setVisible(true);
 		this.dispose();
 	}
 
+	/**
+	 * Abre una ventana de información del curso seleccionado.
+	 * Si el curso está disponible, muestra sus detalles.
+	 *
+	 * @param optional CursoPlantilla opcional que contiene el curso seleccionado.
+	 */
 	private void abrirVentanaInformacion(Optional<CursoPlantilla> optional) {
 		if (optional.isPresent()) {
 			VentanaInformacion ventanaInformacion = new VentanaInformacion(optional.get(), this, cUsuario);

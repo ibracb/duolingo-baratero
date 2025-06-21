@@ -6,8 +6,23 @@ import java.util.stream.Collectors;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 
+/**
+ * Filtro que permite filtrar cursos por su nivel.
+ * Este filtro se utiliza como parte del patrón Decorator.
+ */
 public class FiltroPorNivel extends FiltroDecorador{
+	
+	/**
+	 * Nivel por el que se filtran los cursos.
+	 */
     private final Nivel nivel;
+    
+    /**
+	 * Constructor que inicializa el filtro y el nivel.
+	 * 
+	 * @param filtro Filtro que se va a decorar.
+	 * @param nivel Nivel por el que se filtran los cursos.
+	 */
     public FiltroPorNivel(Filtro filtro, Nivel nivel) {
         super(filtro);
         this.nivel = nivel;

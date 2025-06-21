@@ -25,14 +25,38 @@ import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
+/**
+ * Ventana de inicio de sesión que permite al usuario iniciar sesión o registrarse.
+ * Presenta un diseño atractivo con un título, iconos y botones para navegar a otras ventanas.
+ */
 public class VentanaInicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	/** Controlador que maneja las operaciones de usuario */
 	private final ControladorUsuario controladorUsuario;
+	
+	/** Controlador para manejar las plantillas de curso */
 	private final ControladorCursoPlantilla cPlantilla;
+	
+	/** Controlador para manejar el progreso del curso */
 	private final ControladorCursoProgreso cProgreso;
+	
+	/** Controlador para manejar las preguntas */
 	private final ControladorPregunta cPregunta;
+	
+	/** Controlador para manejar las estadísticas */
 	private final ControladorEstadistica cEstadistica;
+	
+	/**
+	 * Constructor de la ventana de inicio.
+	 * 
+	 * @param controladorUsuario Controlador de usuario para manejar las operaciones de inicio de sesión y registro.
+	 * @param cPlantilla Controlador de plantillas de curso.
+	 * @param cProgreso Controlador del progreso del curso.
+	 * @param cPregunta Controlador de preguntas.
+	 * @param cEstadistica Controlador de estadísticas.
+	 */
 	public VentanaInicio(ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso, ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.controladorUsuario = controladorUsuario;
 		this.cPlantilla = cPlantilla;
@@ -161,13 +185,19 @@ public class VentanaInicio extends JFrame {
 		NorthPanel.add(etiquetaTitulo);
 
 	}
-
+	
+	/**
+	 * Método para abrir la ventana de temas.
+	 */
 	private void abrirTemasWindow() {
 		VentanaCursos themeWindow = new VentanaCursos(this, cPlantilla, controladorUsuario, cProgreso, cPregunta, cEstadistica);
 		themeWindow.setVisible(true);
 		this.setVisible(false);
 	}
 	
+	/**
+	 * Método para abrir la ventana de inicio de sesión.
+	 */
 	private void abrirVentanaLogin() {
 		VentanaLogin ventanaLogin = new VentanaLogin(this, controladorUsuario, cPlantilla, cProgreso, cPregunta, cEstadistica);
 		ventanaLogin.setVisible(true);

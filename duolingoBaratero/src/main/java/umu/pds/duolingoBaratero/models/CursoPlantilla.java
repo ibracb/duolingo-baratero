@@ -99,58 +99,114 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 
     // Getters y setters
 
+    /**
+	 * Obtiene el nombre del curso.
+	 * @return nombre del curso.
+	 */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Establece el nombre del curso.
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Devolver el propietario del curso.
+     * @return nombre del propietario.
+     */
     public String getPropietario() {
         return propietario;
     }
 
+    /**
+	 * Establece el propietario del curso.
+	 * @param propietario
+	 */
     public void setPropietario(String propietario) {
         this.propietario = propietario;
     }
 
+    /**
+     * 
+     * @return descripción del curso.
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+	 * Establece la descripción del curso.
+	 * @param descripcion
+	 */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+	 * Obtiene los objetivos del curso.
+	 * @return objetivos del curso.
+	 */
     public String getObjetivos() {
         return objetivos;
     }
 
+    /**
+     * Establece los objetivos del curso.
+     * @param objetivos los objetivos del curso.
+     */
     public void setObjetivos(String objetivos) {
         this.objetivos = objetivos;
     }
 
+    /**
+	 * Obtiene el nivel del curso.
+	 * @return nivel del curso.
+	 */
     public Nivel getNivel() {
         return nivel;
     }
 
+    /**
+     * Establece el nivel del curso.
+     * @param nivel el nivel del curso (básico, intermedio, avanzado, etc.).
+     */
     public void setNivel(Nivel nivel) {
         this.nivel = nivel;
     }
 
+    /**
+     * 
+     * @return identificador único de la plantilla.
+     */
     public long getId() {
         return id;
     }
 
+    /**
+	 * Establece el identificador único de la plantilla.
+	 * @param id identificador único.
+	 */
     public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     * 
+     * @return lista de bloques de contenido del curso.
+     */
     public List<BloqueContenido> getContenidos() {
         return contenidos;
     }
 
+    /**
+	 * Establece los bloques de contenido del curso.
+	 * @param contenidos lista de bloques de contenido.
+	 */
     public void setContenidos(List<BloqueContenido> contenidos) {
         this.contenidos = contenidos;
     }
@@ -173,18 +229,34 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
         return true;
     }
 
+    /**
+     * Añade un bloque de contenido a la plantilla del curso.
+     * @param bloqueContenido
+     */
     public void addBloqueContenido(BloqueContenido bloqueContenido) {
         contenidos.add(bloqueContenido);
     }
 
+    /**
+	 * Elimina un bloque de contenido de la plantilla del curso.
+	 * @param bloqueContenido
+	 */
     public void removeBloqueContenido(BloqueContenido bloqueContenido) {
         contenidos.remove(bloqueContenido);
     }
 
+    /**
+	 * Obtiene la imagen asociada a la plantilla del curso.
+	 * @return ruta o identificador de la imagen.
+	 */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+	 * Establece la imagen asociada a la plantilla del curso.
+	 * @param imagen ruta o identificador de la imagen.
+	 */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }

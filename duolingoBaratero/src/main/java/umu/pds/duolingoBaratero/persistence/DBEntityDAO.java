@@ -4,9 +4,20 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 
+/**
+ * Clase abstracta que implementa la interfaz EntityDAO para manejar operaciones
+ * de creación, actualización, eliminación y obtención de entidades en una base
+ * de datos utilizando JPA.
+ *
+ * @param <T> Tipo de entidad que maneja este DAO.
+ */
 public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 
 
+	/**
+	 * Constructor protegido para evitar la instanciación directa de esta clase.
+	 * Las subclases deben proporcionar una implementación concreta.
+	 */
 	protected DBEntityDAO() {
 	}
 
@@ -88,17 +99,63 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 		throw new DAOException(message, e);
 	}
 
+	/**
+	 * Método abstracto que debe ser implementado por las subclases para
+	 * proporcionar la clase de entidad que maneja este DAO.
+	 *
+	 * @return Clase de entidad manejada por este DAO.
+	 */
 	protected abstract Class<T> getEntityClass();
 
+	/**
+	 * Métodos abstractos que deben ser implementados por las subclases para
+	 * proporcionar mensajes de excepción específicos para cada operación.
+	 */
 	protected abstract String getCreateExceptionMessage();
 
+	/**
+	 * Método abstracto que debe ser implementado por las subclases para
+	 * proporcionar un mensaje de excepción específico para la operación de
+	 * actualización.
+	 *
+	 * @return Mensaje de excepción para la operación de actualización.
+	 */
 	protected abstract String getUpdateExceptionMessage();
 
+	/**
+	 * Método abstracto que debe ser implementado por las subclases para
+	 * proporcionar un mensaje de excepción específico para la operación de
+	 * eliminación.
+	 *
+	 * @return Mensaje de excepción para la operación de eliminación.
+	 */
 	protected abstract String getDeleteExceptionMessage();
 
+	/**
+	 * Método abstracto que debe ser implementado por las subclases para
+	 * proporcionar un mensaje de excepción específico para la operación de
+	 * obtención de una entidad por su ID.
+	 *
+	 * @return Mensaje de excepción para la operación de obtención.
+	 */
 	protected abstract String getGetExceptionMessage();
 
+	/**
+	 * Método abstracto que debe ser implementado por las subclases para
+	 * proporcionar un mensaje de excepción específico para la operación de
+	 * obtención de todas las entidades.
+	 *
+	 * @return Mensaje de excepción para la operación de obtención de todas las
+	 *         entidades.
+	 */
 	protected abstract String getGetAllExceptionMessage();
 
+	/**
+	 * Método abstracto que debe ser implementado por las subclases para
+	 * proporcionar la consulta SQL que se utilizará para obtener todas las
+	 * entidades de este tipo.
+	 *
+	 * @return Consulta SQL para obtener todas las entidades.
+	 */
 	protected abstract String getAllQuery();
 }

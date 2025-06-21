@@ -18,11 +18,32 @@ import javax.swing.SwingConstants;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 
+/**
+ * VentanaInformacion es una ventana que muestra información detallada sobre un curso específico.
+ * Incluye el título del curso, una imagen representativa, una descripción, objetivos, tipos de preguntas,
+ * nivel del curso y contenido.
+ */
 public class VentanaInformacion extends JFrame {
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Referencia a la ventana de cursos para poder volver a ella.
+	 */
 	private VentanaCursos v;
+	
+	/**
+	 * Controlador de usuario para manejar operaciones relacionadas con el usuario.
+	 */
 	@SuppressWarnings("unused")
 	private final ControladorUsuario controladorUsuario;
+	
+	/**
+	 * Constructor de la ventana de información del curso.
+	 * 
+	 * @param curso El curso del cual se mostrará la información.
+	 * @param v La ventana de cursos desde la cual se accede a esta ventana.
+	 * @param controladorUsuario El controlador de usuario para operaciones relacionadas con el usuario.
+	 */
 	public VentanaInformacion(CursoPlantilla curso, VentanaCursos v, ControladorUsuario controladorUsuario) {
 		this.controladorUsuario = controladorUsuario;
 		this.v = v;
@@ -85,6 +106,9 @@ public class VentanaInformacion extends JFrame {
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * Cierra la ventana de información y vuelve a la ventana de cursos.
+	 */
 	public void cerrarVentana() {
 		v.setVisible(true);
 		this.dispose();

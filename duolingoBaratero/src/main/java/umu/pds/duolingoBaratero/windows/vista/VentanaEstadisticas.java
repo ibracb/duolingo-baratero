@@ -10,19 +10,51 @@ import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 
+/**
+ * VentanaEstadisticas es una ventana que muestra las estadísticas de uso del usuario.
+ * Incluye información como el tiempo de uso, la mejor racha de victorias, el número de accesos y el porcentaje de respuestas correctas.
+ */
 public class VentanaEstadisticas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Controlador de usuarios.
+	 */
+	@SuppressWarnings("unused")
 	private final ControladorUsuario cUsuario;
+	
+	/**
+	 * Controlador de curso plantilla.
+	 */
 	@SuppressWarnings("unused")
 	private final ControladorCursoPlantilla cPlantilla;
+	
+	/**
+	 * Controlador de progreso del curso.
+	 */
 	@SuppressWarnings("unused")
 	private final ControladorCursoProgreso cProgreso;
+	
+	/**
+	 * Controlador de preguntas.
+	 */
 	@SuppressWarnings("unused")
 	private ControladorPregunta cPregunta;
+	
+	/**
+	 * Controlador de estadísticas.
+	 */
 	private final ControladorEstadistica cEstadistica;
 	
+	/**
+	 * Constructor de la ventana de estadísticas.
+	 * @param cUsuario Controlador de usuario.
+	 * @param cPlantilla Controlador de curso plantilla.
+	 * @param cProgreso Controlador de progreso del curso.
+	 * @param cPregunta Controlador de preguntas.
+	 * @param cEstadistica Controlador de estadísticas.
+	 */
 	public VentanaEstadisticas(ControladorUsuario cUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso,
 			ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
         // Configuración de la ventana
@@ -110,18 +142,34 @@ public class VentanaEstadisticas extends JFrame {
 
     }
 	
+	/**
+	 * 
+	 * @return Porcentaje de respuestas correctas del usuario.
+	 */
 	private String getPorcentajeAciertos() {
 				return cEstadistica.getPorcentajeAciertos() + "%";
 	}
 	
+	/**
+	 * 
+	 * @return Número de accesos del usuario.
+	 */
 	private String getRachaAcceso() {
 		return String.valueOf(cEstadistica.getRachaAcceso());
 	}
 	
+	/**
+	 * 
+	 * @return Mejor racha de victorias del usuario.
+	 */
 	private String getMaxVictorias() {
 		return String.valueOf(cEstadistica.getRachaVictorias());
 	}
 	
+	/**
+	 * 
+	 * @return Tiempo de uso del usuario en minutos.
+	 */
 	private String getTiempoUso() {
 		return String.valueOf(cEstadistica.getTiempoUso()) + " minutos";
 	}

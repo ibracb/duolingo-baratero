@@ -19,19 +19,50 @@ import javax.swing.SwingConstants;
 import umu.pds.duolingoBaratero.models.PreguntaImagenes;
 import umu.pds.duolingoBaratero.services.IComprobador;
 
+/**
+ * Panel que muestra una pregunta de tipo imágenes con opciones de respuesta.
+ * Permite al usuario seleccionar una imagen como respuesta a la pregunta.
+ */
 public class PanelPreguntaImagenes extends JPanel implements IComprobador {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Botones de opción para las respuestas.
+	 * Se utilizan JToggleButton para permitir la selección de una sola opción.
+	 */
 	private JToggleButton[] imagenes; // Botones de imagen
+	
+	/**
+	 * Etiqueta que muestra la pregunta.
+	 */
 	private JLabel lblPregunta;
+	
+	/**
+	 * La pregunta de tipo imágenes que contiene el texto y las opciones.
+	 */
 	private PreguntaImagenes pregunta;
+	
+	/**
+	 * Respuesta seleccionada por el usuario.
+	 * Se almacena como texto de la opción elegida.
+	 */
 	private String respuestaUsuario;
-
+	
+	/**
+	 * Constructor que inicializa el panel con una pregunta de tipo PreguntaImagenes.
+	 * 
+	 * @param preguntaImagenes La pregunta de tipo PreguntaImagenes que se mostrará en el panel.
+	 */
 	public PanelPreguntaImagenes(PreguntaImagenes preguntaImagenes) {
 		this.pregunta = preguntaImagenes;
 		inicializar();
 	}
 
+	/**
+	 * Inicializa el panel configurando su diseño, añadiendo la etiqueta de la
+	 * pregunta y los botones de imagen como opciones de respuesta.
+	 */
 	private void inicializar() {
 		setLayout(new BorderLayout()); // Usamos BorderLayout para mejor distribución
 

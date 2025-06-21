@@ -28,27 +28,97 @@ import umu.pds.duolingoBaratero.windows.components.BarraSuperior;
 import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 import umu.pds.duolingoBaratero.windows.components.CursoCreadoCellRenderer;
 
+/**
+ * Ventana para elegir un curso de los cursos creados por el usuario.
+ */
 public class VentanaElegirCurso extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Valor por defecto para los filtros de busqueda
+	 */
 	private final static String VALOR_DEFAULT_FILTROS = "";
 
+	/**
+	 * Campo de texto para el nombre del curso.
+	 */
 	private JTextField textFieldNombre;
+	
+	/**
+	 * Campo de texto para el creador del curso.
+	 */
 	private JTextField textFieldCreador;
+	
+	/**
+	 * Modelo de la lista de cursos creados.
+	 */
 	private DefaultListModel<CursoPlantilla> modeloCursosCreados;
+	
+	/**
+	 * Lista que muestra los cursos creados.
+	 */
 	private JList<CursoPlantilla> listaCursosCreados;
+	
+	/**
+	 * ComboBox para seleccionar el nivel del curso.
+	 */
 	private JComboBox<Nivel> comboBoxNiveles;
+	
+	/**
+	 * Ventana principal de la aplicación.
+	 */
 	private VentanaPrincipal v;
+	
+	/**
+	 * Controladores necesarios para la funcionalidad de la ventana.
+	 */
 	private final ControladorCursoPlantilla cPlantilla;
+	
+	
+	/**
+	 * Controlador de usuario.
+	 */
+	@SuppressWarnings("unused")
 	private final ControladorUsuario cUsuario;
+	
+	/**
+	 * Controlador de progreso del curso.
+	 */
 	@SuppressWarnings("unused")
 	private final ControladorCursoProgreso cProgreso;
+	
+	/**
+	 * Controlador de preguntas.
+	 */
 	@SuppressWarnings("unused")
 	private final ControladorPregunta cPregunta;
+	
+	/**
+	 * Controlador de estadísticas.
+	 */
 	private final ControladorEstadistica cEstadistica;
+	
+	/**
+	 * Indica si la ventana es para exportar un curso.
+	 */
 	private boolean esParaExportar;
+	
+	/**
+	 * Extensión del archivo para exportar el curso.
+	 */
 	private String extension;
 
+	/**
+	 * Constructor de la ventana para elegir un curso.
+	 * 
+	 * @param v Ventana principal de la aplicación.
+	 * @param cPlantilla Controlador de cursos plantilla.
+	 * @param cUsuario Controlador de usuario.
+	 * @param cProgreso Controlador de progreso del curso.
+	 * @param cPregunta Controlador de preguntas.
+	 * @param cEstadistica Controlador de estadísticas.
+	 */
 	public VentanaElegirCurso(VentanaPrincipal v, ControladorCursoPlantilla cPlantilla, ControladorUsuario cUsuario, ControladorCursoProgreso cProgreso,
 			ControladorPregunta cPregunta,ControladorEstadistica cEstadistica) {
 		this.cPlantilla = cPlantilla;
@@ -154,11 +224,23 @@ public class VentanaElegirCurso extends JFrame {
 
 	}
 	
+	/**
+	 * Método para determinar si un campo de texto está completo.
+	 * Si el campo contiene un valor, se devuelve el valor después de los dos puntos.
+	 * Si no, se devuelve un valor por defecto.
+	 * 
+	 * @param texto El texto del campo a evaluar.
+	 * @return El valor del campo o un valor por defecto si no está completo.
+	 */
 	private String isCompleted(String texto) {
 		String [] partes = texto.split(":");
 		return partes.length > 1 ? partes[1] : VALOR_DEFAULT_FILTROS;
 	}
 	
+	/**
+	 * Método para buscar cursos según los filtros introducidos por el usuario.
+	 * Obtiene el nombre, propietario y nivel del curso, y actualiza la lista de cursos creados.
+	 */
 	private void buscarCursos() {
 		String nombre, propietario;
 		nombre = isCompleted(textFieldNombre.getText());
@@ -212,10 +294,20 @@ public class VentanaElegirCurso extends JFrame {
 		
 	}
 
+	/**
+	 * Método para establecer si la ventana es para exportar un curso.
+	 * 
+	 * @param esParaExportar Indica si la ventana es para exportar un curso.
+	 */
 	public void setEsParaExportar(boolean esParaExportar) {
 		this.esParaExportar = esParaExportar;
 	}
 
+	/**
+	 * Método para establecer la extensión del archivo para exportar el curso.
+	 * 
+	 * @param extension La extensión del archivo.
+	 */
 	public void setExtension(String extension) {
 		this.extension = extension;
 	}

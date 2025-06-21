@@ -1,7 +1,6 @@
 package umu.pds.duolingoBaratero.persistence;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
 import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.models.Nivel;
 

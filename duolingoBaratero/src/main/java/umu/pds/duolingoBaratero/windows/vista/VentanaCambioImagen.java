@@ -16,12 +16,29 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
+/**
+ * Ventana para cambiar la imagen de perfil del usuario.
+ * Permite seleccionar una imagen desde archivos locales o mediante una URL.
+ */
 public class VentanaCambioImagen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Ventana principal que contiene la imagen a cambiar.
+	 */
 	private VentanaCambiaImagenes v;
+	
+	/**
+	 * Campo de texto para ingresar la URL de la imagen.
+	 */
 	private JTextField textField;
 
+	/**
+	 * Constructor de la ventana de cambio de imagen.
+	 * 
+	 * @param v Ventana principal que contiene la imagen a cambiar.
+	 */
 	public VentanaCambioImagen(VentanaCambiaImagenes v) {
 
 		this.setBounds(100, 100, 700, 300);
@@ -87,6 +104,10 @@ public class VentanaCambioImagen extends JFrame {
 		getContentPane().add(btnNewButton, gbc_btnNewButton);
 	}
 
+	/**
+	 * Cambia la imagen de perfil del usuario seleccionando una imagen desde los archivos locales.
+	 * Valida que el archivo seleccionado sea una imagen válida.
+	 */
 	private void cambiarImagen() {
 		// Abrir diálogo para seleccionar archivo
 		JFileChooser fileChooser = new JFileChooser();
@@ -117,8 +138,11 @@ public class VentanaCambioImagen extends JFrame {
 			dispose();
 		}
 	}
-
-	@SuppressWarnings("deprecation")
+	
+	/**
+	 * Cambia la imagen de perfil del usuario utilizando una URL proporcionada por el usuario.
+	 * Descarga la imagen desde la URL y la establece como nueva imagen de perfil.
+	 */
 	private void cambiarImagenConURL() {
 		try {
 			URL imageURL = new URL(textField.getText());

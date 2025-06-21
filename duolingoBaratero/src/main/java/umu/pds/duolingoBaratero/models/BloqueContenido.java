@@ -17,7 +17,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.models.aprendizajes.FactoriaAprendizaje;
-import umu.pds.duolingoBaratero.windows.components.MensajeTemporal;
 
 /**
  * Representa un bloque de contenido dentro de un curso de plantilla.

@@ -41,7 +41,14 @@ public class ServicioCursoPlantilla {
 	private final DBPreguntaDAO dbPreguntaDAO;
 	private final SerializerFactory serializerFactory;
 
-	// Constructor con inyección de dependencias
+	/**
+	 * Constructor del servicio de cursos plantilla.
+	 * @param dbCursoPlantillaDAO
+	 * @param dbCursoEnProgresoDAO
+	 * @param dbBloqueContenidoDAO
+	 * @param dbPreguntaDAO
+	 * @param serializerFactory
+	 */
 	public ServicioCursoPlantilla(DBCursoPlantillaDAO dbCursoPlantillaDAO, DBCursoEnProgresoDAO dbCursoEnProgresoDAO,
 			DBBloqueContenidoDAO dbBloqueContenidoDAO, DBPreguntaDAO dbPreguntaDAO,
 			SerializerFactory serializerFactory) {

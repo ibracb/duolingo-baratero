@@ -29,48 +29,89 @@ import jakarta.persistence.Table;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Usuario {
 
+	/**
+	 * Número máximo de vidas que un usuario puede tener.
+	 */
 	private static final int VIDAS_MAXIMAS = 5;
+	
+	/**
+	 * Número de minutos necesarios para recuperar una vida.
+	 */
 	private static final int MINUTOS_POR_VIDA = 5;
 
+	/**
+	 * Identificador único del usuario.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	/**
+	 * Nombre del usuario.
+	 */
 	@Column(name = "nombre")
 	private String nombre;
 
+	/**
+	 * Apodo o nickname del usuario.
+	 */
 	@JsonIgnore
 	@Column(name = "nickname")
 	private String nickname;
 
+	/**
+	 * Correo electrónico del usuario.
+	 */
 	@JsonIgnore
 	@Column(name = "correo")
 	private String correo;
 
+	/**
+	 * Contraseña del usuario, almacenada de forma segura.
+	 */
 	@JsonIgnore
 	@Column(name = "passwd")
 	private String passwd;
 
+	/**
+	 * Ruta o identificador de imagen asociada al usuario.
+	 */
 	@JsonIgnore
 	@Column(name = "imagen")
 	private String imagen;
 
+	/**
+	 * Cursos en progreso del usuario, representados por un conjunto de
+	 * CursoEnProgreso.
+	 */
 	@JsonIgnore
 	@OneToMany
 	@JoinColumn(name = "usuario_id")
 	private Set<CursoEnProgreso> cursos;
 
+	/**
+	 * Estadísticas del usuario, como tiempo de uso, rachas, etc.
+	 */
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(unique = true)
 	private Estadistica estadistica;
 
+	/**
+	 * Número de vidas disponibles para el usuario.
+	 */
 	@Column(name = "vidas")
 	private int vidas;
 
+	/**
+	 * Fecha y hora de la última recuperación de vidas.
+	 */
 	@Column(name = "ultimaRecuperacion")
 	private LocalDateTime ultimaRecuperacion;
 
+	/**
+	 * Constructor por defecto requerido por JPA.
+	 */
 	public Usuario() {
 	}
 
@@ -98,10 +139,18 @@ public class Usuario {
 		this.imagen = imagen;
 	}
 
+	/**
+	 * Constructor con todos los atributos del usuario.
+	 */
 	public Set<CursoEnProgreso> getCursos() {
 		return cursos;
 	}
 
+	/**
+	 * Establece los cursos en progreso del usuario.
+	 * 
+	 * @param cursos Conjunto de cursos en progreso
+	 */
 	public void setCursos(Set<CursoEnProgreso> cursos) {
 		this.cursos = cursos;
 	}

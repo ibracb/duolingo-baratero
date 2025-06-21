@@ -30,18 +30,65 @@ import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
 import umu.pds.duolingoBaratero.controllers.ControladorUsuario;
 
+/**
+ * Ventana de inicio de sesión para el usuario.
+ * Permite al usuario ingresar su correo y contraseña para iniciar sesión.
+ * Si las credenciales son correctas, se abre la ventana principal.
+ */
 public class VentanaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Campo de texto para ingresar la contraseña del usuario.
+	 */
 	private JPasswordField passwordField;
+	
+	/**
+	 * Ventana de inicio que se muestra al usuario.
+	 */
 	private final VentanaInicio v;
+	
+	/**
+	 * Campo de texto para ingresar el correo del usuario.
+	 */
 	private JTextField textField;
+	
+	/**
+	 * Controlador de usuarios.
+	 */
 	private final ControladorUsuario controladorUsuario;
+	
+	/**
+	 * Controlador de curso plantilla.
+	 */
 	private final ControladorCursoPlantilla cPlantilla;
+	
+	/**
+	 * Controlador de progreso del curso.
+	 */
 	private final ControladorCursoProgreso cProgreso;
+	
+	/**
+	 * Controlador de preguntas.
+	 */
 	private final ControladorPregunta cPregunta;
+	
+	/**
+	 * Controlador de estadísticas.
+	 */
 	private final ControladorEstadistica cEstadistica;
 	
+	/**
+	 * Constructor de la ventana de inicio de sesión.
+	 * 
+	 * @param v Ventana de inicio que se muestra al usuario.
+	 * @param controladorUsuario Controlador de usuarios.
+	 * @param cPlantilla Controlador de curso plantilla.
+	 * @param cProgreso Controlador de progreso del curso.
+	 * @param cPregunta Controlador de preguntas.
+	 * @param cEstadistica Controlador de estadísticas.
+	 */
 	public VentanaLogin(VentanaInicio v, ControladorUsuario controladorUsuario, ControladorCursoPlantilla cPlantilla, ControladorCursoProgreso cProgreso,
 			ControladorPregunta cPregunta, ControladorEstadistica cEstadistica) {
 		this.controladorUsuario = controladorUsuario;
@@ -166,6 +213,11 @@ public class VentanaLogin extends JFrame {
 
 	}
 	
+	/**
+	 * Comprueba si el usuario existe y si las credenciales son correctas.
+	 * Si las credenciales son válidas, se abre la ventana principal.
+	 * Si no, muestra un mensaje de error.
+	 */
 	public void comprobarUsuario() {
 		String correo = textField.getText();
 		char[] passwd = passwordField.getPassword();
@@ -186,6 +238,9 @@ public class VentanaLogin extends JFrame {
 		}
 	}
 	
+	/**
+	 * Cierra la ventana de inicio de sesión y muestra la ventana de inicio.
+	 */
 	private void closeWindow() {
 		v.setVisible(true);
 		this.dispose();		

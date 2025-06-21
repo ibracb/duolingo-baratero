@@ -7,20 +7,50 @@ import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Panel que muestra una pregunta de tipo opciones con botones para seleccionar
+ * la respuesta correcta. Permite al usuario elegir una opción y verificar su
+ * respuesta.
+ */
 public class PanelPreguntaOpciones extends JPanel implements IComprobador {
 
     private static final long serialVersionUID = 1L;
+    
+    /**
+	 * Etiqueta que muestra la pregunta.
+	 */
     private JLabel lblPregunta;
+    
+    /**
+     * Botones de opción para las respuestas.
+     */
     private JToggleButton[] opciones; // Botones de imagen
+    
+    /**
+	 * La pregunta de tipo opciones que contiene el texto y las opciones.
+	 */
     private PreguntaOpciones pregunta;
-	private String respuestaUsuario;
+	
+    /**
+     * Respuesta seleccionada por el usuario.
+     */
+    private String respuestaUsuario;
 
+    /**
+	 * Constructor que inicializa el panel con una pregunta de tipo opciones.
+	 * 
+	 * @param pregunta La pregunta de tipo opciones que se mostrará en el panel.
+	 */
     public PanelPreguntaOpciones(PreguntaOpciones pregunta) {
         this.pregunta = pregunta;
         inicializar();
     }
     
 
+    /**
+	 * Inicializa el panel configurando su diseño, añadiendo la etiqueta de la
+	 * pregunta y los botones de opción.
+	 */
 	private void inicializar() {
 		setLayout(new BorderLayout()); // Usamos BorderLayout para mejor distribución
 

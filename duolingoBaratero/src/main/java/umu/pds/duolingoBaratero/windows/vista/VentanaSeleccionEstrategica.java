@@ -17,13 +17,42 @@ import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.models.CursoEnProgreso;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 
+/**
+ * Ventana para seleccionar una estrategia de aprendizaje.
+ * Permite al usuario elegir entre diferentes estrategias de aprendizaje
+ * para un curso en progreso.
+ */
 public class VentanaSeleccionEstrategica extends JDialog  {
 
     private static final long serialVersionUID = 1L;
+    
+    /**
+     * Panel principal de la ventana.
+     */
     private JPanel contentPane;
+    
+    /**
+	 * Ventana principal desde la cual se abre esta ventana.
+	 */
     private VentanaPrincipal v;
+    
+    /**
+	 * Curso en progreso para el cual se selecciona la estrategia de aprendizaje.
+	 */
     private CursoEnProgreso curso;
+    
+    /**
+     * Controlador para gestionar el progreso del curso.
+     */
     private ControladorCursoProgreso cProgreso;
+    
+    /**
+	 * Constructor de la ventana de selección de estrategia de aprendizaje.
+	 * 
+	 * @param v Ventana principal desde la cual se abre esta ventana.
+	 * @param curso Curso en progreso para el cual se selecciona la estrategia de aprendizaje.
+	 * @param cProgreso Controlador para gestionar el progreso del curso.
+	 */
     public VentanaSeleccionEstrategica(VentanaPrincipal v, CursoEnProgreso curso, ControladorCursoProgreso cProgreso
     		) {
     	super(v, "Selecciona una estrategia de aprendizaje", true);
@@ -83,6 +112,12 @@ public class VentanaSeleccionEstrategica extends JDialog  {
 
     }
     
+    /**
+	 * Configura el aprendizaje seleccionado para el curso en progreso.
+	 * Si la configuración es exitosa, actualiza la vista y cierra la ventana.
+	 * 
+	 * @param aprendizajeSeleccionado La estrategia de aprendizaje seleccionada.
+	 */
     private void setAprendizaje(AprendizajeSeleccionado aprendizajeSeleccionado) {
     	if (cProgreso.configurarCursoProgreso(curso, aprendizajeSeleccionado)) {
     		// Mensaje de exito
