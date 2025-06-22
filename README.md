@@ -78,21 +78,59 @@ Cuando el usuario cierra la aplicación y luego la vuelve a abrir, se toma el ú
 
 ---
 
-## Cómo ejecutarlo
+# Cómo ejecutar el proyecto `duolingoBaratero`
 
-Para ejecutar este proyecto primero debes descargarlo desde GitHub. Puedes descargarlo como ZIP o clonarlo usando el siguiente comando:
+## Requisitos previos
 
-```git clone https://github.com/ibracb23/duolingoBaratero```
-Una vez descargado:
+- JDK 17 instalado
+- Apache Maven instalado
+- Eclipse IDE (si deseas usar entorno gráfico)
 
-Abre Eclipse.
+---
 
-Selecciona como workspace la carpeta principal de DuolingoBaratero.
+## Ejecutar desde Eclipse
 
-Usando la librería de JDK 17, importa la carpeta de duolingoBaratero como un Maven Project.
+1. Descargar el proyecto desde GitHub  
+   Puedes hacerlo de dos formas:
 
-Una vez importado, accede a la carpeta: ```/src/main/java/umu/pds/duolingoBaratero/program```
-Abre el fichero Program.java.
+   - Clonando el repositorio:  
+     ```bash
+     git clone https://github.com/ibracb23/duolingoBaratero
+     ```
+   - O descargando el archivo ZIP desde la página del repositorio y extrayéndolo.
 
-Con el archivo abierto, haz clic en el botón de ejecutar de Eclipse y el programa se iniciará automáticamente.
+2. Abrir Eclipse  
+   - Selecciona un workspace.
+
+3. Importar el proyecto como un **Maven Project**  
+   - Ve a: `File > Import > Existing Maven Projects`
+   - Selecciona la carpeta del proyecto (`duolingoBaratero`)
+   - Asegúrate de que esté usando **JDK 17** como librería.
+
+4. Navegar hasta el archivo principal  
+   - Abre: `src/main/java/umu/pds/duolingoBaratero/program/Program.java`
+
+5. Ejecutar el programa  
+   - Con el archivo `Program.java` abierto, haz clic en el botón de ejecutar (`Run`) de Eclipse.
+
+---
+
+## Ejecutar desde la terminal con Maven
+
+```bash
+# 1. Clonar el repositorio desde GitHub
+git clone https://github.com/ibracb23/duolingoBaratero
+
+# 2. Entrar al directorio del proyecto
+cd duolingoBaratero
+
+# 3. Verificar que Maven está instalado
+mvn -v
+
+# 4. Compilar el proyecto
+mvn compile
+
+# 5. Ejecutar la aplicación
+mvn exec:java
+
 

@@ -151,6 +151,14 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.6.1</version>
 				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>3.1.0</version>
+					<configuration>
+						<mainClass>umu.pds.duolingoBaratero.program.Program</mainClass> 
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -163,7 +171,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>umu.pds.duolingoBaratero.program.Program </mainClass> 
+							<mainClass>umu.pds.duolingoBaratero.program.Program </mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
