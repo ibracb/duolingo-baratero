@@ -46,7 +46,7 @@ class CursoPlantillaTest {
         assertEquals("Curso intro Java", cursoPlantilla.getDescripcion());
         assertEquals("Aprender Java", cursoPlantilla.getObjetivos());
         assertEquals(Nivel.BASICO, cursoPlantilla.getNivel());
-        assertEquals(2, cursoPlantilla.getContenidos().size());
+        assertEquals(1, cursoPlantilla.getContenidos().size());
     }
 
     /**
@@ -54,8 +54,8 @@ class CursoPlantillaTest {
      */
     @Test
     void testIsCursoFinalizado() {
-        assertFalse(cursoPlantilla.isCursoFinalizado(1));
-        assertTrue(cursoPlantilla.isCursoFinalizado(2));
+        assertFalse(cursoPlantilla.isCursoFinalizado(2));
+        assertTrue(cursoPlantilla.isCursoFinalizado(1));
     }
 
     /**

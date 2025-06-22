@@ -263,7 +263,7 @@ public class ControladorCursoPlantilla {
 	 */
 	public ImageIcon getScaledDefaultImage(int dimensiones) {
 		try {
-			ImageIcon image = new ImageIcon(getClass().getResource("/persona.png"));
+			ImageIcon image = new ImageIcon(getClass().getResource("/profile.png"));
 			return servicioImagenes.getScaledImage(image, dimensiones);
 		} catch (Exception e) {
 			System.err.println("Error al obtener imagen por defecto: " + e.getMessage());

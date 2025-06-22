@@ -29,9 +29,9 @@ public class ServicioEstadisticaTest {
 
     @Test
     void testGetTiempoUso() {
-        when(estadistica.getTiempoUsoTotalActual()).thenReturn(100.0);
+        when(estadistica.getTiempoUsoTotalActual()).thenReturn((long) (100));
         servicio.inicializarEstadistica(estadistica);
-        assertEquals(100.0, servicio.getTiempoUso());
+        assertEquals(100, servicio.getTiempoUso());
     }
 
     @Test
@@ -43,8 +43,8 @@ public class ServicioEstadisticaTest {
 
     @Test
     void testActualizarRachaVictorias() {
-        servicio.inicializarEstadistica(esadistica);
-        servicio.actualizarRachaVictoris(tue);
+        servicio.inicializarEstadistica(estadistica);
+        servicio.actualizarRachaVictorias(true);
         verify(estadistica).incrementarRachaVictorias();
         servicio.actualizarRachaVictorias(false);
         verify(estadistica).resetRachaVictorias();
@@ -74,7 +74,7 @@ public class ServicioEstadisticaTest {
 
     @Test
     void testGetPorcentajeAciertos() {
-        when(estaditica.getPorcentajeAciertos()).thenReturn(87.5);
+        when(estadistica.getPorcentajeAciertos()).thenReturn(87.5);
         servicio.inicializarEstadistica(estadistica);
         assertEquals("87.5", servicio.getPorcentajeAciertos());
     }

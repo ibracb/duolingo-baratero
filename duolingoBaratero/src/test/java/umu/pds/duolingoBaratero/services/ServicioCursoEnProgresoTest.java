@@ -9,7 +9,7 @@ import umu.pds.duolingoBaratero.models.*;
 import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
 import umu.pds.duolingoBaratero.persistence.DBCursoEnProgresoDAO;
 
-public class ServicioCursoProgresoTest {
+public class ServicioCursoEnProgresoTest {
 
     private ServicioCursoProgreso servicio;
     private DBCursoEnProgresoDAO cursoEnProgresoDAO;
@@ -24,8 +24,8 @@ public class ServicioCursoProgresoTest {
     void crearCurzoEnProgreso() {
         CursoPlantilla plantilla = new CursoPlantilla("A1", "Alice", "desc", "obj");
         Usuario usuario = new Usuario("u", "n", "c", "pw");
-        CursoEnProgreso curso = servicio.crearrCursoEnProgreso(plantilla, usuario);
-        assertEquals(plantilla, curso.getCurso());
+        CursoEnProgreso curso = servicio.crearCursoEnProgreso(plantilla, usuario);
+        assertEquals(plantilla, curso.getCursoPlantilla());
         assertEquals(usuario, curso.getUsuario());
     }
 
@@ -33,14 +33,14 @@ public class ServicioCursoProgresoTest {
     void pruebaSetAprendisaje() {
         CursoEnProgreso curso = mock(CursoEnProgreso.class);
         AprendizajeSeleccionado aprendizaje = mock(AprendizajeSeleccionado.class);
-        assertTrue(servicio.setAprendisaje(curso, aprendizaje));
+        assertTrue(servicio.setAprendizaje(curso, aprendizaje));
         verify(curso).setAprendizaje(aprendizaje);
     }
 
     @Test
     void testEstadoNuevoCurso() {
         CursoEnProgreso curso = mock(CursoEnProgreso.class);
-        when(curso.isNuebo()).thenReturn(true);
+        when(curso.isNuevo()).thenReturn(true);
         assertTrue(servicio.esCursoNuevo(curso));
     }
 

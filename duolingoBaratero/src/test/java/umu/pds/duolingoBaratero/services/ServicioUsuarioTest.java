@@ -39,7 +39,7 @@ public class ServicioUsuarioTest {
 
     @Test
     void testRegistrarUsuarioExistente() {
-        when(usuarioDAO.existUsuario("mail")).thenReturn(true);
+        when(usuarioDAO.existeUsuario("mail")).thenReturn(true);
         assertFalse(servicio.registrarUsuario("Pepe", "Gomez", "mail", "123"));
     }
 
@@ -52,7 +52,7 @@ public class ServicioUsuarioTest {
 
     @Test
     void testComprobarUsuarioInexistente() {
-        when(usuarioDAO.get("mail)).thenReturn(null);
+        when(usuarioDAO.get("mail")).thenReturn(null);
         assertFalse(servicio.comprobarUsuario("mail", "pw"));
     }
 
@@ -79,7 +79,7 @@ public class ServicioUsuarioTest {
         when(usuarioDAO.get("correo")).thenReturn(u);
         servicio.comprobarUsuario("correo", "pw");
         servicio.setImagen("img.png");
-        assertEquals("img.png", servicio.getUsuarioActual()getImagen());
+        assertEquals("img.png", servicio.getUsuarioActual().getImagen());
     }
 
     @Test

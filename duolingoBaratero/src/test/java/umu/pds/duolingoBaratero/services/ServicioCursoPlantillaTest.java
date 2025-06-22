@@ -2,14 +2,11 @@ package umu.pds.duolingoBaratero.services;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.io.File;
 import java.util.*;
 
 import umu.pds.duolingoBaratero.models.*;
 import umu.pds.duolingoBaratero.persistence.*;
-import umu.pds.duolingoBaratero.services.serializers.Serializer;
 import umu.pds.duolingoBaratero.services.serializers.SerializerFactory;
 
 import static org.junit.jupiter.api.Assertions.*;

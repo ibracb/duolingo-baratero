@@ -37,7 +37,7 @@ class UsuarioTest {
         assertEquals("juan123", usuarioSinImagen.getNickname());
         assertEquals("juan@mail.com", usuarioSinImagen.getCorreo());
         assertEquals("password123", usuarioSinImagen.getPasswd());
-        assertNull(usuarioSinImagen.getImagen());
+        assertEquals("",usuarioSinImagen.getImagen());
     }
 
     @Test

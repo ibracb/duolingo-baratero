@@ -102,7 +102,7 @@ public class VentanaEstadisticas extends JFrame {
         JPanel panelRachaVictorias = new JPanel(new GridLayout(2, 1));
         panelRachaVictorias.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1, true));
         panelRachaVictorias.setBackground(panelColor);
-        JLabel lblRachaVictorias = new JLabel("🏆 Mejor racha de victorias:", SwingConstants.CENTER);
+        JLabel lblRachaVictorias = new JLabel("🏆 Racha de victorias actual:", SwingConstants.CENTER);
         lblRachaVictorias.setFont(font);
         JLabel lblValorRachaVictorias = new JLabel(getMaxVictorias(), SwingConstants.CENTER);
         lblValorRachaVictorias.setFont(new Font("Arial", Font.BOLD, 14));

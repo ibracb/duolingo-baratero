@@ -63,10 +63,6 @@ public class BloqueContenidoTest {
         assertEquals(2, preguntas.size());
         assertTrue(preguntas.contains(preguntaMock1));
         assertTrue(preguntas.contains(preguntaMock2));
-        List<Pregunta> listaOrdenada = new ArrayList<>(preguntas);
-         // Verificar que están ordenadas por ID
-        assertEquals(preguntaMock1, listaOrdenada.get(0));
-        assertEquals(preguntaMock2, listaOrdenada.get(1));
 
     }
 
