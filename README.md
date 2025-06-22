@@ -53,17 +53,6 @@ La funcionalidad del proyecto se encuentra detallada en el manual de usuario. Ad
 
 ---
 
-### Sistema de vidas (Funcionalidad Extra)
-
-- El usuario comienza con **5 vidas**.
-- Por cada pregunta que falle, pierde una vida.
-- Las vidas se recuperan automáticamente después de **5 minutos** cada una, hasta un máximo de 5 vidas.
-
-Para gestionar esto, se utiliza un temporizador mientras la aplicación está en funcionamiento. 
-
-Cuando el usuario cierra la aplicación y luego la vuelve a abrir, se toma el último instante en que cerró sesión y el instante actual al abrirla. Se calcula la diferencia entre ambos y, con base en ese tiempo, se actualizan las vidas y el tiempo restante para la próxima regeneración.
-
-
 ### [Requisitos](./Requisitos/)
 
 - `README.md`  
@@ -74,6 +63,20 @@ Cuando el usuario cierra la aplicación y luego la vuelve a abrir, se toma el ú
 
 - `Ventanas/`  
   Imágenes de las ventanas de la aplicación.
+
+---
+
+## Sistema de vidas (Funcionalidad Extra)
+
+- El usuario comienza con **5 vidas**.
+- Por cada pregunta que falle, pierde una vida.
+- Las vidas se recuperan automáticamente después de **5 minutos** cada una, hasta un máximo de 5 vidas.
+
+Para gestionar esto, se utiliza un temporizador mientras la aplicación está en funcionamiento. 
+
+Cuando el usuario cierra la aplicación y luego la vuelve a abrir, se toma el último instante en que cerró sesión y el instante actual al abrirla. Se calcula la diferencia entre ambos y, con base en ese tiempo, se actualizan las vidas y el tiempo restante para la próxima regeneración.
+
+---
 
 ## Cómo ejecutarlo
 
