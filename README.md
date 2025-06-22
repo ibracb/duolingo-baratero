@@ -46,8 +46,23 @@ Este repositorio contiene los recursos relacionados con el diseño, la documenta
 
 ### [Manual de usuario](./Documentacion/README.md)
 
-- `README.md`  
+La funcionalidad del proyecto se encuentra detallada en el manual de usuario. Además, como funcionalidad extra, hemos implementado un sistema de vidas:
+
+- **README.md**  
   Manual de usuario de la aplicación.
+
+---
+
+### Sistema de vidas (Funcionalidad Extra)
+
+- El usuario comienza con **5 vidas**.
+- Por cada pregunta que falle, pierde una vida.
+- Las vidas se recuperan automáticamente después de **5 minutos** cada una, hasta un máximo de 5 vidas.
+
+Para gestionar esto, se utiliza un temporizador mientras la aplicación está en funcionamiento. 
+
+Cuando el usuario cierra la aplicación y luego la vuelve a abrir, se toma el último instante en que cerró sesión y el instante actual al abrirla. Se calcula la diferencia entre ambos y, con base en ese tiempo, se actualizan las vidas y el tiempo restante para la próxima regeneración.
+
 
 ### [Requisitos](./Requisitos/)
 
@@ -60,4 +75,21 @@ Este repositorio contiene los recursos relacionados con el diseño, la documenta
 - `Ventanas/`  
   Imágenes de las ventanas de la aplicación.
 
+## Cómo ejecutarlo
+
+Para ejecutar este proyecto primero debes descargarlo desde GitHub. Puedes descargarlo como ZIP o clonarlo usando el siguiente comando:
+
+```git clone https://github.com/ibracb23/duolingoBaratero```
+Una vez descargado:
+
+Abre Eclipse.
+
+Selecciona como workspace la carpeta principal de DuolingoBaratero.
+
+Usando la librería de JDK 17, importa la carpeta de duolingoBaratero como un Maven Project.
+
+Una vez importado, accede a la carpeta: ```/src/main/java/umu/pds/duolingoBaratero/program```
+Abre el fichero Program.java.
+
+Con el archivo abierto, haz clic en el botón de ejecutar de Eclipse y el programa se iniciará automáticamente.
 

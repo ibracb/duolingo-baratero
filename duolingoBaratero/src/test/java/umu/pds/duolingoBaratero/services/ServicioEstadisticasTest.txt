@@ -1,0 +1,81 @@
+package umu.pds.duolingoBaratero.services;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import umu.pds.duolingoBaratero.models.*;
+import umu.pds.duolingoBaratero.models.aprendizajes.AprendizajeSeleccionado;
+import umu.pds.duolingoBaratero.persistence.*;
+
+public class ServicioEstadisticaTest {
+    private ServicioEstadistica servicio;
+    private DBEstadisticaDAO estadisticaDAO;
+    private Estadistica estadistica;
+
+    @BeforeEach
+    void setUp() {
+        estadisticaDAO = mock(DBEstadisticaDAO.class);
+        estadistica = mock(Estadistica.class);
+        servicio = new ServicioEstadistica(estadisticaDAO);
+    }
+
+    @Test
+    void testInicializarEstadistica() {
+       servicio.inicializarEstadistica(estadistica);
+        verify(estadistica).iniciarSesion();
+    }
+
+    @Test
+    void testGetTiempoUso() {
+        when(estadistica.getTiempoUsoTotalActual()).thenReturn(100.0);
+        servicio.inicializarEstadistica(estadistica);
+        assertEquals(100.0, servicio.getTiempoUso());
+    }
+
+    @Test
+    void testGetRachaVictorias() {
+        when(estadistica.getRachaVictorias()).thenReturn(3);
+        servicio.inicializarEstadistica(estadistica);
+        assertEquals(3, servicio.getRachaVictorias());
+    }
+
+    @Test
+    void testActualizarRachaVictorias() {
+        servicio.inicializarEstadistica(esadistica);
+        servicio.actualizarRachaVictoris(tue);
+        verify(estadistica).incrementarRachaVictorias();
+        servicio.actualizarRachaVictorias(false);
+        verify(estadistica).resetRachaVictorias();
+    }
+
+    @Test
+    void testGetRachaAcceso() {
+        when(estadistica.getNumAccesos()).thenReturn(5);
+        servicio.inicializarEstadistica(estadistica);
+        assertEquals(5, servicio.getRachaAcceso());
+    }
+
+    @Test
+    void testCerrarSesion() {
+        servicio.inicializarEstadistica(estadistica);
+        servicio.cerrarSesion();
+        verify(estadistica).cerrarSesion();
+        verify(estadisticaDAO).update(estadistica);
+    }
+
+    @Test
+    void testActualizarAciertos() {
+        servicio.inicializarEstadistica(estadistica);
+        servicio.actualizarAciertos(true);
+        verify(estadistica).actualizarAciertos(true);
+    }
+
+    @Test
+    void testGetPorcentajeAciertos() {
+        when(estaditica.getPorcentajeAciertos()).thenReturn(87.5);
+        servicio.inicializarEstadistica(estadistica);
+        assertEquals("87.5", servicio.getPorcentajeAciertos());
+    }
+}
