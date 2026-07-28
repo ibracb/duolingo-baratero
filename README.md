@@ -1,4 +1,4 @@
-# PDS 2024-2025
+# Duolingo Baratero
 ![DuolingoBaratero](/duolingoBaratero/src/main/resources/logoDuolingo.png)
 
 En lo que respecta al proyecto, he aquí algunos datos relevantes:
@@ -7,7 +7,9 @@ En lo que respecta al proyecto, he aquí algunos datos relevantes:
 - **Componentes del grupo:** Ibrahim Cherif Barry, Alejandro López López, y Jorge Serrano Rueda.
 - **Profesor responsable:** Marcial Pamies Berenguer
 - **Descripción:** El propósito es desarrollar una aplicación que permita realizar cursos de diferente índole, además de que los usuarios puedan crear sus propios cursos y que puedan ser empleados por otros usuarios. Así, conseguimos que entre los usuarios puedan adquirir conocimiento entre ellos de manera recíproca.
-- **Ámbito:** Académico y educativo.
+- **Ámbito:** Académico y educativo, correspondiente a la asignatura PDS (Procesos de Desarrollo de Software).
+- **Titulación:** Grado de Ingeniería Informática en la Universidad de Murcia.
+- **Curso:** 2024-2025.
 
 ---
 ---
