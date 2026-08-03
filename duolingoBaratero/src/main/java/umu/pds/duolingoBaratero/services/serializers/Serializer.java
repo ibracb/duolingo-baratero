@@ -35,7 +35,7 @@ public abstract class Serializer {
         this.mapper = mapper;
         this.mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         mapper.enable(DeserializationFeature.WRAP_EXCEPTIONS);
         mapper.enable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
 

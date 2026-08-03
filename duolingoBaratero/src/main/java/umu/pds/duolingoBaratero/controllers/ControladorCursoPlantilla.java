@@ -113,9 +113,12 @@ public class ControladorCursoPlantilla {
 	 */
 	public List<CursoPlantilla> buscarCursos() {
 		try {
-			return servicioCursoPlantilla.obtenerTodosLosCursos();
+			List<CursoPlantilla> cursos = servicioCursoPlantilla.obtenerTodosLosCursos();
+			System.out.println("[DEBUG] buscarCursos() devolvió " + cursos.size() + " cursos");
+			return cursos;
 		} catch (Exception e) {
 			System.err.println("Error al buscar cursos: " + e.getMessage());
+			e.printStackTrace();
 			return List.of(); // Lista vacía en caso de error
 		}
 	}

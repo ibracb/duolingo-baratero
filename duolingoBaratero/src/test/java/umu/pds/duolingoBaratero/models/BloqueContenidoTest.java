@@ -1,14 +1,18 @@
 package umu.pds.duolingoBaratero.models;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Set;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 public class BloqueContenidoTest {
 
@@ -48,7 +52,6 @@ public class BloqueContenidoTest {
         assertEquals(200L, bloqueContenido.getId());
     }
 
-    @SuppressWarnings("unchecked")
 	@Test
     void testGetPreguntas() {
         Set<Pregunta> preguntas =  bloqueContenido.getPreguntas();
@@ -65,8 +68,7 @@ public class BloqueContenidoTest {
         assertTrue(preguntas.contains(preguntaMock2));
 
     }
-
-    @SuppressWarnings({ "unused", "unchecked" })
+    
 	@Test
     void testSetPreguntas() {
         List<Pregunta> nuevasPreguntas = Arrays.asList(preguntaMock3);

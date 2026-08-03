@@ -1,0 +1,126 @@
+{
+  "nombre": "Geografía",
+  "propietario": "Mr usurioPrueba",
+  "descripcion": "Introducción a la geografía mundial",
+  "objetivos": "Conocer capitales, continentes y símbolos geográficos",
+  "nivel": "BASICO",
+  "imagen": null,
+  "tipoPreguntas": ["FLASHCARD", "OPCIONES"],
+  "contenidos": [
+    {
+      "preguntas": [
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 0,
+          "pregunta": "Significado de: River",
+          "respuestaCorrecta": "Río",
+          "tipo": "FLASHCARD"
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 1,
+          "pregunta": "¿Cuál es la capital de España?",
+          "respuestaCorrecta": "Madrid",
+          "tipo": "OPCIONES",
+          "opciones": ["Madrid", "Barcelona", "Sevilla", "Valencia"]
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 2,
+          "pregunta": "¿Cuál es el continente más grande?",
+          "respuestaCorrecta": "Asia",
+          "tipo": "OPCIONES",
+          "opciones": ["Asia", "África", "América", "Europa"]
+        }
+      ],
+      "tiposPreguntas": ["FLASHCARD", "OPCIONES"],
+      "preguntasSecuencialmente": [
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 0,
+          "pregunta": "Significado de: River",
+          "respuestaCorrecta": "Río",
+          "tipo": "FLASHCARD"
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 1,
+          "pregunta": "¿Cuál es la capital de España?",
+          "respuestaCorrecta": "Madrid",
+          "tipo": "OPCIONES",
+          "opciones": ["Madrid", "Barcelona", "Sevilla", "Valencia"]
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 2,
+          "pregunta": "¿Cuál es el continente más grande?",
+          "respuestaCorrecta": "Asia",
+          "tipo": "OPCIONES",
+          "opciones": ["Asia", "África", "América", "Europa"]
+        }
+      ],
+      "preguntasInvertidas": [
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 2,
+          "pregunta": "¿Cuál es el continente más grande?",
+          "respuestaCorrecta": "Asia",
+          "tipo": "OPCIONES",
+          "opciones": ["Asia", "África", "América", "Europa"]
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 1,
+          "pregunta": "¿Cuál es la capital de España?",
+          "respuestaCorrecta": "Madrid",
+          "tipo": "OPCIONES",
+          "opciones": ["Madrid", "Barcelona", "Sevilla", "Valencia"]
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 0,
+          "pregunta": "Significado de: River",
+          "respuestaCorrecta": "Río",
+          "tipo": "FLASHCARD"
+        }
+      ],
+      "preguntasAleatoriamente": [
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 1,
+          "pregunta": "¿Cuál es la capital de España?",
+          "respuestaCorrecta": "Madrid",
+          "tipo": "OPCIONES",
+          "opciones": ["Madrid", "Barcelona", "Sevilla", "Valencia"]
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 0,
+          "pregunta": "Significado de: River",
+          "respuestaCorrecta": "Río",
+          "tipo": "FLASHCARD"
+        },
+        {
+          "id": null,
+          "nivel": "BASICO",
+          "numero": 2,
+          "pregunta": "¿Cuál es el continente más grande?",
+          "respuestaCorrecta": "Asia",
+          "tipo": "OPCIONES",
+          "opciones": ["Asia", "África", "América", "Europa"]
+        }
+      ]
+    }
+  ]
+}

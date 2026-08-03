@@ -29,7 +29,7 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 			em.persist(entidad);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			manejarExcepcion(e, getCreateExceptionMessage());
+			manejarExcepcion(em, e, getCreateExceptionMessage());
 		} finally {
 	        em.close();
 	    }
@@ -38,13 +38,12 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 	@Override
 	public void update(T entidad) {
 	    EntityManager em = EntityManagerHelper.getEntityManager();
-
 		try {
 			em.getTransaction().begin();
 			em.merge(entidad);
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			manejarExcepcion(e, getUpdateExceptionMessage());
+			manejarExcepcion(em, e, getUpdateExceptionMessage());
 		} finally {
 	        em.close();
 	    }
@@ -53,7 +52,6 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 	@Override
 	public void delete(long id) {
 	    EntityManager em = EntityManagerHelper.getEntityManager();
-
 		try {
 			em.getTransaction().begin();
 			T entidad = em.find(getEntityClass(), id);
@@ -62,7 +60,7 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 			}
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			manejarExcepcion(e, getDeleteExceptionMessage());
+			manejarExcepcion(em, e, getDeleteExceptionMessage());
 		} finally {
 	        em.close();
 	    }
@@ -71,29 +69,29 @@ public abstract class DBEntityDAO<T> implements EntityDAO<T> {
 	@Override
 	public T get(long id) {
 	    EntityManager em = EntityManagerHelper.getEntityManager();
-
 		try {
 			return em.find(getEntityClass(), id);
 		} catch (Exception e) {
 			throw new DAOException(getGetExceptionMessage(), e);
-		} 
+		} finally {
+			em.close();
+		}
 	}
 
 	@Override
 	public List<T> getAll() {
 	    EntityManager em = EntityManagerHelper.getEntityManager();
-
 		try {
 			return em.createQuery(getAllQuery(), getEntityClass()).getResultList();
 		} catch (Exception e) {
 			throw new DAOException(getGetAllExceptionMessage(), e);
-		} 
+		} finally {
+			em.close();
+		}
 	}
 
-	private void manejarExcepcion(Exception e, String message) {
-	    EntityManager em = EntityManagerHelper.getEntityManager();
-
-		if (em.getTransaction().isActive()) {
+	private void manejarExcepcion(EntityManager em, Exception e, String message) {
+		if (em != null && em.getTransaction().isActive()) {
 			em.getTransaction().rollback();
 		}
 		throw new DAOException(message, e);

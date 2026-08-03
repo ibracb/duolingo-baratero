@@ -57,14 +57,15 @@ public class ServicioCursoPlantilla {
 		this.dbBloqueContenidoDAO = dbBloqueContenidoDAO;
 		this.dbPreguntaDAO = dbPreguntaDAO;
 		this.serializerFactory = serializerFactory;
-		cargarCursosBase();
 	}
 
 	/**
 	 * Obtiene todos los cursos plantilla disponibles
 	 */
 	public List<CursoPlantilla> obtenerTodosLosCursos() {
-		return dbCursoPlantillaDAO.getAll();
+		List<CursoPlantilla> cursos = dbCursoPlantillaDAO.getAll();
+		System.out.println("[DEBUG] obtenerTodosLosCursos() devolvió " + cursos.size() + " cursos");
+		return cursos;
 	}
 
 	/**
@@ -240,24 +241,32 @@ public class ServicioCursoPlantilla {
 			}
 
 			File carpeta = new File(resource.toURI());
-			File[] archivos = carpeta.listFiles((dir, name) -> name.endsWith(EXTENSION_YAML));
+			File[] archivos = carpeta.listFiles((dir, name) ->
+				name.endsWith(EXTENSION_YAML) || name.endsWith(".json"));
 
 			if (archivos == null || archivos.length == 0) {
-				System.out.println("No se encontraron archivos .yaml en cursosBase.");
+				System.out.println("No se encontraron archivos .yaml o .json en cursosBase.");
 				return;
 			}
 
-			Serializer serializer = serializerFactory.getSerializer(EXTENSION_YAML);
+			System.out.println("[DEBUG] Encontrados " + archivos.length + " archivos de cursos base");
+
 			for (File archivo : archivos) {
 				try {
+					String ext = archivo.getName().endsWith(".json") ? ".json" : EXTENSION_YAML;
+					Serializer serializer = serializerFactory.getSerializer(ext);
 					CursoPlantilla curso = serializer.deserialize(archivo.getAbsolutePath());
 					if (curso != null) {
 						cursos.add(curso);
+						System.out.println("[DEBUG] Cargado curso base: " + curso.getNombre());
 					}
 				} catch (Exception e) {
 					System.err.println("Error al importar curso desde " + archivo.getName() + ": " + e.getMessage());
+					e.printStackTrace();
 				}
 			}
+
+			System.out.println("[DEBUG] Total cursos base cargados desde archivos: " + cursos.size());
 
 			// Solo persistir si no están ya en la DB
 			compararCursosConDB(cursos);
@@ -270,16 +279,21 @@ public class ServicioCursoPlantilla {
 
 	private void compararCursosConDB(List<CursoPlantilla> cursos) {
 		List<CursoPlantilla> cursosFromDB = dbCursoPlantillaDAO.getAll();
+		System.out.println("[DEBUG] compararCursosConDB: " + cursosFromDB.size() + " cursos ya en DB");
 
 		if (cursosFromDB == null || cursosFromDB.isEmpty()) {
+			System.out.println("[DEBUG] DB vacía, persistiendo todos los cursos base: " + cursos.size());
 			cursos.forEach(this::persistirCursoCompleto);
 			return;
 		}
 
 		// Persistimos solo los que no estén ya en la DB
 		for (CursoPlantilla curso : cursos) {
-			if (existeCursoPlantilla(curso)) {
+			if (!existeCursoPlantilla(curso)) {
+				System.out.println("[DEBUG] Persistiendo curso nuevo: " + curso.getNombre());
 				persistirCursoCompleto(curso);
+			} else {
+				System.out.println("[DEBUG] Curso ya existe en DB, omitiendo: " + curso.getNombre());
 			}
 		}
 	}
@@ -290,10 +304,11 @@ public class ServicioCursoPlantilla {
 	private void persistirCursoCompleto(CursoPlantilla curso) {
 		// Verificar si el curso ya existe
 		if (existeCursoPlantilla(curso)) {
-			System.out.println("El curso '" + curso.getNombre() + "' ya existe, omitiendo duplicación.");
+			System.out.println("[DEBUG] El curso '" + curso.getNombre() + "' ya existe, omitiendo duplicación.");
 			return;
 		}
 
+		System.out.println("[DEBUG] Persistiendo curso: " + curso.getNombre() + " con " + curso.getContenidos().size() + " bloques");
 		dbCursoPlantillaDAO.create(curso);
 
 		for (BloqueContenido bloque : curso.getContenidos()) {
@@ -305,6 +320,7 @@ public class ServicioCursoPlantilla {
 				dbPreguntaDAO.create(pregunta);
 			}
 		}
+		System.out.println("[DEBUG] Curso '" + curso.getNombre() + "' persistido correctamente");
 	}
 
 	/**

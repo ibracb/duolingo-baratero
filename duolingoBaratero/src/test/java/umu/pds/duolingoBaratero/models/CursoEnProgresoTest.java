@@ -63,7 +63,8 @@ class CursoEnProgresoTest {
     /**
      * Test que verifica la obtención de preguntas del bloque actual y específico.
      */
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     void testGetPreguntasBloqueContenido() {
         Set<Pregunta> preguntasMock = Mockito.mock(Set.class);
         Mockito.when(cursoPlantillaMock.getPreguntasDeBloque(0)).thenReturn(preguntasMock);

@@ -18,6 +18,7 @@ import javax.swing.JToolBar;
 import javax.swing.Timer;
 
 import umu.pds.duolingoBaratero.controllers.ControladorCursoPlantilla;
+import umu.pds.duolingoBaratero.models.CursoPlantilla;
 import umu.pds.duolingoBaratero.controllers.ControladorCursoProgreso;
 import umu.pds.duolingoBaratero.controllers.ControladorEstadistica;
 import umu.pds.duolingoBaratero.controllers.ControladorPregunta;
@@ -242,12 +243,17 @@ public class BarraSuperior extends JPanel {
 				if (!archivo.getName().toLowerCase().endsWith(extensionEsperada)) {
 					JOptionPane.showMessageDialog(null, "El archivo debe tener extensión " + extensionEsperada,
 							"Formato incorrecto", JOptionPane.ERROR_MESSAGE);
+			} else {
+				String extensionConPunto = "." + tipoSeleccionado;
+				CursoPlantilla curso = controladorPlantilla.importarCurso(archivo, extensionConPunto);
+				if (curso != null) {
+					JOptionPane.showMessageDialog(null, "Curso '" + curso.getNombre() + "' importado correctamente.",
+							"Importación exitosa", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					// CursoPlantilla curso = ControladorCurso.INSTANCE.importarCurso(archivo,
-					// tipoSeleccionado);
-
-					// Puedes mostrar algo aquí si quieres confirmar que se importó
+					JOptionPane.showMessageDialog(null, "Error al importar el curso.", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
+			}
 			}
 		}
 	}

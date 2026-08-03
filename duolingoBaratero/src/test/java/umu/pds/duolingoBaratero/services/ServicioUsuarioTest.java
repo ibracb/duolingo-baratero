@@ -1,18 +1,18 @@
 package umu.pds.duolingoBaratero.services;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.time.LocalDateTime;
-import java.util.*;
-
-import umu.pds.duolingoBaratero.models.*;
-import umu.pds.duolingoBaratero.persistence.*;
-import umu.pds.duolingoBaratero.repositories.RepositorioCurso;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import umu.pds.duolingoBaratero.models.Usuario;
+import umu.pds.duolingoBaratero.persistence.DBUsuarioDAO;
 
 public class ServicioUsuarioTest {
     private DBUsuarioDAO usuarioDAO;

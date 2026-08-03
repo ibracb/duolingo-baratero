@@ -5,11 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 import javax.swing.JPanel;
 
@@ -18,7 +14,6 @@ import org.junit.jupiter.api.Test;
 
 import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaAudio;
-import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaImagenes;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
 
 class PreguntasTest {
@@ -27,7 +22,6 @@ class PreguntasTest {
     private PreguntaAudio preguntaAudio;
     private Flashcard flashcard;
 
-    @SuppressWarnings("unused")
 	@BeforeEach
     void setUp() {
         String[] opciones = {"Opción A", "Opción B", "Opción C"};

@@ -69,7 +69,10 @@ public class CursoCellRenderer extends JPanel implements ListCellRenderer<CursoE
 			lblNombre.setText("Curso no encontrado");
 			lblNivel.setText("Nivel: Sin curso, no hay nivel");
 		} else {
-			ImageIcon image = new ImageIcon(getClass().getResource("/" + curso.getNombre() +".png"));
+			java.net.URL iconLocation = getClass().getResource("/" + curso.getNombre() + ".png");
+			ImageIcon image = iconLocation != null
+				? new ImageIcon(iconLocation)
+				: controladorPlantilla.getScaledDefaultImage(100);
 			image = controladorPlantilla.getScaledImage(image, 100);
 			lblIcono.setIcon(image); // Imagen de ejemplo
 			lblNombre.setText(curso.getNombre());

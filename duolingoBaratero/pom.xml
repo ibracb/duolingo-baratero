@@ -105,11 +105,6 @@
 			<artifactId>hibernate-community-dialects</artifactId>
 			<version>6.2.7.Final</version>
 		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.dataformat</groupId>
-			<artifactId>jackson-dataformat-yaml</artifactId>
-			<version>2.17.0</version> <!-- O la versión que uses -->
-		</dependency>
 	</dependencies>
 
 	<build>

@@ -43,6 +43,7 @@ public class Program {
 		ServicioEstadistica servicioEstadistica = new ServicioEstadistica(estadisticaDAO);
 		ServicioCursoPlantilla servicioPlantilla = new ServicioCursoPlantilla(plantillaDAO, progresoDAO, bloqueDAO,
 				preguntaDAO, SerializerFactory.INSTANCE);
+		servicioPlantilla.cargarCursosBase();
 		
 		ServicioUsuario servicioUsuario = new ServicioUsuario(usuarioDAO, servicioProgreso, servicioPlantilla,
 				servicioEstadistica);
