@@ -16,7 +16,7 @@ En lo que respecta al proyecto, he aquí algunos datos relevantes:
 - **Profesor responsable:** Marcial Pamies Berenguer
 - **Descripción:** El propósito es desarrollar una aplicación que permita realizar cursos de diferente índole, además de que los usuarios puedan crear sus propios cursos y que puedan ser empleados por otros usuarios. Así, conseguimos que entre los usuarios puedan adquirir conocimiento entre ellos de manera recíproca.
 - **Ámbito:** Académico y educativo, correspondiente a la asignatura PDS (Procesos de Desarrollo de Software).
-- **Titulación:** Grado de Ingeniería Informática en la Universidad de Murcia.
+- **Titulación:** Grado de Ingeniería Informática en la [Universidad de Murcia](https://www.um.es/).
 - **Curso:** 2024-2025.
 
 ---
@@ -112,8 +112,8 @@ graph TD
 
 ## Framework y herramientas
 
-- **JUnit 5 (Jupiter):** Framework de pruebas unitarias.
-- **Mockito:** Mocking de dependencias para aislar unidades.
+- **[JUnit 5](https://junit.org/junit5/) (Jupiter):** Framework de pruebas unitarias.
+- **[Mockito](https://site.mockito.org/):** Mocking de dependencias para aislar unidades.
 - **Ejecución:** `mvn test`
 
 ## Niveles de prueba
@@ -132,9 +132,9 @@ graph TD
 
 ## Requisitos previos
 
-- JDK 17 instalado
-- Apache Maven instalado
-- Eclipse IDE (si deseas usar entorno gráfico)
+- [JDK 17](https://openjdk.org/projects/jdk/17/) instalado
+- [Apache Maven](https://maven.apache.org/) instalado
+- [Eclipse IDE](https://www.eclipse.org/downloads/) (si deseas usar entorno gráfico)
 
 ---
 
@@ -179,10 +179,10 @@ mvn exec:java
    - Asegúrate de que esté usando **JDK 17** como librería.
 
 4. Navegar hasta el archivo principal  
-   - Abre: `src/main/java/umu/pds/duolingoBaratero/program/Program.java`
+   - Abre: [`src/main/java/umu/pds/duolingoBaratero/program/Program.java`](./duolingoBaratero/src/main/java/umu/pds/duolingoBaratero/program/Program.java)
 
 5. Ejecutar el programa  
-   - Con el archivo `Program.java` abierto, haz clic en el botón de ejecutar (`Run`) de Eclipse.
+   - Con el archivo [`Program.java`](./duolingoBaratero/src/main/java/umu/pds/duolingoBaratero/program/Program.java) abierto, haz clic en el botón de ejecutar (`Run`) de Eclipse.
 
 ---
 
@@ -200,7 +200,7 @@ mvn test -Dtest=NombreDelTest
 
 ### Desde Eclipse
 
-1. Navega hasta la carpeta de tests: `src/test/java/`
+1. Navega hasta la carpeta de tests: [`src/test/java/`](./duolingoBaratero/src/test/java/)
 2. Selecciona el test que deseas ejecutar
 3. Clic derecho > **Run As** > **JUnit Test**
 
