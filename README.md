@@ -13,9 +13,7 @@
 
 ## Overview
 
-**Duolingo Baratero** is a desktop application for working through courses of all kinds. Users can create their own courses and make them available to other users, so that they can learn from one another in a reciprocal way.
-
-The application includes a **lives system** (see [User manual](docs/03-user-manual.md)).
+**Duolingo Baratero** is a desktop application for working through courses of all kinds. Users can create their own courses in JSON or YAML extension and make them available to other users, so that they can learn from one another in a reciprocal way.
 
 ## Demo
 
@@ -29,7 +27,7 @@ The application includes a **lives system** (see [User manual](docs/03-user-manu
 ```
 duolingo-baratero/
 ├── docs/                       	# Complete documentation
-├── duolingoBaratero/           	# Source code (Maven)
+├── duolingoBaratero/           	# Maven project
 ├── .gitignore                  	# Files and folders ignored by Git
 └── README.md                   	# Main documentation
 ```
