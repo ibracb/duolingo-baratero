@@ -7,6 +7,8 @@
 ![Swing](https://img.shields.io/badge/UI-Swing-orange)
 ![JPA](https://img.shields.io/badge/JPA-3.1-green)
 ![SQLite](https://img.shields.io/badge/SQLite-3.49-lightgrey)
+![JUnit](https://img.shields.io/badge/JUnit-5-green)
+![Mockito](https://img.shields.io/badge/Mockito-5-green)
 ![University of Murcia](https://img.shields.io/badge/University%20of%20Murcia-E03B23?style=flat&logo=graduation-cap&logoColor=white)
 
 ![DuolingoBaratero](/duolingoBaratero/src/main/resources/logoDuolingo.png)
@@ -56,6 +58,8 @@ mvn exec:java
 ```
 
 ## Running the tests
+
+Tests are written with **JUnit 5 (Jupiter)** and **Mockito**.
 
 ```
 # Run all the tests
