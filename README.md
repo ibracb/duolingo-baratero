@@ -80,7 +80,7 @@ mvn test -Dtest=TestClass#testMethod
 
 ## Documentation
 
-For the complete project documentation (requirements, use cases, user manual, domain model, architecture and testing strategy), see the [documentation index](docs/README.md).
+For the complete project documentation (requirements, use cases, user manual, domain model, architecture and testing strategy), see the [documentation index](docs/).
 
 ## Academic context
 
