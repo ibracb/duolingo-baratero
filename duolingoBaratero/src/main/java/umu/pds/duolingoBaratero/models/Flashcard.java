@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
 
 /**
@@ -13,7 +12,6 @@ import umu.pds.duolingoBaratero.windows.vista.PanelFlashcard;
  * Respuesta correcta se determina si la entrada es "acierto".
  */
 @Entity
-@Table(name = "flashcards")
 @DiscriminatorValue("FLASHCARD")
 public class Flashcard extends Pregunta {
 

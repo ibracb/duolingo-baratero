@@ -81,7 +81,9 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return false;
-	    } 
+	    } finally {
+	        em.close();
+	    }
 	}
 	
 	/**
@@ -103,6 +105,8 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return false;
+	    } finally {
+	        em.close();
 	    }
 	}
 	
@@ -125,6 +129,8 @@ public class DBUsuarioDAO extends DBEntityDAO<Usuario> {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        return null;
+	    } finally {
+	        em.close();
 	    }
 	}
 

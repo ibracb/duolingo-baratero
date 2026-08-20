@@ -1,206 +1,92 @@
 # Duolingo Baratero
 
+> A desktop application for working through courses of all kinds, creating your own courses and sharing them with other users.
+
 ![Java](https://img.shields.io/badge/Java-17-blue)
 ![Maven](https://img.shields.io/badge/Maven-3-red)
 ![Swing](https://img.shields.io/badge/UI-Swing-orange)
 ![JPA](https://img.shields.io/badge/JPA-3.1-green)
 ![SQLite](https://img.shields.io/badge/SQLite-3.49-lightgrey)
-![Universidad de Murcia](https://img.shields.io/badge/Universidad%20de%20Murcia-E03B23?style=flat&logo=graduation-cap&logoColor=white)
+![University of Murcia](https://img.shields.io/badge/University%20of%20Murcia-E03B23?style=flat&logo=graduation-cap&logoColor=white)
 
 ![DuolingoBaratero](/duolingoBaratero/src/main/resources/logoDuolingo.png)
 
-En lo que respecta al proyecto, he aquí algunos datos relevantes:
+## Overview
 
-- **Nombre de la aplicación:** Duolingo Baratero.
-- **Componentes del grupo:** [Ibrahim Cherif Barry](https://github.com/ibracb), [Alejandro López López](https://github.com/alexlp04), y [Jorge Serrano Rueda](https://github.com/JorgeSR04).
-- **Profesor responsable:** Marcial Pamies Berenguer
-- **Descripción:** El propósito es desarrollar una aplicación que permita realizar cursos de diferente índole, además de que los usuarios puedan crear sus propios cursos y que puedan ser empleados por otros usuarios. Así, conseguimos que entre los usuarios puedan adquirir conocimiento entre ellos de manera recíproca.
-- **Ámbito:** Académico y educativo, correspondiente a la asignatura PDS (Procesos de Desarrollo de Software).
-- **Titulación:** Grado de Ingeniería Informática en la [Universidad de Murcia](https://www.um.es/).
-- **Curso:** 2024-2025.
+**Duolingo Baratero** is a desktop application for working through courses of all kinds. Users can create their own courses and make them available to other users, so that they can learn from one another in a reciprocal way.
 
----
+The application includes a **lives system** (see [User manual](docs/03-user-manual.md)).
 
-## Guía de Navegación del Repositorio
+## Demo
 
-Este repositorio contiene los recursos relacionados con el diseño, la documentación y los requisitos de la aplicación de escritorio.
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/c7e6a624-831a-4416-92a6-9e7a63612a9b"
+    controls width="800"></video>
+</p>
 
----
+## Project structure
 
-## Estructura principal
-
-- **[Diseño](./Diseño/)** 
-  Carpeta que contiene el modelado del dominio.
-
-- **[Documentacion](./Documentacion/)** 
-  Carpeta que incluye el manual de usuario.
-
-- **[Requisitos](./Requisitos/)** 
-  Carpeta que contiene casos de uso, imágenes y un índice de requisitos.
-
----
-
-## Detalle por carpetas
-
-### [Modelo de dominio](./Diseño/ModeloDeDominio/README.md)
-
-- `ModeloDeDominio.png`  
-  Imagen del modelado de dominio.
-
-- `ModeloDeDominio.puml`  
-  Código fuente en PlantUML del modelo de dominio.
-
-- `README.md`  
-  Información detallada sobre el modelo de dominio.
-
-### [Manual de usuario](./Documentacion/README.md)
-
-La funcionalidad del proyecto se encuentra detallada en el manual de usuario. Además, como funcionalidad extra, hemos implementado un sistema de vidas:
-
-- **README.md**  
-  Manual de usuario de la aplicación.
-
----
-
-### [Requisitos](./Requisitos/)
-
-- `README.md`  
-  Índice con tabla resumen de los casos de uso.
-
-- `CasosDeUso/`  
-  Contiene todos los casos de uso definidos.
-
-- `Ventanas/`  
-  Imágenes de las ventanas de la aplicación.
-
----
-
-## Sistema de vidas (Funcionalidad Extra)
-
-- El usuario comienza con **5 vidas**.
-- Por cada pregunta que falle, pierde una vida.
-- Las vidas se recuperan automáticamente después de **5 minutos** cada una, hasta un máximo de 5 vidas.
-
-Para gestionar esto, se utiliza un temporizador mientras la aplicación está en funcionamiento. 
-
-Cuando el usuario cierra la aplicación y luego la vuelve a abrir, se toma el último instante en que cerró sesión y el instante actual al abrirla. Se calcula la diferencia entre ambos y, con base en ese tiempo, se actualizan las vidas y el tiempo restante para la próxima regeneración.
-
----
-
-# Diagrama de arquitectura
-
-```mermaid
-graph TD
-    V[Ventanas<br/>Swing] --> C[Controllers<br/>Facade]
-    C --> S[Services<br/>Business Logic]
-    S --> D[DAOs<br/>JPA/Hibernate]
-    D --> DB[(SQLite)]
-    S --> R[Repositorio<br/>Cache en memoria]
-    S --> SER[Serializers<br/>JSON/YAML]
+```
+duolingo-baratero/
+├── docs/                       	# Complete documentation
+├── duolingoBaratero/           	# Source code (Maven)
+├── .gitignore                  	# Files and folders ignored by Git
+└── README.md                   	# Main documentation
 ```
 
-- **Ventanas (Swing):** Interfaz gráfica de usuario. Cada ventana delega la lógica en un controller.
-- **Controllers:** Facades que median entre la vista y los servicios. Proporcionan una API simplificada.
-- **Services:** Lógica de negocio. Orquestan DAOs, aplican reglas y gestionan estado.
-- **DAOs (JPA/Hibernate):** Capa de persistencia con CRUD genérico. SQLite como base de datos.
-- **Repositorio:** Caché en memoria para consultas rápidas.
-- **Serializers:** Import/export de cursos en formato JSON o YAML (patrón Abstract Factory).
+## Requirements
 
----
+- **Java (JDK) 17+** — check it with `java --version`
+- **Maven 3+** — check it with `mvn --version`
 
-# Estrategia de pruebas
-
-## Framework y herramientas
-
-- **[JUnit 5](https://junit.org/junit5/) (Jupiter):** Framework de pruebas unitarias.
-- **[Mockito](https://site.mockito.org/):** Mocking de dependencias para aislar unidades.
-- **Ejecución:** `mvn test`
-
-## Niveles de prueba
-
-| Nivel | Qué cubre | Estado |
-|-------|-----------|--------|
-| Unitarios (models) | Entidades JPA, enums, lógica de negocio | ✅ 64 tests |
-| Unitarios (services) | Servicios, filtros, serialización | ✅ 38 tests |
-| Unitarios (controllers) | Facades, mediación View→Service | ✅ 75 tests |
-| Integración | DAOs + base de datos | ❌ Fuera de alcance |
-| UI/Swing | Ventanas y componentes | ❌ Fuera de alcance |
-
----
-
-# Cómo ejecutar el proyecto `duolingoBaratero`
-
-## Requisitos previos
-
-- [JDK 17](https://openjdk.org/projects/jdk/17/) instalado
-- [Apache Maven](https://maven.apache.org/) instalado
-- [Eclipse IDE](https://www.eclipse.org/downloads/) (si deseas usar entorno gráfico)
-
----
-
-## Ejecutar con Maven
+## Installation
 
 ```bash
-# 1. Clonar el repositorio desde GitHub
-git clone https://github.com/ibracb23/duolingoBaratero
-
-# 2. Entrar al directorio del proyecto
+# Clone the repository
+git clone https://github.com/ibracb/duolingoBaratero
 cd duolingoBaratero
+```
 
-# 3. Verificar que Maven está instalado
-mvn -v
+## Compilation and execution
 
-# 4. Compilar el proyecto
+```bash
+# Compile the project
 mvn compile
 
-# 5. Ejecutar la aplicación
+# Run the application
 mvn exec:java
 ```
 
----
+## Running the tests
 
-## Ejecutar desde Eclipse
-
-1. Descargar el proyecto desde GitHub  
-   Puedes hacerlo de dos formas:
-
-   - Clonando el repositorio:  
-     ```bash
-     git clone https://github.com/ibracb/duolingoBaratero
-     ```
-   - O descargando el archivo ZIP desde la página del repositorio y extrayéndolo.
-
-2. Abrir Eclipse  
-   - Selecciona un workspace.
-
-3. Importar el proyecto como un **Maven Project**  
-   - Ve a: `File > Import > Existing Maven Projects`
-   - Selecciona la carpeta del proyecto (`duolingoBaratero`)
-   - Asegúrate de que esté usando **JDK 17** como librería.
-
-4. Navegar hasta el archivo principal  
-   - Abre: [`src/main/java/umu/pds/duolingoBaratero/program/Program.java`](./duolingoBaratero/src/main/java/umu/pds/duolingoBaratero/program/Program.java)
-
-5. Ejecutar el programa  
-   - Con el archivo [`Program.java`](./duolingoBaratero/src/main/java/umu/pds/duolingoBaratero/program/Program.java) abierto, haz clic en el botón de ejecutar (`Run`) de Eclipse.
-
----
-
-## Ejecutar tests
-
-### Con Maven
-
-```bash
-# Ejecutar todos los tests
+```
+# Run all the tests
 mvn test
-
-# Ejecutar un test específico
-mvn test -Dtest=NombreDelTest
 ```
 
-### Desde Eclipse
+```
+# Run a specific test class
+mvn test -Dtest=TestClass
+```
 
-1. Navega hasta la carpeta de tests: [`src/test/java/`](./duolingoBaratero/src/test/java/)
-2. Selecciona el test que deseas ejecutar
-3. Clic derecho > **Run As** > **JUnit Test**
+```
+# Run a specific test method
+mvn test -Dtest=TestClass#testMethod
+```
 
+## Documentation
+
+For the complete project documentation (requirements, use cases, user manual, domain model, architecture and testing strategy), see the [documentation index](docs/README.md).
+
+## Academic context
+
+- **Subject:** Software Development Processes
+- **Degree:** BSc in Computer Engineering
+- **University:** University of Murcia
+- **Year:** 2024–2025
+
+## Authors
+
+- **Ibrahim Cherif Barry** - [ibracb](https://github.com/ibracb)
+- **Alejandro López López** - [alexlp04](https://github.com/alexlp04)
+- **Jorge Serrano Rueda** - [JorgeSR04](https://github.com/JorgeSR04)

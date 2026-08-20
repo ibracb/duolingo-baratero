@@ -267,7 +267,7 @@ public class VentanaRegistro extends JFrame implements VentanaCambiaImagenes {
 		gbc_passwordFieldContraseña.gridy = 4;
 		panelDatos.add(passwordFieldContraseña, gbc_passwordFieldContraseña);
 
-		JLabel lblContraseñaOk = new JLabel("Contraseña:");
+		JLabel lblContraseñaOk = new JLabel("Confirma contraseña:");
 		GridBagConstraints gbc_lblContraseñaOk = new GridBagConstraints();
 		gbc_lblContraseñaOk.anchor = GridBagConstraints.EAST;
 		gbc_lblContraseñaOk.insets = new Insets(0, 0, 0, 5);

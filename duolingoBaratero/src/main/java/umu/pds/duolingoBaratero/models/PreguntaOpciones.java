@@ -9,8 +9,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
 
 /**
@@ -20,14 +20,13 @@ import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaOpciones;
  * Implementa la creación del panel gráfico específico para preguntas con opcioens.
  */
 @Entity
-@Table(name = "pregunta_opciones")
 @DiscriminatorValue("OPCIONES")
 public class PreguntaOpciones extends Pregunta {
 
     /**
      * Lista de opciones posibles para responder la pregunta.
      */
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "pregunta_opciones_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
     @Column(name = "opciones")
     private List<String> opciones;

@@ -159,7 +159,7 @@ public class VentanaLogin extends JFrame {
 		panelCentro.add(textField, gbc_textField);
 		
 
-		JLabel lblContrasea = new JLabel("contrase\u00F1a:");
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
 		GridBagConstraints gbc_lblContrasea = new GridBagConstraints();
 		gbc_lblContrasea.anchor = GridBagConstraints.EAST;
 		gbc_lblContrasea.insets = new Insets(0, 0, 5, 5);

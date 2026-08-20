@@ -9,9 +9,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaAudio;
 
 /**
@@ -20,7 +20,6 @@ import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaAudio;
  * devolver su panel Swing específico.
  */
 @Entity
-@Table(name = "pregunta_audio")
 @DiscriminatorValue("AUDIO")
 public class PreguntaAudio extends Pregunta {
 
@@ -28,7 +27,7 @@ public class PreguntaAudio extends Pregunta {
 	 * Lista de opciones de respuesta para la pregunta de audio.
 	 * Cada opción puede ser un texto o una descripción asociada al audio.
 	 */
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "pregunta_audio_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
 	@Column(name = "opciones")
 	private List<String> opciones;

@@ -57,6 +57,14 @@ public class ServicioUsuarioTest {
     }
 
     @Test
+    void testComprobarUsuarioContrasenaIncorrecta() {
+        Usuario u = new Usuario("A", "B", "mail", "pw");
+        when(usuarioDAO.get("mail")).thenReturn(u);
+        assertFalse(servicio.comprobarUsuario("mail", "incorrecta"));
+        assertNull(servicio.getUsuarioActual());
+    }
+
+    @Test
     void testGetNombreUsuarioActual() {
         Usuario u = new Usuario("Laura", "X", "correo", "123");
         when(usuarioDAO.get("correo")).thenReturn(u);

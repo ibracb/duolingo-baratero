@@ -7,8 +7,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Table;
 import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaImagenes;
 /**
  * Representa una pregunta con opciones basadas en imágenes.
@@ -17,14 +17,13 @@ import umu.pds.duolingoBaratero.windows.vista.PanelPreguntaImagenes;
  * Implementa la creación del panel gráfico específico para preguntas con imágenes.
  */
 @Entity
-@Table(name = "pregunta_imagenes")
 @DiscriminatorValue("IMAGENES")
 public class PreguntaImagenes extends Pregunta {
 
     /**
      * Lista de opciones de imágenes para la pregunta.
      */
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "pregunta_imagenes_opciones", joinColumns = @JoinColumn(name = "pregunta_id"))
     @Column(name = "opciones")
     private List<String> opciones;

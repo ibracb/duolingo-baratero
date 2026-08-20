@@ -45,10 +45,10 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+.settings/
 .metadata
 # End of https://www.toptal.com/developers/gitignore/api/java,maven
 
 
-# PERSONALIZADO
-cambios.md
+# MINE
 basedatos.db

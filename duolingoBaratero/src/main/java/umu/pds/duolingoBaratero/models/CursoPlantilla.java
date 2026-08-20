@@ -14,6 +14,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -62,7 +63,7 @@ public class CursoPlantilla implements Comparable<CursoPlantilla> {
 
     /** Bloques de contenido que componen el curso. */
     @JsonProperty("contenidos")
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "curso_id")
     private List<BloqueContenido> contenidos;
 

@@ -66,7 +66,7 @@ public class ServicioUsuario {
 	 */
 	public boolean comprobarUsuario(String correo, String passwd) {
 		Usuario usuario = dbUsuarioDAO.get(correo);
-		if (usuario != null) {
+		if (usuario != null && usuario.getPasswd().equals(passwd)) {
 			this.user = usuario;
 			servicioEstadistica.inicializarEstadistica(user.getEstadistica());
 			return true;

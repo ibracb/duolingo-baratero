@@ -90,11 +90,6 @@ public class VentanaInformacion extends JFrame {
 				"📊 Nivel del curso: " + (curso.getNivel() != null ? curso.getNivel().toString() : "❌ No especificado"));
 		panelDerecho.add(lblNivel);
 
-		JTextArea txtContenido = new JTextArea(
-				"📜 Contenido:\n" + (curso.getContenidos() != null || !curso.getContenidos().isEmpty() ? curso.getContenidos() : "❌ No disponible"));
-		txtContenido.setEditable(false);
-		panelDerecho.add(txtContenido);
-
 		panelCentral.add(panelDerecho);
 		getContentPane().add(panelCentral, BorderLayout.CENTER);
 
