@@ -1,7 +1,7 @@
 # Duolingo Baratero
 
 <p align="center">
-  <img src="/duolingoBaratero/src/main/resources/logoDuolingo.png" alt="Duolingo Baratero logo" width="512">
+  <img src="duolingoBaratero/src/main/resources/logoDuolingo.png" alt="Duolingo Baratero logo" width="512">
 </p>
 
 > A desktop app to learn from one another: create your own courses and share them with the community.
