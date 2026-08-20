@@ -1,5 +1,9 @@
 # Duolingo Baratero
 
+<p align="center">
+  <img src="/duolingoBaratero/src/main/resources/logoDuolingo.png" alt="Duolingo Baratero logo" width="512">
+</p>
+
 > A desktop app to learn from one another: create your own courses and share them with the community.
 
 ![Java](https://img.shields.io/badge/Java-17-blue)
@@ -10,8 +14,6 @@
 ![JUnit](https://img.shields.io/badge/JUnit-5-green)
 ![Mockito](https://img.shields.io/badge/Mockito-5-green)
 ![University of Murcia](https://img.shields.io/badge/University%20of%20Murcia-E03B23?style=flat&logo=graduation-cap&logoColor=white)
-
-![DuolingoBaratero](/duolingoBaratero/src/main/resources/logoDuolingo.png)
 
 ## Overview
 
