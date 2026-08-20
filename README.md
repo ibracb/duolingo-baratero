@@ -1,6 +1,6 @@
 # Duolingo Baratero
 
-> A desktop application for working through courses of all kinds, creating your own courses and sharing them with other users.
+> A desktop app to learn from one another: create your own courses and share them with the community.
 
 ![Java](https://img.shields.io/badge/Java-17-blue)
 ![Maven](https://img.shields.io/badge/Maven-3-red)
