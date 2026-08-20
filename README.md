@@ -13,7 +13,7 @@
 
 ## Overview
 
-**Duolingo Baratero** is a desktop application for working through courses of all kinds. Users can create their own courses in JSON or YAML extension and make them available to other users, so that they can learn from one another in a reciprocal way.
+**Duolingo Baratero** is a desktop application for working through courses of all kinds. Users can learn with our default courses, and also create their own courses in JSON/YAML extension and make them available to other users, so that they can learn from one another in a reciprocal way.
 
 ## Demo
 
