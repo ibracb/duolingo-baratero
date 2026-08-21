@@ -38,8 +38,8 @@ duolingo-baratero/
 
 ## Requirements
 
-- **Java (JDK) 17+** — check it with `java --version`
-- **Maven 3+** — check it with `mvn --version`
+- **Java (JDK) 17+** — check with `java --version`
+- **Maven 3+** — check with `mvn --version`
 
 ## Installation
 
