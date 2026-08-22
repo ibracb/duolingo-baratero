@@ -38,24 +38,26 @@ duolingo-baratero/
 
 ## Requirements
 
-- **Java (JDK) 17+** — check with `java --version`
-- **Maven 3+** — check with `mvn --version`
+- **Java (JDK) 17+:** check with `java --version`
+- **Maven 3+:** check with `mvn --version`
 
 ## Installation
 
+Clone the repository:
 ```bash
-# Clone the repository
 git clone https://github.com/ibracb/duolingoBaratero
 cd duolingoBaratero
 ```
 
 ## Compilation and execution
 
+Compile the project:
 ```bash
-# Compile the project
 mvn compile
+```
 
-# Run the application
+Run the application:
+```bash
 mvn exec:java
 ```
 
@@ -63,20 +65,25 @@ mvn exec:java
 
 Tests are written with **JUnit 5 (Jupiter)** and **Mockito**.
 
+To run all the tests:
 ```
-# Run all the tests
 mvn test
 ```
 
+To run a specific test class:
 ```
-# Run a specific test class
 mvn test -Dtest=TestClass
 ```
+> [!WARNING]
+> Replace  TestClass with the name of the class you want to test.
 
+
+To run a specific test method:
 ```
-# Run a specific test method
 mvn test -Dtest=TestClass#testMethod
 ```
+> [!WARNING]
+> Replace  TestClass with the name of the class, and testMethod with the method you want to test.
 
 ## Documentation
 
